@@ -1,0 +1,36 @@
+---
+---
+<div class="calc-widget">
+  <form id="si-form" novalidate>
+    <label>Initial Deposit ($) <input type="number" id="principal" min="0" step="1" value="5000" /></label>
+    <label>Annual Percentage Yield / APY (%) <input type="number" id="apy" min="0" max="100" step="0.01" value="4.5" /></label>
+    <label>Monthly Contribution ($) <input type="number" id="monthly" min="0" step="1" value="200" /></label>
+    <label>Time Period (months) <input type="number" id="months" min="1" step="1" value="36" /></label>
+    <button type="submit">Calculate</button>
+  </form>
+  <div id="si-result" class="result-box" hidden></div>
+</div>
+
+<script>
+  document.getElementById('si-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const principal = parseFloat((document.getElementById('principal') as HTMLInputElement).value) || 0;
+    const apy = parseFloat((document.getElementById('apy') as HTMLInputElement).value) / 100;
+    const monthly = parseFloat((document.getElementById('monthly') as HTMLInputElement).value) || 0;
+    const months = parseInt((document.getElementById('months') as HTMLInputElement).value) || 0;
+    const r = apy / 12;
+    const lumpSum = principal * Math.pow(1 + r, months);
+    const annuity = r > 0 ? monthly * ((Math.pow(1 + r, months) - 1) / r) : monthly * months;
+    const finalBalance = lumpSum + annuity;
+    const totalContributions = principal + monthly * months;
+    const interestEarned = finalBalance - totalContributions;
+    const fmt = (n: number) => n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+    const box = document.getElementById('si-result')!;
+    box.hidden = false;
+    box.innerHTML = `
+      <p><strong>Final Balance:</strong> $${fmt(finalBalance)}</p>
+      <p><strong>Total Contributed:</strong> $${fmt(totalContributions)}</p>
+      <p><strong>Interest Earned:</strong> $${fmt(interestEarned)}</p>
+    `;
+  });
+</script>

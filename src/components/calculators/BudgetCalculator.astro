@@ -1,0 +1,41 @@
+---
+---
+<div class="calc-widget">
+  <form id="budget-form" novalidate>
+    <fieldset>
+      <legend>Monthly Income</legend>
+      <label>Take-Home Income ($) <input type="number" id="income" min="0" step="1" value="5000" /></label>
+    </fieldset>
+    <fieldset>
+      <legend>Monthly Expenses</legend>
+      <label>Housing (rent/mortgage) ($) <input type="number" id="housing" min="0" step="1" value="1400" /></label>
+      <label>Transportation ($) <input type="number" id="transport" min="0" step="1" value="450" /></label>
+      <label>Groceries &amp; Dining ($) <input type="number" id="food" min="0" step="1" value="600" /></label>
+      <label>Utilities ($) <input type="number" id="utilities" min="0" step="1" value="200" /></label>
+      <label>Insurance ($) <input type="number" id="insurance" min="0" step="1" value="150" /></label>
+      <label>Entertainment &amp; Subscriptions ($) <input type="number" id="entertainment" min="0" step="1" value="150" /></label>
+      <label>Savings &amp; Investments ($) <input type="number" id="savings" min="0" step="1" value="300" /></label>
+      <label>Other ($) <input type="number" id="other" min="0" step="1" value="0" /></label>
+    </fieldset>
+    <button type="submit">Calculate</button>
+  </form>
+  <div id="budget-result" class="result-box" hidden></div>
+</div>
+
+<script>
+  document.getElementById('budget-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const get = (id: string) => parseFloat((document.getElementById(id) as HTMLInputElement).value) || 0;
+    const income = get('income');
+    const expenses = ['housing','transport','food','utilities','insurance','entertainment','savings','other'].reduce((s, id) => s + get(id), 0);
+    const surplus = income - expenses;
+    const pct = income > 0 ? ((surplus / income) * 100).toFixed(1) : '0.0';
+    const box = document.getElementById('budget-result')!;
+    box.hidden = false;
+    box.innerHTML = `
+      <p><strong>Total Expenses:</strong> $${expenses.toLocaleString('en-US', {minimumFractionDigits:2,maximumFractionDigits:2})}</p>
+      <p><strong>Monthly ${surplus >= 0 ? 'Surplus' : 'Shortfall'}:</strong> <span style="color:${surplus >= 0 ? 'green' : 'red'}">$${Math.abs(surplus).toLocaleString('en-US', {minimumFractionDigits:2,maximumFractionDigits:2})}</span></p>
+      <p><strong>Savings Rate:</strong> ${pct}% of income${surplus < 0 ? ' (spending more than you earn)' : ''}</p>
+    `;
+  });
+</script>

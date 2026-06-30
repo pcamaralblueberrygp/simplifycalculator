@@ -1,0 +1,42 @@
+---
+---
+<div class="calc-widget">
+  <form id="hs-form" novalidate>
+    <div style="margin-bottom:1rem">
+      <strong>Option A: Hourly → Annual</strong>
+      <label>Hourly Rate ($) <input type="number" id="hourly" min="0" step="0.01" value="22" /></label>
+    </div>
+    <div style="margin-bottom:1rem">
+      <strong>Option B: Annual → Hourly</strong>
+      <label>Annual Salary ($) <input type="number" id="annual" min="0" step="1" value="" placeholder="e.g. 75000" /></label>
+    </div>
+    <label>Hours per Week <input type="number" id="hours" min="1" max="80" step="1" value="40" /></label>
+    <button type="submit">Calculate</button>
+  </form>
+  <div id="hs-result" class="result-box" hidden></div>
+</div>
+
+<script>
+  document.getElementById('hs-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const hourly = parseFloat((document.getElementById('hourly') as HTMLInputElement).value);
+    const annual = parseFloat((document.getElementById('annual') as HTMLInputElement).value);
+    const hours = parseFloat((document.getElementById('hours') as HTMLInputElement).value) || 40;
+    const totalHours = hours * 52;
+    const fmt = (n: number) => n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+    const box = document.getElementById('hs-result')!;
+    box.hidden = false;
+    let html = '';
+    if (!isNaN(hourly) && hourly > 0) {
+      const ann = hourly * totalHours;
+      html += `<p><strong>$${fmt(hourly)}/hr × ${hours} hrs/wk × 52 weeks</strong> = $${fmt(ann)}/year</p>`;
+      html += `<p>Monthly gross: $${fmt(ann/12)} &nbsp;|&nbsp; Biweekly: $${fmt(ann/26)}</p>`;
+    }
+    if (!isNaN(annual) && annual > 0) {
+      const hr = annual / totalHours;
+      html += `<p><strong>$${fmt(annual)}/year ÷ ${totalHours.toLocaleString()} hours</strong> = $${fmt(hr)}/hour</p>`;
+    }
+    if (!html) html = '<p>Enter an hourly rate or annual salary to convert.</p>';
+    box.innerHTML = html;
+  });
+</script>

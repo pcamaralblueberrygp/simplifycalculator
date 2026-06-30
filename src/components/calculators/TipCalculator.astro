@@ -1,0 +1,31 @@
+---
+---
+<div class="calc-widget">
+  <form id="tip-form" novalidate>
+    <label>Bill Amount ($) <input type="number" id="bill" min="0" step="0.01" value="78.50" /></label>
+    <label>Tip Percentage (%) <input type="number" id="tip" min="0" max="100" step="1" value="20" /></label>
+    <label>Number of People <input type="number" id="people" min="1" step="1" value="4" /></label>
+    <button type="submit">Calculate</button>
+  </form>
+  <div id="tip-result" class="result-box" hidden></div>
+</div>
+
+<script>
+  document.getElementById('tip-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const bill = parseFloat((document.getElementById('bill') as HTMLInputElement).value) || 0;
+    const tipPct = parseFloat((document.getElementById('tip') as HTMLInputElement).value) / 100;
+    const people = Math.max(1, parseInt((document.getElementById('people') as HTMLInputElement).value) || 1);
+    const tipAmount = bill * tipPct;
+    const total = bill + tipAmount;
+    const perPerson = total / people;
+    const fmt = (n: number) => n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+    const box = document.getElementById('tip-result')!;
+    box.hidden = false;
+    box.innerHTML = `
+      <p><strong>Tip Amount:</strong> $${fmt(tipAmount)}</p>
+      <p><strong>Total Bill:</strong> $${fmt(total)}</p>
+      <p><strong>Per Person (${people}):</strong> $${fmt(perPerson)}</p>
+    `;
+  });
+</script>

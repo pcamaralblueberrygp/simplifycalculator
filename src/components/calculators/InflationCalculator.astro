@@ -1,0 +1,30 @@
+---
+---
+<div class="calc-widget">
+  <form id="inf-form" novalidate>
+    <label>Present Value ($) <input type="number" id="pv" min="0" step="1" value="10000" /></label>
+    <label>Annual Inflation Rate (%) <input type="number" id="rate" min="0" max="100" step="0.1" value="3" /></label>
+    <label>Number of Years <input type="number" id="years" min="1" max="100" step="1" value="10" /></label>
+    <button type="submit">Calculate</button>
+  </form>
+  <div id="inf-result" class="result-box" hidden></div>
+</div>
+
+<script>
+  document.getElementById('inf-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const pv = parseFloat((document.getElementById('pv') as HTMLInputElement).value) || 0;
+    const rate = parseFloat((document.getElementById('rate') as HTMLInputElement).value) / 100;
+    const years = parseFloat((document.getElementById('years') as HTMLInputElement).value) || 0;
+    const fv = pv * Math.pow(1 + rate, years);
+    const purchasingPowerLoss = ((fv - pv) / fv * 100).toFixed(1);
+    const fmt = (n: number) => n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+    const box = document.getElementById('inf-result')!;
+    box.hidden = false;
+    box.innerHTML = `
+      <p><strong>Future Equivalent Cost:</strong> $${fmt(fv)}</p>
+      <p><strong>In ${years} years, $${fmt(pv)} today will be worth only:</strong> $${fmt(pv/Math.pow(1+rate,years))} in today's dollars</p>
+      <p><strong>Purchasing Power Lost:</strong> ${purchasingPowerLoss}% of the future amount</p>
+    `;
+  });
+</script>

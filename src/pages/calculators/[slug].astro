@@ -12,6 +12,15 @@ import DebtPayoffCalculator from '../../components/calculators/DebtPayoffCalcula
 import RetirementCalculator from '../../components/calculators/RetirementCalculator.astro';
 import AmortizationCalculator from '../../components/calculators/AmortizationCalculator.astro';
 import CreditCardPayoffCalculator from '../../components/calculators/CreditCardPayoffCalculator.astro';
+import BudgetCalculator from '../../components/calculators/BudgetCalculator.astro';
+import NetWorthCalculator from '../../components/calculators/NetWorthCalculator.astro';
+import EmergencyFundCalculator from '../../components/calculators/EmergencyFundCalculator.astro';
+import InflationCalculator from '../../components/calculators/InflationCalculator.astro';
+import TipCalculator from '../../components/calculators/TipCalculator.astro';
+import SavingsInterestCalculator from '../../components/calculators/SavingsInterestCalculator.astro';
+import BreakEvenCalculator from '../../components/calculators/BreakEvenCalculator.astro';
+import RuleOf72Calculator from '../../components/calculators/RuleOf72Calculator.astro';
+import HourlyToSalaryCalculator from '../../components/calculators/HourlyToSalaryCalculator.astro';
 
 export function getStaticPaths() {
   return CALCULATORS.map((calc) => ({
@@ -32,6 +41,15 @@ const componentMap: Record<CalcType, any> = {
   retirement: RetirementCalculator,
   amortization: AmortizationCalculator,
   creditCardPayoff: CreditCardPayoffCalculator,
+  budget: BudgetCalculator,
+  netWorth: NetWorthCalculator,
+  emergencyFund: EmergencyFundCalculator,
+  inflation: InflationCalculator,
+  tip: TipCalculator,
+  savingsInterest: SavingsInterestCalculator,
+  breakEven: BreakEvenCalculator,
+  ruleOf72: RuleOf72Calculator,
+  hourlyToSalary: HourlyToSalaryCalculator,
 };
 
 const { calc } = Astro.props;

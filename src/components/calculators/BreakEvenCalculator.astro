@@ -1,0 +1,35 @@
+---
+---
+<div class="calc-widget">
+  <form id="be-form" novalidate>
+    <label>Fixed Costs per Period ($) <input type="number" id="fixed" min="0" step="1" value="12000" /></label>
+    <label>Variable Cost per Unit ($) <input type="number" id="variable" min="0" step="0.01" value="8" /></label>
+    <label>Selling Price per Unit ($) <input type="number" id="price" min="0" step="0.01" value="20" /></label>
+    <button type="submit">Calculate</button>
+  </form>
+  <div id="be-result" class="result-box" hidden></div>
+</div>
+
+<script>
+  document.getElementById('be-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fixed = parseFloat((document.getElementById('fixed') as HTMLInputElement).value) || 0;
+    const variable = parseFloat((document.getElementById('variable') as HTMLInputElement).value) || 0;
+    const price = parseFloat((document.getElementById('price') as HTMLInputElement).value) || 0;
+    const fmt = (n: number) => n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+    const box = document.getElementById('be-result')!;
+    box.hidden = false;
+    if (price <= variable) {
+      box.innerHTML = '<p style="color:red">Selling price must be greater than variable cost per unit.</p>';
+      return;
+    }
+    const cm = price - variable;
+    const beUnits = fixed / cm;
+    const beRevenue = beUnits * price;
+    box.innerHTML = `
+      <p><strong>Contribution Margin per Unit:</strong> $${fmt(cm)}</p>
+      <p><strong>Break-Even Units:</strong> ${Math.ceil(beUnits).toLocaleString()} units</p>
+      <p><strong>Break-Even Revenue:</strong> $${fmt(beRevenue)}</p>
+    `;
+  });
+</script>

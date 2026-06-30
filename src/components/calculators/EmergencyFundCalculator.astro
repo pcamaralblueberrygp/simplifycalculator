@@ -1,0 +1,34 @@
+---
+---
+<div class="calc-widget">
+  <form id="ef-form" novalidate>
+    <label>Monthly Essential Expenses ($) <input type="number" id="expenses" min="0" step="1" value="2800" /></label>
+    <label>Months of Coverage <input type="number" id="months" min="1" max="24" step="1" value="4" /></label>
+    <label>Current Savings ($) <input type="number" id="current" min="0" step="1" value="1500" /></label>
+    <label>Monthly Contribution ($) <input type="number" id="contribution" min="1" step="1" value="350" /></label>
+    <button type="submit">Calculate</button>
+  </form>
+  <div id="ef-result" class="result-box" hidden></div>
+</div>
+
+<script>
+  document.getElementById('ef-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const get = (id: string) => parseFloat((document.getElementById(id) as HTMLInputElement).value) || 0;
+    const expenses = get('expenses');
+    const months = get('months');
+    const current = get('current');
+    const contrib = get('contribution');
+    const target = expenses * months;
+    const remaining = Math.max(0, target - current);
+    const monthsToGoal = contrib > 0 ? Math.ceil(remaining / contrib) : Infinity;
+    const fmt = (n: number) => n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+    const box = document.getElementById('ef-result')!;
+    box.hidden = false;
+    box.innerHTML = `
+      <p><strong>Target Emergency Fund:</strong> $${fmt(target)}</p>
+      <p><strong>Remaining to Save:</strong> $${fmt(remaining)}</p>
+      <p><strong>Time to Reach Goal:</strong> ${remaining<=0 ? 'Already reached!' : monthsToGoal === Infinity ? 'N/A (enter a contribution)' : `${monthsToGoal} months (${(monthsToGoal/12).toFixed(1)} years)`}</p>
+    `;
+  });
+</script>

@@ -1,0 +1,38 @@
+---
+---
+<div class="calc-widget">
+  <form id="r72-form" novalidate>
+    <div style="margin-bottom:1rem">
+      <strong>Option A: Find doubling time</strong>
+      <label>Annual Return Rate (%) <input type="number" id="rate" min="0.1" max="100" step="0.1" value="6" /></label>
+    </div>
+    <div style="margin-bottom:1rem">
+      <strong>Option B: Find required rate</strong>
+      <label>Years to Double <input type="number" id="years" min="1" max="100" step="1" value="" placeholder="e.g. 10" /></label>
+    </div>
+    <button type="submit">Calculate</button>
+  </form>
+  <div id="r72-result" class="result-box" hidden></div>
+</div>
+
+<script>
+  document.getElementById('r72-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const rate = parseFloat((document.getElementById('rate') as HTMLInputElement).value);
+    const years = parseFloat((document.getElementById('years') as HTMLInputElement).value);
+    const box = document.getElementById('r72-result')!;
+    box.hidden = false;
+    let html = '';
+    if (!isNaN(rate) && rate > 0) {
+      const approx = 72 / rate;
+      const exact = Math.log(2) / Math.log(1 + rate / 100);
+      html += `<p><strong>At ${rate}% per year:</strong> approx ${approx.toFixed(1)} years to double (exact: ${exact.toFixed(2)} years)</p>`;
+    }
+    if (!isNaN(years) && years > 0) {
+      const reqRate = 72 / years;
+      html += `<p><strong>To double in ${years} years:</strong> you need approx ${reqRate.toFixed(2)}% annual return</p>`;
+    }
+    if (!html) html = '<p>Enter a rate, a target year, or both.</p>';
+    box.innerHTML = html;
+  });
+</script>

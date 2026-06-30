@@ -1,0 +1,43 @@
+---
+---
+<div class="calc-widget">
+  <form id="nw-form" novalidate>
+    <fieldset>
+      <legend>Assets</legend>
+      <label>Cash &amp; Savings ($) <input type="number" id="cash" min="0" step="1" value="8000" /></label>
+      <label>Investment Accounts ($) <input type="number" id="investments" min="0" step="1" value="45000" /></label>
+      <label>Retirement Accounts ($) <input type="number" id="retirement" min="0" step="1" value="0" /></label>
+      <label>Real Estate Market Value ($) <input type="number" id="realestate" min="0" step="1" value="280000" /></label>
+      <label>Vehicle Market Value ($) <input type="number" id="vehicle" min="0" step="1" value="18000" /></label>
+      <label>Other Assets ($) <input type="number" id="otherassets" min="0" step="1" value="0" /></label>
+    </fieldset>
+    <fieldset>
+      <legend>Liabilities</legend>
+      <label>Mortgage Balance ($) <input type="number" id="mortgage" min="0" step="1" value="210000" /></label>
+      <label>Auto Loan Balance ($) <input type="number" id="autoloan" min="0" step="1" value="12000" /></label>
+      <label>Student Loans ($) <input type="number" id="studentloans" min="0" step="1" value="28000" /></label>
+      <label>Credit Card Debt ($) <input type="number" id="ccdebt" min="0" step="1" value="0" /></label>
+      <label>Other Debts ($) <input type="number" id="otherdebts" min="0" step="1" value="0" /></label>
+    </fieldset>
+    <button type="submit">Calculate</button>
+  </form>
+  <div id="nw-result" class="result-box" hidden></div>
+</div>
+
+<script>
+  document.getElementById('nw-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const get = (id: string) => parseFloat((document.getElementById(id) as HTMLInputElement).value) || 0;
+    const assets = ['cash','investments','retirement','realestate','vehicle','otherassets'].reduce((s,id) => s+get(id),0);
+    const liabilities = ['mortgage','autoloan','studentloans','ccdebt','otherdebts'].reduce((s,id) => s+get(id),0);
+    const nw = assets - liabilities;
+    const fmt = (n: number) => n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+    const box = document.getElementById('nw-result')!;
+    box.hidden = false;
+    box.innerHTML = `
+      <p><strong>Total Assets:</strong> $${fmt(assets)}</p>
+      <p><strong>Total Liabilities:</strong> $${fmt(liabilities)}</p>
+      <p><strong>Net Worth:</strong> <span style="color:${nw>=0?'green':'red'}">$${fmt(nw)}</span></p>
+    `;
+  });
+</script>

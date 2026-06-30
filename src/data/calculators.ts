@@ -19,7 +19,16 @@ export type CalcType =
   | 'debtPayoff'
   | 'retirement'
   | 'amortization'
-  | 'creditCardPayoff';
+  | 'creditCardPayoff'
+  | 'budget'
+  | 'netWorth'
+  | 'emergencyFund'
+  | 'inflation'
+  | 'tip'
+  | 'savingsInterest'
+  | 'breakEven'
+  | 'ruleOf72'
+  | 'hourlyToSalary';
 
 export interface Faq {
   q: string;
@@ -107,7 +116,7 @@ export const CALCULATORS: Calculator[] = [
       },
       {
         q: 'Are property taxes the same everywhere?',
-        a: 'No, property tax rates vary widely by state and county. Use your local assessor’s rate or your specific listing’s tax estimate for a more accurate number.',
+        a: "No, property tax rates vary widely by state and county. Use your local assessor's rate or your specific listing's tax estimate for a more accurate number.",
       },
     ],
     calcType: 'mortgage',
@@ -136,7 +145,7 @@ export const CALCULATORS: Calculator[] = [
       },
       {
         q: 'Does this account for inflation?',
-        a: 'No, the projection is in nominal (today’s) dollars. Long-term purchasing power will be lower than the raw number shown once inflation is factored in.',
+        a: "No, the projection is in nominal (today's) dollars. Long-term purchasing power will be lower than the raw number shown once inflation is factored in.",
       },
       {
         q: 'Is a fixed annual return realistic?',
@@ -222,7 +231,7 @@ export const CALCULATORS: Calculator[] = [
       'Example: to reach a $30,000 goal in 5 years (60 months), starting with $4,000 saved and earning 4% annually, you would need to contribute about $379 per month.',
     faqs: [
       {
-        q: 'What if I can’t afford the suggested monthly amount?',
+        q: "What if I can't afford the suggested monthly amount?",
         a: 'Try extending your timeline or lowering your goal amount and recalculating — both reduce the required monthly contribution.',
       },
       {
@@ -252,7 +261,7 @@ export const CALCULATORS: Calculator[] = [
     faqs: [
       {
         q: 'What happens if my payment is too low?',
-        a: 'If your monthly payment doesn’t cover the monthly interest charge, the balance will never go down. The calculator will flag this so you can adjust the payment.',
+        a: "If your monthly payment doesn't cover the monthly interest charge, the balance will never go down. The calculator will flag this so you can adjust the payment.",
       },
       {
         q: 'Does paying extra each month help?',
@@ -310,7 +319,7 @@ export const CALCULATORS: Calculator[] = [
       url: 'https://www.consumerfinance.gov/ask-cfpb/what-is-an-amortization-schedule-en-1992/',
     },
     example:
-      'Example: a $250,000 loan at 6% APR over 30 years has a fixed payment of about $1,498.88/month. In year 1, roughly $14,916 of that year’s payments goes to interest and about $3,070 goes to principal — that ratio gradually flips over the life of the loan.',
+      "Example: a $250,000 loan at 6% APR over 30 years has a fixed payment of about $1,498.88/month. In year 1, roughly $14,916 of that year's payments goes to interest and about $3,070 goes to principal — that ratio gradually flips over the life of the loan.",
     faqs: [
       {
         q: 'Why does the principal/interest split change every year?',
@@ -333,10 +342,10 @@ export const CALCULATORS: Calculator[] = [
     intro:
       'Calculate how many months it will take to pay off a credit card balance, and the total interest cost, based on your APR and a fixed monthly payment.',
     formulaExplanation:
-      ‘Credit card interest typically compounds monthly. This calculator simulates the payoff month by month: interest accrues on the remaining balance at the card’s monthly rate (APR / 12), then your payment is applied. The simulation runs until the balance hits zero or 600 months pass.’,
+      "Credit card interest typically compounds monthly. This calculator simulates the payoff month by month: interest accrues on the remaining balance at the card\'s monthly rate (APR / 12), then your payment is applied. The simulation runs until the balance hits zero or 600 months pass.",
     formulaSource: {
-      label: ‘CFPB: How is credit card interest calculated?’,
-      url: ‘https://www.consumerfinance.gov/ask-cfpb/how-is-a-credit-card-interest-rate-calculated-en-1587/’,
+      label: 'CFPB: How is credit card interest calculated?',
+      url: 'https://www.consumerfinance.gov/ask-cfpb/how-is-a-credit-card-interest-rate-calculated-en-1587/',
     },
     example:
       'Example: a $4,500 balance at 24.99% APR with a fixed $200/month payment takes about 31 months to pay off and costs roughly $1,635 in total interest — more than a third of the original balance.',
@@ -351,6 +360,300 @@ export const CALCULATORS: Calculator[] = [
       },
     ],
     calcType: 'creditCardPayoff',
+  },
+  {
+    slug: 'budget-calculator',
+    title: 'Monthly Budget Calculator',
+    shortTitle: 'Monthly Budget',
+    category: 'Budgeting',
+    metaDescription:
+      'Plan your monthly budget by entering your income and expenses. See exactly how much you have left over — or where you are overspending.',
+    intro:
+      'A monthly budget calculator helps you allocate your take-home income across fixed expenses (rent, loan payments), variable spending (groceries, utilities), and savings goals. Seeing the numbers in one place makes it easier to spot where money is leaking and make intentional trade-offs.',
+    formulaExplanation:
+      'The calculation is straightforward: Net = Income − Total Expenses. A positive result means you have a surplus; a negative result means you are spending more than you earn. The useful part is breaking expenses into categories so you can see which category is the biggest drain relative to your income.',
+    formulaSource: {
+      label: 'CFPB: Making a budget',
+      url: 'https://www.consumerfinance.gov/consumer-tools/budget-tool/',
+    },
+    example:
+      'Example: $5,000 take-home income minus $1,400 rent, $450 car payment, $600 groceries/dining, $200 utilities, $300 subscriptions/entertainment, and $300 savings contribution leaves a $1,750 monthly surplus.',
+    faqs: [
+      {
+        q: 'Should I use gross or net income?',
+        a: 'Use net (take-home) income — the amount deposited into your bank account after taxes and payroll deductions. Budgeting against gross income leads to overspending because you cannot spend money that never reaches your account.',
+      },
+      {
+        q: 'What is the 50/30/20 rule?',
+        a: 'A popular rule of thumb: 50% of take-home pay for needs (housing, food, utilities), 30% for wants (dining out, subscriptions, hobbies), and 20% for savings and debt repayment beyond minimums. It is a starting point, not a strict requirement.',
+      },
+      {
+        q: 'How often should I revisit my budget?',
+        a: 'Monthly at minimum. Compare what you planned to what you actually spent. Budgets that are never checked tend to drift away from reality within a few months.',
+      },
+    ],
+    calcType: 'budget',
+  },
+  {
+    slug: 'net-worth-calculator',
+    title: 'Net Worth Calculator',
+    shortTitle: 'Net Worth',
+    category: 'Personal Finance',
+    metaDescription:
+      'Calculate your net worth by subtracting total liabilities from total assets. Track your financial progress over time.',
+    intro:
+      'Net worth is the single most useful snapshot of your financial health. It measures what you own (assets) minus what you owe (liabilities). Calculating it regularly — quarterly or annually — shows whether your overall financial position is improving or deteriorating, even if month-to-month cash flow feels chaotic.',
+    formulaExplanation:
+      'Net Worth = Total Assets − Total Liabilities. Assets include cash and bank balances, investment accounts, retirement accounts, real estate market value, and vehicle market value. Liabilities include mortgage balance, auto loan balance, student loans, credit card balances, and any other debt. Use current market values for assets, not what you paid.',
+    formulaSource: {
+      label: 'Investopedia: Net Worth',
+      url: 'https://www.investopedia.com/terms/n/networth.asp',
+    },
+    example:
+      'Example: $8,000 checking/savings + $45,000 retirement account + $280,000 home value + $18,000 vehicle = $351,000 assets. Minus $210,000 mortgage + $12,000 auto loan + $28,000 student loans = $250,000 liabilities. Net worth: $101,000.',
+    faqs: [
+      {
+        q: 'Should I include my car as an asset?',
+        a: 'Yes, at its current market value (e.g., Kelley Blue Book private-party value), not what you paid for it. If you have an auto loan, include the remaining balance as a liability. The net of the two is the equity you actually hold.',
+      },
+      {
+        q: 'My net worth is negative — is that unusual?',
+        a: 'Very common, especially in your 20s and 30s when student loans and a new mortgage often outweigh accumulated savings. The important question is whether it is trending toward zero over time.',
+      },
+    ],
+    calcType: 'netWorth',
+  },
+  {
+    slug: 'emergency-fund-calculator',
+    title: 'Emergency Fund Calculator',
+    shortTitle: 'Emergency Fund',
+    category: 'Savings',
+    metaDescription:
+      'Find out how large your emergency fund should be and how long it will take to build it at your current savings rate.',
+    intro:
+      'An emergency fund is cash set aside specifically for unexpected expenses — a job loss, medical bill, or major car repair — without resorting to high-interest debt. This calculator tells you your target amount (based on your monthly essential expenses) and how many months it will take to reach it.',
+    formulaExplanation:
+      'Target = Monthly Essential Expenses × Months of Coverage (typically 3–6). Months to Goal = (Target − Current Savings) / Monthly Contribution. Monthly essential expenses include housing, utilities, groceries, insurance, and minimum debt payments — discretionary spending like dining out is excluded because you would cut it in an emergency.',
+    formulaSource: {
+      label: 'CFPB: Building an emergency fund',
+      url: 'https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/',
+    },
+    example:
+      'Example: $2,800 in monthly essential expenses × 4 months = $11,200 target. You already have $1,500 saved. Adding $350/month: ($11,200 − $1,500) / $350 ≈ 27.7 months to reach the goal.',
+    faqs: [
+      {
+        q: 'Is 3 months or 6 months of expenses the right target?',
+        a: 'Three months works for dual-income households with stable employment. Six months is better for single-income households, self-employed individuals, or anyone in a specialized field where job searches take longer. Some financial advisors suggest up to 12 months for business owners.',
+      },
+      {
+        q: 'Where should I keep my emergency fund?',
+        a: 'In a high-yield savings account or money market account that is separate from your everyday checking account. You want it accessible within 1–2 business days but not so convenient that you dip into it for non-emergencies.',
+      },
+    ],
+    calcType: 'emergencyFund',
+  },
+  {
+    slug: 'inflation-calculator',
+    title: 'Inflation Calculator',
+    shortTitle: 'Inflation',
+    category: 'Economics',
+    metaDescription:
+      'See how inflation erodes purchasing power over time. Enter a dollar amount and find out what it is worth in a future or past year.',
+    intro:
+      'Inflation reduces what a dollar can buy over time. This calculator shows how much a given amount of money in one year is equivalent to in another year, using a constant annual inflation rate. It is useful for comparing historical prices, projecting future costs, or understanding the real return on an investment.',
+    formulaExplanation:
+      'Future Value = Present Value × (1 + Inflation Rate)^Years. To find the past equivalent: Past Value = Future Value / (1 + Inflation Rate)^Years. The U.S. long-run average CPI inflation rate is roughly 3% per year, though it varies significantly by decade. You can enter any rate to model different scenarios.',
+    formulaSource: {
+      label: 'BLS: CPI Inflation Calculator methodology',
+      url: 'https://www.bls.gov/data/inflation_calculator.htm',
+    },
+    example:
+      'Example: $10,000 today at 3% average annual inflation will have the purchasing power of roughly $13,439 in 10 years — meaning you would need $13,439 in year 10 to buy what $10,000 buys today.',
+    faqs: [
+      {
+        q: 'What inflation rate should I use?',
+        a: 'The U.S. historical average is about 3% per year over the past century, though the 2010s averaged closer to 2% and 2021–2023 averaged above 5%. Use a conservative 3% for long-term planning and adjust for current conditions when projecting short-term costs.',
+      },
+      {
+        q: 'How does this relate to investment returns?',
+        a: 'Your real return is the nominal return minus inflation. A 7% investment return during a 3% inflation year produces a 4% real return. Inflation calculators help you check whether your savings are actually growing in purchasing power.',
+      },
+    ],
+    calcType: 'inflation',
+  },
+  {
+    slug: 'tip-calculator',
+    title: 'Tip Calculator',
+    shortTitle: 'Tip',
+    category: 'Everyday Finance',
+    metaDescription:
+      'Calculate the tip amount, total bill, and per-person split for any restaurant or service. Supports custom tip percentages.',
+    intro:
+      'A tip calculator helps you quickly figure out the gratuity on a bill, the new total, and how to split it evenly when dining with others. It handles any tip percentage and any number of people.',
+    formulaExplanation:
+      'Tip Amount = Bill × Tip Percentage. Total = Bill + Tip Amount. Per Person = Total / Number of People. Common tip conventions in the U.S.: 15% for adequate service, 18–20% for good service, 20–25%+ for excellent service.',
+    formulaSource: {
+      label: 'Investopedia: How to calculate a tip',
+      url: 'https://www.investopedia.com/financial-edge/0811/the-history-of-the-tip.aspx',
+    },
+    example:
+      'Example: a $78.50 dinner bill at 20% tip = $15.70 tip, $94.20 total. Split four ways: $23.55 per person.',
+    faqs: [
+      {
+        q: 'Should I tip on the pre-tax or post-tax amount?',
+        a: 'Either is acceptable. Tipping on the pre-tax amount is technically more common in etiquette guides, but the difference on a typical bill is small and most people tip on the total shown. What matters more is leaving a fair amount for the quality of service.',
+      },
+      {
+        q: 'Is it rude to split a tip unevenly?',
+        a: 'Not at all — if one person ordered significantly more or received more service (a dedicated order, special accommodation), adjusting individual shares is reasonable. The server receives the total regardless of how the table divides it.',
+      },
+    ],
+    calcType: 'tip',
+  },
+  {
+    slug: 'savings-interest-calculator',
+    title: 'Savings Account Interest Calculator',
+    shortTitle: 'Savings Interest',
+    category: 'Savings',
+    metaDescription:
+      'Calculate how much interest your savings account will earn over time with a given APY, including the effect of monthly deposits.',
+    intro:
+      'Most savings accounts compound interest daily or monthly and express their rate as an Annual Percentage Yield (APY). This calculator shows how your balance grows when you start with an initial deposit and optionally add money each month — letting you see the compounding effect clearly.',
+    formulaExplanation:
+      'For a lump-sum deposit: Balance = Principal × (1 + APY/12)^(Months). For regular monthly contributions added at the start of each period, the balance is the sum of the compounded lump sum and the future value of an annuity due. Interest Earned = Final Balance − (Principal + Total Contributions).',
+    formulaSource: {
+      label: 'FDIC: How savings account interest works',
+      url: 'https://www.fdic.gov/resources/consumers/consumer-news/2023-06.html',
+    },
+    example:
+      'Example: $5,000 initial deposit at 4.5% APY plus $200/month for 3 years (36 months) grows to roughly $14,086 — of which $1,886 is interest earned.',
+    faqs: [
+      {
+        q: 'What is the difference between APR and APY?',
+        a: 'APR (Annual Percentage Rate) is the stated rate before compounding. APY (Annual Percentage Yield) accounts for compounding within the year and is always equal to or higher than APR. For savings accounts, the advertised rate is almost always APY, which is what this calculator uses.',
+      },
+      {
+        q: 'Are the interest earnings taxable?',
+        a: 'Yes. Interest earned in a standard savings account is taxable as ordinary income in the year it is credited, even if you leave it in the account. High-yield savings in a Roth IRA are an exception — growth and qualified withdrawals are tax-free.',
+      },
+    ],
+    calcType: 'savingsInterest',
+  },
+  {
+    slug: 'car-loan-calculator',
+    title: 'Car Loan Calculator',
+    shortTitle: 'Car Loan',
+    category: 'Loans',
+    metaDescription:
+      'Calculate your monthly auto loan payment, total interest paid, and the full cost of financing a vehicle purchase.',
+    intro:
+      'An auto loan calculator helps you understand the true cost of financing a vehicle before you walk into a dealership. Enter the vehicle price, your down payment, the loan term, and the interest rate to see your monthly payment and total interest.',
+    formulaExplanation:
+      'Auto loans use the standard amortizing loan formula: M = P × [r(1+r)^n] / [(1+r)^n − 1], where P is the loan amount (price minus down payment and trade-in), r is the monthly interest rate (APR ÷ 12), and n is the number of monthly payments. The formula is identical to a personal loan; what differs is how lenders determine your rate (based heavily on credit score and loan-to-value ratio).',
+    formulaSource: {
+      label: 'CFPB: Auto loans',
+      url: 'https://www.consumerfinance.gov/consumer-tools/auto-loans/',
+    },
+    example:
+      'Example: a $28,000 vehicle with a $4,000 down payment leaves a $24,000 loan. At 6.9% APR over 60 months (5 years), the monthly payment is about $473.89 and total interest paid is roughly $4,433.',
+    faqs: [
+      {
+        q: 'Does this include taxes, title, and dealer fees?',
+        a: 'No. This calculator uses the loan principal you enter. In practice, sales tax, registration, title, and dealer documentation fees can add $1,000–$3,000+ to the amount financed. Add those to your vehicle price before calculating to see the full payment.',
+      },
+      {
+        q: 'Is it better to put more money down?',
+        a: 'Generally yes: a larger down payment reduces the loan amount, which lowers both the monthly payment and total interest. It also reduces the risk of being "underwater" (owing more than the car is worth) early in the loan, since new cars depreciate quickly in the first few years.',
+      },
+    ],
+    calcType: 'loan',
+  },
+  {
+    slug: 'break-even-calculator',
+    title: 'Break-Even Calculator',
+    shortTitle: 'Break-Even',
+    category: 'Business',
+    metaDescription:
+      'Find the sales volume at which your business covers its costs. Enter fixed costs, variable cost per unit, and price per unit.',
+    intro:
+      'The break-even point is the sales volume at which revenue exactly covers total costs — neither profit nor loss. Knowing it helps you price products, set sales targets, and understand how much cushion you have before a business becomes unprofitable.',
+    formulaExplanation:
+      'Break-Even Units = Fixed Costs / (Price per Unit − Variable Cost per Unit). The denominator is called the Contribution Margin per unit — the amount each sale contributes toward covering fixed costs. Once fixed costs are covered, each additional unit sold at that margin becomes profit.',
+    formulaSource: {
+      label: 'Investopedia: Break-Even Analysis',
+      url: 'https://www.investopedia.com/terms/b/breakevenanalysis.asp',
+    },
+    example:
+      'Example: $12,000 monthly fixed costs (rent, salaries, insurance), $8 variable cost per unit (materials, packaging), $20 selling price. Contribution margin = $12. Break-even = $12,000 / $12 = 1,000 units/month. Revenue at break-even: $20,000.',
+    faqs: [
+      {
+        q: 'What counts as a fixed cost vs. a variable cost?',
+        a: 'Fixed costs do not change with output: rent, salaries, insurance, software subscriptions. Variable costs scale directly with each unit produced or sold: raw materials, packaging, per-transaction fees, shipping. Some costs (utilities, overtime) are semi-variable and require judgment.',
+      },
+      {
+        q: 'How does pricing affect the break-even point?',
+        a: 'Price increases have a large impact: raising price by $2 in the example above grows the contribution margin from $12 to $14, cutting the break-even from 1,000 units to about 857 — an 14% reduction for a 10% price increase. This is why pricing is often more powerful than cost-cutting.',
+      },
+    ],
+    calcType: 'breakEven',
+  },
+  {
+    slug: 'rule-of-72-calculator',
+    title: 'Rule of 72 Calculator',
+    shortTitle: 'Rule of 72',
+    category: 'Investing',
+    metaDescription:
+      'Use the Rule of 72 to estimate how long it takes to double your money at a given interest rate — or find the rate needed to double in a target time.',
+    intro:
+      'The Rule of 72 is a mental math shortcut for compound growth: divide 72 by the annual return rate to get the approximate number of years needed to double an investment. It also works in reverse — divide 72 by the years to find the required rate. It is useful for quick comparisons without a calculator.',
+    formulaExplanation:
+      'Doubling Time (years) ≈ 72 / Annual Rate (%). Required Rate (%) ≈ 72 / Years to Double. The exact doubling time from compound interest is ln(2) / ln(1 + r), which equals about 69.3 / r for small r. The number 72 is used because it is close to 69.3 and has many integer divisors (2, 3, 4, 6, 8, 9, 12), making mental math easy.',
+    formulaSource: {
+      label: 'Investopedia: Rule of 72',
+      url: 'https://www.investopedia.com/terms/r/ruleof72.asp',
+    },
+    example:
+      'Example: at a 6% annual return, 72 / 6 = 12 years to double. At 9%, 72 / 9 = 8 years. To double in 10 years, you need 72 / 10 = 7.2% annual return.',
+    faqs: [
+      {
+        q: 'How accurate is the Rule of 72?',
+        a: 'Very accurate for rates between 6% and 10%. At 8% the rule gives 9 years; the exact answer is 9.01 years — essentially perfect. At lower rates (2–3%) or higher rates (20%+) the error grows. For rates above 15%, a slightly more accurate divisor is 73 or 74.',
+      },
+      {
+        q: 'Can I use it for inflation or debt?',
+        a: 'Yes — the rule applies to any compound growth. At 4% inflation, prices double in about 72/4 = 18 years. At 24% APR credit card debt, the balance doubles in about 3 years if you make no payments.',
+      },
+    ],
+    calcType: 'ruleOf72',
+  },
+  {
+    slug: 'hourly-to-salary-calculator',
+    title: 'Hourly to Salary Calculator',
+    shortTitle: 'Hourly to Salary',
+    category: 'Income',
+    metaDescription:
+      'Convert an hourly wage to an annual salary — or an annual salary to an hourly rate. Supports custom hours per week.',
+    intro:
+      'Comparing job offers, evaluating a raise, or figuring out whether freelance rates are worth it often requires converting between hourly and annual pay. This calculator does the conversion in both directions and accounts for different weekly hour schedules.',
+    formulaExplanation:
+      'Annual Salary = Hourly Rate × Hours per Week × Weeks per Year. Standard: 40 hours/week × 52 weeks = 2,080 hours/year. Hourly Rate = Annual Salary / (Hours per Week × 52). Note: this gives gross (pre-tax) figures. Benefits like health insurance, retirement matching, and paid time off have real dollar value and are worth adding when comparing offers.',
+    formulaSource: {
+      label: 'BLS: Occupational Employment and Wage Statistics',
+      url: 'https://www.bls.gov/oes/',
+    },
+    example:
+      'Example: $22/hour × 40 hours/week × 52 weeks = $45,760 annual salary. Alternatively, a $75,000 salary working 40 hours/week = $75,000 / 2,080 = $36.06/hour.',
+    faqs: [
+      {
+        q: 'Does this account for paid time off?',
+        a: 'The standard 2,080-hour calculation assumes you are paid for all 52 weeks including vacation. If you work 50 weeks of actual hours but are paid for 52 (i.e., 2 weeks of paid vacation), the conversion is still correct — you earn the salary either way. If you are hourly without paid PTO, you may effectively work and be paid for fewer than 52 weeks.',
+      },
+      {
+        q: 'How do I factor in taxes?',
+        a: 'This calculator shows gross pay. To estimate net (take-home) pay, subtract federal and state income taxes, Social Security (6.2%), and Medicare (1.45%). A rough rule of thumb for a middle-income U.S. earner: take-home is about 70–75% of gross after all withholding.',
+      },
+    ],
+    calcType: 'hourlyToSalary',
   },
 ];
 
