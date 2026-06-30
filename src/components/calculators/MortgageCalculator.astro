@@ -1,0 +1,82 @@
+---
+// Mortgage payment: principal & interest, plus estimated taxes/insurance (PITI).
+---
+<form class="calc-form" id="calc-form">
+  <div class="field">
+    <label for="price">Home price ($)</label>
+    <input type="number" id="price" min="0" step="0.01" value="400000" required />
+  </div>
+  <div class="field">
+    <label for="down">Down payment ($)</label>
+    <input type="number" id="down" min="0" step="0.01" value="80000" required />
+  </div>
+  <div class="field">
+    <label for="rate">Annual interest rate (%)</label>
+    <input type="number" id="rate" min="0" step="0.01" value="6.5" required />
+  </div>
+  <div class="field">
+    <label for="term">Loan term (years)</label>
+    <input type="number" id="term" min="1" step="1" value="30" required />
+  </div>
+  <div class="field">
+    <label for="tax">Annual property tax ($, optional)</label>
+    <input type="number" id="tax" min="0" step="0.01" value="4200" />
+  </div>
+  <div class="field">
+    <label for="insurance">Annual homeowners insurance ($, optional)</label>
+    <input type="number" id="insurance" min="0" step="0.01" value="1400" />
+  </div>
+  <button type="submit">Calculate payment</button>
+</form>
+
+<div class="result-box" id="result-box">
+  <div class="headline" id="r-total-monthly"></div>
+  <div class="row"><span>Principal &amp; interest</span><span id="r-pi"></span></div>
+  <div class="row"><span>Taxes &amp; insurance (est.)</span><span id="r-tax-ins"></span></div>
+  <div class="row"><span>Loan amount</span><span id="r-loan"></span></div>
+  <div class="row"><span>Total interest over loan term</span><span id="r-interest"></span></div>
+</div>
+
+<script>
+  const fmt = (n: number) =>
+    new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(n);
+
+  const form = document.getElementById('calc-form') as HTMLFormElement;
+  const resultBox = document.getElementById('result-box') as HTMLDivElement;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const price = parseFloat((document.getElementById('price') as HTMLInputElement).value);
+    const down = parseFloat((document.getElementById('down') as HTMLInputElement).value);
+    const annualRate = parseFloat((document.getElementById('rate') as HTMLInputElement).value);
+    const years = parseInt((document.getElementById('term') as HTMLInputElement).value, 10);
+    const tax = parseFloat((document.getElementById('tax') as HTMLInputElement).value || '0');
+    const insurance = parseFloat(
+      (document.getElementById('insurance') as HTMLInputElement).value || '0'
+    );
+
+    const loanAmount = Math.max(price - down, 0);
+    const months = years * 12;
+    const r = annualRate / 100 / 12;
+
+    let payment: number;
+    if (r === 0) {
+      payment = loanAmount / months;
+    } else {
+      payment =
+        (loanAmount * r * Math.pow(1 + r, months)) / (Math.pow(1 + r, months) - 1);
+    }
+    const totalPI = payment * months;
+    const interest = totalPI - loanAmount;
+    const taxInsMonthly = (tax + insurance) / 12;
+    const totalMonthly = payment + taxInsMonthly;
+
+    (document.getElementById('r-total-monthly') as HTMLDivElement).textContent =
+      fmt(totalMonthly) + ' / month (est. total)';
+    (document.getElementById('r-pi') as HTMLSpanElement).textContent = fmt(payment);
+    (document.getElementById('r-tax-ins') as HTMLSpanElement).textContent = fmt(taxInsMonthly);
+    (document.getElementById('r-loan') as HTMLSpanElement).textContent = fmt(loanAmount);
+    (document.getElementById('r-interest') as HTMLSpanElement).textContent = fmt(interest);
+    resultBox.classList.add('visible');
+  });
+</script>

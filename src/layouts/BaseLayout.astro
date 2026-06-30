@@ -1,0 +1,66 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  path?: string; // e.g. "/calculators/loan-payment" — used for canonical URL
+}
+
+const { title, description, path = '/' } = Astro.props as Props;
+const canonical = new URL(path, Astro.site ?? 'https://simplifycalculator.com').toString();
+const siteName = 'SimplifyCalculator';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | {siteName}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!--
+      AdSense: once your AdSense account is approved, paste your verification
+      meta tag or auto-ads <script> snippet here (or in a partytown-loaded
+      script for performance). Do not add it before you have real, original
+      content live — see README for the AdSense application checklist.
+    -->
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="/"><span>Simplify</span>Calculator</a>
+        <nav>
+          <a href="/">All calculators</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          SimplifyCalculator provides free calculators for educational purposes only. Results are
+          estimates, not financial, tax, or legal advice. Verify figures with a qualified
+          professional before making financial decisions.
+        </p>
+        <p>
+          <a href="/about">About</a> &middot; <a href="/privacy-policy">Privacy Policy</a>
+        </p>
+        <p>&copy; {new Date().getFullYear()} SimplifyCalculator.</p>
+      </div>
+    </footer>
+  </body>
+</html>

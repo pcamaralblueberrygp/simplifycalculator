@@ -1,0 +1,77 @@
+---
+// Months to payoff + total interest for a single debt at a fixed payment.
+---
+<form class="calc-form" id="calc-form">
+  <div class="field">
+    <label for="balance">Current balance ($)</label>
+    <input type="number" id="balance" min="0" step="0.01" value="6000" required />
+  </div>
+  <div class="field">
+    <label for="rate">Annual interest rate (%)</label>
+    <input type="number" id="rate" min="0" step="0.01" value="19.99" required />
+  </div>
+  <div class="field">
+    <label for="payment">Fixed monthly payment ($)</label>
+    <input type="number" id="payment" min="0" step="0.01" value="250" required />
+  </div>
+  <button type="submit">Calculate payoff time</button>
+</form>
+
+<div class="warning-box" id="warning-box">
+  This payment does not cover the monthly interest, so the balance will never be paid off.
+  Increase your monthly payment and try again.
+</div>
+
+<div class="result-box" id="result-box">
+  <div class="headline" id="r-months"></div>
+  <div class="row"><span>Total paid</span><span id="r-total"></span></div>
+  <div class="row"><span>Total interest paid</span><span id="r-interest"></span></div>
+</div>
+
+<script>
+  const fmt = (n: number) =>
+    new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(n);
+
+  const form = document.getElementById('calc-form') as HTMLFormElement;
+  const resultBox = document.getElementById('result-box') as HTMLDivElement;
+  const warningBox = document.getElementById('warning-box') as HTMLDivElement;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const startBalance = parseFloat(
+      (document.getElementById('balance') as HTMLInputElement).value
+    );
+    const annualRate = parseFloat((document.getElementById('rate') as HTMLInputElement).value);
+    const payment = parseFloat((document.getElementById('payment') as HTMLInputElement).value);
+
+    const r = annualRate / 100 / 12;
+
+    if (payment <= startBalance * r) {
+      warningBox.classList.add('visible');
+      resultBox.classList.remove('visible');
+      return;
+    }
+    warningBox.classList.remove('visible');
+
+    let balance = startBalance;
+    let totalInterest = 0;
+    let monthsCount = 0;
+    const MAX_MONTHS = 600;
+
+    while (balance > 0 && monthsCount < MAX_MONTHS) {
+      const interestThisMonth = balance * r;
+      totalInterest += interestThisMonth;
+      balance = balance + interestThisMonth - payment;
+      monthsCount++;
+      if (balance < 0) balance = 0;
+    }
+
+    const totalPaid = startBalance + totalInterest;
+
+    (document.getElementById('r-months') as HTMLDivElement).textContent =
+      monthsCount + ' months to pay off';
+    (document.getElementById('r-total') as HTMLSpanElement).textContent = fmt(totalPaid);
+    (document.getElementById('r-interest') as HTMLSpanElement).textContent = fmt(totalInterest);
+    resultBox.classList.add('visible');
+  });
+</script>

@@ -1,0 +1,79 @@
+---
+// Projected balance at retirement from current savings + monthly contributions.
+---
+<form class="calc-form" id="calc-form">
+  <div class="field">
+    <label for="currentAge">Current age</label>
+    <input type="number" id="currentAge" min="0" step="1" value="30" required />
+  </div>
+  <div class="field">
+    <label for="retireAge">Retirement age</label>
+    <input type="number" id="retireAge" min="0" step="1" value="65" required />
+  </div>
+  <div class="field">
+    <label for="current">Current retirement savings ($)</label>
+    <input type="number" id="current" min="0" step="0.01" value="15000" />
+  </div>
+  <div class="field">
+    <label for="contribution">Monthly contribution ($)</label>
+    <input type="number" id="contribution" min="0" step="0.01" value="400" required />
+  </div>
+  <div class="field">
+    <label for="rate">Expected average annual return (%)</label>
+    <input type="number" id="rate" min="0" step="0.01" value="7" required />
+  </div>
+  <button type="submit">Project my retirement savings</button>
+</form>
+
+<div class="result-box" id="result-box">
+  <div class="headline" id="r-balance"></div>
+  <div class="row"><span>Total you'll contribute</span><span id="r-contributed"></span></div>
+  <div class="row"><span>Growth from investment returns</span><span id="r-growth"></span></div>
+  <div class="row"><span>Years until retirement</span><span id="r-years"></span></div>
+</div>
+
+<script>
+  const fmt = (n: number) =>
+    new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(n);
+
+  const form = document.getElementById('calc-form') as HTMLFormElement;
+  const resultBox = document.getElementById('result-box') as HTMLDivElement;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const currentAge = parseInt(
+      (document.getElementById('currentAge') as HTMLInputElement).value,
+      10
+    );
+    const retireAge = parseInt(
+      (document.getElementById('retireAge') as HTMLInputElement).value,
+      10
+    );
+    const current = parseFloat(
+      (document.getElementById('current') as HTMLInputElement).value || '0'
+    );
+    const contribution = parseFloat(
+      (document.getElementById('contribution') as HTMLInputElement).value
+    );
+    const annualRate = parseFloat((document.getElementById('rate') as HTMLInputElement).value);
+
+    const years = Math.max(retireAge - currentAge, 0);
+    const months = years * 12;
+    const r = annualRate / 100 / 12;
+
+    const lumpSumFV = r === 0 ? current : current * Math.pow(1 + r, months);
+    const contributionsFV =
+      r === 0 ? contribution * months : contribution * ((Math.pow(1 + r, months) - 1) / r);
+
+    const balance = lumpSumFV + contributionsFV;
+    const contributed = current + contribution * months;
+    const growth = balance - contributed;
+
+    (document.getElementById('r-balance') as HTMLDivElement).textContent =
+      fmt(balance) + ' projected at retirement';
+    (document.getElementById('r-contributed') as HTMLSpanElement).textContent = fmt(contributed);
+    (document.getElementById('r-growth') as HTMLSpanElement).textContent = fmt(growth);
+    (document.getElementById('r-years') as HTMLSpanElement).textContent = String(years);
+    resultBox.classList.add('visible');
+  });
+</script>

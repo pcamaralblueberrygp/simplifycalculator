@@ -1,0 +1,67 @@
+---
+// Compound interest with optional monthly contributions, compounded monthly.
+---
+<form class="calc-form" id="calc-form">
+  <div class="field">
+    <label for="principal">Initial amount ($)</label>
+    <input type="number" id="principal" min="0" step="0.01" value="5000" required />
+  </div>
+  <div class="field">
+    <label for="contribution">Monthly contribution ($, optional)</label>
+    <input type="number" id="contribution" min="0" step="0.01" value="200" />
+  </div>
+  <div class="field">
+    <label for="rate">Expected annual return (%)</label>
+    <input type="number" id="rate" min="0" step="0.01" value="7" required />
+  </div>
+  <div class="field">
+    <label for="years">Time horizon (years)</label>
+    <input type="number" id="years" min="1" step="1" value="20" required />
+  </div>
+  <button type="submit">Calculate growth</button>
+</form>
+
+<div class="result-box" id="result-box">
+  <div class="headline" id="r-balance"></div>
+  <div class="row"><span>Total contributed (incl. initial)</span><span id="r-contributed"></span></div>
+  <div class="row"><span>Total growth from interest</span><span id="r-growth"></span></div>
+</div>
+
+<script>
+  const fmt = (n: number) =>
+    new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(n);
+
+  const form = document.getElementById('calc-form') as HTMLFormElement;
+  const resultBox = document.getElementById('result-box') as HTMLDivElement;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const principal = parseFloat(
+      (document.getElementById('principal') as HTMLInputElement).value
+    );
+    const contribution = parseFloat(
+      (document.getElementById('contribution') as HTMLInputElement).value || '0'
+    );
+    const annualRate = parseFloat((document.getElementById('rate') as HTMLInputElement).value);
+    const years = parseInt((document.getElementById('years') as HTMLInputElement).value, 10);
+
+    const months = years * 12;
+    const r = annualRate / 100 / 12;
+
+    const lumpSumFV = r === 0 ? principal : principal * Math.pow(1 + r, months);
+    const contributionsFV =
+      r === 0
+        ? contribution * months
+        : contribution * ((Math.pow(1 + r, months) - 1) / r);
+
+    const balance = lumpSumFV + contributionsFV;
+    const contributed = principal + contribution * months;
+    const growth = balance - contributed;
+
+    (document.getElementById('r-balance') as HTMLDivElement).textContent =
+      fmt(balance) + ' projected balance';
+    (document.getElementById('r-contributed') as HTMLSpanElement).textContent = fmt(contributed);
+    (document.getElementById('r-growth') as HTMLSpanElement).textContent = fmt(growth);
+    resultBox.classList.add('visible');
+  });
+</script>

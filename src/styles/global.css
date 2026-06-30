@@ -1,0 +1,301 @@
+:root {
+  --bg: #f7f8fb;
+  --surface: #ffffff;
+  --text: #1a1f2b;
+  --muted: #5b6373;
+  --border: #e3e6ec;
+  --brand: #1758c4;
+  --brand-dark: #0f3f8f;
+  --accent: #0f9d6b;
+  --radius: 10px;
+  --max-width: 880px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--brand);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+header.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+header.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--text);
+}
+
+.brand span {
+  color: var(--brand);
+}
+
+nav.breadcrumbs {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 20px 0 0;
+}
+
+main {
+  padding: 32px 0 64px;
+}
+
+h1 {
+  font-size: 1.9rem;
+  margin: 8px 0 12px;
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: 1.3rem;
+  margin: 36px 0 12px;
+}
+
+.intro {
+  font-size: 1.05rem;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.calc-form .field {
+  margin-bottom: 16px;
+}
+
+.calc-form label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+.calc-form .hint {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.calc-form input,
+.calc-form select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #fff;
+  color: var(--text);
+}
+
+.calc-form input:focus,
+.calc-form select:focus {
+  outline: 2px solid var(--brand);
+  outline-offset: 1px;
+}
+
+.calc-form button {
+  background: var(--brand);
+  color: #fff;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.calc-form button:hover {
+  background: var(--brand-dark);
+}
+
+.result-box {
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 8px;
+  background: #eef5ff;
+  border: 1px solid #cfe1fb;
+  display: none;
+}
+
+.result-box.visible {
+  display: block;
+}
+
+.result-box .headline {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--brand-dark);
+  margin-bottom: 6px;
+}
+
+.result-box .row {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px dashed #cfe1fb;
+  font-size: 0.95rem;
+}
+
+.result-box .row:last-child {
+  border-bottom: none;
+}
+
+.warning-box {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 8px;
+  background: #fff4e5;
+  border: 1px solid #f4d9a8;
+  color: #7a4a00;
+  font-size: 0.9rem;
+  display: none;
+}
+
+.warning-box.visible {
+  display: block;
+}
+
+table.schedule {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  margin-top: 16px;
+}
+
+table.schedule th,
+table.schedule td {
+  text-align: right;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+table.schedule th:first-child,
+table.schedule td:first-child {
+  text-align: left;
+}
+
+.schedule-wrap {
+  max-height: 360px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0 8px;
+}
+
+.faq dt {
+  font-weight: 600;
+  margin-top: 16px;
+}
+
+.faq dd {
+  margin: 6px 0 0;
+  color: var(--muted);
+}
+
+.formula-source {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+.formula-source a {
+  color: var(--brand);
+}
+
+.disclaimer {
+  font-size: 0.85rem;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-top: 32px;
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.calc-tile {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  color: var(--text);
+}
+
+.calc-tile:hover {
+  border-color: var(--brand);
+  text-decoration: none;
+}
+
+.calc-tile .category {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.calc-tile h3 {
+  margin: 6px 0 4px;
+  font-size: 1.05rem;
+}
+
+.calc-tile p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+footer.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 24px 0 40px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}

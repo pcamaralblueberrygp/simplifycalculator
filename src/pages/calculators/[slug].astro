@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { CALCULATORS, type CalcType } from '../../data/calculators';
+
+import LoanCalculator from '../../components/calculators/LoanCalculator.astro';
+import MortgageCalculator from '../../components/calculators/MortgageCalculator.astro';
+import CompoundInterestCalculator from '../../components/calculators/CompoundInterestCalculator.astro';
+import SimpleInterestCalculator from '../../components/calculators/SimpleInterestCalculator.astro';
+import RoiCalculator from '../../components/calculators/RoiCalculator.astro';
+import SavingsGoalCalculator from '../../components/calculators/SavingsGoalCalculator.astro';
+import DebtPayoffCalculator from '../../components/calculators/DebtPayoffCalculator.astro';
+import RetirementCalculator from '../../components/calculators/RetirementCalculator.astro';
+import AmortizationCalculator from '../../components/calculators/AmortizationCalculator.astro';
+import CreditCardPayoffCalculator from '../../components/calculators/CreditCardPayoffCalculator.astro';
+
+export function getStaticPaths() {
+  return CALCULATORS.map((calc) => ({
+    params: { slug: calc.slug },
+    props: { calc },
+  }));
+}
+
+// Add new calc types here as you create new component files.
+const componentMap: Record<CalcType, any> = {
+  loan: LoanCalculator,
+  mortgage: MortgageCalculator,
+  compoundInterest: CompoundInterestCalculator,
+  simpleInterest: SimpleInterestCalculator,
+  roi: RoiCalculator,
+  savingsGoal: SavingsGoalCalculator,
+  debtPayoff: DebtPayoffCalculator,
+  retirement: RetirementCalculator,
+  amortization: AmortizationCalculator,
+  creditCardPayoff: CreditCardPayoffCalculator,
+};
+
+const { calc } = Astro.props;
+const CalcWidget = componentMap[calc.calcType];
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: calc.faqs.map((faq: { q: string; a: string }) => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.a,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title={calc.title}
+  description={calc.metaDescription}
+  path={`/calculators/${calc.slug}`}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+
+  <nav class="breadcrumbs">
+    <a href="/">All calculators</a> / {calc.category} / {calc.shortTitle}
+  </nav>
+
+  <h1>{calc.title}</h1>
+  <p class="intro">{calc.intro}</p>
+
+  <div class="card">
+    <CalcWidget />
+  </div>
+
+  <h2>How this calculator works</h2>
+  {calc.formulaExplanation.split('\n\n').map((p: string) => <p>{p}</p>)}
+  {calc.formulaSource && (
+    <p class="formula-source">
+      Formula reference:{' '}
+      <a href={calc.formulaSource.url} target="_blank" rel="noopener noreferrer">
+        {calc.formulaSource.label}
+      </a>
+    </p>
+  )}
+
+  <h2>Example</h2>
+  <p>{calc.example}</p>
+
+  <h2>Frequently asked questions</h2>
+  <dl class="faq">
+    {calc.faqs.map((faq: { q: string; a: string }) => (
+      <>
+        <dt>{faq.q}</dt>
+        <dd>{faq.a}</dd>
+      </>
+    ))}
+  </dl>
+
+  <p class="disclaimer">
+    This calculator provides estimates for general informational purposes only and does not
+    constitute financial, tax, or legal advice. Always confirm important numbers with a
+    qualified professional or your lender/institution before making a decision.
+  </p>
+</BaseLayout>

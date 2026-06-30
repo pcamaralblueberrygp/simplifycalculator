@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { CALCULATORS } from '../data/calculators';
+
+const categories = Array.from(new Set(CALCULATORS.map((c) => c.category)));
+---
+
+<BaseLayout
+  title="Free Financial Calculators"
+  description="Free, fast financial calculators for loans, mortgages, savings, investing, debt payoff, and retirement planning."
+  path="/"
+>
+  <h1>Free Financial Calculators</h1>
+  <p class="intro">
+    Fast, no-signup calculators for loans, mortgages, savings, investing, debt payoff, and
+    retirement planning. Pick a calculator below to get started.
+  </p>
+
+  {categories.map((category) => (
+    <section>
+      <h2>{category}</h2>
+      <div class="calc-grid">
+        {CALCULATORS.filter((c) => c.category === category).map((calc) => (
+          <a class="calc-tile" href={`/calculators/${calc.slug}`}>
+            <span class="category">{calc.category}</span>
+            <h3>{calc.shortTitle}</h3>
+            <p>{calc.metaDescription}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  ))}
+</BaseLayout>

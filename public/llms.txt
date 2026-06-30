@@ -1,0 +1,34 @@
+# SimplifyCalculator
+
+> Free financial calculators for loans, mortgages, savings, investing, debt payoff, and retirement planning. All calculations run in the browser — no account or data collection required.
+
+SimplifyCalculator provides accurate, formula-based calculators for everyday financial decisions. Each page explains the underlying math, shows a worked example, and answers common questions. Formulas are sourced from the CFPB (Consumer Financial Protection Bureau), the U.S. SEC's Investor.gov, and Investopedia.
+
+## Calculators
+
+- [Loan Payment Calculator](https://simplifycalculator.com/calculators/loan-payment-calculator): Calculate monthly payment, total interest, and total cost for any fixed-rate installment loan using the standard amortization formula (M = P·r(1+r)^n / ((1+r)^n − 1)).
+
+- [Mortgage Calculator](https://simplifycalculator.com/calculators/mortgage-calculator): Estimate monthly mortgage payment (PITI) from home price, down payment, rate, term, property tax, and insurance.
+
+- [Compound Interest Calculator](https://simplifycalculator.com/calculators/compound-interest-calculator): Project savings or investment growth with monthly compounding and optional recurring contributions.
+
+- [Simple Interest Calculator](https://simplifycalculator.com/calculators/simple-interest-calculator): Calculate interest earned or owed using I = P·r·t — no compounding.
+
+- [ROI Calculator](https://simplifycalculator.com/calculators/roi-calculator): Calculate total return on investment and annualized ROI between an initial and final value.
+
+- [Savings Goal Calculator](https://simplifycalculator.com/calculators/savings-goal-calculator): Solve for the monthly contribution needed to reach a savings target by a future date.
+
+- [Debt Payoff Calculator](https://simplifycalculator.com/calculators/debt-payoff-calculator): Find how many months to pay off a debt and total interest paid at a fixed monthly payment.
+
+- [Retirement Savings Calculator](https://simplifycalculator.com/calculators/retirement-savings-calculator): Project retirement balance from current age, savings, monthly contributions, and average return.
+
+- [Amortization Schedule Calculator](https://simplifycalculator.com/calculators/amortization-schedule-calculator): Generate a year-by-year amortization schedule showing principal, interest, and remaining balance.
+
+- [Credit Card Payoff Calculator](https://simplifycalculator.com/calculators/credit-card-payoff-calculator): Calculate how long to pay off a credit card balance and total interest at a fixed monthly payment.
+
+## Site info
+
+- Homepage: https://simplifycalculator.com
+- About: https://simplifycalculator.com/about
+- Privacy Policy: https://simplifycalculator.com/privacy-policy
+- Sitemap: https://simplifycalculator.com/sitemap-index.xml
