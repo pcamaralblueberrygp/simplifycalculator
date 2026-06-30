@@ -21,6 +21,14 @@ import SavingsInterestCalculator from '../../components/calculators/SavingsInter
 import BreakEvenCalculator from '../../components/calculators/BreakEvenCalculator.astro';
 import RuleOf72Calculator from '../../components/calculators/RuleOf72Calculator.astro';
 import HourlyToSalaryCalculator from '../../components/calculators/HourlyToSalaryCalculator.astro';
+import DividendYieldCalculator from '../../components/calculators/DividendYieldCalculator.astro';
+import StockReturnCalculator from '../../components/calculators/StockReturnCalculator.astro';
+import RentVsBuyCalculator from '../../components/calculators/RentVsBuyCalculator.astro';
+import PaycheckCalculator from '../../components/calculators/PaycheckCalculator.astro';
+import DebtToIncomeCalculator from '../../components/calculators/DebtToIncomeCalculator.astro';
+import CollegeSavingsCalculator from '../../components/calculators/CollegeSavingsCalculator.astro';
+import HomeAffordabilityCalculator from '../../components/calculators/HomeAffordabilityCalculator.astro';
+import FreelanceRateCalculator from '../../components/calculators/FreelanceRateCalculator.astro';
 
 export function getStaticPaths() {
   return CALCULATORS.map((calc) => ({
@@ -50,6 +58,14 @@ const componentMap: Record<CalcType, any> = {
   breakEven: BreakEvenCalculator,
   ruleOf72: RuleOf72Calculator,
   hourlyToSalary: HourlyToSalaryCalculator,
+  dividendYield: DividendYieldCalculator,
+  stockReturn: StockReturnCalculator,
+  rentVsBuy: RentVsBuyCalculator,
+  paycheck: PaycheckCalculator,
+  debtToIncome: DebtToIncomeCalculator,
+  collegeSavings: CollegeSavingsCalculator,
+  homeAffordability: HomeAffordabilityCalculator,
+  freelanceRate: FreelanceRateCalculator,
 };
 
 const { calc } = Astro.props;

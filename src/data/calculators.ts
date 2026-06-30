@@ -28,7 +28,15 @@ export type CalcType =
   | 'savingsInterest'
   | 'breakEven'
   | 'ruleOf72'
-  | 'hourlyToSalary';
+  | 'hourlyToSalary'
+  | 'dividendYield'
+  | 'stockReturn'
+  | 'rentVsBuy'
+  | 'paycheck'
+  | 'debtToIncome'
+  | 'collegeSavings'
+  | 'homeAffordability'
+  | 'freelanceRate';
 
 export interface Faq {
   q: string;
@@ -654,6 +662,135 @@ export const CALCULATORS: Calculator[] = [
       },
     ],
     calcType: 'hourlyToSalary',
+  },
+  {
+    slug: 'dividend-yield-calculator',
+    title: 'Dividend Yield Calculator',
+    shortTitle: 'Dividend Yield',
+    category: 'Investing',
+    metaDescription: 'Calculate the dividend yield of any stock and estimate your annual and monthly dividend income based on shares owned.',
+    intro: 'Dividend yield measures how much a company pays in dividends each year relative to its stock price. It is one of the most commonly used metrics for income investors comparing dividend-paying stocks. This calculator also shows your projected annual and monthly dividend income based on how many shares you own.',
+    formulaExplanation: 'Dividend Yield (%) = (Annual Dividend per Share / Stock Price) × 100. Annual Income = Annual Dividend per Share × Number of Shares. Monthly Income = Annual Income / 12. The yield changes daily as the stock price fluctuates — a falling price increases the yield percentage, and a rising price decreases it, even if the dividend itself stays the same.',
+    formulaSource: { label: 'Investopedia: Dividend Yield', url: 'https://www.investopedia.com/terms/d/dividendyield.asp' },
+    example: 'Example: a stock trading at $50 that pays $2.50 in annual dividends per share has a dividend yield of 5.0%. Owning 100 shares produces $250 in annual dividend income, or about $20.83 per month.',
+    faqs: [
+      { q: 'Is a higher dividend yield always better?', a: 'Not necessarily. A very high yield (above 8-10%) can signal that the market expects the dividend to be cut, or that the stock price has fallen sharply due to underlying problems. Always check the payout ratio and earnings stability alongside the yield.' },
+      { q: 'What is a good dividend yield?', a: 'Historically, dividend yields between 2% and 5% are considered solid for blue-chip stocks. Yields above 5% warrant extra scrutiny. Utilities and REITs often yield higher than the broader market due to their business models.' },
+      { q: 'Do dividends reduce the stock price?', a: 'Yes. On the ex-dividend date, the stock price typically drops by approximately the dividend amount, because new buyers after that date do not receive the upcoming payment.' },
+    ],
+    calcType: 'dividendYield',
+  },
+  {
+    slug: 'stock-return-calculator',
+    title: 'Stock Return Calculator',
+    shortTitle: 'Stock Return',
+    category: 'Investing',
+    metaDescription: 'Calculate total stock return including capital gains and dividends received. See your exact profit or loss on any stock position.',
+    intro: 'A stock return calculator helps you measure the full return on a stock investment, combining price appreciation (or depreciation) with dividend income received. Total return is the most accurate way to compare investment performance across different types of stocks and time periods.',
+    formulaExplanation: 'Capital Gain / Loss = (Sale Price - Purchase Price) × Number of Shares. Dividend Income = Dividends per Share × Number of Shares. Total Return ($) = Capital Gain + Dividend Income. Total Return (%) = (Sale Price - Purchase Price + Dividends per Share) / Purchase Price × 100. The percentage return is calculated per share so it reflects the true yield on the capital deployed.',
+    formulaSource: { label: 'Investopedia: Total Return', url: 'https://www.investopedia.com/terms/t/totalreturn.asp' },
+    example: 'Example: buying 50 shares at $100, receiving $3/share in dividends, and selling at $135 produces a $1,750 capital gain plus $150 in dividends = $1,900 total return, or 38% on the original $5,000 invested.',
+    faqs: [
+      { q: 'Does this account for taxes?', a: 'No. This calculator shows gross return before taxes. Capital gains taxes vary depending on your holding period (short-term vs. long-term) and income bracket. Dividends may be qualified or ordinary income. Consult a tax professional for your specific situation.' },
+      { q: 'Should I include commissions?', a: 'Yes, if you paid trading commissions, subtract them from the sale proceeds or add them to the purchase cost for a more accurate net return. Most modern brokers charge zero commissions, but older trades may have fees worth including.' },
+    ],
+    calcType: 'stockReturn',
+  },
+  {
+    slug: 'rent-vs-buy-calculator',
+    title: 'Rent vs. Buy Calculator',
+    shortTitle: 'Rent vs. Buy',
+    category: 'Real Estate',
+    metaDescription: 'Compare the true cost of renting vs. buying a home over any time horizon. Accounts for mortgage payments, equity, appreciation, taxes, and rent increases.',
+    intro: 'The rent vs. buy decision is one of the biggest financial choices most people make. This calculator compares the net cost of buying a home (mortgage payments, taxes, insurance, maintenance, minus equity gained) against the cumulative cost of renting over the same period, accounting for home appreciation and annual rent increases.',
+    formulaExplanation: 'Cost to Buy (net) = Total payments made (down payment + monthly PITI + maintenance) minus equity accumulated at the end of the period. Equity = Home value at sale - remaining mortgage balance. Cost to Rent = Sum of monthly rent payments over the period, with rent increasing by the annual rate each year. The lower net cost determines which option is cheaper over the chosen horizon.',
+    formulaSource: { label: 'CFPB: Buying vs. renting a home', url: 'https://www.consumerfinance.gov/owning-a-home/process/prepare/' },
+    example: 'Example: buying a $350,000 home with $70,000 down at 6.5% / 30 years vs. renting at $1,800/month (3% annual increase) over 7 years. If the home appreciates 3%/year, buying may be cheaper net of equity — but renting wins in the first 3-4 years when transaction costs dominate.',
+    faqs: [
+      { q: 'Why does buying sometimes lose in the short term?', a: 'Closing costs (typically 2-5% of the purchase price) are paid upfront and take years to recoup through equity building. If you sell within 2-3 years, renting is almost always cheaper when those costs are factored in.' },
+      { q: 'What costs are not included?', a: 'This calculator omits closing costs, HOA dues, PMI (if applicable), tax deductions for mortgage interest, and the opportunity cost of the down payment invested elsewhere. Adding these would make the comparison more precise but also more complex.' },
+    ],
+    calcType: 'rentVsBuy',
+  },
+  {
+    slug: 'paycheck-calculator',
+    title: 'Paycheck Calculator',
+    shortTitle: 'Paycheck',
+    category: 'Income',
+    metaDescription: 'Estimate your net take-home pay after federal income tax, Social Security, Medicare, state tax, and 401(k) contributions for any salary.',
+    intro: 'A paycheck calculator shows how much of your gross salary actually lands in your bank account after federal and state income taxes, Social Security, Medicare, and pre-tax retirement contributions are withheld. Understanding your take-home pay helps with budgeting and evaluating job offers.',
+    formulaExplanation: 'Federal income tax is calculated using the 2024 marginal tax brackets for your filing status, applied to taxable income (gross minus pre-tax 401k contributions). Social Security is 6.2% of gross wages up to the annual wage base. Medicare is 1.45% of all wages. State income tax is applied at the flat rate you enter. Net pay = Gross - Federal tax - Social Security - Medicare - State tax - 401(k) contribution.',
+    formulaSource: { label: 'IRS: Tax withholding estimator', url: 'https://www.irs.gov/individuals/tax-withholding-estimator' },
+    example: 'Example: a $65,000 salary, single filer, 5% state tax, biweekly pay, 5% 401(k). Gross per paycheck: $2,500. After ~$340 federal tax, $155 Social Security, $36 Medicare, $119 state tax, and $125 401(k), estimated net take-home is roughly $1,725 per paycheck.',
+    faqs: [
+      { q: 'Why does this differ from my actual paycheck?', a: 'This calculator uses simplified 2024 federal brackets and a flat state rate. Your actual withholding depends on your W-4 elections (allowances, extra withholding), additional Medicare tax for high earners, local/city taxes, health insurance premiums, HSA contributions, and other deductions your employer may withhold.' },
+      { q: 'What is the difference between pre-tax and post-tax 401(k) contributions?', a: 'Traditional 401(k) contributions are pre-tax — they reduce your taxable income now and grow tax-deferred. Roth 401(k) contributions are post-tax — no immediate tax benefit, but qualified withdrawals in retirement are tax-free. This calculator models traditional pre-tax contributions.' },
+    ],
+    calcType: 'paycheck',
+  },
+  {
+    slug: 'debt-to-income-ratio-calculator',
+    title: 'Debt-to-Income Ratio Calculator',
+    shortTitle: 'DTI Ratio',
+    category: 'Personal Finance',
+    metaDescription: 'Calculate your debt-to-income (DTI) ratio to see if you qualify for a mortgage or loan. Understand what lenders look for and how to improve your DTI.',
+    intro: 'Your debt-to-income (DTI) ratio is the percentage of your gross monthly income that goes toward debt payments. It is the single most important number lenders look at when deciding whether to approve a mortgage, auto loan, or personal loan — and at what interest rate.',
+    formulaExplanation: 'DTI (%) = Total Monthly Debt Payments / Gross Monthly Income × 100. Lenders use two versions: the front-end ratio (housing costs only ÷ income) and the back-end ratio (all debt payments ÷ income). The back-end ratio is what most lenders emphasize. Conventional mortgages typically require a back-end DTI below 36-43%; FHA loans can allow up to 50%.',
+    formulaSource: { label: 'CFPB: Debt-to-income ratio', url: 'https://www.consumerfinance.gov/ask-cfpb/what-is-a-debt-to-income-ratio-en-1791/' },
+    example: 'Example: $1,500 mortgage + $400 car + $300 student loan + $100 credit card minimums = $2,300 monthly debt on a $6,000 gross income = 38.3% DTI. This falls in the "acceptable" range but a lender may want it closer to 36%.',
+    faqs: [
+      { q: 'Does DTI affect my credit score?', a: 'Not directly — credit bureaus do not track your income, so DTI is not part of your credit score calculation. However, lenders pull both your credit report and calculate your DTI independently during the underwriting process.' },
+      { q: 'How can I improve my DTI quickly?', a: 'The two levers are: (1) reduce debt — pay down balances and close installment loans, with the biggest DTI impact coming from eliminating a payment entirely rather than reducing it; and (2) increase income — a raise, second job, or freelance income lowers the ratio immediately.' },
+    ],
+    calcType: 'debtToIncome',
+  },
+  {
+    slug: 'college-savings-calculator',
+    title: 'College Savings Calculator (529 Plan)',
+    shortTitle: 'College Savings',
+    category: 'Savings',
+    metaDescription: 'Calculate how much you need to save monthly for college using a 529 plan. Accounts for tuition inflation, investment returns, and your current balance.',
+    intro: 'College costs have historically risen about 4-6% per year — faster than general inflation. A 529 college savings plan lets your money grow tax-free when used for qualified education expenses. This calculator shows your target savings goal and the monthly contribution needed to reach it, given your time horizon and expected investment return.',
+    formulaExplanation: 'Projected Total Cost = Annual Cost × (1 + Inflation Rate)^Years for each year of college, summed across the enrollment period. Future Value of Current Balance = Current Balance × (1 + Monthly Return)^Months. Monthly Contribution Needed = (Total Cost - FV of Current Balance) × Monthly Return / ((1 + Monthly Return)^Months - 1). The result is the level monthly contribution required assuming a constant return.',
+    formulaSource: { label: 'SEC: Introduction to 529 Plans', url: 'https://www.sec.gov/reportspubs/investor-publications/investorpubsintro529htm.html' },
+    example: 'Example: $30,000/year current tuition, 10 years until college, 4-year program, 5% annual tuition inflation, 6% expected return, $5,000 current balance. Projected total cost: ~$195,000. Required monthly contribution: ~$700.',
+    faqs: [
+      { q: 'What if I overshoot and save too much?', a: 'A 529 account can be transferred to another beneficiary (a sibling, cousin, or even yourself) with no tax penalty. Starting in 2024, unused 529 funds can also be rolled over to a Roth IRA for the beneficiary, subject to annual contribution limits and a 15-year account seasoning requirement.' },
+      { q: 'Do 529 assets affect financial aid eligibility?', a: 'Yes, but modestly. A parent-owned 529 is assessed at a maximum rate of 5.64% in the FAFSA formula, compared to 20% for assets held directly in the student\'s name. Grandparent-owned 529 plans have no impact on FAFSA under rules that took effect for the 2024-2025 aid year.' },
+    ],
+    calcType: 'collegeSavings',
+  },
+  {
+    slug: 'home-affordability-calculator',
+    title: 'Home Affordability Calculator',
+    shortTitle: 'Home Affordability',
+    category: 'Real Estate',
+    metaDescription: 'Find out how much house you can afford based on your income, debts, down payment, and mortgage rate using standard lender guidelines.',
+    intro: 'Knowing your maximum affordable home price before you start shopping prevents disappointment and wasted time. This calculator uses the same front-end (28%) and back-end (36%) debt-to-income guidelines that conventional mortgage lenders apply to determine how much home your income and existing debts can support.',
+    formulaExplanation: 'Lenders use two limits: (1) Front-end: monthly housing costs (P&I + taxes + insurance) cannot exceed 28% of gross monthly income. (2) Back-end: all monthly debt payments (housing + existing debts) cannot exceed 36% of gross monthly income. The binding constraint (whichever is lower) sets the maximum monthly housing payment. From that payment, we back-solve for the maximum home price given the mortgage rate, term, and property tax rate.',
+    formulaSource: { label: 'CFPB: How much house can I afford?', url: 'https://www.consumerfinance.gov/ask-cfpb/how-much-of-my-income-should-i-spend-on-housing-en-1855/' },
+    example: 'Example: $90,000 gross income, $500/month existing debts, $60,000 down payment, 6.5% APR / 30 years, 1.2% property tax rate. Estimated maximum home price: ~$380,000, with a total monthly payment of about $2,520.',
+    faqs: [
+      { q: 'Should I buy as much house as I can afford?', a: 'Most financial planners advise against it. Buying at the top of your qualification limit leaves no buffer for job changes, repairs, or unexpected expenses. A rule of thumb is to target a home price no more than 2.5-3x your annual gross income.' },
+      { q: 'Does this include PMI?', a: 'No. If your down payment is less than 20% of the home price, lenders require private mortgage insurance (PMI), typically 0.5-1.5% of the loan amount per year. This adds $100-$300/month on a $300,000 loan and reduces how much home you can afford.' },
+    ],
+    calcType: 'homeAffordability',
+  },
+  {
+    slug: 'freelance-rate-calculator',
+    title: 'Freelance Rate Calculator',
+    shortTitle: 'Freelance Rate',
+    category: 'Income',
+    metaDescription: 'Calculate your minimum and recommended freelance hourly rate based on your desired income, expenses, taxes, and billable hours.',
+    intro: 'Setting the right freelance rate is one of the hardest parts of self-employment. Charge too little and you cannot cover taxes and business costs; charge too much and you lose clients. This calculator works backward from your target take-home income to find the hourly rate that actually gets you there after taxes and expenses.',
+    formulaExplanation: 'Gross Revenue Needed = (Desired Take-Home + Business Expenses) / (1 - Tax Rate). The tax rate for freelancers in the U.S. includes self-employment tax (15.3% on the first ~$160,000 of net self-employment income) plus federal and state income tax. Minimum Hourly Rate = Gross Revenue Needed / Total Billable Hours. Recommended Rate adds a buffer (typically 10-20%) for slow months, non-billable work, and scope creep.',
+    formulaSource: { label: 'IRS: Self-employment tax', url: 'https://www.irs.gov/businesses/small-businesses-self-employed/self-employment-tax-social-security-and-medicare-taxes' },
+    example: 'Example: $80,000 desired take-home, 30 billable hours/week × 48 weeks = 1,440 hours/year, $5,000 expenses, 30% combined tax rate, 15% buffer. Minimum rate: ~$59/hr. Recommended rate: ~$68/hr.',
+    faqs: [
+      { q: 'Why is my freelance rate so much higher than an equivalent employee salary?', a: 'As a freelancer you pay both the employee and employer halves of Social Security and Medicare (15.3% total vs. 7.65% for an employee), you have no paid vacation or sick days, you cover your own health insurance, and you spend non-billable hours on business administration. These add up to 30-50% above equivalent employee compensation.' },
+      { q: 'Should I charge by the hour or by the project?', a: 'Project-based pricing is usually more profitable once you are experienced, because faster delivery increases your effective hourly rate. Fixed-fee projects also give clients a predictable cost, which reduces friction in closing deals. Track your actual hours per project to refine future estimates.' },
+    ],
+    calcType: 'freelanceRate',
   },
 ];
 

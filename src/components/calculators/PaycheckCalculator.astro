@@ -1,0 +1,70 @@
+---
+---
+<div class="calc-widget">
+  <form id="pc-form" novalidate>
+    <label>Gross Annual Salary ($) <input type="number" id="salary" min="0" step="1000" value="65000" /></label>
+    <label>Federal Filing Status
+      <select id="filing">
+        <option value="single">Single</option>
+        <option value="married">Married Filing Jointly</option>
+        <option value="hoh">Head of Household</option>
+      </select>
+    </label>
+    <label>State Income Tax Rate (%) <input type="number" id="stateTax" min="0" max="15" step="0.1" value="5" /></label>
+    <label>Pay Frequency
+      <select id="frequency">
+        <option value="26">Biweekly (every 2 weeks)</option>
+        <option value="24">Semimonthly (twice a month)</option>
+        <option value="12">Monthly</option>
+        <option value="52">Weekly</option>
+      </select>
+    </label>
+    <label>401(k) / Pre-tax Contribution (% of gross) <input type="number" id="retirement" min="0" max="100" step="0.5" value="5" /></label>
+    <button type="submit">Calculate</button>
+  </form>
+  <div id="pc-result" class="result-box" hidden></div>
+</div>
+<script>
+  document.getElementById('pc-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const salary = parseFloat((document.getElementById('salary') as HTMLInputElement).value) || 0;
+    const filing = (document.getElementById('filing') as HTMLSelectElement).value;
+    const stateTaxRate = parseFloat((document.getElementById('stateTax') as HTMLInputElement).value) / 100;
+    const periods = parseInt((document.getElementById('frequency') as HTMLSelectElement).value);
+    const retirePct = parseFloat((document.getElementById('retirement') as HTMLInputElement).value) / 100;
+    const fmt = (n: number) => n.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    const retireContrib = salary * retirePct;
+    const federalTaxable = salary - retireContrib;
+    // 2024 federal brackets (simplified)
+    const brackets: Record<string, [number,number][]> = {
+      single: [[11600,0.10],[44725,0.12],[95375,0.22],[201050,0.24],[383900,0.32],[487450,0.35],[Infinity,0.37]],
+      married: [[23200,0.10],[89450,0.12],[190750,0.22],[364200,0.24],[462500,0.32],[693750,0.35],[Infinity,0.37]],
+      hoh: [[16550,0.10],[63100,0.12],[100500,0.22],[191950,0.24],[243700,0.32],[609350,0.35],[Infinity,0.37]],
+    };
+    let fedTax = 0, prev = 0;
+    for (const [limit, rate] of brackets[filing]) {
+      if (federalTaxable <= prev) break;
+      fedTax += (Math.min(federalTaxable, limit) - prev) * rate;
+      prev = limit;
+    }
+    const fica = salary * 0.062;
+    const medicare = salary * 0.0145;
+    const stateTax = federalTaxable * stateTaxRate;
+    const totalDeductions = retireContrib + fedTax + fica + medicare + stateTax;
+    const annualTakeHome = salary - totalDeductions;
+    const perPaycheck = annualTakeHome / periods;
+    const box = document.getElementById('pc-result')!;
+    box.hidden = false;
+    box.innerHTML = `
+      <p><strong>Gross per paycheck:</strong> $${fmt(salary / periods)}</p>
+      <p><strong>Federal income tax:</strong> -$${fmt(fedTax / periods)} (${(fedTax/salary*100).toFixed(1)}% effective rate)</p>
+      <p><strong>Social Security (6.2%):</strong> -$${fmt(fica / periods)}</p>
+      <p><strong>Medicare (1.45%):</strong> -$${fmt(medicare / periods)}</p>
+      <p><strong>State income tax:</strong> -$${fmt(stateTax / periods)}</p>
+      <p><strong>401(k) contribution:</strong> -$${fmt(retireContrib / periods)}</p>
+      <hr/>
+      <p><strong>Net take-home per paycheck:</strong> $${fmt(perPaycheck)}</p>
+      <p><strong>Annual take-home:</strong> $${fmt(annualTakeHome)}</p>
+    `;
+  });
+</script>

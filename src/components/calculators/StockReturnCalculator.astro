@@ -1,0 +1,36 @@
+---
+---
+<div class="calc-widget">
+  <form id="sr-form" novalidate>
+    <label>Purchase Price per Share ($) <input type="number" id="buyPrice" min="0.01" step="0.01" value="100.00" /></label>
+    <label>Current / Sale Price per Share ($) <input type="number" id="sellPrice" min="0.01" step="0.01" value="135.00" /></label>
+    <label>Number of Shares <input type="number" id="shares" min="1" step="1" value="50" /></label>
+    <label>Dividends Received per Share ($) <input type="number" id="divs" min="0" step="0.01" value="3.00" /></label>
+    <button type="submit">Calculate</button>
+  </form>
+  <div id="sr-result" class="result-box" hidden></div>
+</div>
+<script>
+  document.getElementById('sr-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const buy = parseFloat((document.getElementById('buyPrice') as HTMLInputElement).value) || 0;
+    const sell = parseFloat((document.getElementById('sellPrice') as HTMLInputElement).value) || 0;
+    const shares = parseFloat((document.getElementById('shares') as HTMLInputElement).value) || 0;
+    const divs = parseFloat((document.getElementById('divs') as HTMLInputElement).value) || 0;
+    const fmt = (n: number) => n.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    const box = document.getElementById('sr-result')!;
+    box.hidden = false;
+    if (buy <= 0) { box.innerHTML = '<p style="color:red">Purchase price must be greater than zero.</p>'; return; }
+    const capitalGain = (sell - buy) * shares;
+    const dividendIncome = divs * shares;
+    const totalReturn = capitalGain + dividendIncome;
+    const totalReturnPct = ((sell - buy + divs) / buy) * 100;
+    const invested = buy * shares;
+    box.innerHTML = `
+      <p><strong>Capital Gain / Loss:</strong> <span style="color:${capitalGain>=0?'green':'red'}">$${fmt(capitalGain)}</span></p>
+      <p><strong>Dividend Income:</strong> $${fmt(dividendIncome)}</p>
+      <p><strong>Total Return:</strong> <span style="color:${totalReturn>=0?'green':'red'}">$${fmt(totalReturn)}</span></p>
+      <p><strong>Total Return %:</strong> ${totalReturnPct.toFixed(2)}% on $${fmt(invested)} invested</p>
+    `;
+  });
+</script>

@@ -1,0 +1,60 @@
+---
+---
+<div class="calc-widget">
+  <form id="rvb-form" novalidate>
+    <fieldset><legend>Buying</legend>
+      <label>Home Price ($) <input type="number" id="homePrice" min="0" step="1000" value="350000" /></label>
+      <label>Down Payment ($) <input type="number" id="downPayment" min="0" step="1000" value="70000" /></label>
+      <label>Mortgage Rate (% APR) <input type="number" id="mortgageRate" min="0" step="0.1" value="6.5" /></label>
+      <label>Loan Term (years) <input type="number" id="loanTerm" min="1" max="30" step="1" value="30" /></label>
+      <label>Annual Property Tax ($) <input type="number" id="propTax" min="0" step="100" value="4200" /></label>
+      <label>Annual Home Insurance ($) <input type="number" id="insurance" min="0" step="100" value="1400" /></label>
+      <label>Annual Maintenance (% of home value) <input type="number" id="maintenance" min="0" step="0.1" value="1" /></label>
+    </fieldset>
+    <fieldset><legend>Renting</legend>
+      <label>Monthly Rent ($) <input type="number" id="rent" min="0" step="50" value="1800" /></label>
+      <label>Annual Rent Increase (%) <input type="number" id="rentIncrease" min="0" step="0.1" value="3" /></label>
+    </fieldset>
+    <label>Years to Compare <input type="number" id="years" min="1" max="30" step="1" value="7" /></label>
+    <label>Annual Home Appreciation (%) <input type="number" id="appreciation" min="0" step="0.1" value="3" /></label>
+    <button type="submit">Calculate</button>
+  </form>
+  <div id="rvb-result" class="result-box" hidden></div>
+</div>
+<script>
+  document.getElementById('rvb-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const get = (id: string) => parseFloat((document.getElementById(id) as HTMLInputElement).value) || 0;
+    const homePrice = get('homePrice'), down = get('downPayment'), rate = get('mortgageRate') / 100 / 12;
+    const term = get('loanTerm') * 12, propTax = get('propTax'), insurance = get('insurance');
+    const maintenance = get('maintenance') / 100, rent = get('rent'), rentInc = get('rentIncrease') / 100;
+    const years = get('years'), appreciation = get('appreciation') / 100;
+    const principal = homePrice - down;
+    const monthlyPI = rate > 0 ? principal * (rate * Math.pow(1+rate, term)) / (Math.pow(1+rate, term) - 1) : principal / term;
+    const monthlyOwn = monthlyPI + (propTax + insurance + homePrice * maintenance) / 12;
+    let totalOwn = down;
+    for (let y = 0; y < years; y++) totalOwn += monthlyOwn * 12;
+    const homeValue = homePrice * Math.pow(1 + appreciation, years);
+    let remainingBalance = principal;
+    for (let m = 0; m < years * 12; m++) {
+      const intPay = remainingBalance * rate;
+      remainingBalance -= (monthlyPI - intPay);
+    }
+    const equity = homeValue - Math.max(0, remainingBalance);
+    const netCostBuy = totalOwn - equity;
+    let totalRent = 0, r = rent;
+    for (let y = 0; y < years; y++) { totalRent += r * 12; r *= (1 + rentInc); }
+    const fmt = (n: number) => n.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+    const box = document.getElementById('rvb-result')!;
+    box.hidden = false;
+    const winner = netCostBuy < totalRent ? 'Buying' : 'Renting';
+    const diff = Math.abs(netCostBuy - totalRent);
+    box.innerHTML = `
+      <p><strong>Monthly cost to own (P&I + taxes + insurance + maintenance):</strong> $${fmt(monthlyOwn)}/mo</p>
+      <p><strong>Total cost to buy over ${years} years (net of equity):</strong> $${fmt(netCostBuy)}</p>
+      <p><strong>Total cost to rent over ${years} years:</strong> $${fmt(totalRent)}</p>
+      <p><strong>Projected home equity at year ${years}:</strong> $${fmt(equity)}</p>
+      <p><strong>Result: ${winner} is cheaper by $${fmt(diff)} over ${years} years</strong></p>
+    `;
+  });
+</script>

@@ -1,0 +1,42 @@
+---
+---
+<div class="calc-widget">
+  <form id="dti-form" novalidate>
+    <fieldset><legend>Monthly Gross Income</legend>
+      <label>Gross Monthly Income ($) <input type="number" id="income" min="0" step="100" value="6000" /></label>
+    </fieldset>
+    <fieldset><legend>Monthly Debt Payments</legend>
+      <label>Mortgage / Rent ($) <input type="number" id="housing" min="0" step="50" value="1500" /></label>
+      <label>Car Loan ($) <input type="number" id="car" min="0" step="50" value="400" /></label>
+      <label>Student Loans ($) <input type="number" id="student" min="0" step="50" value="300" /></label>
+      <label>Credit Card Minimums ($) <input type="number" id="cc" min="0" step="25" value="100" /></label>
+      <label>Other Debt Payments ($) <input type="number" id="other" min="0" step="25" value="0" /></label>
+    </fieldset>
+    <button type="submit">Calculate</button>
+  </form>
+  <div id="dti-result" class="result-box" hidden></div>
+</div>
+<script>
+  document.getElementById('dti-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const get = (id: string) => parseFloat((document.getElementById(id) as HTMLInputElement).value) || 0;
+    const income = get('income');
+    const totalDebt = ['housing','car','student','cc','other'].reduce((s,id) => s + get(id), 0);
+    const fmt = (n: number) => n.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    const box = document.getElementById('dti-result')!;
+    box.hidden = false;
+    if (income <= 0) { box.innerHTML = '<p style="color:red">Enter your monthly income.</p>'; return; }
+    const dti = (totalDebt / income) * 100;
+    let assessment = '', color = '';
+    if (dti <= 35) { assessment = 'Good — most lenders consider this a healthy DTI.'; color = 'green'; }
+    else if (dti <= 43) { assessment = 'Acceptable — you may still qualify for a mortgage, but it is tight.'; color = 'orange'; }
+    else if (dti <= 50) { assessment = 'High — qualifying for new credit will be difficult.'; color = 'darkorange'; }
+    else { assessment = 'Very high — focus on paying down debt before applying for loans.'; color = 'red'; }
+    box.innerHTML = `
+      <p><strong>Total Monthly Debt Payments:</strong> $${fmt(totalDebt)}</p>
+      <p><strong>Debt-to-Income Ratio:</strong> <span style="color:${color}">${dti.toFixed(1)}%</span></p>
+      <p><strong>Assessment:</strong> <span style="color:${color}">${assessment}</span></p>
+      <p><small>Most conventional lenders prefer a DTI below 36%. FHA loans allow up to 43-50%.</small></p>
+    `;
+  });
+</script>

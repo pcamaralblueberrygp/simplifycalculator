@@ -1,0 +1,31 @@
+---
+---
+<div class="calc-widget">
+  <form id="dy-form" novalidate>
+    <label>Annual Dividend per Share ($) <input type="number" id="dividend" min="0" step="0.01" value="2.50" /></label>
+    <label>Stock Price per Share ($) <input type="number" id="price" min="0.01" step="0.01" value="50.00" /></label>
+    <label>Number of Shares Owned <input type="number" id="shares" min="1" step="1" value="100" /></label>
+    <button type="submit">Calculate</button>
+  </form>
+  <div id="dy-result" class="result-box" hidden></div>
+</div>
+<script>
+  document.getElementById('dy-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const dividend = parseFloat((document.getElementById('dividend') as HTMLInputElement).value) || 0;
+    const price = parseFloat((document.getElementById('price') as HTMLInputElement).value) || 0;
+    const shares = parseFloat((document.getElementById('shares') as HTMLInputElement).value) || 0;
+    const fmt = (n: number) => n.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    const box = document.getElementById('dy-result')!;
+    box.hidden = false;
+    if (price <= 0) { box.innerHTML = '<p style="color:red">Stock price must be greater than zero.</p>'; return; }
+    const yieldPct = (dividend / price) * 100;
+    const annualIncome = dividend * shares;
+    const monthlyIncome = annualIncome / 12;
+    box.innerHTML = `
+      <p><strong>Dividend Yield:</strong> ${yieldPct.toFixed(2)}%</p>
+      <p><strong>Annual Dividend Income:</strong> $${fmt(annualIncome)}</p>
+      <p><strong>Monthly Dividend Income:</strong> $${fmt(monthlyIncome)}</p>
+    `;
+  });
+</script>

@@ -1,0 +1,54 @@
+---
+---
+<div class="calc-widget">
+  <form id="ha-form" novalidate>
+    <label>Annual Gross Income ($) <input type="number" id="income" min="0" step="1000" value="90000" /></label>
+    <label>Monthly Debt Payments ($) <input type="number" id="debt" min="0" step="50" value="500" /></label>
+    <label>Down Payment Available ($) <input type="number" id="down" min="0" step="1000" value="60000" /></label>
+    <label>Mortgage Rate (% APR) <input type="number" id="rate" min="0" step="0.1" value="6.5" /></label>
+    <label>Loan Term (years) <input type="number" id="term" min="10" max="30" step="5" value="30" /></label>
+    <label>Annual Property Tax Rate (%) <input type="number" id="taxRate" min="0" step="0.1" value="1.2" /></label>
+    <label>Annual Home Insurance ($) <input type="number" id="insurance" min="0" step="100" value="1400" /></label>
+    <button type="submit">Calculate</button>
+  </form>
+  <div id="ha-result" class="result-box" hidden></div>
+</div>
+<script>
+  document.getElementById('ha-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const get = (id: string) => parseFloat((document.getElementById(id) as HTMLInputElement).value) || 0;
+    const income = get('income'), debt = get('debt'), down = get('down');
+    const rate = get('rate') / 100 / 12, term = get('term') * 12;
+    const taxRate = get('taxRate') / 100, insurance = get('insurance');
+    const fmt = (n: number) => n.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+    // Max total monthly payment (28% front-end, 36% back-end)
+    const monthlyIncome = income / 12;
+    const maxFrontEnd = monthlyIncome * 0.28;
+    const maxBackEnd = monthlyIncome * 0.36 - debt;
+    const maxMonthlyHousing = Math.min(maxFrontEnd, maxBackEnd);
+    // Solve for home price: maxHousing = PI + tax/12 + insurance/12
+    // PI = (homePrice - down) * rate*(1+rate)^n / ((1+rate)^n - 1)
+    // tax = homePrice * taxRate / 12
+    const factor = rate > 0 ? (rate * Math.pow(1+rate, term)) / (Math.pow(1+rate, term) - 1) : 1/term;
+    const maxPI = maxMonthlyHousing - insurance / 12;
+    // maxPI = (homePrice - down) * factor + homePrice * taxRate/12
+    // maxPI = homePrice*(factor + taxRate/12) - down*factor
+    const homePrice = (maxPI + down * factor) / (factor + taxRate / 12);
+    const loanAmount = homePrice - down;
+    const monthlyPI = loanAmount * factor;
+    const monthlyTax = homePrice * taxRate / 12;
+    const totalMonthly = monthlyPI + monthlyTax + insurance / 12;
+    const box = document.getElementById('ha-result')!;
+    box.hidden = false;
+    if (maxMonthlyHousing <= 0 || homePrice <= 0) {
+      box.innerHTML = '<p style="color:red">Your debt load is too high to qualify for a mortgage under standard guidelines. Focus on reducing existing debt first.</p>';
+      return;
+    }
+    box.innerHTML = `
+      <p><strong>Maximum Affordable Home Price:</strong> $${fmt(homePrice)}</p>
+      <p><strong>Loan Amount:</strong> $${fmt(loanAmount)}</p>
+      <p><strong>Estimated Monthly Payment (P&I + tax + insurance):</strong> $${fmt(totalMonthly)}</p>
+      <p><small>Based on 28% front-end / 36% back-end DTI guidelines used by conventional lenders.</small></p>
+    `;
+  });
+</script>

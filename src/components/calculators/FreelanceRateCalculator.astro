@@ -1,0 +1,38 @@
+---
+---
+<div class="calc-widget">
+  <form id="fr-form" novalidate>
+    <label>Desired Annual Take-Home Income ($) <input type="number" id="income" min="0" step="1000" value="80000" /></label>
+    <label>Billable Hours per Week <input type="number" id="hours" min="1" max="60" step="1" value="30" /></label>
+    <label>Weeks Worked per Year <input type="number" id="weeks" min="1" max="52" step="1" value="48" /></label>
+    <label>Annual Business Expenses ($) <input type="number" id="expenses" min="0" step="100" value="5000" /></label>
+    <label>Self-Employment Tax + Income Tax Rate (%) <input type="number" id="taxRate" min="0" max="60" step="1" value="30" /></label>
+    <label>Desired Profit Buffer (%) <input type="number" id="buffer" min="0" max="50" step="5" value="15" /></label>
+    <button type="submit">Calculate</button>
+  </form>
+  <div id="fr-result" class="result-box" hidden></div>
+</div>
+<script>
+  document.getElementById('fr-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const get = (id: string) => parseFloat((document.getElementById(id) as HTMLInputElement).value) || 0;
+    const income = get('income'), hours = get('hours'), weeks = get('weeks');
+    const expenses = get('expenses'), taxRate = get('taxRate') / 100, buffer = get('buffer') / 100;
+    const fmt = (n: number) => n.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    const totalBillableHours = hours * weeks;
+    // Gross revenue needed: income = revenue * (1 - tax) - expenses => revenue = (income + expenses) / (1 - tax)
+    const grossNeeded = (income + expenses) / (1 - taxRate);
+    const withBuffer = grossNeeded * (1 + buffer);
+    const minRate = grossNeeded / totalBillableHours;
+    const recommendedRate = withBuffer / totalBillableHours;
+    const box = document.getElementById('fr-result')!;
+    box.hidden = false;
+    box.innerHTML = `
+      <p><strong>Total Billable Hours per Year:</strong> ${totalBillableHours.toLocaleString()}</p>
+      <p><strong>Gross Revenue Needed:</strong> $${fmt(grossNeeded)}/year</p>
+      <p><strong>Minimum Hourly Rate (break-even):</strong> $${fmt(minRate)}/hr</p>
+      <p><strong>Recommended Rate (with ${(buffer*100).toFixed(0)}% buffer):</strong> $${fmt(recommendedRate)}/hr</p>
+      <p><small>The buffer covers slow months, scope creep, and non-billable business time.</small></p>
+    `;
+  });
+</script>

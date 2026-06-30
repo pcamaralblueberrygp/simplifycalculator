@@ -1,0 +1,41 @@
+---
+---
+<div class="calc-widget">
+  <form id="cs-form" novalidate>
+    <label>Current College Cost per Year ($) <input type="number" id="cost" min="0" step="1000" value="30000" /></label>
+    <label>Years Until College <input type="number" id="years" min="1" max="20" step="1" value="10" /></label>
+    <label>Years in College <input type="number" id="colYears" min="1" max="6" step="1" value="4" /></label>
+    <label>College Cost Inflation Rate (%) <input type="number" id="inflation" min="0" step="0.1" value="5" /></label>
+    <label>Expected Annual Return on 529 (%) <input type="number" id="returnRate" min="0" step="0.1" value="6" /></label>
+    <label>Current 529 Balance ($) <input type="number" id="current" min="0" step="500" value="5000" /></label>
+    <button type="submit">Calculate</button>
+  </form>
+  <div id="cs-result" class="result-box" hidden></div>
+</div>
+<script>
+  document.getElementById('cs-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const get = (id: string) => parseFloat((document.getElementById(id) as HTMLInputElement).value) || 0;
+    const cost = get('cost'), years = get('years'), colYears = get('colYears');
+    const inflation = get('inflation') / 100, returnRate = get('returnRate') / 100 / 12;
+    const current = get('current');
+    const fmt = (n: number) => n.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+    // Total future college cost
+    let totalCost = 0;
+    for (let y = 0; y < colYears; y++) totalCost += cost * Math.pow(1 + inflation, years + y);
+    // Future value of current balance
+    const fvCurrent = current * Math.pow(1 + returnRate * 12, years);
+    const remaining = Math.max(0, totalCost - fvCurrent);
+    // Monthly contribution needed
+    const n = years * 12;
+    const monthlyNeeded = returnRate > 0 ? remaining * returnRate / (Math.pow(1 + returnRate, n) - 1) : remaining / n;
+    const box = document.getElementById('cs-result')!;
+    box.hidden = false;
+    box.innerHTML = `
+      <p><strong>Projected Total College Cost (${colYears} years):</strong> $${fmt(totalCost)}</p>
+      <p><strong>Future Value of Current 529 Balance:</strong> $${fmt(fvCurrent)}</p>
+      <p><strong>Additional Amount Needed:</strong> $${fmt(remaining)}</p>
+      <p><strong>Required Monthly Contribution:</strong> $${fmt(monthlyNeeded)}/month for ${years} years</p>
+    `;
+  });
+</script>
