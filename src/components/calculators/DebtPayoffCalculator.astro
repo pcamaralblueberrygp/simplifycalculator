@@ -36,7 +36,7 @@
   const resultBox = document.getElementById('result-box') as HTMLDivElement;
   const warningBox = document.getElementById('warning-box') as HTMLDivElement;
 
-  form.addEventListener('submit', (e) => {
+  form?.addEventListener('submit', (e) => {
     e.preventDefault();
     const startBalance = parseFloat(
       (document.getElementById('balance') as HTMLInputElement).value

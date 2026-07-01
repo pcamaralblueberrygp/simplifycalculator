@@ -44,7 +44,7 @@
   const form = document.getElementById('calc-form') as HTMLFormElement;
   const resultBox = document.getElementById('result-box') as HTMLDivElement;
 
-  form.addEventListener('submit', (e) => {
+  form?.addEventListener('submit', (e) => {
     e.preventDefault();
     const price = parseFloat((document.getElementById('price') as HTMLInputElement).value);
     const down = parseFloat((document.getElementById('down') as HTMLInputElement).value);
