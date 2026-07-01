@@ -1,301 +1,638 @@
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap');
+
+/* ── Design Tokens ── */
 :root {
-  --bg: #f7f8fb;
-  --surface: #ffffff;
-  --text: #1a1f2b;
-  --muted: #5b6373;
-  --border: #e3e6ec;
-  --brand: #1758c4;
-  --brand-dark: #0f3f8f;
-  --accent: #0f9d6b;
-  --radius: 10px;
-  --max-width: 880px;
+  --ink:          #0f1e34;
+  --navy:         #16305c;
+  --blue:         #1f5fd6;
+  --blue-light:   #4d86ee;
+  --mint:         #7fe3c0;
+  --text-body:    #48586f;
+  --text-muted:   #54637a;
+  --text-faint:   #6a788f;
+  --bg-page:      #ffffff;
+  --bg-soft:      #f5f7fb;
+  --bg-result:    #f4f8ff;
+  --border:       #e6e8ee;
+  --border-input: #dde2ea;
+  --border-result:#dbe6fb;
+  --footer-bg:    #0f1e34;
+  --footer-line:  #22344f;
+  --footer-text:  #aeb9cc;
+  --footer-faint: #6d7d95;
+  --max-width:    1180px;
+  --radius-sm:    8px;
+  --radius-md:    12px;
+  --radius-lg:    14px;
+  --radius-xl:    16px;
+  --radius-pill:  100px;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-html,
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { font-size: 16px; }
 body {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  background: var(--bg-page);
+  color: var(--ink);
   line-height: 1.6;
 }
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img, svg { display: block; }
 
-a {
-  color: var(--brand);
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
+/* ── Layout ── */
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 40px;
 }
+@media (max-width: 700px) { .container { padding: 0 20px; } }
 
-header.site-header {
-  background: var(--surface);
+/* ── Nav ── */
+.site-nav {
+  background: var(--bg-page);
   border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
-
-header.site-header .container {
+.site-nav .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
-
-.brand {
-  font-weight: 700;
-  font-size: 1.25rem;
-  color: var(--text);
+.site-nav .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
 }
-
-.brand span {
-  color: var(--brand);
+.site-nav .nav-links a {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #3a4a63;
 }
-
-nav.breadcrumbs {
-  font-size: 0.9rem;
-  color: var(--muted);
-  margin: 20px 0 0;
-}
-
-main {
-  padding: 32px 0 64px;
-}
-
-h1 {
-  font-size: 1.9rem;
-  margin: 8px 0 12px;
-  line-height: 1.25;
-}
-
-h2 {
-  font-size: 1.3rem;
-  margin: 36px 0 12px;
-}
-
-.intro {
-  font-size: 1.05rem;
-  color: var(--muted);
-  margin-bottom: 28px;
-}
-
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 24px;
-  margin-bottom: 24px;
-}
-
-.calc-form .field {
-  margin-bottom: 16px;
-}
-
-.calc-form label {
-  display: block;
+.site-nav .nav-links a:hover { color: var(--blue); text-decoration: none; }
+.btn-nav {
+  font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 600;
-  font-size: 0.9rem;
-  margin-bottom: 6px;
-}
-
-.calc-form .hint {
-  font-size: 0.8rem;
-  color: var(--muted);
-  margin-top: 4px;
-}
-
-.calc-form input,
-.calc-form select {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  font-size: 1rem;
-  background: #fff;
-  color: var(--text);
-}
-
-.calc-form input:focus,
-.calc-form select:focus {
-  outline: 2px solid var(--brand);
-  outline-offset: 1px;
-}
-
-.calc-form button {
-  background: var(--brand);
+  font-size: 14px;
+  background: var(--navy);
   color: #fff;
   border: none;
-  padding: 12px 22px;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
+  border-radius: var(--radius-sm);
+  padding: 9px 18px;
   cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
 }
+.btn-nav:hover { background: #1a3d73; text-decoration: none; color: #fff; }
+.logo-img { height: 28px; width: auto; }
 
-.calc-form button:hover {
-  background: var(--brand-dark);
-}
-
-.result-box {
-  margin-top: 20px;
-  padding: 18px;
-  border-radius: 8px;
-  background: #eef5ff;
-  border: 1px solid #cfe1fb;
-  display: none;
-}
-
-.result-box.visible {
-  display: block;
-}
-
-.result-box .headline {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--brand-dark);
-  margin-bottom: 6px;
-}
-
-.result-box .row {
-  display: flex;
-  justify-content: space-between;
-  padding: 4px 0;
-  border-bottom: 1px dashed #cfe1fb;
-  font-size: 0.95rem;
-}
-
-.result-box .row:last-child {
-  border-bottom: none;
-}
-
-.warning-box {
-  margin-top: 16px;
-  padding: 14px 16px;
-  border-radius: 8px;
-  background: #fff4e5;
-  border: 1px solid #f4d9a8;
-  color: #7a4a00;
-  font-size: 0.9rem;
-  display: none;
-}
-
-.warning-box.visible {
-  display: block;
-}
-
-table.schedule {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.85rem;
-  margin-top: 16px;
-}
-
-table.schedule th,
-table.schedule td {
-  text-align: right;
-  padding: 6px 8px;
-  border-bottom: 1px solid var(--border);
-}
-
-table.schedule th:first-child,
-table.schedule td:first-child {
-  text-align: left;
-}
-
-.schedule-wrap {
-  max-height: 360px;
-  overflow-y: auto;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 0 8px;
-}
-
-.faq dt {
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-block;
+  background: var(--blue);
+  color: #fff;
+  font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 600;
-  margin-top: 16px;
-}
-
-.faq dd {
-  margin: 6px 0 0;
-  color: var(--muted);
-}
-
-.formula-source {
-  font-size: 0.85rem;
-  color: var(--muted);
-  margin-top: 0.5rem;
-}
-
-.formula-source a {
-  color: var(--brand);
-}
-
-.disclaimer {
-  font-size: 0.85rem;
-  color: var(--muted);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px 20px;
-  margin-top: 32px;
-}
-
-.calc-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 16px;
-  margin-top: 24px;
-}
-
-.calc-tile {
-  display: block;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px;
-  color: var(--text);
-}
-
-.calc-tile:hover {
-  border-color: var(--brand);
+  font-size: 15px;
+  padding: 15px 26px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background 150ms ease, transform 150ms ease;
   text-decoration: none;
 }
+.btn-primary:hover { background: #1a52c0; transform: translateY(-1px); text-decoration: none; color: #fff; }
+.btn-text {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--navy);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn-text:hover { text-decoration: underline; }
 
-.calc-tile .category {
-  font-size: 0.75rem;
+/* ── Hero ── */
+.hero {
+  background: linear-gradient(180deg, #fff, #f5f7fb);
+  padding: 64px 40px 68px;
+}
+.hero .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #eaf0fb;
+  color: var(--blue);
+  font-weight: 600;
+  font-size: 12.5px;
+  border-radius: var(--radius-pill);
+  padding: 5px 12px;
+  margin-bottom: 20px;
+}
+.hero-badge::before {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  background: var(--blue);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 52px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+.hero-copy {
+  font-size: 17px;
+  color: var(--text-body);
+  max-width: 440px;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+.hero-cta {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* ── Hero Calc Card ── */
+.hero-calc-card {
+  background: #fff;
+  border: 1px solid #e2e6ee;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 24px 60px -20px rgba(22,48,92,.28);
+  overflow: hidden;
+}
+.hcc-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 16px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hcc-header-title { font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 14px; }
+.hcc-tag { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--mint); }
+.hcc-body { padding: 24px 22px; display: flex; flex-direction: column; gap: 16px; }
+.hcc-label {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--accent);
+  color: var(--text-faint);
+  margin-bottom: 6px;
+}
+.hcc-input-row {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-input);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.hcc-input-row input {
+  flex: 1;
+  border: none;
+  padding: 10px 12px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--ink);
+  background: transparent;
+  outline: none;
+  width: 100%;
+}
+.hcc-input-row input:focus { outline: none; }
+.hcc-unit { padding: 0 12px; font-size: 13px; color: var(--text-faint); }
+.hcc-two-up { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.hcc-progress-track {
+  height: 6px;
+  background: #eef1f6;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.hcc-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--blue-light));
+  border-radius: 3px;
+  transition: width 300ms ease;
+}
+.hcc-result {
+  background: var(--bg-result);
+  border: 1px solid var(--border-result);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.hcc-result-label { font-family: 'IBM Plex Sans', sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-faint); margin-bottom: 4px; }
+.hcc-result-main { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 34px; letter-spacing: -0.02em; color: var(--navy); line-height: 1; }
+.hcc-result-secondary { text-align: right; }
+.hcc-result-secondary .hcc-result-label { text-align: right; }
+.hcc-result-sub { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 16px; color: var(--blue); }
+
+/* ── Trust Strip ── */
+.trust-strip {
+  background: #fafbfd;
+  border-top: 1px solid #eceef3;
+  border-bottom: 1px solid #eceef3;
+  padding: 20px 40px;
+}
+.trust-strip .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 52px;
+  flex-wrap: wrap;
+}
+.trust-strip span {
+  font-size: 13px;
+  font-weight: 600;
+  color: #8794a8;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+/* ── Section ── */
+.section { padding: 64px 40px; }
+.section-center { text-align: center; }
+.eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.section-h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 36px;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 48px;
+}
+.section-h2-sm {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 30px;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+/* ── How It Works ── */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.step-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+.step-num {
+  font-family: 'Space Mono', monospace;
   font-weight: 700;
+  font-size: 14px;
+  color: var(--blue);
+  margin-bottom: 14px;
 }
+.step-card h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 19px;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.step-card p { font-size: 14.5px; color: var(--text-muted); line-height: 1.6; }
 
+/* ── Calc Grid / Tiles ── */
+.calc-grid-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+.calc-tile {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  background: #fafbfd;
+  color: var(--ink);
+  transition: border-color 150ms ease;
+}
+.calc-tile:hover { border-color: var(--blue); text-decoration: none; }
+.calc-tile-category {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 6px;
+}
 .calc-tile h3 {
-  margin: 6px 0 4px;
-  font-size: 1.05rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.calc-tile p { font-size: 13px; color: #77839a; margin: 0; line-height: 1.5; }
+
+/* ── FAQ ── */
+.faq-list { max-width: 760px; margin: 0 auto; }
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+.faq-trigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  gap: 16px;
+}
+.faq-trigger-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--ink);
+}
+.faq-icon { font-size: 20px; color: var(--blue); flex-shrink: 0; line-height: 1; }
+.faq-answer {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  padding: 0 4px 20px;
+  display: none;
+}
+.faq-item.open .faq-answer { display: block; }
+.faq-item.open .faq-icon { color: var(--text-faint); }
+
+/* ── Footer ── */
+.site-footer {
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 52px 40px 30px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 32px;
+  padding-bottom: 38px;
+  border-bottom: 1px solid var(--footer-line);
+  margin-bottom: 24px;
+}
+.footer-brand p {
+  font-size: 13.5px;
+  color: var(--footer-text);
+  line-height: 1.6;
+  margin-top: 12px;
+  max-width: 280px;
+}
+.footer-logo-img { height: 26px; width: auto; margin-bottom: 4px; }
+.footer-col h4 {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: #fff;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.footer-col ul li a {
+  font-size: 13.5px;
+  color: var(--footer-text);
+  transition: color 150ms;
+}
+.footer-col ul li a:hover { color: #fff; text-decoration: none; }
+.footer-fine {
+  font-size: 12.5px;
+  color: var(--footer-faint);
 }
 
-.calc-tile p {
-  margin: 0;
-  font-size: 0.85rem;
-  color: var(--muted);
+/* ── Calculator LP ── */
+.lp-header {
+  background: linear-gradient(180deg, #fff, #f5f7fb);
+  padding: 48px 40px 40px;
+  border-bottom: 1px solid var(--border);
+}
+.lp-header .container { max-width: 780px; }
+.breadcrumbs {
+  font-size: 13px;
+  color: var(--text-faint);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.breadcrumbs a { color: var(--text-faint); }
+.breadcrumbs a:hover { color: var(--blue); text-decoration: none; }
+.lp-header h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 36px;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+.lp-header .lp-intro {
+  font-size: 16px;
+  color: var(--text-body);
+  line-height: 1.65;
+  max-width: 640px;
+}
+.lp-body { padding: 40px 40px 64px; }
+.lp-body .container { max-width: 780px; }
+.lp-section-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 12px;
+}
+.lp-body h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--ink);
+  margin: 32px 0 12px;
+  letter-spacing: -0.01em;
+}
+.lp-body h2:first-of-type { margin-top: 0; }
+.lp-body p { font-size: 15.5px; color: var(--text-body); line-height: 1.7; margin-bottom: 12px; }
+.formula-source { font-size: 13px; color: var(--text-faint); margin-top: 4px; }
+.formula-source a { color: var(--blue); }
+
+/* ── Calculator Widget ── */
+.calc-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 20px rgba(22,48,92,.07);
+}
+.calc-card-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 14px 22px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+}
+.calc-card-body { padding: 24px 22px; }
+
+.calc-widget form { display: flex; flex-direction: column; gap: 14px; }
+.calc-widget label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-faint);
+}
+.calc-widget input,
+.calc-widget select {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--ink);
+  border: 1px solid var(--border-input);
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: #fff;
+  width: 100%;
+  outline: none;
+  transition: border-color 150ms;
+}
+.calc-widget input:focus,
+.calc-widget select:focus { border-color: var(--blue); }
+.calc-widget fieldset {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.calc-widget legend {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--blue);
+  padding: 0 6px;
+}
+.calc-widget button[type="submit"] {
+  background: var(--blue);
+  color: #fff;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  border: none;
+  border-radius: 10px;
+  padding: 13px 24px;
+  cursor: pointer;
+  transition: background 150ms ease, transform 150ms ease;
+  align-self: flex-start;
+}
+.calc-widget button[type="submit"]:hover { background: #1a52c0; transform: translateY(-1px); }
+.result-box {
+  background: var(--bg-result);
+  border: 1px solid var(--border-result);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  margin-top: 16px;
+}
+.result-box[hidden] { display: none; }
+.result-box p { margin: 0 0 8px; font-size: 15px; color: var(--text-body); }
+.result-box p:last-child { margin-bottom: 0; }
+.result-box p strong { color: var(--navy); font-family: 'Space Grotesk', sans-serif; }
+.result-box hr { border: none; border-top: 1px solid var(--border-result); margin: 10px 0; }
+
+/* ── LP FAQ ── */
+.lp-faq { margin-top: 8px; }
+.lp-faq dt {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink);
+  margin-top: 18px;
+}
+.lp-faq dd {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  margin: 6px 0 0;
+  line-height: 1.7;
 }
 
-footer.site-footer {
-  border-top: 1px solid var(--border);
-  padding: 24px 0 40px;
-  color: var(--muted);
-  font-size: 0.85rem;
+/* ── Disclaimer ── */
+.disclaimer {
+  font-size: 13px;
+  color: var(--text-faint);
+  background: #fafbfd;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  margin-top: 32px;
+  line-height: 1.6;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .hero .container { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 36px; }
+  .hero-calc-card { display: none; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .section-h2 { font-size: 28px; }
+}
+@media (max-width: 600px) {
+  .hero { padding: 40px 20px 48px; }
+  .trust-strip .container { gap: 20px; }
+  .section { padding: 48px 20px; }
+  .lp-header { padding: 32px 20px 28px; }
+  .lp-body { padding: 28px 20px 48px; }
+  .footer-top { grid-template-columns: 1fr; }
+  .site-nav .nav-links { display: none; }
+  .calc-grid { grid-template-columns: 1fr 1fr; }
 }

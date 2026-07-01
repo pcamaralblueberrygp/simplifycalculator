@@ -3,31 +3,224 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { CALCULATORS } from '../data/calculators';
 
 const categories = Array.from(new Set(CALCULATORS.map((c) => c.category)));
+const featured = CALCULATORS.slice(0, 8);
 ---
 
 <BaseLayout
   title="Free Financial Calculators"
-  description="Free, fast financial calculators for loans, mortgages, savings, investing, debt payoff, and retirement planning."
+  description="Free, fast financial calculators for loans, mortgages, savings, investing, debt payoff, and retirement planning. No signup required."
   path="/"
 >
-  <h1>Free Financial Calculators</h1>
-  <p class="intro">
-    Fast, no-signup calculators for loans, mortgages, savings, investing, debt payoff, and
-    retirement planning. Pick a calculator below to get started.
-  </p>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-left">
+        <div class="hero-badge">28 money calculators — free, no signup</div>
+        <h1>Know the real cost of any loan before you sign.</h1>
+        <p class="hero-copy">
+          Plain-English calculators for mortgages, auto loans, savings, investing, and debt payoff.
+          See your true monthly payment and total interest in seconds.
+        </p>
+        <div class="hero-cta">
+          <a href="/calculators/loan-payment-calculator" class="btn-primary">Start calculating — free</a>
+          <a href="#calculators" class="btn-text">Browse all calculators →</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-calc-card">
+          <div class="hcc-header">
+            <span class="hcc-header-title">Loan payment calculator</span>
+            <span class="hcc-tag">/ fixed rate</span>
+          </div>
+          <div class="hcc-body">
+            <div>
+              <div class="hcc-label">Loan Amount</div>
+              <div class="hcc-input-row">
+                <input type="number" id="hcc-amount" value="32000" min="1000" step="500" />
+                <span class="hcc-unit">USD</span>
+              </div>
+            </div>
+            <div class="hcc-two-up">
+              <div>
+                <div class="hcc-label">Rate</div>
+                <div class="hcc-input-row">
+                  <input type="number" id="hcc-rate" value="6.4" min="0.1" max="30" step="0.1" />
+                  <span class="hcc-unit">%</span>
+                </div>
+              </div>
+              <div>
+                <div class="hcc-label">Term</div>
+                <div class="hcc-input-row">
+                  <input type="number" id="hcc-term" value="60" min="12" max="360" step="12" />
+                  <span class="hcc-unit">mo</span>
+                </div>
+              </div>
+            </div>
+            <div class="hcc-progress-track">
+              <div class="hcc-progress-fill" id="hcc-progress" style="width: 64%"></div>
+            </div>
+            <div class="hcc-result">
+              <div>
+                <div class="hcc-result-label">Monthly Payment</div>
+                <div class="hcc-result-main" id="hcc-payment">$623</div>
+              </div>
+              <div class="hcc-result-secondary">
+                <div class="hcc-result-label">Total Interest</div>
+                <div class="hcc-result-sub" id="hcc-interest">$5,404</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  {categories.map((category) => (
-    <section>
-      <h2>{category}</h2>
+  <!-- Trust strip -->
+  <div class="trust-strip">
+    <div class="container">
+      <span>28 calculators</span>
+      <span>·</span>
+      <span>No account required</span>
+      <span>·</span>
+      <span>Numbers you can trust</span>
+      <span>·</span>
+      <span>Updated 2026 rates</span>
+    </div>
+  </div>
+
+  <!-- How it works -->
+  <section class="section section-center">
+    <div class="container">
+      <div class="eyebrow">How it works</div>
+      <h2 class="section-h2">Answers in three steps</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h3>Pick a calculator</h3>
+          <p>Loan, mortgage, savings, investing, debt payoff, and more — all in one place.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h3>Enter your numbers</h3>
+          <p>Amount, rate, term. Sensible defaults so you can start with nothing.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h3>See the full picture</h3>
+          <p>Monthly payment, total interest, and a breakdown you can actually understand.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular calculators -->
+  <section class="section" id="calculators" style="padding-top: 0">
+    <div class="container">
+      <div class="calc-grid-header">
+        <h2 class="section-h2-sm">Popular calculators</h2>
+        <a href="#all-calculators" class="btn-text" style="font-size:14px; color: var(--blue);">See all 28 →</a>
+      </div>
       <div class="calc-grid">
-        {CALCULATORS.filter((c) => c.category === category).map((calc) => (
+        {featured.map((calc) => (
           <a class="calc-tile" href={`/calculators/${calc.slug}`}>
-            <span class="category">{calc.category}</span>
+            <div class="calc-tile-category">{calc.category}</div>
             <h3>{calc.shortTitle}</h3>
-            <p>{calc.metaDescription}</p>
+            <p>{calc.metaDescription.slice(0, 80)}…</p>
           </a>
         ))}
       </div>
-    </section>
-  ))}
+    </div>
+  </section>
+
+  <!-- All calculators by category -->
+  <section class="section" id="all-calculators" style="background: var(--bg-soft); padding-top: 48px">
+    <div class="container">
+      <div class="eyebrow">All calculators</div>
+      <h2 class="section-h2">Every tool, by category</h2>
+      {categories.map((category) => (
+        <div style="margin-bottom: 40px">
+          <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border);">{category}</h3>
+          <div class="calc-grid">
+            {CALCULATORS.filter((c) => c.category === category).map((calc) => (
+              <a class="calc-tile" href={`/calculators/${calc.slug}`}>
+                <h3>{calc.shortTitle}</h3>
+                <p>{calc.metaDescription.slice(0, 80)}…</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-center">
+    <div class="container">
+      <div class="eyebrow">FAQ</div>
+      <h2 class="section-h2">Questions, answered</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-trigger-text">Are the calculators really free?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">Yes, 100% free. No account, no credit card, no trial period. Every calculator on SimplifyCalculator is free to use as many times as you want.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-trigger-text">Do you store my financial data?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">No. All calculations run in your browser. The numbers you enter never leave your device — we do not collect, store, or transmit any of your financial information.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-trigger-text">How accurate are the results?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">Our calculators use standard financial formulas (the same ones banks and lenders use). Results are estimates for planning purposes — actual payments may differ slightly due to rounding, fees, or lender-specific terms. Always confirm with your lender before signing.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-trigger-text">Can I use these calculators on mobile?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">Yes. Every calculator is fully responsive and works on phones, tablets, and desktops without needing to download an app.</div>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
+
+<script>
+  // Hero live calculator
+  function hccCalc() {
+    const amount = parseFloat((document.getElementById('hcc-amount') as HTMLInputElement)?.value) || 0;
+    const annualRate = parseFloat((document.getElementById('hcc-rate') as HTMLInputElement)?.value) || 0;
+    const months = parseInt((document.getElementById('hcc-term') as HTMLInputElement)?.value) || 1;
+    const r = annualRate / 100 / 12;
+    const payment = r > 0 ? amount * r / (1 - Math.pow(1 + r, -months)) : amount / months;
+    const totalInterest = payment * months - amount;
+    const fmt = (n: number) => '$' + Math.max(0,n).toLocaleString('en-US', {maximumFractionDigits: 0});
+    const payEl = document.getElementById('hcc-payment');
+    const intEl = document.getElementById('hcc-interest');
+    const prog = document.getElementById('hcc-progress');
+    if (payEl) payEl.textContent = fmt(payment);
+    if (intEl) intEl.textContent = fmt(totalInterest);
+    if (prog) prog.style.width = Math.min(100, (months / 360) * 100) + '%';
+  }
+  ['hcc-amount','hcc-rate','hcc-term'].forEach(id => {
+    document.getElementById(id)?.addEventListener('input', hccCalc);
+  });
+  hccCalc();
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item')!;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>

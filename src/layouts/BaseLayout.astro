@@ -1,15 +1,18 @@
 ---
 import '../styles/global.css';
+import { CALCULATORS } from '../data/calculators';
 
 interface Props {
   title: string;
   description: string;
-  path?: string; // e.g. "/calculators/loan-payment" — used for canonical URL
+  path?: string;
 }
 
 const { title, description, path = '/' } = Astro.props as Props;
-const canonical = new URL(path, Astro.site ?? 'https://simplifycalculator.com').toString();
+const canonical = new URL(path, 'https://simplifycalculator.com').toString();
 const siteName = 'SimplifyCalculator';
+
+const popularCalcs = CALCULATORS.slice(0, 8);
 ---
 
 <!doctype html>
@@ -20,14 +23,14 @@ const siteName = 'SimplifyCalculator';
     <title>{title} | {siteName}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/logo-mark.svg" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={`${title} | ${siteName}`} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content={title} />
+    <meta name="twitter:title" content={`${title} | ${siteName}`} />
     <meta name="twitter:description" content={description} />
 
     <!-- Google Tag Manager -->
@@ -46,28 +49,56 @@ const siteName = 'SimplifyCalculator';
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9JXL7RC"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <header class="site-header">
+
+    <nav class="site-nav">
       <div class="container">
-        <a class="brand" href="/"><span>Simplify</span>Calculator</a>
-        <nav>
-          <a href="/">All calculators</a>
-        </nav>
+        <a href="/">
+          <img src="/logo-full.svg" alt="SimplifyCalculator" class="logo-img" />
+        </a>
+        <div class="nav-links">
+          <a href="/">Calculators</a>
+          <a href="/about">About</a>
+          <a href="/calculators/loan-payment-calculator" class="btn-nav">Open calculator</a>
+        </div>
       </div>
-    </header>
-    <main class="container">
+    </nav>
+
+    <main>
       <slot />
     </main>
+
     <footer class="site-footer">
       <div class="container">
-        <p>
-          SimplifyCalculator provides free calculators for educational purposes only. Results are
-          estimates, not financial, tax, or legal advice. Verify figures with a qualified
-          professional before making financial decisions.
-        </p>
-        <p>
-          <a href="/about">About</a> &middot; <a href="/privacy-policy">Privacy Policy</a> &middot; <a href="/cookie-policy">Cookie Policy</a>
-        </p>
-        <p>&copy; {new Date().getFullYear()} SimplifyCalculator.</p>
+        <div class="footer-top">
+          <div class="footer-brand">
+            <img src="/logo-full-white.svg" alt="SimplifyCalculator" class="footer-logo-img" />
+            <p>Free, honest money calculators. Built to help you borrow smarter.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Calculators</h4>
+            <ul>
+              <li><a href="/calculators/mortgage-calculator">Mortgage</a></li>
+              <li><a href="/calculators/car-loan-calculator">Auto Loan</a></li>
+              <li><a href="/calculators/loan-payment-calculator">Personal Loan</a></li>
+              <li><a href="/calculators/debt-payoff-calculator">Debt Payoff</a></li>
+              <li><a href="/">All calculators →</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="/about">About</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="/privacy-policy">Privacy Policy</a></li>
+              <li><a href="/cookie-policy">Cookie Policy</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="footer-fine">© {new Date().getFullYear()} SimplifyCalculator. Estimates are for informational purposes only and do not constitute financial advice.</p>
       </div>
     </footer>
   </body>

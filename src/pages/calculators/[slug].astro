@@ -37,7 +37,6 @@ export function getStaticPaths() {
   }));
 }
 
-// Add new calc types here as you create new component files.
 const componentMap: Record<CalcType, any> = {
   loan: LoanCalculator,
   mortgage: MortgageCalculator,
@@ -77,10 +76,7 @@ const faqJsonLd = {
   mainEntity: calc.faqs.map((faq: { q: string; a: string }) => ({
     '@type': 'Question',
     name: faq.q,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: faq.a,
-    },
+    acceptedAnswer: { '@type': 'Answer', text: faq.a },
   })),
 };
 ---
@@ -92,44 +88,66 @@ const faqJsonLd = {
 >
   <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
 
-  <nav class="breadcrumbs">
-    <a href="/">All calculators</a> / {calc.category} / {calc.shortTitle}
-  </nav>
-
-  <h1>{calc.title}</h1>
-  <p class="intro">{calc.intro}</p>
-
-  <div class="card">
-    <CalcWidget />
+  <!-- LP Header -->
+  <div class="lp-header">
+    <div class="container">
+      <nav class="breadcrumbs">
+        <a href="/">All calculators</a>
+        <span>›</span>
+        <span>{calc.category}</span>
+        <span>›</span>
+        <span>{calc.shortTitle}</span>
+      </nav>
+      <div class="eyebrow">{calc.category}</div>
+      <h1>{calc.title}</h1>
+      <p class="lp-intro">{calc.intro}</p>
+    </div>
   </div>
 
-  <h2>How this calculator works</h2>
-  {calc.formulaExplanation.split('\n\n').map((p: string) => <p>{p}</p>)}
-  {calc.formulaSource && (
-    <p class="formula-source">
-      Formula reference:{' '}
-      <a href={calc.formulaSource.url} target="_blank" rel="noopener noreferrer">
-        {calc.formulaSource.label}
-      </a>
-    </p>
-  )}
+  <!-- LP Body -->
+  <div class="lp-body">
+    <div class="container">
 
-  <h2>Example</h2>
-  <p>{calc.example}</p>
+      <!-- Calculator widget -->
+      <div class="calc-card">
+        <div class="calc-card-header">{calc.shortTitle}</div>
+        <div class="calc-card-body">
+          <CalcWidget />
+        </div>
+      </div>
 
-  <h2>Frequently asked questions</h2>
-  <dl class="faq">
-    {calc.faqs.map((faq: { q: string; a: string }) => (
-      <>
-        <dt>{faq.q}</dt>
-        <dd>{faq.a}</dd>
-      </>
-    ))}
-  </dl>
+      <!-- How it works -->
+      <div class="lp-section-label">How it works</div>
+      <h2>Formula & methodology</h2>
+      {calc.formulaExplanation.split('\n\n').map((p: string) => <p>{p}</p>)}
+      {calc.formulaSource && (
+        <p class="formula-source">
+          Source: <a href={calc.formulaSource.url} target="_blank" rel="noopener noreferrer">{calc.formulaSource.label}</a>
+        </p>
+      )}
 
-  <p class="disclaimer">
-    This calculator provides estimates for general informational purposes only and does not
-    constitute financial, tax, or legal advice. Always confirm important numbers with a
-    qualified professional or your lender/institution before making a decision.
-  </p>
+      <!-- Example -->
+      <div class="lp-section-label" style="margin-top: 32px">Example</div>
+      <h2>Worked example</h2>
+      <p>{calc.example}</p>
+
+      <!-- FAQ -->
+      <div class="lp-section-label" style="margin-top: 32px">FAQ</div>
+      <h2>Frequently asked questions</h2>
+      <dl class="lp-faq">
+        {calc.faqs.map((faq: { q: string; a: string }) => (
+          <>
+            <dt>{faq.q}</dt>
+            <dd>{faq.a}</dd>
+          </>
+        ))}
+      </dl>
+
+      <p class="disclaimer">
+        Results are estimates for general informational purposes only and do not constitute
+        financial, tax, or legal advice. Always confirm important figures with a qualified
+        professional or your lender before making a financial decision.
+      </p>
+    </div>
+  </div>
 </BaseLayout>
