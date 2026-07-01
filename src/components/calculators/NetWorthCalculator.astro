@@ -25,7 +25,7 @@
 </div>
 
 <script>
-  document.getElementById('nw-form')!.addEventListener('submit', (e) => {
+  document.getElementById('nw-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const get = (id: string) => parseFloat((document.getElementById(id) as HTMLInputElement).value) || 0;
     const assets = ['cash','investments','retirement','realestate','vehicle','otherassets'].reduce((s,id) => s+get(id),0);

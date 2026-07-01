@@ -12,7 +12,7 @@
 </div>
 
 <script>
-  document.getElementById('si-form')!.addEventListener('submit', (e) => {
+  document.getElementById('si-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const principal = parseFloat((document.getElementById('principal') as HTMLInputElement).value) || 0;
     const apy = parseFloat((document.getElementById('apy') as HTMLInputElement).value) / 100;

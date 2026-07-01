@@ -16,7 +16,7 @@
 </div>
 
 <script>
-  document.getElementById('r72-form')!.addEventListener('submit', (e) => {
+  document.getElementById('r72-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const rate = parseFloat((document.getElementById('rate') as HTMLInputElement).value);
     const years = parseFloat((document.getElementById('years') as HTMLInputElement).value);

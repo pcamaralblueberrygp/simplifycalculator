@@ -17,7 +17,7 @@
 </div>
 
 <script>
-  document.getElementById('hs-form')!.addEventListener('submit', (e) => {
+  document.getElementById('hs-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const hourly = parseFloat((document.getElementById('hourly') as HTMLInputElement).value);
     const annual = parseFloat((document.getElementById('annual') as HTMLInputElement).value);

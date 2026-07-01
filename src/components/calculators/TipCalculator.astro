@@ -11,7 +11,7 @@
 </div>
 
 <script>
-  document.getElementById('tip-form')!.addEventListener('submit', (e) => {
+  document.getElementById('tip-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const bill = parseFloat((document.getElementById('bill') as HTMLInputElement).value) || 0;
     const tipPct = parseFloat((document.getElementById('tip') as HTMLInputElement).value) / 100;

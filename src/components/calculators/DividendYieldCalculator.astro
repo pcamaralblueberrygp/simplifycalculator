@@ -10,7 +10,7 @@
   <div id="dy-result" class="result-box" hidden></div>
 </div>
 <script>
-  document.getElementById('dy-form')!.addEventListener('submit', (e) => {
+  document.getElementById('dy-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const dividend = parseFloat((document.getElementById('dividend') as HTMLInputElement).value) || 0;
     const price = parseFloat((document.getElementById('price') as HTMLInputElement).value) || 0;

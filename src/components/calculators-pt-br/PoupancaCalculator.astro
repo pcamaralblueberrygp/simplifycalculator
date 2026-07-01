@@ -12,7 +12,7 @@
   <div id="pp-result" class="result-box" hidden></div>
 </div>
 <script>
-  document.getElementById('pp-form')!.addEventListener('submit', (e) => {
+  document.getElementById('pp-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const get = (id: string) => parseFloat((document.getElementById(id) as HTMLInputElement).value) || 0;
     const selicAnual = get('selic'), tr = get('tr') / 100;

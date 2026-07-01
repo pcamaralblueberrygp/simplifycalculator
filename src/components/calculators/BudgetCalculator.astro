@@ -23,7 +23,7 @@
 </div>
 
 <script>
-  document.getElementById('budget-form')!.addEventListener('submit', (e) => {
+  document.getElementById('budget-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const get = (id: string) => parseFloat((document.getElementById(id) as HTMLInputElement).value) || 0;
     const income = get('income');

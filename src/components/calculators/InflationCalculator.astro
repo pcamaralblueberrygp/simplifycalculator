@@ -11,7 +11,7 @@
 </div>
 
 <script>
-  document.getElementById('inf-form')!.addEventListener('submit', (e) => {
+  document.getElementById('inf-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const pv = parseFloat((document.getElementById('pv') as HTMLInputElement).value) || 0;
     const rate = parseFloat((document.getElementById('rate') as HTMLInputElement).value) / 100;

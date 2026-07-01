@@ -11,7 +11,7 @@
 </div>
 
 <script>
-  document.getElementById('be-form')!.addEventListener('submit', (e) => {
+  document.getElementById('be-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const fixed = parseFloat((document.getElementById('fixed') as HTMLInputElement).value) || 0;
     const variable = parseFloat((document.getElementById('variable') as HTMLInputElement).value) || 0;

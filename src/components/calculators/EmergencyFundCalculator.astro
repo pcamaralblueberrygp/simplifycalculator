@@ -12,7 +12,7 @@
 </div>
 
 <script>
-  document.getElementById('ef-form')!.addEventListener('submit', (e) => {
+  document.getElementById('ef-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const get = (id: string) => parseFloat((document.getElementById(id) as HTMLInputElement).value) || 0;
     const expenses = get('expenses');
