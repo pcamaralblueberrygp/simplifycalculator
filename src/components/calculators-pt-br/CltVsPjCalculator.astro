@@ -4,12 +4,14 @@
   <form id="cp-form" novalidate>
     <fieldset><legend>CLT</legend>
       <label>Salário Bruto CLT (R$) <input type="number" id="bruto" min="0" step="50" value="6000" /></label>
+      <label>Benefícios Extras CLT — plano de saúde, VR/VA, etc. (R$/mês) <input type="number" id="beneficiosExtras" min="0" step="10" value="0" /></label>
     </fieldset>
     <fieldset><legend>PJ</legend>
       <label>Faturamento Mensal PJ (R$) <input type="number" id="faturamento" min="0" step="50" value="8000" /></label>
       <label>Alíquota Efetiva do Simples Nacional (%) <input type="number" id="simples" min="0" max="33" step="0.1" value="6" /></label>
-      <label>Custo do Contador (R$/mês) <input type="number" id="contador" min="0" step="10" value="200" /></label>
+      <label>Custo do Contador (R$/mês) <input type="number" id="contador" min="0" step="10" value="450" /></label>
       <label>Contribuição INSS Autônomo (R$/mês) <input type="number" id="inssAutonomo" min="0" step="10" value="220" /></label>
+      <label>Outras Despesas PJ — plano de saúde, ferramentas, etc. (R$/mês) <input type="number" id="outrasDespesasPj" min="0" step="10" value="0" /></label>
     </fieldset>
     <button type="submit">Comparar</button>
   </form>
@@ -21,6 +23,7 @@
     const get = (id: string) => parseFloat((document.getElementById(id) as HTMLInputElement).value) || 0;
     const fmt = (n: number) => 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     const bruto = get('bruto');
+    const beneficiosExtras = get('beneficiosExtras');
 
     // CLT: INSS progressivo + IRRF
     const faixasInss: [number, number][] = [[1412.00, 0.075], [2666.68, 0.09], [4000.03, 0.12], [7786.02, 0.14]];
@@ -40,25 +43,35 @@
     else irrf = baseIrrf * 0.275 - 896.00;
     irrf = Math.max(0, irrf);
     const liquidoClt = bruto - inss - irrf;
-    const beneficiosMensais = (bruto / 12) + ((bruto / 12) / 3) + (bruto * 0.08);
-    const valorTotalClt = liquidoClt + beneficiosMensais;
+    const beneficiosPadrao = (bruto / 12) + ((bruto / 12) / 3) + (bruto * 0.08);
+    const valorTotalClt = liquidoClt + beneficiosPadrao + beneficiosExtras;
 
     // PJ
     const faturamento = get('faturamento');
-    const simples = get('simples') / 100;
+    const simplesAliquota = get('simples') / 100;
+    const valorSimples = faturamento * simplesAliquota;
     const contador = get('contador');
     const inssAutonomo = get('inssAutonomo');
-    const liquidoPj = faturamento - (faturamento * simples) - contador - inssAutonomo;
+    const outrasDespesasPj = get('outrasDespesasPj');
+    const liquidoPj = faturamento - valorSimples - contador - inssAutonomo - outrasDespesasPj;
 
     const box = document.getElementById('cp-result')!;
     box.hidden = false;
     const diff = liquidoPj - valorTotalClt;
     box.innerHTML = `
-      <p><strong>CLT — Salário Líquido:</strong> ${fmt(liquidoClt)}</p>
-      <p><strong>CLT — Benefícios Mensais Equivalentes</strong> (13º + férias + FGTS): ${fmt(beneficiosMensais)}</p>
-      <p><strong>CLT — Valor Mensal Total:</strong> ${fmt(valorTotalClt)}</p>
+      <p><strong>CLT</strong></p>
+      <p>Salário Líquido (após INSS + IRRF): ${fmt(liquidoClt)}</p>
+      <p>Benefícios Padrão (13º + férias + FGTS): ${fmt(beneficiosPadrao)}</p>
+      ${beneficiosExtras > 0 ? `<p>Benefícios Extras (plano de saúde, VR/VA): ${fmt(beneficiosExtras)}</p>` : ''}
+      <p><strong>Valor Mensal Total CLT: ${fmt(valorTotalClt)}</strong></p>
       <hr/>
-      <p><strong>PJ — Líquido Mensal</strong> (após Simples, contador e INSS): ${fmt(liquidoPj)}</p>
+      <p><strong>PJ</strong></p>
+      <p>Faturamento: ${fmt(faturamento)}</p>
+      <p>(-) Simples Nacional (${(simplesAliquota * 100).toFixed(1)}%): -${fmt(valorSimples)}</p>
+      <p>(-) Contador: -${fmt(contador)}</p>
+      <p>(-) INSS Autônomo: -${fmt(inssAutonomo)}</p>
+      ${outrasDespesasPj > 0 ? `<p>(-) Outras Despesas: -${fmt(outrasDespesasPj)}</p>` : ''}
+      <p><strong>Líquido Mensal PJ: ${fmt(liquidoPj)}</strong></p>
       <hr/>
       <p><strong>Diferença (PJ - CLT):</strong> <span style="color:${diff >= 0 ? 'green' : 'red'}">${fmt(diff)}</span></p>
       <p><small>Lembre-se: o PJ não tem estabilidade, seguro-desemprego, FGTS disponível imediatamente nem férias remuneradas garantidas — considere isso além do número.</small></p>

@@ -4,6 +4,9 @@
   <form id="sl-form" novalidate>
     <label>Salário Bruto Mensal (R$) <input type="number" id="bruto" min="0" step="50" value="4500" /></label>
     <label>Número de Dependentes <input type="number" id="dependentes" min="0" max="10" step="1" value="0" /></label>
+    <label>Desconto Vale-Transporte (R$/mês) <input type="number" id="valeTransporte" min="0" step="10" value="0" /></label>
+    <label>Plano de Saúde / Outros Descontos (R$/mês) <input type="number" id="outrosDescontos" min="0" step="10" value="0" /></label>
+    <label>Benefícios Não-Tributáveis recebidos — vale-refeição/alimentação (R$/mês) <input type="number" id="beneficiosNaoTributaveis" min="0" step="10" value="0" /></label>
     <button type="submit">Calcular</button>
   </form>
   <div id="sl-result" class="result-box" hidden></div>
@@ -13,6 +16,9 @@
     e.preventDefault();
     const bruto = parseFloat((document.getElementById('bruto') as HTMLInputElement).value) || 0;
     const dependentes = parseInt((document.getElementById('dependentes') as HTMLInputElement).value) || 0;
+    const valeTransporte = parseFloat((document.getElementById('valeTransporte') as HTMLInputElement).value) || 0;
+    const outrosDescontos = parseFloat((document.getElementById('outrosDescontos') as HTMLInputElement).value) || 0;
+    const beneficiosNaoTributaveis = parseFloat((document.getElementById('beneficiosNaoTributaveis') as HTMLInputElement).value) || 0;
     const fmt = (n: number) => 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
     // INSS 2024 - faixas progressivas
@@ -34,15 +40,20 @@
     else irrf = baseIrrf * 0.275 - 896.00;
     irrf = Math.max(0, irrf);
 
-    const liquido = bruto - inss - irrf;
+    const liquidoEmConta = bruto - inss - irrf - valeTransporte - outrosDescontos;
+    const valorTotalRecebido = liquidoEmConta + beneficiosNaoTributaveis;
+
     const box = document.getElementById('sl-result')!;
     box.hidden = false;
     box.innerHTML = `
       <p><strong>Salário Bruto:</strong> ${fmt(bruto)}</p>
-      <p><strong>Desconto INSS:</strong> -${fmt(inss)}</p>
-      <p><strong>Desconto IRRF:</strong> -${fmt(irrf)}</p>
+      <p>(-) Desconto INSS: -${fmt(inss)}</p>
+      <p>(-) Desconto IRRF: -${fmt(irrf)}</p>
+      ${valeTransporte > 0 ? `<p>(-) Vale-Transporte: -${fmt(valeTransporte)}</p>` : ''}
+      ${outrosDescontos > 0 ? `<p>(-) Outros Descontos: -${fmt(outrosDescontos)}</p>` : ''}
       <hr/>
-      <p><strong>Salário Líquido:</strong> ${fmt(liquido)}</p>
+      <p><strong>Salário Líquido em Conta: ${fmt(liquidoEmConta)}</strong></p>
+      ${beneficiosNaoTributaveis > 0 ? `<p>(+) Benefícios Não-Tributáveis (VR/VA): +${fmt(beneficiosNaoTributaveis)}</p><p><strong>Valor Total Recebido: ${fmt(valorTotalRecebido)}</strong></p>` : ''}
     `;
   });
 </script>
