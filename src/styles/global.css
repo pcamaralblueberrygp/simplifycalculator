@@ -91,7 +91,7 @@ img, svg { display: block; }
   font-weight: 600;
   font-size: 14px;
   background: var(--navy);
-  color: #fff;
+  color: #fff !important;
   border: none;
   border-radius: var(--radius-sm);
   padding: 9px 18px;
@@ -99,10 +99,7 @@ img, svg { display: block; }
   text-decoration: none;
   display: inline-block;
 }
-.btn-nav:hover { background: #1a3d73; text-decoration: none; color: #fff; }
-.btn-nav:visited,
-.btn-nav:link,
-.btn-nav:active { color: #fff; }
+.btn-nav:hover { background: #1a3d73; text-decoration: none; color: #fff !important; }
 .logo-img { height: 28px; width: auto; }
 
 /* ── Buttons ── */

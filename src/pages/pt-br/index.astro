@@ -14,7 +14,7 @@ const categories = Array.from(new Set(CALCULATORS_BR.map((c) => c.category)));
   <section class="hero">
     <div class="container">
       <div class="hero-left">
-        <div class="hero-badge">Calculadoras 100% adaptadas ao Brasil</div>
+        <div class="hero-badge">Feito com as regras do Brasil</div>
         <h1>Entenda o custo real de qualquer financiamento antes de assinar.</h1>
         <p class="hero-copy">
           Calculadoras em português para financiamento, Tabela Price, salário líquido CLT,
@@ -24,6 +24,52 @@ const categories = Array.from(new Set(CALCULATORS_BR.map((c) => c.category)));
         <div class="hero-cta">
           <a href="/pt-br/calculadoras/calculadora-de-financiamento" class="btn-primary">Começar a calcular — grátis</a>
           <a href="#calculadoras" class="btn-text">Ver todas as calculadoras →</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-calc-card">
+          <div class="hcc-header">
+            <span class="hcc-header-title">Calculadora de financiamento</span>
+            <span class="hcc-tag">/ Tabela Price</span>
+          </div>
+          <div class="hcc-body">
+            <div>
+              <div class="hcc-label">Valor do Empréstimo</div>
+              <div class="hcc-input-row">
+                <input type="number" id="hcc-br-amount" value="15000" min="1000" step="500" />
+                <span class="hcc-unit">R$</span>
+              </div>
+            </div>
+            <div class="hcc-two-up">
+              <div>
+                <div class="hcc-label">Taxa (a.m.)</div>
+                <div class="hcc-input-row">
+                  <input type="number" id="hcc-br-rate" value="2.5" min="0.1" max="30" step="0.1" />
+                  <span class="hcc-unit">%</span>
+                </div>
+              </div>
+              <div>
+                <div class="hcc-label">Prazo</div>
+                <div class="hcc-input-row">
+                  <input type="number" id="hcc-br-term" value="24" min="1" max="360" step="1" />
+                  <span class="hcc-unit">mês</span>
+                </div>
+              </div>
+            </div>
+            <div class="hcc-progress-track">
+              <div class="hcc-progress-fill" id="hcc-br-progress" style="width: 30%"></div>
+            </div>
+            <div class="hcc-result">
+              <div>
+                <div class="hcc-result-label">Parcela Mensal</div>
+                <div class="hcc-result-main" id="hcc-br-payment">R$ 833</div>
+              </div>
+              <div class="hcc-result-secondary">
+                <div class="hcc-result-label">Total de Juros</div>
+                <div class="hcc-result-sub" id="hcc-br-interest">R$ 4.996</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -96,6 +142,27 @@ const categories = Array.from(new Set(CALCULATORS_BR.map((c) => c.category)));
 </BaseLayoutPtBr>
 
 <script>
+  // Calculadora ao vivo do hero
+  function hccBrCalc() {
+    const valor = parseFloat((document.getElementById('hcc-br-amount') as HTMLInputElement)?.value) || 0;
+    const taxaMensal = parseFloat((document.getElementById('hcc-br-rate') as HTMLInputElement)?.value) || 0;
+    const prazo = parseInt((document.getElementById('hcc-br-term') as HTMLInputElement)?.value) || 1;
+    const i = taxaMensal / 100;
+    const pmt = i > 0 ? valor * i * Math.pow(1 + i, prazo) / (Math.pow(1 + i, prazo) - 1) : valor / prazo;
+    const totalJuros = pmt * prazo - valor;
+    const fmt = (n: number) => 'R$ ' + Math.max(0, n).toLocaleString('pt-BR', { maximumFractionDigits: 0 });
+    const payEl = document.getElementById('hcc-br-payment');
+    const intEl = document.getElementById('hcc-br-interest');
+    const prog = document.getElementById('hcc-br-progress');
+    if (payEl) payEl.textContent = fmt(pmt);
+    if (intEl) intEl.textContent = fmt(totalJuros);
+    if (prog) (prog as HTMLElement).style.width = Math.min(100, (prazo / 360) * 100) + '%';
+  }
+  ['hcc-br-amount','hcc-br-rate','hcc-br-term'].forEach(id => {
+    document.getElementById(id)?.addEventListener('input', hccBrCalc);
+  });
+  hccBrCalc();
+
   document.querySelectorAll('.faq-trigger').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item')!;
