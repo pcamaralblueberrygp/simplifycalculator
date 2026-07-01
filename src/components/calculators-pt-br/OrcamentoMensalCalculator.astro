@@ -1,0 +1,38 @@
+---
+---
+<div class="calc-widget">
+  <form id="om-form" novalidate>
+    <fieldset><legend>Renda</legend>
+      <label>Renda Líquida Mensal (R$) <input type="number" id="renda" min="0" step="50" value="6000" /></label>
+    </fieldset>
+    <fieldset><legend>Despesas Mensais</legend>
+      <label>Moradia (R$) <input type="number" id="moradia" min="0" step="50" value="1800" /></label>
+      <label>Transporte (R$) <input type="number" id="transporte" min="0" step="50" value="500" /></label>
+      <label>Alimentação (R$) <input type="number" id="alimentacao" min="0" step="50" value="800" /></label>
+      <label>Contas (água, luz, internet) (R$) <input type="number" id="contas" min="0" step="50" value="300" /></label>
+      <label>Lazer e Assinaturas (R$) <input type="number" id="lazer" min="0" step="50" value="400" /></label>
+      <label>Poupança/Investimentos (R$) <input type="number" id="poupanca" min="0" step="50" value="500" /></label>
+      <label>Outros (R$) <input type="number" id="outros" min="0" step="50" value="0" /></label>
+    </fieldset>
+    <button type="submit">Calcular</button>
+  </form>
+  <div id="om-result" class="result-box" hidden></div>
+</div>
+<script>
+  document.getElementById('om-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const get = (id: string) => parseFloat((document.getElementById(id) as HTMLInputElement).value) || 0;
+    const renda = get('renda');
+    const despesas = ['moradia','transporte','alimentacao','contas','lazer','poupanca','outros'].reduce((s, id) => s + get(id), 0);
+    const saldo = renda - despesas;
+    const pct = renda > 0 ? ((saldo / renda) * 100).toFixed(1) : '0.0';
+    const fmt = (n: number) => 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const box = document.getElementById('om-result')!;
+    box.hidden = false;
+    box.innerHTML = `
+      <p><strong>Total de Despesas:</strong> ${fmt(despesas)}</p>
+      <p><strong>Saldo Mensal:</strong> <span style="color:${saldo >= 0 ? 'green' : 'red'}">${fmt(saldo)}</span></p>
+      <p><strong>Percentual da Renda:</strong> ${pct}%${saldo < 0 ? ' (gastando mais do que ganha)' : ''}</p>
+    `;
+  });
+</script>

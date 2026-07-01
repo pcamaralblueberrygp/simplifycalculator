@@ -1,0 +1,67 @@
+---
+---
+<div class="calc-widget">
+  <form id="cp-form" novalidate>
+    <fieldset><legend>CLT</legend>
+      <label>Salário Bruto CLT (R$) <input type="number" id="bruto" min="0" step="50" value="6000" /></label>
+    </fieldset>
+    <fieldset><legend>PJ</legend>
+      <label>Faturamento Mensal PJ (R$) <input type="number" id="faturamento" min="0" step="50" value="8000" /></label>
+      <label>Alíquota Efetiva do Simples Nacional (%) <input type="number" id="simples" min="0" max="33" step="0.1" value="6" /></label>
+      <label>Custo do Contador (R$/mês) <input type="number" id="contador" min="0" step="10" value="200" /></label>
+      <label>Contribuição INSS Autônomo (R$/mês) <input type="number" id="inssAutonomo" min="0" step="10" value="220" /></label>
+    </fieldset>
+    <button type="submit">Comparar</button>
+  </form>
+  <div id="cp-result" class="result-box" hidden></div>
+</div>
+<script>
+  document.getElementById('cp-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const get = (id: string) => parseFloat((document.getElementById(id) as HTMLInputElement).value) || 0;
+    const fmt = (n: number) => 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const bruto = get('bruto');
+
+    // CLT: INSS progressivo + IRRF
+    const faixasInss: [number, number][] = [[1412.00, 0.075], [2666.68, 0.09], [4000.03, 0.12], [7786.02, 0.14]];
+    let inss = 0, tetoAnterior = 0;
+    for (const [teto, aliquota] of faixasInss) {
+      if (bruto <= tetoAnterior) break;
+      inss += (Math.min(bruto, teto) - tetoAnterior) * aliquota;
+      tetoAnterior = teto;
+    }
+    inss = Math.min(inss, 908.85);
+    const baseIrrf = Math.max(0, bruto - inss);
+    let irrf = 0;
+    if (baseIrrf <= 2259.20) irrf = 0;
+    else if (baseIrrf <= 2826.65) irrf = baseIrrf * 0.075 - 169.44;
+    else if (baseIrrf <= 3751.05) irrf = baseIrrf * 0.15 - 381.44;
+    else if (baseIrrf <= 4664.68) irrf = baseIrrf * 0.225 - 662.77;
+    else irrf = baseIrrf * 0.275 - 896.00;
+    irrf = Math.max(0, irrf);
+    const liquidoClt = bruto - inss - irrf;
+    const beneficiosMensais = (bruto / 12) + ((bruto / 12) / 3) + (bruto * 0.08);
+    const valorTotalClt = liquidoClt + beneficiosMensais;
+
+    // PJ
+    const faturamento = get('faturamento');
+    const simples = get('simples') / 100;
+    const contador = get('contador');
+    const inssAutonomo = get('inssAutonomo');
+    const liquidoPj = faturamento - (faturamento * simples) - contador - inssAutonomo;
+
+    const box = document.getElementById('cp-result')!;
+    box.hidden = false;
+    const diff = liquidoPj - valorTotalClt;
+    box.innerHTML = `
+      <p><strong>CLT — Salário Líquido:</strong> ${fmt(liquidoClt)}</p>
+      <p><strong>CLT — Benefícios Mensais Equivalentes</strong> (13º + férias + FGTS): ${fmt(beneficiosMensais)}</p>
+      <p><strong>CLT — Valor Mensal Total:</strong> ${fmt(valorTotalClt)}</p>
+      <hr/>
+      <p><strong>PJ — Líquido Mensal</strong> (após Simples, contador e INSS): ${fmt(liquidoPj)}</p>
+      <hr/>
+      <p><strong>Diferença (PJ - CLT):</strong> <span style="color:${diff >= 0 ? 'green' : 'red'}">${fmt(diff)}</span></p>
+      <p><small>Lembre-se: o PJ não tem estabilidade, seguro-desemprego, FGTS disponível imediatamente nem férias remuneradas garantidas — considere isso além do número.</small></p>
+    `;
+  });
+</script>

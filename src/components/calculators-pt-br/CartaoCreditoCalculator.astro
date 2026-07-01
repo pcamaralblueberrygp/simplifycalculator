@@ -1,0 +1,39 @@
+---
+---
+<div class="calc-widget">
+  <form id="cc-form" novalidate>
+    <label>Saldo do Cartão (R$) <input type="number" id="saldo" min="0" step="50" value="3000" /></label>
+    <label>Taxa do Rotativo (% ao mês) <input type="number" id="taxa" min="0" step="0.1" value="15" /></label>
+    <label>Pagamento Mensal Fixo (R$) <input type="number" id="pagamento" min="1" step="50" value="400" /></label>
+    <button type="submit">Calcular</button>
+  </form>
+  <div id="cc-result" class="result-box" hidden></div>
+</div>
+<script>
+  document.getElementById('cc-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const saldoInicial = parseFloat((document.getElementById('saldo') as HTMLInputElement).value) || 0;
+    const taxa = parseFloat((document.getElementById('taxa') as HTMLInputElement).value) / 100;
+    const pagamento = parseFloat((document.getElementById('pagamento') as HTMLInputElement).value) || 0;
+    const fmt = (n: number) => 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const box = document.getElementById('cc-result')!;
+    box.hidden = false;
+    if (pagamento <= saldoInicial * taxa) {
+      box.innerHTML = '<p style="color:red">O pagamento mensal não cobre os juros do rotativo — a dívida vai crescer em vez de diminuir. Aumente o valor do pagamento ou negocie o parcelamento da fatura.</p>';
+      return;
+    }
+    let saldo = saldoInicial, meses = 0, totalJuros = 0;
+    while (saldo > 0 && meses < 600) {
+      const juros = saldo * taxa;
+      totalJuros += juros;
+      saldo = saldo + juros - pagamento;
+      meses++;
+    }
+    box.innerHTML = `
+      <p><strong>Tempo para Quitar:</strong> ${meses} meses</p>
+      <p><strong>Total de Juros Pagos:</strong> ${fmt(totalJuros)}</p>
+      <p><strong>Total Pago:</strong> ${fmt(saldoInicial + totalJuros)}</p>
+      <p><small>O rotativo do cartão só pode ser usado por até 30 dias por lei — depois disso, peça o parcelamento da fatura ao banco.</small></p>
+    `;
+  });
+</script>

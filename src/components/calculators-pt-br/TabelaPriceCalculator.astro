@@ -1,0 +1,55 @@
+---
+---
+<div class="calc-widget">
+  <form id="tp-form" novalidate>
+    <label>Valor Financiado (R$) <input type="number" id="valor" min="0" step="100" value="20000" /></label>
+    <label>Taxa de Juros Mensal (%) <input type="number" id="taxa" min="0" step="0.1" value="1.8" /></label>
+    <label>Prazo (meses) <input type="number" id="prazo" min="1" max="360" step="1" value="36" /></label>
+    <button type="submit">Gerar Tabela</button>
+  </form>
+  <div id="tp-result" class="result-box" hidden></div>
+</div>
+<script>
+  document.getElementById('tp-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const valor = parseFloat((document.getElementById('valor') as HTMLInputElement).value) || 0;
+    const taxa = parseFloat((document.getElementById('taxa') as HTMLInputElement).value) / 100;
+    const prazo = parseInt((document.getElementById('prazo') as HTMLInputElement).value) || 1;
+    const fmt = (n: number) => 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const pmt = taxa > 0 ? valor * (taxa * Math.pow(1 + taxa, prazo)) / (Math.pow(1 + taxa, prazo) - 1) : valor / prazo;
+
+    let saldo = valor;
+    let rows = '';
+    let totalJuros = 0;
+    const mesesExibidos = Math.min(prazo, 12);
+    for (let m = 1; m <= mesesExibidos; m++) {
+      const juros = saldo * taxa;
+      const amortizacao = pmt - juros;
+      saldo -= amortizacao;
+      totalJuros += juros;
+      rows += `<tr><td>${m}</td><td>${fmt(pmt)}</td><td>${fmt(juros)}</td><td>${fmt(amortizacao)}</td><td>${fmt(Math.max(0, saldo))}</td></tr>`;
+    }
+    // total interest over full term
+    let saldoFull = valor, totalJurosFull = 0;
+    for (let m = 1; m <= prazo; m++) {
+      const juros = saldoFull * taxa;
+      totalJurosFull += juros;
+      saldoFull -= (pmt - juros);
+    }
+
+    const box = document.getElementById('tp-result')!;
+    box.hidden = false;
+    box.innerHTML = `
+      <p><strong>Parcela Fixa:</strong> ${fmt(pmt)}</p>
+      <p><strong>Total de Juros (contrato completo):</strong> ${fmt(totalJurosFull)}</p>
+      <p><strong>Total Pago:</strong> ${fmt(pmt * prazo)}</p>
+      <p style="margin-top:12px"><em>Detalhamento dos primeiros ${mesesExibidos} meses:</em></p>
+      <div style="overflow-x:auto">
+        <table style="width:100%; border-collapse:collapse; font-size:13.5px">
+          <thead><tr><th>Mês</th><th>Parcela</th><th>Juros</th><th>Amortização</th><th>Saldo Devedor</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+    `;
+  });
+</script>

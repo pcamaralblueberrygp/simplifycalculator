@@ -1,0 +1,36 @@
+---
+---
+<div class="calc-widget">
+  <form id="ap-form" novalidate>
+    <label>Idade Atual <input type="number" id="idadeAtual" min="16" max="80" step="1" value="30" /></label>
+    <label>Idade de Aposentadoria <input type="number" id="idadeAposentadoria" min="17" max="90" step="1" value="65" /></label>
+    <label>Saldo Atual Investido (R$) <input type="number" id="saldoAtual" min="0" step="500" value="20000" /></label>
+    <label>Aporte Mensal (R$) <input type="number" id="aporte" min="0" step="50" value="600" /></label>
+    <label>Retorno Anual Esperado (%) <input type="number" id="retorno" min="0" step="0.1" value="8" /></label>
+    <button type="submit">Calcular</button>
+  </form>
+  <div id="ap-result" class="result-box" hidden></div>
+</div>
+<script>
+  document.getElementById('ap-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const get = (id: string) => parseFloat((document.getElementById(id) as HTMLInputElement).value) || 0;
+    const idadeAtual = get('idadeAtual'), idadeAposentadoria = get('idadeAposentadoria');
+    const saldoAtual = get('saldoAtual'), aporte = get('aporte'), retorno = get('retorno') / 100;
+    const anos = Math.max(0, idadeAposentadoria - idadeAtual);
+    const meses = anos * 12;
+    const i = retorno / 12;
+    const fmt = (n: number) => 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const fvSaldo = saldoAtual * Math.pow(1 + i, meses);
+    const fvAportes = i > 0 ? aporte * ((Math.pow(1 + i, meses) - 1) / i) : aporte * meses;
+    const saldoFinal = fvSaldo + fvAportes;
+    const rendaMensalEstimada = saldoFinal * 0.004;
+    const box = document.getElementById('ap-result')!;
+    box.hidden = false;
+    box.innerHTML = `
+      <p><strong>Saldo Projetado aos ${idadeAposentadoria} anos:</strong> ${fmt(saldoFinal)}</p>
+      <p><strong>Renda Mensal Estimada</strong> (retirada de 0,4% ao mês): ${fmt(rendaMensalEstimada)}</p>
+      <p><small>Essa é uma reserva complementar ao INSS, não o substitui.</small></p>
+    `;
+  });
+</script>

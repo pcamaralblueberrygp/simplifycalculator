@@ -77,6 +77,15 @@ img, svg { display: block; }
   color: #3a4a63;
 }
 .site-nav .nav-links a:hover { color: var(--blue); text-decoration: none; }
+.lang-switch {
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.03em;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+.lang-switch:hover { border-color: var(--blue); background: var(--bg-soft); }
 .btn-nav {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 600;

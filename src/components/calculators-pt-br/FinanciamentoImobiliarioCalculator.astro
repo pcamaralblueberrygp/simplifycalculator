@@ -1,0 +1,54 @@
+---
+---
+<div class="calc-widget">
+  <form id="fi-form" novalidate>
+    <label>Valor do Imóvel (R$) <input type="number" id="valorImovel" min="0" step="1000" value="350000" /></label>
+    <label>Valor de Entrada (R$) <input type="number" id="entrada" min="0" step="1000" value="70000" /></label>
+    <label>Taxa de Juros Anual (%) <input type="number" id="taxaAnual" min="0" step="0.1" value="10" /></label>
+    <label>Prazo (anos) <input type="number" id="prazoAnos" min="1" max="35" step="1" value="30" /></label>
+    <button type="submit">Comparar SAC x Price</button>
+  </form>
+  <div id="fi-result" class="result-box" hidden></div>
+</div>
+<script>
+  document.getElementById('fi-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const get = (id: string) => parseFloat((document.getElementById(id) as HTMLInputElement).value) || 0;
+    const valorImovel = get('valorImovel'), entrada = get('entrada');
+    const taxaAnual = get('taxaAnual') / 100, prazoAnos = get('prazoAnos');
+    const principal = valorImovel - entrada;
+    const n = prazoAnos * 12;
+    const i = taxaAnual / 12;
+    const fmt = (n: number) => 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    // Price
+    const pmtPrice = i > 0 ? principal * (i * Math.pow(1 + i, n)) / (Math.pow(1 + i, n) - 1) : principal / n;
+    const totalPrice = pmtPrice * n;
+    const jurosPrice = totalPrice - principal;
+
+    // SAC
+    const amort = principal / n;
+    const primeiraParcelaSac = amort + principal * i;
+    let saldo = principal;
+    let totalSac = 0;
+    for (let m = 0; m < n; m++) {
+      const jurosMes = saldo * i;
+      totalSac += amort + jurosMes;
+      saldo -= amort;
+    }
+    const ultimaParcelaSac = amort + Math.max(0, saldo + amort) * i;
+    const jurosSac = totalSac - principal;
+
+    const box = document.getElementById('fi-result')!;
+    box.hidden = false;
+    box.innerHTML = `
+      <p><strong>Valor Financiado:</strong> ${fmt(principal)}</p>
+      <hr/>
+      <p><strong>SAC</strong> — 1ª parcela: ${fmt(primeiraParcelaSac)} · última parcela: ${fmt(ultimaParcelaSac)}</p>
+      <p>Total pago: ${fmt(totalSac)} · Total de juros: ${fmt(jurosSac)}</p>
+      <hr/>
+      <p><strong>Tabela Price</strong> — parcela fixa: ${fmt(pmtPrice)}</p>
+      <p>Total pago: ${fmt(totalPrice)} · Total de juros: ${fmt(jurosPrice)}</p>
+    `;
+  });
+</script>

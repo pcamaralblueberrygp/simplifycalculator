@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import { CALCULATORS } from '../data/calculators';
 
 interface Props {
   title: string;
@@ -8,15 +7,13 @@ interface Props {
   path?: string;
 }
 
-const { title, description, path = '/' } = Astro.props as Props;
+const { title, description, path = '/pt-br/' } = Astro.props as Props;
 const canonical = new URL(path, 'https://simplifycalculator.com').toString();
-const siteName = 'SimplifyCalculator';
-
-const popularCalcs = CALCULATORS.slice(0, 8);
+const siteName = 'SimplifyCalculator Brasil';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -52,14 +49,14 @@ const popularCalcs = CALCULATORS.slice(0, 8);
 
     <nav class="site-nav">
       <div class="container">
-        <a href="/">
-          <img src="/logo-full.svg" alt="SimplifyCalculator" class="logo-img" />
+        <a href="/pt-br/">
+          <img src="/logo-full.svg" alt="SimplifyCalculator Brasil" class="logo-img" />
         </a>
         <div class="nav-links">
-          <a href="/">Calculators</a>
-          <a href="/about">About</a>
-          <a href="/pt-br/" class="lang-switch">PT-BR</a>
-          <a href="/calculators/loan-payment-calculator" class="btn-nav">Open calculator</a>
+          <a href="/pt-br/">Calculadoras</a>
+          <a href="/pt-br/sobre">Sobre</a>
+          <a href="/" class="lang-switch">EN</a>
+          <a href="/pt-br/calculadoras/calculadora-de-financiamento" class="btn-nav">Abrir calculadora</a>
         </div>
       </div>
     </nav>
@@ -72,34 +69,34 @@ const popularCalcs = CALCULATORS.slice(0, 8);
       <div class="container">
         <div class="footer-top">
           <div class="footer-brand">
-            <img src="/logo-full-white.svg" alt="SimplifyCalculator" class="footer-logo-img" />
-            <p>Free, honest money calculators. Built to help you borrow smarter.</p>
+            <img src="/logo-full-white.svg" alt="SimplifyCalculator Brasil" class="footer-logo-img" />
+            <p>Calculadoras financeiras gratuitas, adaptadas às regras do Brasil.</p>
           </div>
           <div class="footer-col">
-            <h4>Calculators</h4>
+            <h4>Calculadoras</h4>
             <ul>
-              <li><a href="/calculators/mortgage-calculator">Mortgage</a></li>
-              <li><a href="/calculators/car-loan-calculator">Auto Loan</a></li>
-              <li><a href="/calculators/loan-payment-calculator">Personal Loan</a></li>
-              <li><a href="/calculators/debt-payoff-calculator">Debt Payoff</a></li>
-              <li><a href="/">All calculators →</a></li>
+              <li><a href="/pt-br/calculadoras/calculadora-de-financiamento-imobiliario">Financiamento Imobiliário</a></li>
+              <li><a href="/pt-br/calculadoras/calculadora-de-salario-liquido">Salário Líquido</a></li>
+              <li><a href="/pt-br/calculadoras/calculadora-clt-vs-pj">CLT x PJ</a></li>
+              <li><a href="/pt-br/calculadoras/calculadora-de-quitacao-de-dividas">Quitação de Dívidas</a></li>
+              <li><a href="/pt-br/">Todas as calculadoras →</a></li>
             </ul>
           </div>
           <div class="footer-col">
-            <h4>Company</h4>
+            <h4>Empresa</h4>
             <ul>
-              <li><a href="/about">About</a></li>
+              <li><a href="/pt-br/sobre">Sobre</a></li>
             </ul>
           </div>
           <div class="footer-col">
             <h4>Legal</h4>
             <ul>
-              <li><a href="/privacy-policy">Privacy Policy</a></li>
-              <li><a href="/cookie-policy">Cookie Policy</a></li>
+              <li><a href="/pt-br/privacidade">Política de Privacidade</a></li>
+              <li><a href="/pt-br/cookies">Política de Cookies</a></li>
             </ul>
           </div>
         </div>
-        <p class="footer-fine">© {new Date().getFullYear()} SimplifyCalculator. Estimates are for informational purposes only and do not constitute financial advice.</p>
+        <p class="footer-fine">© {new Date().getFullYear()} SimplifyCalculator. Estimativas para fins informativos apenas — não constituem aconselhamento financeiro, contábil ou tributário.</p>
       </div>
     </footer>
   </body>

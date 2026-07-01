@@ -1,0 +1,44 @@
+---
+---
+<div class="calc-widget">
+  <form id="pp-form" novalidate>
+    <label>Taxa SELIC Atual (% ao ano) <input type="number" id="selic" min="0" step="0.1" value="10.5" /></label>
+    <label>TR Mensal (%, geralmente próxima de 0) <input type="number" id="tr" min="0" step="0.01" value="0" /></label>
+    <label>Saldo Inicial (R$) <input type="number" id="saldoInicial" min="0" step="100" value="5000" /></label>
+    <label>Aporte Mensal (R$) <input type="number" id="aporte" min="0" step="50" value="300" /></label>
+    <label>Prazo (meses) <input type="number" id="meses" min="1" max="600" step="1" value="60" /></label>
+    <button type="submit">Calcular</button>
+  </form>
+  <div id="pp-result" class="result-box" hidden></div>
+</div>
+<script>
+  document.getElementById('pp-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const get = (id: string) => parseFloat((document.getElementById(id) as HTMLInputElement).value) || 0;
+    const selicAnual = get('selic'), tr = get('tr') / 100;
+    const saldoInicial = get('saldoInicial'), aporte = get('aporte'), meses = get('meses');
+    const fmt = (n: number) => 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    // Regra da poupança
+    const taxaPoupancaMensal = selicAnual > 8.5 ? 0.005 + tr : (0.7 * (selicAnual / 100 / 12)) + tr;
+    const fvSaldo = saldoInicial * Math.pow(1 + taxaPoupancaMensal, meses);
+    const fvAportes = taxaPoupancaMensal > 0 ? aporte * ((Math.pow(1 + taxaPoupancaMensal, meses) - 1) / taxaPoupancaMensal) : aporte * meses;
+    const saldoFinalPoupanca = fvSaldo + fvAportes;
+
+    // Comparação 100% CDI (aprox = SELIC)
+    const taxaCdiMensal = selicAnual / 100 / 12;
+    const fvSaldoCdi = saldoInicial * Math.pow(1 + taxaCdiMensal, meses);
+    const fvAportesCdi = taxaCdiMensal > 0 ? aporte * ((Math.pow(1 + taxaCdiMensal, meses) - 1) / taxaCdiMensal) : aporte * meses;
+    const saldoFinalCdi = fvSaldoCdi + fvAportesCdi;
+
+    const box = document.getElementById('pp-result')!;
+    box.hidden = false;
+    box.innerHTML = `
+      <p><strong>Taxa da Poupança:</strong> ${(taxaPoupancaMensal * 100).toFixed(3)}% ao mês</p>
+      <p><strong>Saldo Final na Poupança:</strong> ${fmt(saldoFinalPoupanca)}</p>
+      <hr/>
+      <p><strong>Saldo Final a 100% do CDI (referência):</strong> ${fmt(saldoFinalCdi)}</p>
+      <p><strong>Diferença:</strong> <span style="color:red">${fmt(saldoFinalCdi - saldoFinalPoupanca)} a menos na poupança</span></p>
+    `;
+  });
+</script>

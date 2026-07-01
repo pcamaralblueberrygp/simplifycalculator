@@ -1,0 +1,36 @@
+---
+---
+<div class="calc-widget">
+  <form id="jc-form" novalidate>
+    <label>Valor Inicial (R$) <input type="number" id="principal" min="0" step="100" value="10000" /></label>
+    <label>Taxa de Retorno Anual (%) <input type="number" id="taxa" min="0" step="0.1" value="10" /></label>
+    <label>Aporte Mensal (R$) <input type="number" id="aporte" min="0" step="50" value="500" /></label>
+    <label>Prazo (anos) <input type="number" id="anos" min="1" max="60" step="1" value="10" /></label>
+    <button type="submit">Calcular</button>
+  </form>
+  <div id="jc-result" class="result-box" hidden></div>
+</div>
+<script>
+  document.getElementById('jc-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const principal = parseFloat((document.getElementById('principal') as HTMLInputElement).value) || 0;
+    const taxaAnual = parseFloat((document.getElementById('taxa') as HTMLInputElement).value) / 100;
+    const aporte = parseFloat((document.getElementById('aporte') as HTMLInputElement).value) || 0;
+    const anos = parseFloat((document.getElementById('anos') as HTMLInputElement).value) || 0;
+    const i = taxaAnual / 12;
+    const meses = anos * 12;
+    const fmt = (n: number) => 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const fvPrincipal = principal * Math.pow(1 + i, meses);
+    const fvAportes = i > 0 ? aporte * ((Math.pow(1 + i, meses) - 1) / i) : aporte * meses;
+    const saldoFinal = fvPrincipal + fvAportes;
+    const totalAportado = principal + aporte * meses;
+    const rendimento = saldoFinal - totalAportado;
+    const box = document.getElementById('jc-result')!;
+    box.hidden = false;
+    box.innerHTML = `
+      <p><strong>Saldo Final:</strong> ${fmt(saldoFinal)}</p>
+      <p><strong>Total Aportado:</strong> ${fmt(totalAportado)}</p>
+      <p><strong>Rendimento (juros):</strong> ${fmt(rendimento)}</p>
+    `;
+  });
+</script>

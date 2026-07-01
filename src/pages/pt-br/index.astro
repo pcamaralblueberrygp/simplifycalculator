@@ -1,0 +1,107 @@
+---
+import BaseLayoutPtBr from '../../layouts/BaseLayoutPtBr.astro';
+import { CALCULATORS_BR } from '../../data/calculators-pt-br';
+
+const categories = Array.from(new Set(CALCULATORS_BR.map((c) => c.category)));
+---
+
+<BaseLayoutPtBr
+  title="Calculadoras Financeiras Gratuitas para o Brasil"
+  description="Calculadoras financeiras gratuitas adaptadas às regras do Brasil: financiamento, Tabela Price, salário líquido CLT, CLT x PJ, aposentadoria e mais."
+  path="/pt-br/"
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-left">
+        <div class="hero-badge">Calculadoras 100% adaptadas ao Brasil</div>
+        <h1>Entenda o custo real de qualquer financiamento antes de assinar.</h1>
+        <p class="hero-copy">
+          Calculadoras em português para financiamento, Tabela Price, salário líquido CLT,
+          comparação CLT x PJ, aposentadoria e quitação de dívidas — com as regras reais do
+          Brasil (INSS, IRRF, SELIC, Simples Nacional).
+        </p>
+        <div class="hero-cta">
+          <a href="/pt-br/calculadoras/calculadora-de-financiamento" class="btn-primary">Começar a calcular — grátis</a>
+          <a href="#calculadoras" class="btn-text">Ver todas as calculadoras →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust strip -->
+  <div class="trust-strip">
+    <div class="container">
+      <span>11 calculadoras</span>
+      <span>·</span>
+      <span>Sem cadastro</span>
+      <span>·</span>
+      <span>Regras do Brasil (INSS, IRRF, SELIC)</span>
+      <span>·</span>
+      <span>Atualizado 2026</span>
+    </div>
+  </div>
+
+  <!-- Popular calculators -->
+  <section class="section" id="calculadoras" style="padding-top: 48px">
+    <div class="container">
+      <div class="eyebrow">Todas as calculadoras</div>
+      <h2 class="section-h2">Cada ferramenta, por categoria</h2>
+      {categories.map((category) => (
+        <div style="margin-bottom: 40px">
+          <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border);">{category}</h3>
+          <div class="calc-grid">
+            {CALCULATORS_BR.filter((c) => c.category === category).map((calc) => (
+              <a class="calc-tile" href={`/pt-br/calculadoras/${calc.slug}`}>
+                <h3>{calc.shortTitle}</h3>
+                <p>{calc.metaDescription.slice(0, 80)}…</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-center">
+    <div class="container">
+      <div class="eyebrow">Perguntas Frequentes</div>
+      <h2 class="section-h2">Perguntas, respondidas</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-trigger-text">As calculadoras são realmente gratuitas?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">Sim, 100% gratuitas. Sem cadastro, sem cartão de crédito, sem período de teste. Todas as calculadoras do SimplifyCalculator são gratuitas para usar quantas vezes quiser.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-trigger-text">Vocês armazenam meus dados financeiros?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">Não. Todos os cálculos rodam no seu navegador. Os números que você digita nunca saem do seu dispositivo — não coletamos, armazenamos ou transmitimos nenhuma informação financeira sua.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-trigger-text">As calculadoras usam as regras atuais do Brasil?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">Sim. Usamos as tabelas de INSS e IRRF vigentes, a regra atual da poupança vinculada à SELIC, e os sistemas de amortização (SAC e Tabela Price) usados pelos bancos brasileiros. Ainda assim, sempre confirme valores importantes com seu banco ou contador.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayoutPtBr>
+
+<script>
+  document.querySelectorAll('.faq-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item')!;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>

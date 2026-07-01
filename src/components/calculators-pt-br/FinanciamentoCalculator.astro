@@ -1,0 +1,30 @@
+---
+---
+<div class="calc-widget">
+  <form id="fin-form" novalidate>
+    <label>Valor do Empréstimo (R$) <input type="number" id="valor" min="0" step="100" value="15000" /></label>
+    <label>Taxa de Juros Mensal (%) <input type="number" id="taxa" min="0" step="0.1" value="2.5" /></label>
+    <label>Prazo (meses) <input type="number" id="prazo" min="1" max="360" step="1" value="24" /></label>
+    <button type="submit">Calcular</button>
+  </form>
+  <div id="fin-result" class="result-box" hidden></div>
+</div>
+<script>
+  document.getElementById('fin-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const valor = parseFloat((document.getElementById('valor') as HTMLInputElement).value) || 0;
+    const taxa = parseFloat((document.getElementById('taxa') as HTMLInputElement).value) / 100;
+    const prazo = parseInt((document.getElementById('prazo') as HTMLInputElement).value) || 1;
+    const fmt = (n: number) => 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const pmt = taxa > 0 ? valor * (taxa * Math.pow(1 + taxa, prazo)) / (Math.pow(1 + taxa, prazo) - 1) : valor / prazo;
+    const total = pmt * prazo;
+    const juros = total - valor;
+    const box = document.getElementById('fin-result')!;
+    box.hidden = false;
+    box.innerHTML = `
+      <p><strong>Parcela Mensal Fixa:</strong> ${fmt(pmt)}</p>
+      <p><strong>Total Pago:</strong> ${fmt(total)}</p>
+      <p><strong>Total de Juros:</strong> ${fmt(juros)}</p>
+    `;
+  });
+</script>

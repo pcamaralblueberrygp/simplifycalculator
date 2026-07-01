@@ -1,0 +1,48 @@
+---
+---
+<div class="calc-widget">
+  <form id="sl-form" novalidate>
+    <label>Salário Bruto Mensal (R$) <input type="number" id="bruto" min="0" step="50" value="4500" /></label>
+    <label>Número de Dependentes <input type="number" id="dependentes" min="0" max="10" step="1" value="0" /></label>
+    <button type="submit">Calcular</button>
+  </form>
+  <div id="sl-result" class="result-box" hidden></div>
+</div>
+<script>
+  document.getElementById('sl-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const bruto = parseFloat((document.getElementById('bruto') as HTMLInputElement).value) || 0;
+    const dependentes = parseInt((document.getElementById('dependentes') as HTMLInputElement).value) || 0;
+    const fmt = (n: number) => 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    // INSS 2024 - faixas progressivas
+    const faixasInss: [number, number][] = [[1412.00, 0.075], [2666.68, 0.09], [4000.03, 0.12], [7786.02, 0.14]];
+    let inss = 0, tetoAnterior = 0;
+    for (const [teto, aliquota] of faixasInss) {
+      if (bruto <= tetoAnterior) break;
+      inss += (Math.min(bruto, teto) - tetoAnterior) * aliquota;
+      tetoAnterior = teto;
+    }
+    inss = Math.min(inss, 908.85);
+
+    const baseIrrf = Math.max(0, bruto - inss - dependentes * 189.59);
+    let irrf = 0;
+    if (baseIrrf <= 2259.20) irrf = 0;
+    else if (baseIrrf <= 2826.65) irrf = baseIrrf * 0.075 - 169.44;
+    else if (baseIrrf <= 3751.05) irrf = baseIrrf * 0.15 - 381.44;
+    else if (baseIrrf <= 4664.68) irrf = baseIrrf * 0.225 - 662.77;
+    else irrf = baseIrrf * 0.275 - 896.00;
+    irrf = Math.max(0, irrf);
+
+    const liquido = bruto - inss - irrf;
+    const box = document.getElementById('sl-result')!;
+    box.hidden = false;
+    box.innerHTML = `
+      <p><strong>Salário Bruto:</strong> ${fmt(bruto)}</p>
+      <p><strong>Desconto INSS:</strong> -${fmt(inss)}</p>
+      <p><strong>Desconto IRRF:</strong> -${fmt(irrf)}</p>
+      <hr/>
+      <p><strong>Salário Líquido:</strong> ${fmt(liquido)}</p>
+    `;
+  });
+</script>

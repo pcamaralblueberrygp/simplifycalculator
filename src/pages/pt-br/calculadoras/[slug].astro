@@ -1,0 +1,121 @@
+---
+import BaseLayoutPtBr from '../../../layouts/BaseLayoutPtBr.astro';
+import { CALCULATORS_BR, type PtBrCalcType } from '../../../data/calculators-pt-br';
+
+import FinanciamentoCalculator from '../../../components/calculators-pt-br/FinanciamentoCalculator.astro';
+import FinanciamentoImobiliarioCalculator from '../../../components/calculators-pt-br/FinanciamentoImobiliarioCalculator.astro';
+import TabelaPriceCalculator from '../../../components/calculators-pt-br/TabelaPriceCalculator.astro';
+import SalarioLiquidoCalculator from '../../../components/calculators-pt-br/SalarioLiquidoCalculator.astro';
+import CltVsPjCalculator from '../../../components/calculators-pt-br/CltVsPjCalculator.astro';
+import JurosCompostosCalculator from '../../../components/calculators-pt-br/JurosCompostosCalculator.astro';
+import OrcamentoMensalCalculator from '../../../components/calculators-pt-br/OrcamentoMensalCalculator.astro';
+import AposentadoriaCalculator from '../../../components/calculators-pt-br/AposentadoriaCalculator.astro';
+import QuitacaoDividasCalculator from '../../../components/calculators-pt-br/QuitacaoDividasCalculator.astro';
+import CartaoCreditoCalculator from '../../../components/calculators-pt-br/CartaoCreditoCalculator.astro';
+import PoupancaCalculator from '../../../components/calculators-pt-br/PoupancaCalculator.astro';
+
+export function getStaticPaths() {
+  return CALCULATORS_BR.map((calc) => ({
+    params: { slug: calc.slug },
+    props: { calc },
+  }));
+}
+
+const componentMap: Record<PtBrCalcType, any> = {
+  financiamento: FinanciamentoCalculator,
+  financiamentoImobiliario: FinanciamentoImobiliarioCalculator,
+  tabelaPrice: TabelaPriceCalculator,
+  salarioLiquido: SalarioLiquidoCalculator,
+  cltVsPj: CltVsPjCalculator,
+  jurosCompostos: JurosCompostosCalculator,
+  orcamentoMensal: OrcamentoMensalCalculator,
+  aposentadoria: AposentadoriaCalculator,
+  quitacaoDividas: QuitacaoDividasCalculator,
+  cartaoCredito: CartaoCreditoCalculator,
+  poupanca: PoupancaCalculator,
+};
+
+const { calc } = Astro.props;
+const CalcWidget = componentMap[calc.calcType];
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: calc.faqs.map((faq: { q: string; a: string }) => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: { '@type': 'Answer', text: faq.a },
+  })),
+};
+---
+
+<BaseLayoutPtBr
+  title={calc.title}
+  description={calc.metaDescription}
+  path={`/pt-br/calculadoras/${calc.slug}`}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+
+  <!-- LP Header -->
+  <div class="lp-header">
+    <div class="container">
+      <nav class="breadcrumbs">
+        <a href="/pt-br/">Todas as calculadoras</a>
+        <span>›</span>
+        <span>{calc.category}</span>
+        <span>›</span>
+        <span>{calc.shortTitle}</span>
+      </nav>
+      <div class="eyebrow">{calc.category}</div>
+      <h1>{calc.title}</h1>
+      <p class="lp-intro">{calc.intro}</p>
+    </div>
+  </div>
+
+  <!-- LP Body -->
+  <div class="lp-body">
+    <div class="container">
+
+      <!-- Calculator widget -->
+      <div class="calc-card">
+        <div class="calc-card-header">{calc.shortTitle}</div>
+        <div class="calc-card-body">
+          <CalcWidget />
+        </div>
+      </div>
+
+      <!-- How it works -->
+      <div class="lp-section-label">Como funciona</div>
+      <h2>Fórmula e metodologia</h2>
+      {calc.formulaExplanation.split('\n\n').map((p: string) => <p>{p}</p>)}
+      {calc.formulaSource && (
+        <p class="formula-source">
+          Fonte: <a href={calc.formulaSource.url} target="_blank" rel="noopener noreferrer">{calc.formulaSource.label}</a>
+        </p>
+      )}
+
+      <!-- Example -->
+      <div class="lp-section-label" style="margin-top: 32px">Exemplo</div>
+      <h2>Exemplo prático</h2>
+      <p>{calc.example}</p>
+
+      <!-- FAQ -->
+      <div class="lp-section-label" style="margin-top: 32px">Perguntas Frequentes</div>
+      <h2>Perguntas frequentes</h2>
+      <dl class="lp-faq">
+        {calc.faqs.map((faq: { q: string; a: string }) => (
+          <>
+            <dt>{faq.q}</dt>
+            <dd>{faq.a}</dd>
+          </>
+        ))}
+      </dl>
+
+      <p class="disclaimer">
+        Os resultados são estimativas para fins informativos gerais e não constituem
+        aconselhamento financeiro, contábil ou tributário. Sempre confirme valores importantes
+        com um profissional qualificado antes de tomar uma decisão financeira.
+      </p>
+    </div>
+  </div>
+</BaseLayoutPtBr>
