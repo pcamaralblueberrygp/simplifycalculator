@@ -91,6 +91,9 @@ img, svg { display: block; }
   display: inline-block;
 }
 .btn-nav:hover { background: #1a3d73; text-decoration: none; color: #fff; }
+.btn-nav:visited,
+.btn-nav:link,
+.btn-nav:active { color: #fff; }
 .logo-img { height: 28px; width: auto; }
 
 /* ── Buttons ── */
@@ -109,6 +112,33 @@ img, svg { display: block; }
   text-decoration: none;
 }
 .btn-primary:hover { background: #1a52c0; transform: translateY(-1px); text-decoration: none; color: #fff; }
+.btn-primary:visited,
+.btn-primary:link,
+.btn-primary:active { color: #fff; }
+
+/* ── Static pages (About, Privacy, Cookie Policy) ── */
+.static-page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 56px 40px 72px;
+}
+.static-page h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+.static-page p {
+  font-size: 15.5px;
+  color: var(--text-body);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+@media (max-width: 600px) {
+  .static-page { padding: 40px 20px 56px; }
+}
 .btn-text {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 600;
