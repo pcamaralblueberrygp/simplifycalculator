@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://simplifycalculator.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://simplifycalculator.com/about/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://simplifycalculator.com/contact/</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
   <url><loc>https://simplifycalculator.com/privacy-policy/</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url><loc>https://simplifycalculator.com/cookie-policy/</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url><loc>https://simplifycalculator.com/calculators/loan-payment-calculator/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -34,6 +35,7 @@
   <url><loc>https://simplifycalculator.com/calculators/freelance-rate-calculator/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://simplifycalculator.com/pt-br/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://simplifycalculator.com/pt-br/sobre/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://simplifycalculator.com/pt-br/contato/</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
   <url><loc>https://simplifycalculator.com/pt-br/privacidade/</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url><loc>https://simplifycalculator.com/pt-br/cookies/</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url><loc>https://simplifycalculator.com/pt-br/calculadoras/calculadora-de-financiamento/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
