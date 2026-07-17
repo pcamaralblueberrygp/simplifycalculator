@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { BLOG_POSTS } from '../../data/blog-posts';
+
+const posts = [...BLOG_POSTS].sort((a, b) => (a.publishDate < b.publishDate ? 1 : -1));
+---
+
+<BaseLayout
+  title="Blog"
+  description="Money guides and articles on loans, mortgages, debt payoff, and saving — from the team behind SimplifyCalculator."
+  path="/blog"
+>
+  <div class="static-page" style="max-width: 900px">
+    <h1>Blog</h1>
+    <p>Practical, plain-English guides on loans, debt, saving, and investing — written to complement our free calculators.</p>
+
+    <div style="margin-top: 32px; display: flex; flex-direction: column; gap: 28px;">
+      {posts.map((post) => (
+        <a href={`/blog/${post.slug}`} style="display: flex; gap: 20px; text-decoration: none; align-items: flex-start;">
+          <img src={post.image.src} alt={post.image.alt} width="160" height="84" style="border-radius: 8px; flex-shrink: 0; object-fit: cover;" loading="lazy" />
+          <div>
+            <div style="font-size: 12.5px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 0.03em;">{post.category}</div>
+            <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 19px; font-weight: 600; color: var(--ink); margin: 4px 0;">{post.title}</h2>
+            <p style="font-size: 14px; color: var(--text-muted); margin: 0;">{post.metaDescription}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { BLOG_POSTS } from '../../data/blog-posts';
+
+export function getStaticPaths() {
+  return BLOG_POSTS.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.title,
+  description: post.metaDescription,
+  datePublished: post.publishDate,
+  image: `https://simplifycalculator.com${post.image.src}`,
+  author: { '@type': 'Organization', name: 'SimplifyCalculator' },
+};
+---
+
+<BaseLayout
+  title={post.title}
+  description={post.metaDescription}
+  path={`/blog/${post.slug}`}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
+
+  <div class="lp-header">
+    <div class="container">
+      <nav class="breadcrumbs">
+        <a href="/blog">Blog</a>
+        <span>›</span>
+        <span>{post.category}</span>
+      </nav>
+      <div class="eyebrow">{post.category}</div>
+      <h1>{post.title}</h1>
+      <p class="lp-intro">{post.intro}</p>
+    </div>
+  </div>
+
+  <div class="lp-body">
+    <div class="container" style="max-width: 780px">
+      <img
+        src={post.image.src}
+        alt={post.image.alt}
+        width="1200"
+        height="630"
+        style="width: 100%; height: auto; border-radius: 12px; margin-bottom: 32px;"
+        loading="eager"
+      />
+
+      {post.sections.map((section: { heading: string; level: string; body: string[] }) => (
+        <>
+          {section.level === 'h2'
+            ? <h2>{section.heading}</h2>
+            : <h3>{section.heading}</h3>}
+          {section.body.map((p: string) => <p>{p}</p>)}
+        </>
+      ))}
+
+      {post.relatedCalculators && post.relatedCalculators.length > 0 && (
+        <>
+          <div class="lp-section-label" style="margin-top: 32px">Related calculators</div>
+          <ul class="lp-tips">
+            {post.relatedCalculators.map((calc: { label: string; href: string }) => (
+              <li><a href={calc.href}>{calc.label}</a></li>
+            ))}
+          </ul>
+        </>
+      )}
+
+      <p class="disclaimer">
+        This article is for general informational purposes only and does not constitute
+        financial, tax, or legal advice. Always confirm important figures with a qualified
+        professional before making a financial decision.
+      </p>
+    </div>
+  </div>
+</BaseLayout>

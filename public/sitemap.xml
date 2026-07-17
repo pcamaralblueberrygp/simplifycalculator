@@ -6,6 +6,9 @@
   <url><loc>https://simplifycalculator.com/privacy-policy/</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url><loc>https://simplifycalculator.com/cookie-policy/</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url><loc>https://simplifycalculator.com/terms/</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://simplifycalculator.com/blog/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://simplifycalculator.com/blog/how-much-house-can-you-afford/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://simplifycalculator.com/blog/true-cost-of-minimum-payments/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://simplifycalculator.com/calculators/loan-payment-calculator/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://simplifycalculator.com/calculators/mortgage-calculator/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://simplifycalculator.com/calculators/compound-interest-calculator/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -40,6 +43,9 @@
   <url><loc>https://simplifycalculator.com/pt-br/privacidade/</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url><loc>https://simplifycalculator.com/pt-br/cookies/</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url><loc>https://simplifycalculator.com/pt-br/termos/</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://simplifycalculator.com/pt-br/blog/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://simplifycalculator.com/pt-br/blog/como-sair-do-cheque-especial-e-rotativo/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://simplifycalculator.com/pt-br/blog/reserva-de-emergencia-quanto-guardar/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://simplifycalculator.com/pt-br/calculadoras/calculadora-de-financiamento/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://simplifycalculator.com/pt-br/calculadoras/calculadora-de-financiamento-imobiliario/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://simplifycalculator.com/pt-br/calculadoras/tabela-price-calculadora/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>

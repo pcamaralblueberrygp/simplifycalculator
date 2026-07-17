@@ -1,0 +1,83 @@
+---
+import BaseLayoutPtBr from '../../../layouts/BaseLayoutPtBr.astro';
+import { BLOG_POSTS_BR } from '../../../data/blog-posts-pt-br';
+
+export function getStaticPaths() {
+  return BLOG_POSTS_BR.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.title,
+  description: post.metaDescription,
+  datePublished: post.publishDate,
+  image: `https://simplifycalculator.com${post.image.src}`,
+  author: { '@type': 'Organization', name: 'SimplifyCalculator Brasil' },
+};
+---
+
+<BaseLayoutPtBr
+  title={post.title}
+  description={post.metaDescription}
+  path={`/pt-br/blog/${post.slug}`}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
+
+  <div class="lp-header">
+    <div class="container">
+      <nav class="breadcrumbs">
+        <a href="/pt-br/blog">Blog</a>
+        <span>›</span>
+        <span>{post.category}</span>
+      </nav>
+      <div class="eyebrow">{post.category}</div>
+      <h1>{post.title}</h1>
+      <p class="lp-intro">{post.intro}</p>
+    </div>
+  </div>
+
+  <div class="lp-body">
+    <div class="container" style="max-width: 780px">
+      <img
+        src={post.image.src}
+        alt={post.image.alt}
+        width="1200"
+        height="630"
+        style="width: 100%; height: auto; border-radius: 12px; margin-bottom: 32px;"
+        loading="eager"
+      />
+
+      {post.sections.map((section: { heading: string; level: string; body: string[] }) => (
+        <>
+          {section.level === 'h2'
+            ? <h2>{section.heading}</h2>
+            : <h3>{section.heading}</h3>}
+          {section.body.map((p: string) => <p>{p}</p>)}
+        </>
+      ))}
+
+      {post.relatedCalculators && post.relatedCalculators.length > 0 && (
+        <>
+          <div class="lp-section-label" style="margin-top: 32px">Calculadoras relacionadas</div>
+          <ul class="lp-tips">
+            {post.relatedCalculators.map((calc: { label: string; href: string }) => (
+              <li><a href={calc.href}>{calc.label}</a></li>
+            ))}
+          </ul>
+        </>
+      )}
+
+      <p class="disclaimer">
+        Este artigo tem fins informativos gerais e não constitui aconselhamento financeiro,
+        contábil ou jurídico. Sempre confirme valores importantes com um profissional
+        qualificado antes de tomar uma decisão financeira.
+      </p>
+    </div>
+  </div>
+</BaseLayoutPtBr>
