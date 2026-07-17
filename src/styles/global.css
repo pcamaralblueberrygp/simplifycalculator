@@ -641,6 +641,32 @@ img, svg { display: block; }
   line-height: 1.7;
 }
 
+/* ── Guide articles (homepage) ── */
+.guide-article h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 21px;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.guide-article p {
+  font-size: 15px;
+  color: var(--text-body);
+  line-height: 1.75;
+  margin-bottom: 14px;
+  max-width: 780px;
+}
+.guide-article a { color: var(--blue); text-decoration: underline; }
+
+/* ── LP Tips ── */
+.lp-tips { margin: 8px 0 0; padding-left: 22px; }
+.lp-tips li {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
 /* ── Disclaimer ── */
 .disclaimer {
   font-size: 13px;

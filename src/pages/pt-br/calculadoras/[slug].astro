@@ -111,6 +111,16 @@ const faqJsonLd = {
         ))}
       </dl>
 
+      {calc.tips && calc.tips.length > 0 && (
+        <>
+          <div class="lp-section-label" style="margin-top: 32px">Dicas</div>
+          <h2>Dicas práticas</h2>
+          <ul class="lp-tips">
+            {calc.tips.map((tip: string) => <li>{tip}</li>)}
+          </ul>
+        </>
+      )}
+
       <p class="disclaimer">
         Os resultados são estimativas para fins informativos gerais e não constituem
         aconselhamento financeiro, contábil ou tributário. Sempre confirme valores importantes

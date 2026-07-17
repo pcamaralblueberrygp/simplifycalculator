@@ -59,6 +59,7 @@ export interface Calculator {
   formulaSource?: FormulaSource;
   example: string;
   faqs: Faq[];
+  tips?: string[];
   calcType: CalcType;
 }
 
@@ -94,6 +95,11 @@ export const CALCULATORS: Calculator[] = [
         a: 'Interest is charged on the remaining balance, which is highest at the start of the loan. As the balance shrinks, the interest portion of each payment shrinks too.',
       },
     ],
+    tips: [
+      'Get quotes from at least three lenders (bank, credit union, online lender) before signing — rates for the same borrower can vary by a full percentage point or more.',
+      'A shorter term almost always means a higher monthly payment but a much lower total interest cost. Run both a 3-year and 5-year term through this calculator before deciding.',
+      'If your credit score is below 680, improving it for even 60-90 days before applying (paying down credit card balances, fixing report errors) can meaningfully lower the rate you\'re offered.',
+    ],
     calcType: 'loan',
   },
   {
@@ -126,6 +132,11 @@ export const CALCULATORS: Calculator[] = [
         q: 'Are property taxes the same everywhere?',
         a: "No, property tax rates vary widely by state and county. Use your local assessor's rate or your specific listing's tax estimate for a more accurate number.",
       },
+    ],
+    tips: [
+      'Get pre-approved (not just pre-qualified) before house hunting — it locks in a realistic budget and makes your offer more competitive with sellers.',
+      'Shop your rate with at least 3-4 lenders within a 14-day window; credit bureaus treat multiple mortgage inquiries in a short period as a single soft check on your score.',
+      'Extra principal payments early in the loan save far more interest than the same extra payment made later — even one extra payment per year can cut years off a 30-year mortgage.',
     ],
     calcType: 'mortgage',
   },
@@ -160,6 +171,11 @@ export const CALCULATORS: Calculator[] = [
         a: 'Real investment returns vary year to year. This tool assumes a constant average rate to make long-term projections easy to understand, not to predict actual market performance.',
       },
     ],
+    tips: [
+      'Time in the market beats timing the market: starting 10 years earlier with smaller contributions usually beats starting later with larger ones, because compounding needs time to work.',
+      'Automate your monthly contribution so it happens before you have a chance to spend the money — consistency matters more than the exact amount for long-term compounding.',
+      'Check whether your account has fees (expense ratios, account maintenance fees) — even a 1% annual fee can quietly erase a large share of your compounded growth over 20-30 years.',
+    ],
     calcType: 'compoundInterest',
   },
   {
@@ -188,6 +204,10 @@ export const CALCULATORS: Calculator[] = [
         q: 'Where is simple interest actually used?',
         a: 'Some auto loans, short-term promissory notes, and certain bonds use simple interest. Most savings accounts, credit cards, and mortgages use compound interest instead.',
       },
+    ],
+    tips: [
+      'Double-check your loan or bond documentation for the word \'simple\' or \'add-on\' interest before assuming — most consumer credit (credit cards, most mortgages) actually compounds, which changes your real cost significantly.',
+      'For short-term loans (under a year), the difference between simple and compound interest is small; for anything multi-year, always confirm which method applies.',
     ],
     calcType: 'simpleInterest',
   },
@@ -218,6 +238,10 @@ export const CALCULATORS: Calculator[] = [
         a: 'No. This is a gross return calculation. Taxes, transaction fees, and inflation will reduce your real, take-home return.',
       },
     ],
+    tips: [
+      'Always compare investments using annualized ROI, not total ROI, when the holding periods differ — a 20% return in 1 year is far better than a 20% return spread over 5 years.',
+      'Include all costs in your initial investment figure (fees, closing costs, taxes paid to acquire the asset) — leaving them out inflates your ROI artificially.',
+    ],
     calcType: 'roi',
   },
   {
@@ -247,6 +271,11 @@ export const CALCULATORS: Calculator[] = [
         a: 'Be conservative. Using an optimistic rate makes the required contribution look smaller than it may actually need to be if real returns come in lower.',
       },
     ],
+    tips: [
+      'Recalculate this every 6-12 months — actual returns, income changes, and new priorities mean the original required contribution rarely stays accurate for long.',
+      'If the required monthly contribution feels unaffordable, extending the timeline by even 12-18 months often lowers it more than you\'d expect, because compounding gets more time to help.',
+      'Keep goal-specific savings in a separate account from your everyday spending money — mixing the two is the most common reason people miss savings targets.',
+    ],
     calcType: 'savingsGoal',
   },
   {
@@ -275,6 +304,11 @@ export const CALCULATORS: Calculator[] = [
         q: 'Does paying extra each month help?',
         a: 'Yes, significantly. Even a modest increase in your fixed monthly payment can cut both the payoff time and the total interest substantially — try a few different amounts to compare.',
       },
+    ],
+    tips: [
+      'If you have multiple debts, pay minimums on all but the smallest balance or highest rate first — see our Debt-to-Income and Credit Card calculators for related planning.',
+      'Any extra amount you can add to the fixed payment — even $25-50/month — compounds into a meaningfully shorter payoff timeline. Try a few amounts in this calculator to see the effect.',
+      'Before committing to a payment plan, check whether a balance transfer or debt consolidation loan could lower your interest rate — the payoff math changes substantially at a lower rate.',
     ],
     calcType: 'debtPayoff',
   },
@@ -309,6 +343,11 @@ export const CALCULATORS: Calculator[] = [
         a: 'No, this only projects the personal savings and contributions you enter. Other retirement income sources should be considered separately.',
       },
     ],
+    tips: [
+      'Increase your contribution rate by 1% every time you get a raise — you\'ll barely notice the difference in take-home pay, but it meaningfully changes your projected balance.',
+      'Always capture a full employer 401(k) match if offered — it is an immediate, guaranteed return that no market investment can match.',
+      'Re-run this projection with a more conservative return (5-6%) periodically as a stress test, so your plan doesn\'t depend entirely on optimistic market assumptions.',
+    ],
     calcType: 'retirement',
   },
   {
@@ -338,6 +377,10 @@ export const CALCULATORS: Calculator[] = [
         a: 'This page summarizes by year to keep the table readable for long loans. The underlying simulation is monthly, so a month-by-month view can be added if you need that level of detail.',
       },
     ],
+    tips: [
+      'Use this schedule to decide if refinancing makes sense: if you\'re still early in the loan (mostly paying interest), refinancing resets that clock — run the numbers before assuming it saves money.',
+      'If you plan to sell or move within 5-7 years, check how much equity the schedule shows you\'ll actually have built by then — it\'s often less than people expect on a 30-year loan.',
+    ],
     calcType: 'amortization',
   },
   {
@@ -366,6 +409,11 @@ export const CALCULATORS: Calculator[] = [
         q: 'Is paying only the minimum a good idea?',
         a: 'Minimum payments are usually a small percentage of the balance and are designed to extend repayment for years while maximizing interest paid. Paying more than the minimum, when possible, meaningfully shortens payoff time.',
       },
+    ],
+    tips: [
+      'If the calculator shows the balance never going down, that\'s a critical signal — your payment doesn\'t cover the interest charge, and the debt will grow, not shrink.',
+      'Consider a 0% APR balance transfer card if your credit qualifies — moving a high-interest balance to 0% for 12-18 months can save hundreds or thousands in interest during payoff.',
+      'Pay more than the card issuer\'s minimum whenever possible; minimums are calculated to maximize how long you carry (and pay interest on) the balance.',
     ],
     calcType: 'creditCardPayoff',
   },
@@ -400,6 +448,11 @@ export const CALCULATORS: Calculator[] = [
         a: 'Monthly at minimum. Compare what you planned to what you actually spent. Budgets that are never checked tend to drift away from reality within a few months.',
       },
     ],
+    tips: [
+      'Track your actual spending for one full month before building a budget — most people underestimate variable categories like dining out and subscriptions by 20-30%.',
+      'Review recurring subscriptions every 3 months; forgotten subscriptions are one of the most common silent budget leaks.',
+      'If your surplus is consistently negative, cut discretionary categories (entertainment, dining) before fixed ones (rent, insurance) — fixed costs are harder to change quickly.',
+    ],
     calcType: 'budget',
   },
   {
@@ -428,6 +481,10 @@ export const CALCULATORS: Calculator[] = [
         q: 'My net worth is negative — is that unusual?',
         a: 'Very common, especially in your 20s and 30s when student loans and a new mortgage often outweigh accumulated savings. The important question is whether it is trending toward zero over time.',
       },
+    ],
+    tips: [
+      'Track net worth on the same day each quarter (e.g., the 1st of January, April, July, October) so your comparisons over time are consistent.',
+      'Use conservative, current market values for real estate and vehicles — inflating asset values makes your net worth look better than it really is and can lead to poor decisions.',
     ],
     calcType: 'netWorth',
   },
@@ -458,6 +515,10 @@ export const CALCULATORS: Calculator[] = [
         a: 'In a high-yield savings account or money market account that is separate from your everyday checking account. You want it accessible within 1–2 business days but not so convenient that you dip into it for non-emergencies.',
       },
     ],
+    tips: [
+      'Build the fund in a high-yield savings account, not a checking account — you\'ll earn meaningful interest while keeping the money accessible within 1-2 days.',
+      'Start with a smaller starter goal (e.g., $1,000) if the full 3-6 month target feels overwhelming — even a small buffer prevents most people from reaching for a credit card during a minor emergency.',
+    ],
     calcType: 'emergencyFund',
   },
   {
@@ -486,6 +547,10 @@ export const CALCULATORS: Calculator[] = [
         q: 'How does this relate to investment returns?',
         a: 'Your real return is the nominal return minus inflation. A 7% investment return during a 3% inflation year produces a 4% real return. Inflation calculators help you check whether your savings are actually growing in purchasing power.',
       },
+    ],
+    tips: [
+      'When comparing salaries or prices across different years, always inflation-adjust first — a raise that sounds large can actually be a pay cut in real purchasing power if inflation outpaced it.',
+      'Use a higher inflation assumption (4-5%) for categories that have historically outpaced general inflation, like healthcare and college tuition, rather than the general 3% average.',
     ],
     calcType: 'inflation',
   },
@@ -516,6 +581,10 @@ export const CALCULATORS: Calculator[] = [
         a: 'Not at all — if one person ordered significantly more or received more service (a dedicated order, special accommodation), adjusting individual shares is reasonable. The server receives the total regardless of how the table divides it.',
       },
     ],
+    tips: [
+      'For large groups, check if the restaurant already added an automatic gratuity to the bill before adding your own tip on top — look for \'service charge included\' on the receipt.',
+      'When splitting a bill unevenly, calculate each person\'s tip on their own subtotal rather than dividing an average tip evenly, so it stays fair to who ordered less.',
+    ],
     calcType: 'tip',
   },
   {
@@ -544,6 +613,10 @@ export const CALCULATORS: Calculator[] = [
         q: 'Are the interest earnings taxable?',
         a: 'Yes. Interest earned in a standard savings account is taxable as ordinary income in the year it is credited, even if you leave it in the account. High-yield savings in a Roth IRA are an exception — growth and qualified withdrawals are tax-free.',
       },
+    ],
+    tips: [
+      'Compare APY, not APR, when shopping for savings accounts or CDs — APY already reflects compounding and is the true rate you\'ll earn.',
+      'High-yield online savings accounts frequently offer 4-10x the APY of traditional big-bank savings accounts with the same FDIC protection — shop around before parking cash.',
     ],
     calcType: 'savingsInterest',
   },
@@ -574,6 +647,11 @@ export const CALCULATORS: Calculator[] = [
         a: 'Generally yes: a larger down payment reduces the loan amount, which lowers both the monthly payment and total interest. It also reduces the risk of being "underwater" (owing more than the car is worth) early in the loan, since new cars depreciate quickly in the first few years.',
       },
     ],
+    tips: [
+      'Get pre-approved financing from your bank or credit union before visiting the dealership — it gives you a real rate to compare against (or negotiate down) the dealer\'s financing offer.',
+      'Avoid stretching the loan term past 60 months just to lower the payment — longer terms usually mean paying significantly more in total interest and a higher risk of owing more than the car is worth.',
+      'Add estimated sales tax, registration, and dealer fees to the vehicle price before running the numbers here — they\'re usually rolled into the loan and increase your real monthly payment.',
+    ],
     calcType: 'loan',
   },
   {
@@ -602,6 +680,10 @@ export const CALCULATORS: Calculator[] = [
         q: 'How does pricing affect the break-even point?',
         a: 'Price increases have a large impact: raising price by $2 in the example above grows the contribution margin from $12 to $14, cutting the break-even from 1,000 units to about 857 — an 14% reduction for a 10% price increase. This is why pricing is often more powerful than cost-cutting.',
       },
+    ],
+    tips: [
+      'Re-run this calculation whenever your costs or pricing change — even a small increase in a supplier\'s price can shift your break-even point more than expected.',
+      'Use the contribution margin (price minus variable cost) as a quick gut-check on any new product idea — a thin margin means you\'ll need very high volume to be profitable.',
     ],
     calcType: 'breakEven',
   },
@@ -632,6 +714,10 @@ export const CALCULATORS: Calculator[] = [
         a: 'Yes — the rule applies to any compound growth. At 4% inflation, prices double in about 72/4 = 18 years. At 24% APR credit card debt, the balance doubles in about 3 years if you make no payments.',
       },
     ],
+    tips: [
+      'Use this as a quick sanity check on investment pitches — if someone promises your money will double in 2 years, that implies a 36% annual return, which should raise serious red flags.',
+      'The rule works both directions: use it to estimate how fast a high-interest debt (like credit card debt) will double if left unpaid, not just for investment growth.',
+    ],
     calcType: 'ruleOf72',
   },
   {
@@ -661,6 +747,10 @@ export const CALCULATORS: Calculator[] = [
         a: 'This calculator shows gross pay. To estimate net (take-home) pay, subtract federal and state income taxes, Social Security (6.2%), and Medicare (1.45%). A rough rule of thumb for a middle-income U.S. earner: take-home is about 70–75% of gross after all withholding.',
       },
     ],
+    tips: [
+      'Use this as a quick sanity check on investment pitches — if someone promises your money will double in 2 years, that implies a 36% annual return, which should raise serious red flags.',
+      'The rule works both directions: use it to estimate how fast a high-interest debt (like credit card debt) will double if left unpaid, not just for investment growth.',
+    ],
     calcType: 'hourlyToSalary',
   },
   {
@@ -678,6 +768,10 @@ export const CALCULATORS: Calculator[] = [
       { q: 'What is a good dividend yield?', a: 'Historically, dividend yields between 2% and 5% are considered solid for blue-chip stocks. Yields above 5% warrant extra scrutiny. Utilities and REITs often yield higher than the broader market due to their business models.' },
       { q: 'Do dividends reduce the stock price?', a: 'Yes. On the ex-dividend date, the stock price typically drops by approximately the dividend amount, because new buyers after that date do not receive the upcoming payment.' },
     ],
+    tips: [
+      'Check the company\'s payout ratio (dividends paid ÷ net income) alongside the yield — a payout ratio consistently above 80-90% is a warning sign the dividend may not be sustainable.',
+      'Reinvesting dividends (DRIP) rather than taking them as cash meaningfully accelerates long-term compounding — model both scenarios if you\'re investing for decades, not income today.',
+    ],
     calcType: 'dividendYield',
   },
   {
@@ -693,6 +787,10 @@ export const CALCULATORS: Calculator[] = [
     faqs: [
       { q: 'Does this account for taxes?', a: 'No. This calculator shows gross return before taxes. Capital gains taxes vary depending on your holding period (short-term vs. long-term) and income bracket. Dividends may be qualified or ordinary income. Consult a tax professional for your specific situation.' },
       { q: 'Should I include commissions?', a: 'Yes, if you paid trading commissions, subtract them from the sale proceeds or add them to the purchase cost for a more accurate net return. Most modern brokers charge zero commissions, but older trades may have fees worth including.' },
+    ],
+    tips: [
+      'Always calculate total return (price change plus dividends), not just price change — for many dividend-paying stocks, dividends make up a large share of the real return over time.',
+      'Keep a simple spreadsheet of purchase price, date, and commissions for each position — it makes accurate return calculations (and tax reporting) far easier at tax time.',
     ],
     calcType: 'stockReturn',
   },
@@ -710,6 +808,10 @@ export const CALCULATORS: Calculator[] = [
       { q: 'Why does buying sometimes lose in the short term?', a: 'Closing costs (typically 2-5% of the purchase price) are paid upfront and take years to recoup through equity building. If you sell within 2-3 years, renting is almost always cheaper when those costs are factored in.' },
       { q: 'What costs are not included?', a: 'This calculator omits closing costs, HOA dues, PMI (if applicable), tax deductions for mortgage interest, and the opportunity cost of the down payment invested elsewhere. Adding these would make the comparison more precise but also more complex.' },
     ],
+    tips: [
+      'Run the numbers at your actual expected time horizon, not an arbitrary one — the breakeven point between renting and buying is highly sensitive to how many years you expect to stay.',
+      'Don\'t forget to account for the opportunity cost of your down payment — money used for a down payment could otherwise be invested, and that forgone growth is a real cost of buying.',
+    ],
     calcType: 'rentVsBuy',
   },
   {
@@ -725,6 +827,10 @@ export const CALCULATORS: Calculator[] = [
     faqs: [
       { q: 'Why does this differ from my actual paycheck?', a: 'This calculator uses simplified 2024 federal brackets and a flat state rate. Your actual withholding depends on your W-4 elections (allowances, extra withholding), additional Medicare tax for high earners, local/city taxes, health insurance premiums, HSA contributions, and other deductions your employer may withhold.' },
       { q: 'What is the difference between pre-tax and post-tax 401(k) contributions?', a: 'Traditional 401(k) contributions are pre-tax — they reduce your taxable income now and grow tax-deferred. Roth 401(k) contributions are post-tax — no immediate tax benefit, but qualified withdrawals in retirement are tax-free. This calculator models traditional pre-tax contributions.' },
+    ],
+    tips: [
+      'Review your W-4 withholding once a year, especially after a raise, marriage, or a new dependent — incorrect withholding is one of the most common reasons for a surprise tax bill or an interest-free loan to the government via a large refund.',
+      'If you\'re consistently getting a large tax refund, consider adjusting your withholding to increase your take-home pay throughout the year instead — a refund is money you already earned, held interest-free until tax season.',
     ],
     calcType: 'paycheck',
   },
@@ -742,6 +848,10 @@ export const CALCULATORS: Calculator[] = [
       { q: 'Does DTI affect my credit score?', a: 'Not directly — credit bureaus do not track your income, so DTI is not part of your credit score calculation. However, lenders pull both your credit report and calculate your DTI independently during the underwriting process.' },
       { q: 'How can I improve my DTI quickly?', a: 'The two levers are: (1) reduce debt — pay down balances and close installment loans, with the biggest DTI impact coming from eliminating a payment entirely rather than reducing it; and (2) increase income — a raise, second job, or freelance income lowers the ratio immediately.' },
     ],
+    tips: [
+      'Before applying for a mortgage, pay off or pay down the smallest installment loans first — eliminating an entire monthly payment lowers DTI more than partially paying down a larger balance.',
+      'Avoid opening new credit accounts or making large purchases on credit in the months before applying for a major loan — new debt payments directly raise your DTI at the worst possible time.',
+    ],
     calcType: 'debtToIncome',
   },
   {
@@ -757,6 +867,10 @@ export const CALCULATORS: Calculator[] = [
     faqs: [
       { q: 'What if I overshoot and save too much?', a: 'A 529 account can be transferred to another beneficiary (a sibling, cousin, or even yourself) with no tax penalty. Starting in 2024, unused 529 funds can also be rolled over to a Roth IRA for the beneficiary, subject to annual contribution limits and a 15-year account seasoning requirement.' },
       { q: 'Do 529 assets affect financial aid eligibility?', a: 'Yes, but modestly. A parent-owned 529 is assessed at a maximum rate of 5.64% in the FAFSA formula, compared to 20% for assets held directly in the student\'s name. Grandparent-owned 529 plans have no impact on FAFSA under rules that took effect for the 2024-2025 aid year.' },
+    ],
+    tips: [
+      'Start contributions as early as possible — even a modest monthly amount from birth benefits enormously from 18 years of compounding versus starting when the child is already in middle school.',
+      'Check whether your state offers a tax deduction or credit for 529 contributions — many states offer this, and it\'s an easy way to reduce the real cost of saving.',
     ],
     calcType: 'collegeSavings',
   },
@@ -774,6 +888,10 @@ export const CALCULATORS: Calculator[] = [
       { q: 'Should I buy as much house as I can afford?', a: 'Most financial planners advise against it. Buying at the top of your qualification limit leaves no buffer for job changes, repairs, or unexpected expenses. A rule of thumb is to target a home price no more than 2.5-3x your annual gross income.' },
       { q: 'Does this include PMI?', a: 'No. If your down payment is less than 20% of the home price, lenders require private mortgage insurance (PMI), typically 0.5-1.5% of the loan amount per year. This adds $100-$300/month on a $300,000 loan and reduces how much home you can afford.' },
     ],
+    tips: [
+      'Treat the maximum affordable price this calculator shows as a ceiling, not a target — most financial planners recommend buying below your maximum qualification to leave room for savings, repairs, and life changes.',
+      'Get a true sense of your monthly costs by adding estimated utilities, HOA dues, and maintenance (typically 1% of home value per year) on top of the mortgage payment shown here.',
+    ],
     calcType: 'homeAffordability',
   },
   {
@@ -789,6 +907,10 @@ export const CALCULATORS: Calculator[] = [
     faqs: [
       { q: 'Why is my freelance rate so much higher than an equivalent employee salary?', a: 'As a freelancer you pay both the employee and employer halves of Social Security and Medicare (15.3% total vs. 7.65% for an employee), you have no paid vacation or sick days, you cover your own health insurance, and you spend non-billable hours on business administration. These add up to 30-50% above equivalent employee compensation.' },
       { q: 'Should I charge by the hour or by the project?', a: 'Project-based pricing is usually more profitable once you are experienced, because faster delivery increases your effective hourly rate. Fixed-fee projects also give clients a predictable cost, which reduces friction in closing deals. Track your actual hours per project to refine future estimates.' },
+    ],
+    tips: [
+      'Revisit your rate at least once a year — rising business costs, more experience, and inflation all justify periodic increases, even with existing clients.',
+      'Track your actual non-billable hours (admin, marketing, invoicing) for a month — most freelancers underestimate this time, which means their real effective hourly rate is lower than their quoted rate.',
     ],
     calcType: 'freelanceRate',
   },
