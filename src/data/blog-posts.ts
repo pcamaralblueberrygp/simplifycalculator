@@ -126,7 +126,9 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: 'What actually accelerates payoff',
         level: 'h2',
-        body: [],
+        body: [
+          "The good news is that escaping the minimum-payment trap doesn't require a windfall — it requires changing how you pay, not necessarily how much you earn. Three levers make the biggest difference, and you can combine all three at once.",
+        ],
       },
       {
         heading: 'Even a modest fixed increase changes the math dramatically',
