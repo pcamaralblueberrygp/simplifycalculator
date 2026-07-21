@@ -62,6 +62,18 @@ const articleJsonLd = {
         </>
       ))}
 
+      {post.affiliateOffer && (
+        <div class="affiliate-box">
+          <div class="affiliate-box-label">Publicidade</div>
+          <h3>{post.affiliateOffer.title}</h3>
+          <p>{post.affiliateOffer.body}</p>
+          <a href={post.affiliateOffer.url} target="_blank" rel="sponsored noopener" class="btn-primary">
+            {post.affiliateOffer.ctaText}
+          </a>
+          <p class="affiliate-disclosure">{post.affiliateOffer.disclosure}</p>
+        </div>
+      )}
+
       {post.relatedCalculators && post.relatedCalculators.length > 0 && (
         <>
           <div class="lp-section-label" style="margin-top: 32px">Calculadoras relacionadas</div>
