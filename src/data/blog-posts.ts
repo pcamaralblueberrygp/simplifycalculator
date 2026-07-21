@@ -158,6 +158,96 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'Debt-to-Income Ratio Calculator', href: '/calculators/debt-to-income-ratio-calculator' },
     ],
   },
+  {
+    slug: 'cost-of-waiting-to-save-for-retirement',
+    title: 'The Cost of Waiting: What a 10-Year Delay Really Does to Your Retirement Savings',
+    metaDescription:
+      'Starting retirement savings 10 years late costs far more than the missed contributions. See the real math on lost compounding and what to do if you are already behind.',
+    publishDate: '2026-07-21',
+    category: 'Retirement',
+    image: { src: '/blog/cost-of-waiting-to-save-for-retirement.svg', alt: 'The cost of waiting to save for retirement — SimplifyCalculator guide comparing starting at 25 versus 35 with compound growth charts' },
+    intro:
+      "\"I'll start saving seriously once I'm earning more\" is one of the most expensive sentences in personal finance. It sounds reasonable — and a 10-year delay feels small next to a 40-year career — but the math behind compound growth treats time completely differently than it treats money. Waiting doesn't just cost you the contributions you skipped; it costs you decades of growth on top of them.",
+    sections: [
+      {
+        heading: "It's not the missed contributions — it's the missed compounding",
+        level: 'h2',
+        body: [
+          "Compare two savers, both investing $300 a month at a 7% average annual return (a common long-term assumption for a diversified stock portfolio) until age 65. Investor A starts at 25 and contributes for 40 years. Investor B starts at 35 and contributes for 30 years.",
+          "Investor A ends up with roughly $787,000. Investor B ends up with roughly $366,000 — less than half. The gap is over $421,000. But Investor B only contributed $36,000 less out of pocket than Investor A (10 fewer years at $300/month). The other $385,000 of the gap is pure lost compounding: growth that never had time to happen, and growth on that growth, which never had time to happen either.",
+        ],
+      },
+      {
+        heading: 'Why the first 10 years matter more than the last 10',
+        level: 'h2',
+        body: [
+          "Under the Rule of 72, money growing at 7% roughly doubles every 10.3 years. A dollar invested at 25 gets close to four full doubling periods before 65. A dollar invested at 35 only gets three. Losing that first doubling period doesn't just remove one-quarter of the growth — it removes the base that every later doubling would have compounded on top of. This is why financial advisors consistently say the earliest years of saving matter more than any other stretch of your working life, even though they usually involve the smallest paychecks.",
+          "You can see this effect on your own numbers with our Compound Interest Calculator — try running the same monthly contribution starting 10 years apart and watch how much of the final gap comes from growth rather than principal.",
+        ],
+      },
+      {
+        heading: "Why 'catching up later' rarely works the way people expect",
+        level: 'h2',
+        body: [
+          "The instinctive fix for a late start is to save more once income rises. It helps, but the amount required is usually larger than people expect.",
+        ],
+      },
+      {
+        heading: 'The catch-up contribution has to be dramatically bigger, not just a bit bigger',
+        level: 'h3',
+        body: [
+          "To match Investor A's $787,000 outcome in only 30 years instead of 40, Investor B would need to contribute about $645 a month — more than double the original $300, not a modest bump. That's the practical cost of the lost decade: not a little extra saved later, but more than double the contribution rate for the rest of a career just to arrive at the same place.",
+        ],
+      },
+      {
+        heading: "You can't out-invest a time shortfall with better returns",
+        level: 'h3',
+        body: [
+          "A common instinct is to chase higher returns to make up lost time — shifting into riskier investments hoping for 10-12% instead of 7%. This usually backfires: higher expected returns come with higher volatility, and a market downturn in the final years before retirement can do more damage to a concentrated, catch-up-mode portfolio than a decade of modest, steady 7% growth ever would have cost you. Time and rate of return work together, but time is the variable you can never buy back.",
+        ],
+      },
+      {
+        heading: "If you're already behind, here's what actually moves the needle",
+        level: 'h2',
+        body: [
+          "A late start isn't a reason to give up on retirement savings — it's a reason to be more deliberate about the levers that are still fully within your control.",
+        ],
+      },
+      {
+        heading: 'Raise your contribution rate before your lifestyle absorbs the raise',
+        level: 'h3',
+        body: [
+          "Every time you get a raise or bonus, redirect a fixed percentage of it into retirement savings before it becomes part of your regular spending. This avoids the common trap where income grows but the savings rate stays flat because expenses quietly grow to match it.",
+        ],
+      },
+      {
+        heading: 'Capture 100% of any employer match and use catch-up contribution limits',
+        level: 'h3',
+        body: [
+          "An employer 401(k) match is an immediate, guaranteed return that no market investment can reliably beat — leaving it unclaimed is the single most avoidable mistake in retirement saving. If you're 50 or older, the IRS also allows higher annual catch-up contribution limits specifically designed for savers who started late.",
+        ],
+      },
+      {
+        heading: 'Be honest about your target retirement age',
+        level: 'h3',
+        body: [
+          "Working three to five years longer than originally planned does two things at once: it adds more years of contributions and growth, and it shortens the number of years your savings need to cover. Even a modest delay in retirement age can close a surprisingly large gap, and it's often a more realistic lever than trying to dramatically outsave a decade of lost time in half the years.",
+        ],
+      },
+      {
+        heading: 'Run your own numbers before you decide anything',
+        level: 'h2',
+        body: [
+          "Generic examples are useful for illustrating the shape of the problem, but your actual gap — and the contribution rate that closes it — depends on your current age, balance, and target retirement date. Use our Retirement Savings Calculator to model your specific timeline, and the Rule of 72 Calculator to get a quick, intuitive sense of how many doubling periods your money realistically has left before you plan to retire.",
+        ],
+      },
+    ],
+    relatedCalculators: [
+      { label: 'Retirement Savings Calculator', href: '/calculators/retirement-savings-calculator' },
+      { label: 'Compound Interest Calculator', href: '/calculators/compound-interest-calculator' },
+      { label: 'Rule of 72 Calculator', href: '/calculators/rule-of-72-calculator' },
+    ],
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
