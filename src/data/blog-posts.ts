@@ -248,6 +248,99 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'Rule of 72 Calculator', href: '/calculators/rule-of-72-calculator' },
     ],
   },
+  {
+    slug: 'why-freelance-rate-higher-than-salary',
+    title: 'Why Your Freelance Rate Needs to Be 30-50% Higher Than an Equivalent Salary',
+    metaDescription:
+      'A $75,000 salary does not translate to a $36/hour freelance rate. See the real math behind self-employment tax, benefits, and unbillable time that closes the gap.',
+    publishDate: '2026-07-23',
+    category: 'Freelance',
+    image: {
+      src: '/blog/why-freelance-rate-higher-than-salary.svg',
+      alt: 'Why freelance hourly rates must be 30 to 50 percent higher than an equivalent salary — SimplifyCalculator breakdown of self-employment tax, benefits, and unbillable hours',
+    },
+    intro:
+      "New freelancers make the same pricing mistake almost universally: they take their old salary, divide it by 2,080 hours, and quote that number to clients. It feels fair, and it is also a fast way to end up earning less than the job they just left while working more hours to get there. The math behind freelance pricing isn't the same math behind a paycheck, and the gap between the two is bigger than most people expect.",
+    sections: [
+      {
+        heading: 'The naive conversion, and why it undercharges',
+        level: 'h2',
+        body: [
+          "Take someone leaving a $75,000 salaried job. The naive approach divides by a standard work-year (40 hours × 52 weeks = 2,080 hours) and arrives at $36.06/hour, which is exactly what our Hourly to Salary Calculator would show for that salary. That number is mathematically correct for one thing only: what a salary works out to per hour if every hour were billable and every dollar were treated the same as W-2 pay. Freelance income fails both of those assumptions at once.",
+          "The result is predictable. A freelancer who quotes $36/hour, works a full 40-hour week, and bills for all of it will take home noticeably less than $75,000 by the end of the year — not because they did anything wrong, but because the conversion they used was built for a different kind of income.",
+        ],
+      },
+      {
+        heading: 'Where the gap actually comes from',
+        level: 'h2',
+        body: [
+          "Three separate factors eat into freelance income that never touch a salaried paycheck, and they compound rather than simply add together.",
+        ],
+      },
+      {
+        heading: 'Self-employment tax doubles your payroll tax burden',
+        level: 'h3',
+        body: [
+          "A W-2 employee pays 7.65% of wages toward Social Security and Medicare, and the employer quietly pays the other 7.65% on their behalf — most employees never see that second half or think about it. A self-employed freelancer is both employer and employee, and owes the full 15.3% (on net self-employment income up to the Social Security wage base, and 2.9% above it) directly. That alone is roughly an 8-point tax gap that a salary-to-hourly conversion never accounts for.",
+        ],
+      },
+      {
+        heading: 'Benefits you no longer get for free have a real dollar value',
+        level: 'h3',
+        body: [
+          "A salaried job typically bundles employer-subsidized health insurance, paid vacation and sick days, and often a 401(k) match — none of which show up as a separate line on a pay stub, which is exactly why they're so easy to forget when pricing freelance work. Health coverage alone commonly runs $400-$700+/month for an individual buying their own plan, and two to three weeks of paid time off is, in effect, 4-6% of a salaried employee's annual compensation that a freelancer has to either self-fund or simply go without.",
+        ],
+      },
+      {
+        heading: "Not every hour you work is an hour you bill",
+        level: 'h3',
+        body: [
+          "This is the factor freelancers underestimate most. Client communication, proposals, invoicing, bookkeeping, marketing, and slow weeks between projects are all real working time that produces zero revenue. Freelancers who track this rigorously often find that only 60-75% of their working hours are actually billable — meaning the effective hourly rate on billable work has to absorb the cost of the other 25-40% just to reach the same total annual income.",
+        ],
+      },
+      {
+        heading: 'Running the real numbers',
+        level: 'h2',
+        body: [
+          "Go back to the $75,000-target freelancer. Add $6,000/year in health insurance and other lost benefits to the target, apply a combined self-employment and income tax rate of roughly 30% on top of that, and assume 30 billable hours per week for 48 working weeks (1,440 billable hours/year) rather than a full 2,080. Working backward — gross revenue needed divided by billable hours — lands the required rate close to $80-85/hour, more than double the naive $36/hour conversion.",
+          "This isn't a rounding error or a pessimistic edge case; it's the structural difference between employee compensation and self-employment income. Our Freelance Rate Calculator runs this exact backward calculation for your own numbers — desired take-home, expenses, tax rate, and realistic billable hours — so you're not guessing at the multiplier.",
+        ],
+      },
+      {
+        heading: 'How to use this without pricing yourself out of the market',
+        level: 'h2',
+        body: [
+          "Knowing the real math matters, but so does applying it without sticker-shocking every client. A few practical adjustments make the higher number defensible and sustainable rather than just a bigger sticker price.",
+        ],
+      },
+      {
+        heading: 'Anchor the number to your actual billable-hours ratio, not a guess',
+        level: 'h3',
+        body: [
+          "Track your calendar for a month before you set a permanent rate. Most new freelancers assume they'll bill 35+ hours a week and discover the real number is closer to 20-25 once admin, sales, and slow periods are counted honestly. Your rate should be built on the ratio you actually observe, not the one you hope for.",
+        ],
+      },
+      {
+        heading: "Compare against take-home, not gross, when a client pushes back",
+        level: 'h3',
+        body: [
+          "If a client benchmarks your rate against what 'an employee would cost,' point them to the full picture: an employer also pays payroll taxes, benefits, office overhead, and equipment on top of a salary — commonly estimated at 1.25-1.4x base salary in total employer cost. Run your target salary through our Paycheck Calculator to show the gap between gross salary and real take-home pay, which makes the comparison concrete rather than abstract.",
+        ],
+      },
+      {
+        heading: 'Revisit the rate at least once a year',
+        level: 'h3',
+        body: [
+          "Health insurance premiums rise, tax brackets shift, and your billable-hours ratio changes as your business matures (often improving as you get faster and win better-fit clients). A rate set correctly two years ago is quietly wrong today if it hasn't been revisited — treat the calculation as a yearly checkup, not a one-time decision.",
+        ],
+      },
+    ],
+    relatedCalculators: [
+      { label: 'Freelance Rate Calculator', href: '/calculators/freelance-rate-calculator' },
+      { label: 'Hourly to Salary Calculator', href: '/calculators/hourly-to-salary-calculator' },
+      { label: 'Paycheck Calculator', href: '/calculators/paycheck-calculator' },
+    ],
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
