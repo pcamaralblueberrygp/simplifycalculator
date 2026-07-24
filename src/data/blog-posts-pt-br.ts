@@ -368,6 +368,75 @@ export const BLOG_POSTS_BR: BlogPostBr[] = [
       { label: 'Calculadora de Juros Compostos', href: '/pt-br/calculadoras/calculadora-de-juros-compostos' },
     ],
   },
+  {
+    slug: 'sac-ou-price-qual-tabela-financiamento-imobiliario-escolher',
+    title: 'SAC ou Price: Qual Tabela Economiza Mais no Financiamento Imobiliário em 2026',
+    metaDescription:
+      'SAC ou Price: entenda a diferença real entre as duas tabelas de amortização, veja um exemplo numérico completo e descubra qual economiza mais no seu financiamento.',
+    publishDate: '2026-07-24',
+    category: 'Imóveis',
+    image: {
+      src: '/blog/sac-ou-price-qual-tabela-financiamento-imobiliario-escolher.svg',
+      alt: 'SAC ou Price: comparação de tabelas de amortização para financiamento imobiliário no Brasil em 2026',
+    },
+    intro:
+      'Na hora de assinar um financiamento imobiliário no Brasil, o banco quase sempre pergunta: SAC ou Price? A maioria das pessoas responde sem entender de fato a diferença, guiada apenas pelo valor da primeira parcela — que costuma ser menor na Price. Só que essa escolha, feita sem simular os números, pode significar pagar dezenas de milhares de reais a mais de juros ao longo de um financiamento de 20 ou 30 anos.',
+    sections: [
+      {
+        heading: 'A diferença estrutural entre SAC e Price',
+        level: 'h2',
+        body: [
+          'No Sistema de Amortização Constante (SAC), o valor amortizado do saldo devedor é sempre o mesmo em todas as parcelas — só os juros variam, caindo mês a mês porque incidem sobre um saldo devedor cada vez menor. Como consequência, a parcela do SAC começa mais alta e vai diminuindo ao longo do financiamento, mês após mês, até o final do contrato.',
+          'Na Tabela Price (Sistema de Amortização Francês), a parcela é fixa do primeiro ao último mês. Para manter esse valor constante enquanto o saldo devedor cai, a composição da parcela muda internamente: no início, a maior parte é juros e uma fração pequena é amortização; perto do fim, a relação se inverte. É esse mecanismo que faz a Price parecer mais barata no começo — a parcela inicial é menor que a do SAC — mas o total de juros pagos ao longo do contrato tende a ser maior.',
+        ],
+      },
+      {
+        heading: 'Simulação prática: R$ 400.000 em 30 anos',
+        level: 'h2',
+        body: [
+          'Considere um financiamento de R$ 400.000 a uma taxa de 10% ao ano (aproximadamente 0,8% ao mês), prazo de 360 meses (30 anos) — parâmetros realistas para o financiamento imobiliário SAC/Price no Brasil em 2026, considerando a Selic e o custo de crédito habitacional do período.',
+          'No SAC, a amortização mensal fixa é de R$ 400.000 ÷ 360 = R$ 1.111,11. A primeira parcela soma essa amortização aos juros do mês (0,8% sobre R$ 400.000, ou R$ 3.200), totalizando cerca de R$ 4.311. Como o saldo devedor cai a cada mês, a parcela também cai — chegando perto de R$ 1.120 na última parcela, quando os juros já são quase zero.',
+          'Na Price, a fórmula de prestação constante resulta em uma parcela fixa de aproximadamente R$ 3.393 durante os 360 meses inteiros. Ela é bem menor que a primeira parcela do SAC (R$ 4.311), o que explica por que tanta gente escolhe a Price "porque cabe melhor no orçamento hoje" — mas essa mesma parcela de R$ 3.393 continua sendo cobrada mesmo lá pelo mês 300, quando no SAC ela já teria caído para bem menos de R$ 2.000.',
+          'Somando tudo: o total pago em juros no SAC gira em torno de R$ 577.600 ao longo dos 30 anos. Na Price, pela mesma dívida e taxa, o total de juros chega a aproximadamente R$ 821.350 — uma diferença de cerca de R$ 243.750 apenas na forma como a dívida é amortizada, sem nenhuma mudança na taxa contratada.',
+        ],
+      },
+      {
+        heading: 'Por que a Price custa tanto mais no longo prazo',
+        level: 'h2',
+        body: [
+          'A explicação está em quando a dívida é reduzida. No SAC, o saldo devedor cai de forma linear e mais rápida nos primeiros anos, então os juros (que incidem sobre esse saldo) somam menos ao longo do tempo. Na Price, como a amortização inicial é proporcionalmente menor, o saldo devedor permanece mais alto por mais tempo — e juros sobre um saldo maior, por mais tempo, resultam em um total de juros bem superior, mesmo com parcelas nominalmente menores no início.',
+          'Esse efeito fica mais forte quanto maior o prazo do financiamento. Em contratos curtos (10-15 anos), a diferença entre SAC e Price é proporcionalmente menor; em financiamentos imobiliários de 25-35 anos, comuns no Brasil, o efeito composto ao longo de tantos meses faz a diferença total crescer de forma expressiva.',
+        ],
+      },
+      {
+        heading: 'Quando a Price ainda pode fazer sentido',
+        level: 'h3',
+        body: [
+          'A Price não é sempre a escolha errada. Para quem tem orçamento apertado hoje mas espera renda crescente (início de carreira, por exemplo) ou simplesmente não conseguiria arcar com a parcela inicial mais alta do SAC, a Price viabiliza a compra do imóvel que talvez não fosse possível de outra forma. Também vale considerar se o valor "economizado" na parcela inicial da Price seria de fato investido a uma taxa competitiva — caso contrário, a vantagem de fluxo de caixa no início tende a não compensar o custo total maior no fim.',
+        ],
+      },
+      {
+        heading: 'Quando o SAC é a escolha mais racional',
+        level: 'h3',
+        body: [
+          'Para quem consegue arcar com a parcela inicial mais alta sem comprometer o orçamento essencial, o SAC praticamente sempre resulta em menos juros pagos no total — além de reduzir o saldo devedor mais rapidamente, o que é relevante em caso de quitação antecipada ou portabilidade de crédito para outro banco no meio do contrato. Quem pretende quitar o financiamento antes do prazo final (algo comum no Brasil) se beneficia ainda mais do SAC, porque o saldo devedor já estará proporcionalmente menor em qualquer ponto do contrato.',
+        ],
+      },
+      {
+        heading: 'Como simular o seu próprio caso antes de assinar',
+        level: 'h2',
+        body: [
+          'Os números acima usam uma taxa e um valor de exemplo — o resultado real do seu financiamento depende do valor do imóvel, da taxa negociada com o banco (que varia por instituição, relacionamento bancário e uso do FGTS) e do prazo escolhido. Use a Calculadora de Financiamento Imobiliário (SAC x Price) para simular lado a lado as duas tabelas com os números exatos do seu contrato antes de assinar, e a Calculadora de Tabela Price para ver o detalhamento completo de amortização e juros parcela a parcela caso opte pela Price.',
+          'Vale simular também o cenário de amortização extra: tanto no SAC quanto na Price, usar recursos como o saque do FGTS ou o 13º salário para amortizar o saldo devedor antecipadamente reduz o total de juros pagos — mas o impacto proporcional costuma ser ainda mais expressivo na Price, justamente por ela carregar um saldo devedor mais alto por mais tempo.',
+        ],
+      },
+    ],
+    relatedCalculators: [
+      { label: 'Calculadora de Financiamento Imobiliário (SAC x Price)', href: '/pt-br/calculadoras/calculadora-de-financiamento-imobiliario' },
+      { label: 'Calculadora de Tabela Price', href: '/pt-br/calculadoras/tabela-price-calculadora' },
+      { label: 'Calculadora de Juros Compostos', href: '/pt-br/calculadoras/calculadora-de-juros-compostos' },
+    ],
+  },
 ];
 
 export function getBlogPostBrBySlug(slug: string): BlogPostBr | undefined {
