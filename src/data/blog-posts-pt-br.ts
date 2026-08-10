@@ -437,6 +437,87 @@ export const BLOG_POSTS_BR: BlogPostBr[] = [
       { label: 'Calculadora de Juros Compostos', href: '/pt-br/calculadoras/calculadora-de-juros-compostos' },
     ],
   },
+  {
+    slug: 'como-calcular-salario-liquido-clt-inss-irrf',
+    title: 'Como Calcular seu Salário Líquido CLT: A Tabela do INSS e do IRRF Explicada',
+    metaDescription:
+      'Entenda como o INSS e o IRRF são descontados do salário CLT por faixas progressivas, com exemplo numérico completo do salário bruto ao líquido.',
+    publishDate: '2026-08-10',
+    category: 'Renda',
+    image: {
+      src: '/blog/como-calcular-salario-liquido-clt-inss-irrf.svg',
+      alt: 'Como calcular o salário líquido CLT a partir da tabela do INSS e do IRRF — guia SimplifyCalculator Brasil',
+    },
+    intro:
+      'Quase todo trabalhador CLT já se perguntou por que o salário que cai na conta é bem menor que o valor combinado na carteira. A resposta está em dois descontos obrigatórios — INSS e Imposto de Renda Retido na Fonte (IRRF) — que não são um percentual único aplicado sobre o salário todo, mas sim uma soma de faixas progressivas. Entender essa mecânica evita duas confusões comuns: achar que está pagando mais imposto do que realmente paga, ou ser pego de surpresa quando um aumento de salário empurra parte da renda para uma faixa de alíquota mais alta.',
+    sections: [
+      {
+        heading: 'O INSS é descontado por faixas, não sobre o salário inteiro',
+        level: 'h2',
+        body: [
+          'O erro mais comum é multiplicar o salário bruto inteiro pela alíquota da faixa em que ele se enquadra. Não é assim que funciona. O desconto do INSS é progressivo: cada faixa de salário paga sua própria alíquota, e o valor final é a soma dessas parcelas — de forma parecida com o Imposto de Renda de pessoa física na declaração anual, só que aplicado mês a mês diretamente na folha de pagamento.',
+          'Isso significa que, mesmo quando alguém está na faixa de 14%, apenas a fatia do salário que ultrapassa o limite da faixa anterior é tributada a 14% — o restante continua sendo taxado nas alíquotas menores das faixas de baixo.',
+        ],
+      },
+      {
+        heading: 'A tabela do INSS por faixa salarial',
+        level: 'h3',
+        body: [
+          'A tabela de contribuição usada como referência neste artigo (valores de 2025, reajustados anualmente pelo governo — sempre confira a tabela vigente no ano em que você está calculando) funciona assim: até R$ 1.518,00, a alíquota é de 7,5%; de R$ 1.518,01 até R$ 2.793,88, a alíquota sobre essa fatia é de 9%; de R$ 2.793,89 até R$ 4.190,83, a fatia paga 12%; e de R$ 4.190,84 até o teto do INSS (R$ 8.157,41), a fatia paga 14%. Salários acima do teto contribuem com um valor fixo máximo, já que o INSS não incide sobre o excedente.',
+        ],
+      },
+      {
+        heading: 'Como funciona o desconto do IRRF',
+        level: 'h2',
+        body: [
+          'O Imposto de Renda Retido na Fonte segue a mesma lógica progressiva, mas incide sobre a base de cálculo depois de descontado o INSS (e, se aplicável, dependentes ou pensão alimentícia) — não sobre o salário bruto. Essa é outra confusão comum: comparar a alíquota do IRRF diretamente com o salário bruto exagera o valor do imposto.',
+        ],
+      },
+      {
+        heading: 'Tabela do IRRF e a dedução simplificada',
+        level: 'h3',
+        body: [
+          'Na tabela vigente em 2025, a base de cálculo até R$ 2.259,20 é isenta de IRRF. De R$ 2.259,21 até R$ 2.826,65, a alíquota é 7,5% com dedução de R$ 169,44. De R$ 2.826,66 até R$ 3.751,05, a alíquota é 15% com dedução de R$ 381,44. De R$ 3.751,06 até R$ 4.664,68, a alíquota é 22,5% com dedução de R$ 662,77. Acima de R$ 4.664,68, a alíquota é 27,5% com dedução de R$ 896,00. A "dedução" de cada faixa existe justamente para simplificar o cálculo progressivo em uma única multiplicação seguida de subtração, sem precisar somar faixa por faixa manualmente.',
+          'Além do desconto do INSS, a folha pode aplicar uma dedução simplificada fixa (que substitui a dedução por dependentes) quando ela for mais vantajosa para o trabalhador — o sistema da folha de pagamento normalmente calcula ambos os cenários e aplica o que resultar em menos imposto.',
+        ],
+      },
+      {
+        heading: 'Exemplo prático completo: salário bruto de R$ 5.000',
+        level: 'h2',
+        body: [
+          'Primeiro, o INSS. Aplicando as quatro faixas: 7,5% sobre R$ 1.518,00 = R$ 113,85; 9% sobre a fatia de R$ 1.518,01 a R$ 2.793,88 (R$ 1.275,88) = R$ 114,83; 12% sobre a fatia de R$ 2.793,89 a R$ 4.190,83 (R$ 1.396,95) = R$ 167,63; e 14% sobre a fatia de R$ 4.190,84 a R$ 5.000,00 (R$ 809,17) = R$ 113,28. Somando as quatro parcelas, o desconto de INSS totaliza R$ 509,59.',
+          'Em seguida, o IRRF. A base de cálculo é o salário bruto menos o INSS: R$ 5.000,00 − R$ 509,59 = R$ 4.490,41. Esse valor cai na faixa de 22,5% com dedução de R$ 662,77: R$ 4.490,41 × 22,5% = R$ 1.010,34; subtraindo a dedução, o IRRF fica em R$ 347,57.',
+          'O salário líquido final é R$ 5.000,00 − R$ 509,59 (INSS) − R$ 347,57 (IRRF) = R$ 4.142,84. Note que a alíquota "nominal" da faixa do IRRF é 22,5%, mas o imposto efetivamente pago representa apenas 6,95% do salário bruto (R$ 347,57 ÷ R$ 5.000,00) — é o efeito da progressividade e da dedução, que costuma surpreender quem espera um desconto bem maior ao ver "22,5%" na própria faixa salarial.',
+        ],
+      },
+      {
+        heading: 'FGTS não é desconto do salário',
+        level: 'h3',
+        body: [
+          'Um engano recorrente é incluir o FGTS na conta do salário líquido. O FGTS (8% do salário bruto) é um depósito que o empregador faz em nome do trabalhador em uma conta vinculada na Caixa — ele não sai do salário do funcionário e não reduz o valor líquido recebido. Também vale lembrar que 13º salário e férias têm cálculo de INSS e IRRF próprios, feitos separadamente da folha mensal, e não entram nessa conta do salário regular do mês.',
+        ],
+      },
+      {
+        heading: 'Por que um aumento de salário não "some" com desconto maior',
+        level: 'h2',
+        body: [
+          'Como tanto o INSS quanto o IRRF são progressivos, receber um aumento que empurra parte do salário para uma faixa mais alta nunca reduz o valor líquido total recebido — a alíquota maior incide apenas sobre a fatia que ultrapassa o novo limite, nunca sobre o salário inteiro retroativamente. Esse medo ("vou ganhar mais mas vou receber menos por causa do imposto") é comum, mas matematicamente não acontece em nenhum dos dois tributos.',
+        ],
+      },
+      {
+        heading: 'Simule o seu próprio salário',
+        level: 'h2',
+        body: [
+          'Os valores exatos das faixas de INSS e IRRF são reajustados todo início de ano, então vale sempre conferir a tabela vigente antes de fazer suas contas. Use a Calculadora de Salário Líquido CLT para simular o seu salário bruto exato, incluindo dependentes e outras deduções, e a Calculadora CLT x PJ caso você esteja avaliando migrar de regime — a comparação de renda líquida entre os dois é bem diferente do que a maioria imagina antes de simular os números.',
+        ],
+      },
+    ],
+    relatedCalculators: [
+      { label: 'Calculadora de Salário Líquido CLT', href: '/pt-br/calculadoras/calculadora-de-salario-liquido' },
+      { label: 'Calculadora CLT x PJ', href: '/pt-br/calculadoras/calculadora-clt-vs-pj' },
+      { label: 'Calculadora de Orçamento Mensal', href: '/pt-br/calculadoras/calculadora-de-orcamento-mensal' },
+    ],
+  },
 ];
 
 export function getBlogPostBrBySlug(slug: string): BlogPostBr | undefined {
