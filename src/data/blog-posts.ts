@@ -341,6 +341,99 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'Paycheck Calculator', href: '/calculators/paycheck-calculator' },
     ],
   },
+  {
+    slug: 'long-car-loan-terms-real-cost',
+    title: 'The 84-Month Car Loan Trap: Why a Lower Payment Can Cost You Thousands More',
+    metaDescription:
+      "Stretching an auto loan to 72 or 84 months lowers the monthly payment, but the interest cost and years of negative equity can quietly cost thousands more.",
+    publishDate: '2026-08-10',
+    category: 'Loans',
+    image: {
+      src: '/blog/long-car-loan-terms-real-cost.svg',
+      alt: 'The 84-month car loan trap — SimplifyCalculator comparison of monthly payment versus total interest cost across 36, 60, and 84 month auto loan terms',
+    },
+    intro:
+      "Auto lenders love to sell you on the monthly payment, and a longer loan term is the easiest lever they have to make that number small. Stretch a loan from 60 months to 84 and the payment drops by nearly half — which is exactly why the average new-car loan term in the U.S. has crept past 68 months and keeps climbing. But the payment is only one side of the deal, and the other side, total interest cost, moves in the opposite direction far faster than most buyers expect.",
+    sections: [
+      {
+        heading: 'Same car, same rate, three very different outcomes',
+        level: 'h2',
+        body: [
+          "Take a realistic example: a $35,000 car loan at 7% APR, a common enough rate for a buyer with decent but not top-tier credit. Run that loan over 36, 60, and 84 months and the monthly payment falls from about $1,081 to $694 to $528 — a real, tangible difference for a monthly budget.",
+          "But total interest paid tells the opposite story. Over 36 months you'd pay about $3,900 in interest. Over 60 months, about $6,600. Over 84 months, about $9,400. The payment dropped by roughly half between the 36-month and 84-month options, but the interest cost more than doubled. You can run your own numbers, rate, and term length through our Car Loan Calculator to see this trade-off with your exact figures instead of a generic example.",
+        ],
+      },
+      {
+        heading: "Why the payment doesn't fall as much as you'd expect",
+        level: 'h3',
+        body: [
+          "It's tempting to assume that doubling the loan term roughly halves the payment, since you're spreading the same principal over twice as many months. In practice the payment falls by less than that, because a longer term means the lender is owed interest for longer, and that extra interest gets baked into every remaining payment. The longer the term, the smaller the share of each payment that actually reduces what you owe versus what you're paying just to borrow the money in the first place.",
+        ],
+      },
+      {
+        heading: 'The hidden risk: being underwater for years, not months',
+        level: 'h2',
+        body: [
+          "Interest cost is the visible problem with long car loans. The less visible one is negative equity — owing more on the loan than the car is worth — and it's arguably the bigger financial risk.",
+        ],
+      },
+      {
+        heading: 'Depreciation moves faster than a long loan pays down principal',
+        level: 'h3',
+        body: [
+          "New cars commonly lose around 20% of their value in the first year alone, then continue depreciating 10-15% a year after that. A loan balance, by contrast, pays down slowly at first because early payments are weighted toward interest rather than principal — the same front-loaded structure that shows up in any amortizing loan. Stack those two curves on top of each other and there's a stretch, often a year or more, where the depreciation line sits below the loan balance line.",
+          "On that same $35,000 example, a buyer on the 84-month loan could easily still owe around $31,000 after a year of payments, while the car itself might be worth closer to $28,000 — roughly $3,000 underwater already, with 72 months of payments still left to go. A buyer on the 60-month loan is in a noticeably better spot at that same point, close to break-even, because more of each payment is going toward principal from the start.",
+        ],
+      },
+      {
+        heading: 'Why negative equity actually matters',
+        level: 'h3',
+        body: [
+          "Being underwater is only a paper problem until you need to sell, trade in, or the car is totaled. Trade in an upside-down car and the shortfall typically gets rolled into the loan on your next vehicle, quietly compounding the same problem into your next purchase. If the car is totaled, a standard auto insurance payout covers its market value, not your loan balance — the gap between the two comes straight out of pocket unless you specifically carry gap insurance, which is a cost the long-loan buyer effectively needs but the short-loan buyer usually doesn't.",
+        ],
+      },
+      {
+        heading: 'When a longer term actually makes sense',
+        level: 'h2',
+        body: [
+          "None of this means a 72- or 84-month loan is always the wrong call. If a shorter term would push the payment past what your budget can comfortably absorb, a longer term that keeps you from being stretched thin every month is a legitimate trade-off, provided you go in aware of the total interest cost and plan to keep the car well past the loan's payoff date rather than trading it in early. The mistake isn't choosing a longer term; it's choosing one purely because the payment looked smaller, without ever seeing what it cost on the other side of the ledger.",
+        ],
+      },
+      {
+        heading: 'How to structure a car loan that doesn\'t trap you',
+        level: 'h2',
+        body: [
+          "A few adjustments capture most of the benefit of a longer term without most of the downside.",
+        ],
+      },
+      {
+        heading: 'Put down more, borrow less',
+        level: 'h3',
+        body: [
+          "A larger down payment shrinks the loan itself, which lowers both the monthly payment and the total interest — without needing to extend the term at all. It also starts you closer to break-even on equity from day one, since you're not financing the chunk of value that depreciates fastest in year one.",
+        ],
+      },
+      {
+        heading: "Shop for the shortest term your budget can actually sustain",
+        level: 'h3',
+        body: [
+          "Rather than starting from 'what payment feels comfortable' and picking whatever term produces it, start from 'what's the shortest term I can afford' and work down from there. Check the result against your other monthly obligations with our Debt-to-Income Ratio Calculator — a car payment that pushes your total debt load too high is a signal to buy less car, not to extend the loan further.",
+        ],
+      },
+      {
+        heading: 'Look at the full amortization schedule before you sign',
+        level: 'h3',
+        body: [
+          "Every loan offer reduces to the same two numbers that actually matter: total interest paid and how fast the balance falls relative to the car's likely value. Our Amortization Schedule Calculator lets you see exactly how much of each payment goes to interest versus principal, month by month, for any term and rate combination — turning a vague sense that the payment feels fine into an informed decision instead of a guess.",
+        ],
+      },
+    ],
+    relatedCalculators: [
+      { label: 'Car Loan Calculator', href: '/calculators/car-loan-calculator' },
+      { label: 'Amortization Schedule Calculator', href: '/calculators/amortization-schedule-calculator' },
+      { label: 'Debt-to-Income Ratio Calculator', href: '/calculators/debt-to-income-ratio-calculator' },
+    ],
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
