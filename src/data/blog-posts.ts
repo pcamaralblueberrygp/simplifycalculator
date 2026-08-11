@@ -434,6 +434,85 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'Debt-to-Income Ratio Calculator', href: '/calculators/debt-to-income-ratio-calculator' },
     ],
   },
+  {
+    slug: 'dividend-yield-trap-high-yield-stocks',
+    title: 'The Dividend Yield Trap: Why a 9% Yield Is Often a Warning Sign, Not a Bargain',
+    metaDescription:
+      'A sky-high dividend yield can look like a bargain, but it often signals a falling stock and a payout on the verge of being cut. Here is how to tell the difference.',
+    publishDate: '2026-08-11',
+    category: 'Investing',
+    image: {
+      src: '/blog/dividend-yield-trap-high-yield-stocks.svg',
+      alt: 'The dividend yield trap — SimplifyCalculator guide explaining why an unusually high dividend yield often signals a falling stock price and a payout at risk of being cut',
+    },
+    intro:
+      "Scan any stock screener for the highest dividend yields on the market and you'll find a list that looks like a shopping cart of bargains — some yields running two or three times the market average. It's tempting to read that number as free money. More often, it's the market quietly pricing in a dividend cut that hasn't happened yet, and the yield only looks generous because the share price has already fallen out from under it.",
+    sections: [
+      {
+        heading: 'What dividend yield actually measures',
+        level: 'h2',
+        body: [
+          "Dividend yield is a simple ratio: annual dividend per share divided by the current share price. A stock paying $2/share a year at a $50 share price yields 4%. Our Dividend Yield Calculator does exactly this calculation, and it's a genuinely useful number for comparing income-producing investments — but only if you remember it has two moving parts, and only one of them is good news.",
+          "A yield can rise for two completely different reasons: the company raised its dividend, or the stock price fell. A screener showing you a 9% yield doesn't tell you which one happened, and the two scenarios lead to opposite conclusions about whether the stock is actually a bargain.",
+        ],
+      },
+      {
+        heading: 'Why a falling price is the more common story behind a high yield',
+        level: 'h2',
+        body: [
+          "Companies rarely raise a dividend so aggressively that yield jumps from 3% to 9% in a short stretch — that would require tripling the payout, which most boards are far too conservative to do. What happens far more often is the reverse: the market loses confidence in the business, the share price drops 40-60% on declining earnings or a debt problem, and the dividend — set months or years earlier when the business looked healthier — hasn't been cut yet. The yield spikes not because the company got more generous, but because the stock got cheaper for a reason.",
+        ],
+      },
+      {
+        heading: 'The self-defeating logic of chasing yield',
+        level: 'h3',
+        body: [
+          "This is what makes the trap so effective: the worse the underlying business gets, the more attractive the yield looks on a screener, right up until the dividend is finally cut or eliminated — at which point the yield collapses back to normal and the investor is left holding a stock that already fell hard and now offers a much smaller income stream than the one that lured them in.",
+        ],
+      },
+      {
+        heading: 'How to tell a real trap from a real bargain',
+        level: 'h2',
+        body: [
+          "A high yield isn't automatically a red flag — some sectors (utilities, REITs, tobacco) sustainably run higher yields than the broader market. The question is whether the payout is actually supported by the business, and a few checks answer that fairly reliably.",
+        ],
+      },
+      {
+        heading: 'Check the payout ratio, not just the yield',
+        level: 'h3',
+        body: [
+          "The payout ratio is the dividend paid divided by net earnings (or, more conservatively, free cash flow). A company paying out 40-60% of earnings has real room to sustain or grow the dividend even through a rough patch. A company paying out 100%, or more than it earns, is funding the dividend from debt or cash reserves — a pace that by definition cannot continue indefinitely, no matter how stable the yield number looks today.",
+        ],
+      },
+      {
+        heading: 'Look at the trend in the share price, not just the current level',
+        level: 'h3',
+        body: [
+          "A stock that fell 50% in the past year and now yields 8% is telling a very different story than a stock that's climbed steadily and yields 4.5% because the dividend has grown alongside a healthy business. Our Stock Return Calculator can show you the actual price return over a given period, separate from dividends — pull that number before assuming a high current yield reflects a stable, ongoing situation rather than a recent collapse.",
+        ],
+      },
+      {
+        heading: "Read the dividend history for a pattern of cuts",
+        level: 'h3',
+        body: [
+          "A company with 20+ consecutive years of dividend increases (sometimes called a Dividend Aristocrat) has a demonstrated culture of protecting the payout, even during recessions. A company that cut its dividend once in the last five to ten years is statistically more likely to do it again than a company with a clean, decades-long track record — past behavior here is a genuinely useful signal, not just a comforting story.",
+        ],
+      },
+      {
+        heading: 'Why total return matters more than yield alone',
+        level: 'h2',
+        body: [
+          "The deeper issue with yield-chasing is that it optimizes for the wrong number. An investor's actual outcome is total return — price appreciation plus dividends reinvested — not the yield percentage printed on a screener. A stable 3% yielder that also grows its share price 6% a year comfortably outperforms a flashy 9% yielder whose share price is quietly eroding 15% a year, even though the second one looks far more generous on paper every single month.",
+          "Diversified dividend index funds solve most of this problem structurally: they hold dozens or hundreds of dividend-paying companies at once, so a single cut or collapse barely dents the fund's overall yield or price. For most investors, that diversification is a more reliable path to steady income than hand-picking the highest yields on a screener and hoping the payout survives. Run any specific holding, high-yield or not, through our ROI Calculator over your intended holding period to see how price change and reinvested dividends combine into an actual total return — the number that determines what you actually walk away with.",
+        ],
+      },
+    ],
+    relatedCalculators: [
+      { label: 'Dividend Yield Calculator', href: '/calculators/dividend-yield-calculator' },
+      { label: 'Stock Return Calculator', href: '/calculators/stock-return-calculator' },
+      { label: 'ROI Calculator', href: '/calculators/roi-calculator' },
+    ],
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
