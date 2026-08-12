@@ -518,6 +518,102 @@ export const BLOG_POSTS_BR: BlogPostBr[] = [
       { label: 'Calculadora de Orçamento Mensal', href: '/pt-br/calculadoras/calculadora-de-orcamento-mensal' },
     ],
   },
+  {
+    slug: 'pgbl-ou-vgbl-qual-paga-menos-imposto-de-renda',
+    title: 'PGBL ou VGBL: Qual Previdência Privada Paga Menos Imposto de Renda',
+    metaDescription:
+      'PGBL ou VGBL: entenda a diferença na dedução de imposto de renda, a tabela regressiva e simule qual previdência privada compensa mais no seu caso.',
+    publishDate: '2026-08-12',
+    category: 'Aposentadoria',
+    image: {
+      src: '/blog/pgbl-ou-vgbl-qual-paga-menos-imposto-de-renda.svg',
+      alt: 'PGBL ou VGBL: comparação de tributação e dedução de Imposto de Renda na previdência privada brasileira',
+    },
+    intro:
+      'Quem decide complementar a aposentadoria do INSS com um plano de previdência privada esbarra rapidamente numa pergunta que a propaganda do banco raramente explica direito: PGBL ou VGBL? A diferença entre os dois não está no investimento em si — ambos podem aplicar exatamente na mesma carteira de fundos, com o mesmo gestor e a mesma taxa de administração — mas em como e quando o Imposto de Renda é cobrado. Escolher o regime errado para o seu perfil pode significar pagar milhares de reais a mais de imposto ao longo de décadas, mesmo com o rendimento bruto sendo idêntico.',
+    sections: [
+      {
+        heading: 'PGBL e VGBL são regimes de tributação, não tipos de investimento',
+        level: 'h2',
+        body: [
+          'O erro mais comum é tratar PGBL e VGBL como se fossem produtos de investimento concorrentes, como CDB e Tesouro Direto. Na prática, os dois são apenas "envelopes fiscais": dentro de qualquer um deles, seu dinheiro pode estar aplicado em fundos de renda fixa, multimercado ou até ações, exatamente como em qualquer outro investimento. O que muda entre PGBL e VGBL é exclusivamente a forma como a Receita Federal trata suas contribuições e o seu resgate.',
+          'No PGBL, você pode deduzir as contribuições da base de cálculo do Imposto de Renda anual, dentro de um limite — mas paga IR sobre o valor total resgatado (contribuições mais rendimento) no futuro. No VGBL, não há dedução na contribuição, mas o IR no resgate incide apenas sobre o rendimento, nunca sobre o valor que você mesmo depositou.',
+        ],
+      },
+      {
+        heading: 'A dedução de até 12% da renda bruta anual no PGBL',
+        level: 'h2',
+        body: [
+          'O PGBL permite deduzir da base de cálculo do IR anual até 12% da renda bruta tributável do ano — mas essa vantagem só existe para quem contribui ao INSS (ou a regime próprio de previdência) e declara o Imposto de Renda pelo modelo completo. Quem usa a declaração simplificada, ou não tem renda tributável relevante sujeita ao INSS, simplesmente não acessa esse benefício, por mais que contribua ao plano.',
+          'Um exemplo direto: alguém com renda bruta tributável de R$ 120.000 no ano pode deduzir até R$ 14.400 (12%) em contribuições ao PGBL. Contribuir além desse limite ainda é permitido, mas o excedente não gera nenhuma dedução adicional — nesse caso, faz mais sentido direcionar o valor extra para um VGBL. É importante entender que essa dedução adia o imposto, não o elimina: o valor total resgatado no futuro, incluindo a parte que foi deduzida lá atrás, será tributado integralmente.',
+        ],
+      },
+      {
+        heading: 'VGBL: sem dedução, mas base de cálculo menor no resgate',
+        level: 'h2',
+        body: [
+          'O VGBL não oferece nenhuma dedução na hora da contribuição, independente do modelo de declaração do contribuinte. A compensação vem no resgate: o Imposto de Renda incide apenas sobre o rendimento acumulado, nunca sobre o principal que você mesmo aportou — o que reduz consideravelmente a base tributável em comparação com o PGBL, onde o resgate inteiro é tributado.',
+          'Por isso, o VGBL costuma ser a escolha mais indicada para quem declara pelo modelo simplificado, para autônomos e informais sem base de INSS relevante, e para qualquer contribuição que ultrapasse o teto de 12% dedutível do PGBL — nesses casos, o PGBL não traria nenhuma vantagem fiscal na entrada, então só restaria a desvantagem de tributar o principal na saída.',
+        ],
+      },
+      {
+        heading: 'Tabela regressiva ou progressiva: a segunda decisão que pesa tanto quanto PGBL x VGBL',
+        level: 'h2',
+        body: [],
+      },
+      {
+        heading: 'Tabela regressiva: quanto mais tempo o dinheiro fica investido, menor a alíquota',
+        level: 'h3',
+        body: [
+          'Na tabela regressiva, a alíquota do IR cai conforme o tempo de permanência de cada contribuição: 35% para resgates em até 2 anos, 30% de 2 a 4 anos, 25% de 4 a 6 anos, 20% de 6 a 8 anos, 15% de 8 a 10 anos, e 10% para prazos acima de 10 anos. Um detalhe frequentemente ignorado é que o prazo conta por parcela individual, não pelo plano como um todo — cada contribuição mensal tem seu próprio relógio rodando a partir da data em que foi feita, então um plano com 15 anos de existência ainda pode ter parte do saldo (as contribuições mais recentes) tributada a alíquotas mais altas que 10%.',
+          'A tabela regressiva costuma ser a mais vantajosa para quem está pensando em aposentadoria de fato — um horizonte de acumulação de 10, 15, 20 anos — porque a alíquota mínima de 10% é bem menor que qualquer faixa da tabela progressiva do salário.',
+        ],
+      },
+      {
+        heading: 'Tabela progressiva: mesma lógica do salário, indicada para prazos mais curtos',
+        level: 'h3',
+        body: [
+          'A tabela progressiva usa as mesmas faixas do IRRF sobre salário (isenção na base, depois alíquotas de 7,5%, 15%, 22,5% e 27,5%), com retenção antecipada de 15% no resgate e ajuste na declaração anual do IR. Ela costuma ser mais indicada para quem pretende resgatar em prazo mais curto, ou espera estar em uma faixa de renda baixa (aposentado sem outras fontes relevantes de renda, por exemplo) no momento do resgate — nesse cenário, a alíquota efetiva final pode ficar até menor que os 10% mínimos da tabela regressiva.',
+        ],
+      },
+      {
+        heading: 'Exemplo numérico: PGBL x VGBL em 12 anos de aportes mensais',
+        level: 'h2',
+        body: [
+          'Considere um aporte de R$ 500 por mês (R$ 6.000 por ano) durante 12 anos, com retorno de 8% ao ano, dentro do limite dedutível de 12% da renda em ambos os cenários. Ao final do período, o saldo acumulado seria de aproximadamente R$ 113.850 — dos quais R$ 72.000 vieram das contribuições e cerca de R$ 41.850 são rendimento. Como o prazo passou de 10 anos, a alíquota da tabela regressiva aplicável é de 10%.',
+          'No VGBL, o IR incide só sobre o rendimento: 10% de R$ 41.850 = R$ 4.185, deixando um resgate líquido de aproximadamente R$ 109.665. No PGBL, o IR incide sobre o saldo total resgatado: 10% de R$ 113.850 = R$ 11.385, resultando em R$ 102.465 líquidos — à primeira vista, R$ 7.200 a menos que o VGBL.',
+          'Mas o PGBL também gerou economia de imposto ano a ano: supondo uma alíquota marginal de 27,5% (declaração completa, faixa mais alta), deduzir R$ 6.000 por ano reduziu o IR devido em R$ 1.650 por ano, totalizando R$ 19.800 ao longo dos 12 anos — dinheiro que ficou disponível para o contribuinte gastar, investir ou reaportar a cada ano. Somando essa economia (de forma conservadora, sem reinvestir) ao resgate líquido do PGBL, o total chega a R$ 122.265, cerca de R$ 12.600 acima do VGBL nesse cenário específico.',
+          'A conclusão prática: o PGBL só supera o VGBL quando o contribuinte realmente aproveita a dedução (declaração completa, base de INSS suficiente, dentro do limite de 12%) e está em uma alíquota marginal alta o bastante para a economia anual compensar a tributação maior no resgate. Fora dessas condições — declaração simplificada, contribuições acima do teto dedutível, ou alíquota marginal baixa — o VGBL tende a deixar mais dinheiro no bolso no final.',
+        ],
+      },
+      {
+        heading: 'Quando o PGBL costuma valer mais a pena',
+        level: 'h3',
+        body: [
+          'Declaração completa do IR, renda tributável com desconto de INSS relevante, alíquota marginal na faixa de 22,5% ou 27,5%, contribuições dentro do limite de 12% da renda bruta anual, e disposição de manter o dinheiro investido por 10 anos ou mais para acessar a alíquota mínima da tabela regressiva — essa é a combinação de fatores que costuma fazer o PGBL compensar de fato.',
+        ],
+      },
+      {
+        heading: 'Quando o VGBL costuma valer mais a pena',
+        level: 'h3',
+        body: [
+          'Declaração simplificada, renda sem base relevante de INSS (parte de autônomos e informais), contribuições que já ultrapassam o teto dedutível de 12% do PGBL, ou simplesmente a preferência por manter o planejamento simples sem depender de reaproveitar a economia fiscal todo ano — nesses casos, o VGBL tende a ser a escolha mais direta e, na maioria das vezes, também a mais vantajosa financeiramente.',
+        ],
+      },
+      {
+        heading: 'Simule o seu caso antes de contratar',
+        level: 'h2',
+        body: [
+          'Os números deste artigo usam um cenário fixo de aporte, prazo e retorno — o resultado real depende da sua renda tributável, do seu modelo de declaração e do prazo que você pretende manter o dinheiro investido. Use a Calculadora de Aposentadoria e Previdência Privada para projetar o saldo acumulado no seu prazo e aporte reais, e a Calculadora de Salário Líquido CLT para estimar sua alíquota marginal de IR atual — ela é o principal fator que determina se a dedução do PGBL realmente compensa no seu caso.',
+        ],
+      },
+    ],
+    relatedCalculators: [
+      { label: 'Calculadora de Aposentadoria e Previdência Privada', href: '/pt-br/calculadoras/calculadora-de-aposentadoria' },
+      { label: 'Calculadora de Salário Líquido CLT', href: '/pt-br/calculadoras/calculadora-de-salario-liquido' },
+      { label: 'Calculadora de Juros Compostos', href: '/pt-br/calculadoras/calculadora-de-juros-compostos' },
+    ],
+  },
 ];
 
 export function getBlogPostBrBySlug(slug: string): BlogPostBr | undefined {
