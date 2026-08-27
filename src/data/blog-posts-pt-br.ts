@@ -614,6 +614,97 @@ export const BLOG_POSTS_BR: BlogPostBr[] = [
       { label: 'Calculadora de Juros Compostos', href: '/pt-br/calculadoras/calculadora-de-juros-compostos' },
     ],
   },
+  {
+    slug: 'bola-de-neve-ou-avalanche-qual-metodo-quitar-dividas',
+    title: 'Bola de Neve ou Avalanche: Qual Método Economiza Mais na Hora de Quitar Dívidas',
+    metaDescription:
+      'Bola de neve ou avalanche: compare os dois métodos mais usados para quitar dívidas com juros diferentes, veja uma simulação numérica completa e qual poupa mais.',
+    publishDate: '2026-08-27',
+    category: 'Dívidas',
+    image: {
+      src: '/blog/bola-de-neve-ou-avalanche-qual-metodo-quitar-dividas.svg',
+      alt: 'Bola de neve ou avalanche: comparação dos dois métodos de quitação de múltiplas dívidas com simulação numérica',
+    },
+    intro:
+      'Quem tem mais de uma dívida em aberto — cheque especial, cartão no rotativo, empréstimo pessoal, financiamento — esbarra cedo ou tarde na mesma pergunta: qual dívida pagar primeiro quando sobra pouco dinheiro extra no mês? Existem dois métodos consagrados para responder isso, bola de neve e avalanche, e a escolha entre eles pode significar milhares de reais de diferença no total pago em juros, mesmo quando o valor mensal disponível é exatamente o mesmo.',
+    sections: [
+      {
+        heading: 'Duas filosofias diferentes para o mesmo problema',
+        level: 'h2',
+        body: [
+          'Os dois métodos partem da mesma lógica-base: você paga o mínimo em todas as dívidas, exceto em uma — a "dívida-alvo" — na qual concentra qualquer valor extra disponível no mês. Quando essa dívida é quitada, o valor total que estava sendo pago nela (mínimo mais extra) migra inteiro para a próxima dívida-alvo, criando um efeito cumulativo que acelera a cada quitação. A diferença entre bola de neve e avalanche está exclusivamente em qual dívida vira alvo primeiro.',
+        ],
+      },
+      {
+        heading: 'Bola de neve: começa pela dívida de menor saldo',
+        level: 'h2',
+        body: [
+          'No método bola de neve, popularizado pelo consultor financeiro americano Dave Ramsey, a dívida-alvo é sempre a de menor saldo devedor, independentemente da taxa de juros que ela cobra. A lógica não é matemática, é comportamental: quitar uma dívida inteira rapidamente gera uma vitória concreta e visível, o que mantém a motivação de quem está no processo — muitas vezes mais determinante para o sucesso do plano do que economizar o máximo possível em juros.',
+        ],
+      },
+      {
+        heading: 'Avalanche: começa pela dívida de maior taxa de juros',
+        level: 'h2',
+        body: [
+          'No método avalanche, a dívida-alvo é sempre a que cobra a maior taxa de juros, não importa o tamanho do saldo. No Brasil, isso quase sempre aponta primeiro para o rotativo do cartão de crédito ou o cheque especial — as modalidades mais caras do mercado de crédito, muitas vezes acima de 10-15% ao mês. Do ponto de vista puramente matemático, a avalanche é a estratégia ótima: ela minimiza o total de juros pagos ao longo de todo o processo de quitação.',
+        ],
+      },
+      {
+        heading: 'Simulação real: as mesmas três dívidas, dois métodos, resultados diferentes',
+        level: 'h2',
+        body: [
+          'Considere alguém com três dívidas simultâneas: um financiamento de carro com saldo de R$ 2.000 a 1,8% ao mês, um empréstimo pessoal de R$ 5.000 a 3,5% ao mês, e um cartão no rotativo de R$ 9.000 a 14% ao mês — um cenário bem comum no Brasil, onde o rotativo costuma ser a dívida mais cara e também a de maior saldo. Essa pessoa consegue pagar R$ 600 além dos pagamentos mínimos das três dívidas (R$ 150, R$ 300 e R$ 1.400, respectivamente) todo mês.',
+        ],
+      },
+      {
+        heading: 'O que acontece na bola de neve',
+        level: 'h3',
+        body: [
+          'Seguindo a ordem do menor saldo, a bola de neve ataca primeiro o financiamento do carro (quitado no mês 3), depois o empréstimo pessoal (quitado no mês 9) e só então o cartão rotativo, que fica recebendo apenas o pagamento mínimo durante os primeiros 8 meses — tempo suficiente para acumular juros consideráveis a 14% ao mês sobre um saldo de R$ 9.000. A dívida inteira é quitada no mês 14, com um total de R$ 14.515,65 pagos em juros ao longo de todo o processo.',
+        ],
+      },
+      {
+        heading: 'O que acontece na avalanche',
+        level: 'h3',
+        body: [
+          'Seguindo a ordem da maior taxa, a avalanche ataca o cartão rotativo desde o primeiro mês, quitando-o no mês 8 — quase a metade do tempo que ele levaria na bola de neve — e deixando o empréstimo pessoal e o financiamento do carro (as dívidas mais baratas) para depois. O resultado final também leva 14 meses no total, mas o total pago em juros cai para R$ 8.179,28 — uma economia de R$ 6.336,37 só pela ordem em que as dívidas foram atacadas, sem nenhuma mudança no valor mensal disponível.',
+        ],
+      },
+      {
+        heading: 'Por que a diferença é tão grande neste exemplo',
+        level: 'h2',
+        body: [
+          'A diferença de mais de R$ 6.300 vem inteiramente do tempo que o rotativo do cartão — de longe a dívida mais cara do exemplo — passa acumulando juros de 14% ao mês sobre um saldo alto. Quanto maior a taxa de uma dívida e quanto mais tempo ela permanece intocada recebendo só o pagamento mínimo, maior o custo de deixá-la por último. Esse efeito se intensifica ainda mais quando a dívida mais cara também tem o maior saldo, como costuma acontecer no rotativo do cartão e no cheque especial no Brasil.',
+        ],
+      },
+      {
+        heading: 'Quando a bola de neve pode valer a pena mesmo assim',
+        level: 'h2',
+        body: [
+          'A vantagem matemática da avalanche só se converte em economia real se a pessoa realmente seguir o plano até o fim — e é exatamente aí que muita gente desiste no meio do caminho, especialmente quando a dívida mais cara também é a maior e leva meses para mostrar qualquer progresso visível. Para quem já tentou quitar dívidas antes e abandonou o plano por falta de motivação, o ganho comportamental da bola de neve (quitar algo rápido e sentir o progresso) pode compensar a diferença em juros — o melhor método, na prática, é o que a pessoa consegue sustentar até zerar todas as dívidas.',
+        ],
+      },
+      {
+        heading: 'Um método híbrido: o melhor dos dois mundos',
+        level: 'h2',
+        body: [
+          'Uma variação comum é usar a bola de neve para quitar rapidamente uma primeira dívida pequena (para ganhar o impulso inicial) e, a partir da segunda dívida-alvo em diante, migrar para a lógica da avalanche, priorizando sempre a maior taxa de juros entre as dívidas restantes. Essa combinação mantém parte do benefício motivacional do início do processo sem abrir mão da maior parte da economia financeira ao longo do caminho — e costuma ser um bom ponto de partida para quem está em dúvida entre os dois métodos.',
+        ],
+      },
+      {
+        heading: 'Como simular o seu próprio caso',
+        level: 'h2',
+        body: [
+          'Os números deste exemplo usam três dívidas e uma taxa de juros específicas — o resultado real depende do número de dívidas que você tem, do saldo e da taxa de cada uma, e do valor extra disponível por mês. Use a Calculadora de Quitação de Dívidas para simular cada uma das suas dívidas individualmente e entender quanto tempo e juros cada uma consome isoladamente, e a Calculadora de Cartão de Crédito (Rotativo) se o cartão for uma das dívidas na sua lista — ela mostra especificamente o impacto de manter um saldo no rotativo mês a mês.',
+        ],
+      },
+    ],
+    relatedCalculators: [
+      { label: 'Calculadora de Quitação de Dívidas', href: '/pt-br/calculadoras/calculadora-de-quitacao-de-dividas' },
+      { label: 'Calculadora de Cartão de Crédito (Rotativo)', href: '/pt-br/calculadoras/calculadora-de-cartao-de-credito' },
+      { label: 'Calculadora de Financiamento', href: '/pt-br/calculadoras/calculadora-de-financiamento' },
+    ],
+  },
 ];
 
 export function getBlogPostBrBySlug(slug: string): BlogPostBr | undefined {
