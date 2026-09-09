@@ -705,6 +705,115 @@ export const BLOG_POSTS_BR: BlogPostBr[] = [
       { label: 'Calculadora de Financiamento', href: '/pt-br/calculadoras/calculadora-de-financiamento' },
     ],
   },
+  {
+    slug: 'cet-custo-efetivo-total-como-comparar-financiamentos',
+    title: 'CET: Como o Custo Efetivo Total Revela o Preço Real do Seu Financiamento',
+    metaDescription:
+      'O CET reúne juros, IOF, tarifas e seguros em uma taxa anual única. Veja como é calculado, por que difere da taxa anunciada e como usá-lo para comparar propostas.',
+    publishDate: '2026-09-09',
+    category: 'Dívidas',
+    image: {
+      src: '/blog/cet-custo-efetivo-total-como-comparar-financiamentos.svg',
+      alt: 'Banner do artigo sobre CET (Custo Efetivo Total) mostrando juros, IOF, tarifas e seguros somados no custo real de um financiamento — SimplifyCalculator Brasil',
+    },
+    intro:
+      'Quando um banco ou uma financeira anuncia um empréstimo a "1,99% ao mês", esse número quase nunca é o que você vai realmente pagar. Sobre a taxa de juros incidem impostos, tarifas de cadastro, seguros embutidos e outros encargos que o anúncio costuma deixar de fora. O Custo Efetivo Total, ou CET, existe justamente para reunir tudo isso em uma única taxa anual — e, no Brasil, o Banco Central obriga toda instituição a informá-lo antes da contratação. Entender o CET é o que separa comparar propostas de verdade de cair na proposta com a manchete mais bonita.',
+    sections: [
+      {
+        heading: 'O que o CET mede que a taxa de juros não mostra',
+        level: 'h2',
+        body: [
+          'A taxa de juros nominal de um financiamento responde a uma pergunta específica: quanto custa, ao mês ou ao ano, o dinheiro emprestado. O problema é que um contrato de crédito raramente cobra só juros. Há um imposto federal sobre a operação, pode haver tarifa de abertura de crédito, avaliação de bem, registro de contrato e seguros que são somados à prestação. Todos esses valores encarecem o financiamento, mas nenhum deles aparece na taxa de juros anunciada.',
+          'O CET traduz esse conjunto de custos em uma taxa percentual anual equivalente. Tecnicamente, ele é a taxa que iguala o valor efetivamente liberado para o cliente ao fluxo de todas as parcelas e encargos ao longo do contrato — o mesmo conceito de taxa interna de retorno usado em análise de investimentos, só que aplicado do ponto de vista de quem toma o empréstimo. Por isso o CET é sempre expresso em porcentagem ao ano, mesmo quando as parcelas são mensais.',
+          'Na prática, o CET é o número que responde à pergunta que interessa: considerando absolutamente tudo que sai do meu bolso, qual o custo anual desse crédito?',
+        ],
+      },
+      {
+        heading: 'O que entra no cálculo do CET',
+        level: 'h2',
+        body: [
+          'O CET não é um número arbitrário: ele soma, dentro do mesmo fluxo de caixa, quatro grupos de custo que a taxa de juros ignora. Vale conhecer cada um deles para saber o que perguntar em cada proposta.',
+        ],
+      },
+      {
+        heading: 'IOF (Imposto sobre Operações Financeiras)',
+        level: 'h3',
+        body: [
+          'O IOF incide sobre praticamente toda operação de crédito para pessoa física. A cobrança tem duas partes: uma alíquota fixa aplicada sobre o valor contratado e uma parcela diária proporcional ao prazo, limitada a 365 dias. Em empréstimos de prazo mais longo, o IOF acumulado chega perto do seu teto e representa um custo relevante logo na largada, porque é descontado do valor liberado ou somado ao saldo devedor já no primeiro dia.',
+          'As alíquotas do IOF são definidas por decreto federal e já mudaram algumas vezes nos últimos anos, então vale confirmar os percentuais vigentes na hora de simular. O ponto que não muda é o efeito: o IOF sempre puxa o CET para cima em relação à taxa de juros pura.',
+        ],
+      },
+      {
+        heading: 'Tarifas administrativas',
+        level: 'h3',
+        body: [
+          'A mais comum é a Tarifa de Cadastro, cobrada uma única vez no início do relacionamento de crédito para custear a análise e o registro do cliente. Dependendo do produto, aparecem ainda tarifa de avaliação do bem (em financiamento de veículo ou imóvel), tarifa de registro de contrato e custos de cartório. Como são valores pagos à vista ou financiados junto, eles reduzem o montante líquido que chega até você e, com isso, aumentam o CET.',
+          'A regulação do Banco Central restringe quais tarifas podem ser cobradas em operações de crédito e proíbe algumas práticas antigas, como a cobrança de tarifa por liquidação antecipada. Ainda assim, o conjunto de tarifas permitidas varia entre instituições — e é uma das razões pelas quais dois contratos com a mesma taxa de juros terminam com CET diferente.',
+        ],
+      },
+      {
+        heading: 'Seguros embutidos',
+        level: 'h3',
+        body: [
+          'Muitos financiamentos vêm com um seguro prestamista, que quita ou amortiza a dívida em caso de morte ou invalidez do contratante. No crédito imobiliário, os seguros são obrigatórios por lei: o MIP, que cobre morte e invalidez permanente, e o DFI, que cobre danos físicos ao imóvel. O prêmio desses seguros é somado à prestação mês a mês e entra integralmente no CET.',
+          'Seguro embutido não é necessariamente ruim — o imobiliário, por exemplo, evita que a família herde uma dívida grande. Mas ele é um custo. Quando o seguro é opcional, como costuma ser o prestamista no empréstimo pessoal, comparar o CET com e sem o seguro mostra exatamente quanto aquela proteção está custando ao ano.',
+        ],
+      },
+      {
+        heading: 'Por que o CET é sempre maior que a taxa de juros nominal',
+        level: 'h2',
+        body: [
+          'Como o CET incorpora IOF, tarifas e seguros além dos juros, ele é, por construção, igual ou maior que a taxa de juros do contrato — nunca menor. A distância entre os dois números depende do peso desses encargos. Em um empréstimo pessoal de valor baixo e prazo curto, uma tarifa de cadastro fixa pode representar uma fatia grande do total e abrir uma diferença de vários pontos percentuais ao ano entre a taxa e o CET. Em um financiamento longo e de valor alto, a tarifa fixa se dilui, mas os seguros mensais e o IOF no teto mantêm a diferença relevante.',
+          'Uma regra prática: quanto menor e mais curto o empréstimo, mais o CET tende a se descolar da taxa anunciada. É justamente nas operações pequenas — cheque especial parcelado, consignado de valor baixo, financiamento de eletrodoméstico — que olhar só a taxa de juros mais engana.',
+        ],
+      },
+      {
+        heading: 'O CET na regulação brasileira',
+        level: 'h2',
+        body: [
+          'Desde a Resolução CMN nº 3.517, de 2007, atualizada por normas posteriores, o Banco Central exige que qualquer instituição financeira informe o CET antes de fechar uma operação de crédito ou arrendamento mercantil com pessoa física ou microempresa. A informação precisa ser expressa como taxa percentual anual e apresentada de forma clara, acompanhada da discriminação de todos os componentes que entraram na conta — juros, tributos, tarifas, seguros e demais despesas.',
+          'Na prática, isso significa que você tem direito de receber o CET por escrito, com o detalhamento, antes de assinar. Se uma proposta de crédito não traz o CET, ou traz só um número solto sem a composição, isso já é um sinal de alerta. Pedir a planilha de composição do CET de cada proposta é a forma mais simples de comparar bancos em pé de igualdade.',
+        ],
+      },
+      {
+        heading: 'Exemplo: mesma taxa de juros, CET diferente',
+        level: 'h2',
+        body: [
+          'Imagine dois bancos oferecendo um empréstimo de R$ 10.000 em 24 parcelas, ambos anunciando 2% ao mês de juros. O banco A cobra uma tarifa de cadastro de R$ 300 e não embute seguro. O banco B não cobra tarifa de cadastro, mas embute um seguro prestamista de R$ 12 por parcela. Nos dois casos incide o IOF de praxe.',
+          'No banco A, os R$ 300 saem na largada: você assina uma dívida de R$ 10.000 mas efetivamente recebe menos, o que eleva o custo anual. No banco B não há desconto inicial, mas você paga R$ 288 de seguro ao longo do contrato, diluídos nas parcelas. Dependendo dos números exatos, o CET das duas propostas pode ficar próximo — ou uma pode se revelar consideravelmente mais cara. A taxa de juros de 2% ao mês, idêntica nas duas, não permitiria perceber nada disso.',
+          'O exercício mostra por que comparar propostas apenas pela taxa de juros é um atalho perigoso: a decisão certa depende de rodar o CET de cada uma com os seus valores reais de tarifa, seguro e prazo.',
+        ],
+      },
+      {
+        heading: 'Como usar o CET na hora de decidir',
+        level: 'h2',
+        body: [
+          'Primeiro, exija o CET anual de cada proposta por escrito, com a composição detalhada. Segundo, confira o prazo: um CET menor em um contrato mais longo pode significar mais juros pagos no total, mesmo com custo anual mais baixo — CET e valor total pago são informações complementares, não substitutas. Terceiro, verifique quais itens do CET são negociáveis: tarifa de cadastro e seguro opcional às vezes podem ser reduzidos ou removidos, e cada real a menos nesses encargos derruba o CET.',
+          'Por fim, use o CET para comparar modalidades diferentes de crédito, não só bancos diferentes dentro da mesma modalidade. É o CET que deixa claro, por exemplo, o abismo entre um consignado e o rotativo do cartão, ou entre um financiamento de veículo com garantia e um empréstimo pessoal sem garantia para a mesma finalidade.',
+        ],
+      },
+      {
+        heading: 'O CET no financiamento imobiliário',
+        level: 'h2',
+        body: [
+          'No crédito imobiliário, o CET carrega componentes que não existem em outras modalidades: os seguros MIP e DFI obrigatórios, a taxa de administração mensal, os custos de avaliação do imóvel e de registro do contrato em cartório, e a atualização do saldo devedor por um índice — TR na maior parte das linhas ou, em algumas, IPCA. Contratos de 20 ou 30 anos fazem esses encargos recorrentes pesarem bastante no custo total.',
+          'Além disso, o sistema de amortização escolhido, SAC ou Price, muda o desenho das parcelas e, portanto, o fluxo usado no cálculo do CET. Por isso, no crédito imobiliário, comparar propostas só pelo CET não basta: é preciso olhar junto o sistema de amortização, o índice de correção e o valor total projetado ao fim do contrato.',
+        ],
+      },
+      {
+        heading: 'Simule o CET antes de assinar',
+        level: 'h2',
+        body: [
+          'Os efeitos descritos aqui dependem inteiramente dos seus números: valor financiado, prazo, taxa de juros, tarifas e seguros de cada proposta. Antes de fechar qualquer contrato, monte o fluxo completo de parcelas e encargos e calcule o custo efetivo de cada opção. Use a Calculadora de Financiamento para simular um empréstimo pessoal ou de veículo e ver o total pago em juros no seu prazo, a Calculadora de Financiamento Imobiliário para comparar SAC e Price com correção, e a Calculadora de Tabela Price para entender, parcela a parcela, como juros e amortização se dividem ao longo do contrato.',
+        ],
+      },
+    ],
+    relatedCalculators: [
+      { label: 'Calculadora de Financiamento (Empréstimo Pessoal)', href: '/pt-br/calculadoras/calculadora-de-financiamento' },
+      { label: 'Calculadora de Financiamento Imobiliário (SAC x Price)', href: '/pt-br/calculadoras/calculadora-de-financiamento-imobiliario' },
+      { label: 'Calculadora de Tabela Price', href: '/pt-br/calculadoras/tabela-price-calculadora' },
+    ],
+  },
 ];
 
 export function getBlogPostBrBySlug(slug: string): BlogPostBr | undefined {
