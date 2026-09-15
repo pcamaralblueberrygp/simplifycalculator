@@ -814,6 +814,102 @@ export const BLOG_POSTS_BR: BlogPostBr[] = [
       { label: 'Calculadora de Tabela Price', href: '/pt-br/calculadoras/tabela-price-calculadora' },
     ],
   },
+  {
+    slug: 'clt-ou-pj-quanto-cobrar-para-nao-sair-perdendo',
+    title: 'CLT ou PJ: Quanto Cobrar como Pessoa Jurídica para Não Sair Perdendo',
+    metaDescription:
+      'CLT ou PJ? Aprenda a calcular o valor mínimo a cobrar como PJ considerando FGTS, 13º, férias, Simples Nacional e Fator R antes de trocar de regime.',
+    publishDate: '2026-09-14',
+    category: 'Renda',
+    image: {
+      src: '/blog/clt-ou-pj-quanto-cobrar-para-nao-sair-perdendo.svg',
+      alt: 'Comparação entre salário CLT e faturamento PJ com Simples Nacional e Fator R — guia SimplifyCalculator Brasil',
+    },
+    intro:
+      'A proposta chega assim: "topamos pagar R$ 8.000 como PJ, hoje você recebe R$ 6.000 de CLT". Parece um ganho óbvio, mas comparar diretamente o valor bruto de uma proposta PJ com o salário bruto CLT é o erro mais comum de quem migra de regime — e o que faz muita gente descobrir, meses depois, que está recebendo efetivamente menos do que antes. A conta certa exige somar o que a CLT paga por fora (FGTS, 13º, férias) e subtrair o que o PJ precisa pagar sozinho (impostos do Simples Nacional, contador, sua própria reserva de 13º e férias).',
+    sections: [
+      {
+        heading: 'Por que comparar os dois valores brutos não funciona',
+        level: 'h2',
+        body: [
+          'O salário bruto CLT já vem "líquido" de uma série de obrigações que o empregador paga sem que apareçam no contracheque: 8% de FGTS depositados todo mês em conta separada, 13º salário integral, um terço de férias sobre o salário, e a contribuição patronal ao INSS que garante parte da sua aposentadoria futura. Nenhum desses itens existe automaticamente em um contrato PJ — se você não os embutir no valor cobrado, está literalmente abrindo mão deles.',
+          'Do lado PJ, o valor bruto faturado também não é o que sobra no bolso: incide o imposto do Simples Nacional (DAS), possivelmente a contribuição ao INSS como contribuinte individual, os honorários do contador (obrigatório para manter um CNPJ ativo) e, se você quiser ter os mesmos direitos de um CLT, a reserva mensal que você mesmo precisa fazer para bancar seu próprio "13º" e "férias".',
+        ],
+      },
+      {
+        heading: 'O que a CLT garante e que o PJ precisa recriar sozinho',
+        level: 'h2',
+        body: [],
+      },
+      {
+        heading: 'Os encargos que o empregador paga por fora do salário',
+        level: 'h3',
+        body: [
+          'Somando FGTS (8%), 13º salário (equivalente a mais um salário por ano, ou ~8,33% mensal) e um terço constitucional de férias (~2,78% mensal), o "custo invisível" da CLT gira em torno de 19-20% acima do salário bruto mensal — sem contar a contribuição patronal ao INSS, que fica por conta do empregador e não do empregado. É esse pacote que precisa ser recriado, item por item, dentro do valor cobrado como PJ.',
+        ],
+      },
+      {
+        heading: 'Os riscos que a CLT absorve por você',
+        level: 'h3',
+        body: [
+          'Além do dinheiro direto, a CLT garante aviso prévio e multa de 40% do FGTS em caso de demissão sem justa causa, seguro-desemprego enquanto você procura uma nova posição, e estabilidade em situações como gravidez e acidente de trabalho. Como PJ, a queda de um único cliente pode zerar sua renda de um mês para outro sem nenhuma rede de proteção equivalente — um risco que vale a pena precificar, mesmo que não caiba numa planilha com a mesma facilidade dos encargos.',
+        ],
+      },
+      {
+        heading: 'Como funciona a tributação PJ pelo Simples Nacional',
+        level: 'h2',
+        body: [
+          'A maioria dos prestadores de serviço PJ individuais se enquadra no Simples Nacional, dentro do Anexo III (alíquotas de 6% a 16,93% sobre o faturamento, começando em 6% para quem fatura até R$ 180 mil por ano) ou do Anexo V (alíquotas mais altas, de 15,5% a 30,5%), dependendo da atividade e do chamado Fator R.',
+          'O Fator R compara a folha de pagamento da empresa (incluindo o pró-labore que você retira) com o faturamento dos últimos 12 meses: se essa proporção for de 28% ou mais, a empresa tributa pelo Anexo III, mais barato; abaixo disso, cai no Anexo V, mais caro. Na prática, isso significa que retirar um pró-labore maior (o que também aumenta sua contribuição ao INSS e o valor da sua aposentadoria futura) pode reduzir a alíquota do imposto sobre o faturamento — um dos poucos casos em que pagar mais imposto de um lado economiza no outro.',
+        ],
+      },
+      {
+        heading: 'O cálculo passo a passo para não sair perdendo',
+        level: 'h2',
+        body: [],
+      },
+      {
+        heading: 'Passo 1: parta do custo total da sua posição CLT atual',
+        level: 'h3',
+        body: [
+          'Pegue o salário bruto mensal e multiplique por aproximadamente 1,20 para embutir FGTS, 13º e férias proporcionais — esse é o "valor de referência" que a proposta PJ precisa superar, não o salário líquido nem o salário bruto isolado.',
+        ],
+      },
+      {
+        heading: 'Passo 2: aplique o gross-up dos custos que você vai assumir',
+        level: 'h3',
+        body: [
+          'Sobre esse valor de referência, é preciso somar (por fora, como um acréscimo percentual) a alíquota do Simples Nacional que se aplica à sua faixa e anexo, o custo médio de um contador para MEI ou ME (em geral entre R$ 150 e R$ 400 por mês) e a contribuição ao INSS via pró-labore, se você quiser manter a mesma cobertura previdenciária que tinha como CLT.',
+        ],
+      },
+      {
+        heading: 'Passo 3: some uma margem de segurança para os meses sem receita',
+        level: 'h3',
+        body: [
+          'Como PJ não tem seguro-desemprego nem estabilidade, é prudente embutir uma margem adicional de 5-10% no valor cobrado, destinada a formar uma reserva de emergência maior do que a que você manteria como CLT — use a Calculadora de Orçamento Mensal para dimensionar quanto dessa margem cabe no seu planejamento sem inviabilizar a proposta.',
+        ],
+      },
+      {
+        heading: 'Exemplo numérico completo',
+        level: 'h2',
+        body: [
+          'Um CLT com salário bruto de R$ 6.000 tem um custo total de aproximadamente R$ 7.200 (R$ 6.000 × 1,20), somando FGTS, 13º e férias. Supondo enquadramento no Anexo III do Simples Nacional a 11,2% (faixa intermediária), mais R$ 300 de contador e um Fator R que exige pró-labore de 28% do faturamento (para manter a alíquota mais baixa e continuar contribuindo ao INSS sobre uma base razoável), o valor bruto necessário como PJ fica entre R$ 8.300 e R$ 8.800 para efetivamente igualar o pacote CLT — bem acima da diferença de "só" R$ 6.000 para R$ 8.000 que costuma parecer vantajosa à primeira vista. Use a Calculadora CLT x PJ para rodar esse comparativo com os seus próprios números, incluindo a alíquota exata da sua faixa do Simples.',
+        ],
+      },
+      {
+        heading: 'Além do dinheiro: o que também pesa na decisão',
+        level: 'h2',
+        body: [
+          'Nem tudo se resolve com uma planilha. Plano de saúde corporativo, vale-refeição e outros benefícios indiretos da CLT têm valor real e raramente aparecem no contracheque bruto — se a empresa contratante como PJ não oferecer equivalentes, esse custo também precisa entrar na conta. Por outro lado, o PJ pode deduzir despesas do negócio (equipamento, parte do aluguel, cursos) e tem mais liberdade para atender múltiplos clientes, o que reduz a dependência de uma única fonte de renda — um fator que compensa parte do risco de não ter estabilidade, desde que seja bem gerenciado desde o início.',
+        ],
+      },
+    ],
+    relatedCalculators: [
+      { label: 'Calculadora CLT x PJ', href: '/pt-br/calculadoras/calculadora-clt-vs-pj' },
+      { label: 'Calculadora de Salário Líquido CLT', href: '/pt-br/calculadoras/calculadora-de-salario-liquido' },
+      { label: 'Calculadora de Orçamento Mensal', href: '/pt-br/calculadoras/calculadora-de-orcamento-mensal' },
+    ],
+  },
 ];
 
 export function getBlogPostBrBySlug(slug: string): BlogPostBr | undefined {
