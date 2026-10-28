@@ -714,6 +714,94 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'Debt-to-Income Ratio Calculator', href: '/calculators/debt-to-income-ratio-calculator' },
     ],
   },
+  {
+    slug: 'rent-vs-buy-unrecoverable-costs',
+    title: "Renting Isn't Throwing Money Away: How to Compare Rent to the True Cost of Owning",
+    metaDescription:
+      "Renting isn't throwing money away. Learn how to compare rent to the unrecoverable costs of owning (interest, taxes, upkeep) and see when buying really wins.",
+    publishDate: '2026-10-28',
+    category: 'Real Estate',
+    image: {
+      src: '/blog/rent-vs-buy-unrecoverable-costs.svg',
+      alt: 'Rent vs. buy comparison banner from SimplifyCalculator explaining how to weigh monthly rent against the unrecoverable costs of homeownership such as mortgage interest, property tax, and maintenance',
+    },
+    intro:
+      "\"Why pay your landlord's mortgage when you could pay your own?\" It's the most repeated line in personal finance, and it rests on a bad comparison: rent versus the full mortgage payment. Part of a mortgage payment is money you get back as equity, but owners also pay a stack of costs they never see again. The fair comparison is rent against those unrecoverable costs, and once you set it up that way, the answer to rent-or-buy often surprises people in both directions.",
+    sections: [
+      {
+        heading: 'Rent is a cost. So is most of owning.',
+        level: 'h2',
+        body: [
+          "Every dollar of rent is gone once it's paid, and that part of the old line is true. What the line skips is that a homeowner also pays a lot of money that builds nothing. Mortgage interest, property tax, homeowners insurance, maintenance, and the investment return your down payment could have earned somewhere else are all spent for good. The principal portion of your payment is the only part that turns into wealth, and early in a 30-year loan it's a small slice.",
+          "So the useful question isn't \"rent or mortgage payment?\" It's \"is my rent higher or lower than what owning the same home would cost me in money I never recover?\" If rent is lower, a renter who invests the difference can come out ahead. If it's higher, buying has the edge, as long as you stay put long enough.",
+        ],
+      },
+      {
+        heading: 'Adding up the unrecoverable costs of owning',
+        level: 'h2',
+        body: [
+          "Take a $400,000 home bought with 20% down ($80,000) and a $320,000, 30-year mortgage at 6.5%. The monthly principal and interest payment is about $2,023. Here's what the first year really costs in money you won't get back.",
+        ],
+      },
+      {
+        heading: 'Interest, taxes, insurance, and upkeep',
+        level: 'h3',
+        body: [
+          "Of the roughly $24,270 in mortgage payments in year one, about $20,700 is interest. Only around $3,600 goes to principal. Add property tax at a typical 1.1% of value ($4,400), homeowners insurance (about $2,000), and maintenance. A common budgeting rule is 1% of the home's value per year, or $4,000, though older homes and harsh climates can run well above that. Those four line items alone come to about $31,100.",
+        ],
+      },
+      {
+        heading: 'The cost people forget: your down payment',
+        level: 'h3',
+        body: [
+          "The $80,000 you put down isn't free money just because no bank charges you for it. Invested in a diversified portfolio instead, it might reasonably earn around 7% a year before inflation, or about $5,600. Giving that up is a real cost of owning, even though it never shows up on a bill. That pushes the total to roughly $36,700.",
+        ],
+      },
+      {
+        heading: 'Then subtract appreciation',
+        level: 'h3',
+        body: [
+          "Owners do get something back that renters don't: the home's value tends to rise. If it appreciates 3.5% a year, close to long-run national averages, that's about $14,000 in year one. Subtracting it leaves net unrecoverable costs of about $22,700 a year, or roughly $1,890 a month, which works out to about 5.7% of the home's price. In other words, if you can rent a comparable home for well under $1,890, renting and investing the difference is a serious contender. If comparable rent is $2,300, buying looks better.",
+        ],
+      },
+      {
+        heading: 'A quick rule of thumb, and its limits',
+        level: 'h2',
+        body: [
+          "Some planners boil this down to a single shortcut: multiply the home's price by about 5%, divide by 12, and compare that to rent. Our worked example lands a little higher because today's mortgage rates make borrowed money expensive. That's the main lesson. The breakeven percentage moves with interest rates, local tax rates, and the age of the house, so treat any fixed rule as a starting point, not a verdict.",
+          "Appreciation is the assumption that moves the result most. Drop it from 3.5% to 2% in the example above and the appreciation offset falls from $14,000 to $8,000, pushing the monthly cost of owning to about $2,390. Markets that boomed recently can go flat for a decade, so it's worth running a pessimistic scenario before you commit.",
+        ],
+      },
+      {
+        heading: 'Transaction costs decide how long you need to stay',
+        level: 'h2',
+        body: [
+          "The annual math leaves out the one-time hit of buying and selling. Closing costs often run 2% to 5% of the price, and selling usually costs another 6% to 8% once you count agent commissions, transfer taxes, and getting the place ready to list. On a $400,000 home that's a round trip of roughly $32,000 to $52,000 that a renter never pays.",
+          "Spread across three years, that's more than $10,000 a year of extra cost, enough to erase almost any monthly advantage of owning. Spread across ten years, it shrinks to roughly $3,000 to $5,000 a year. This is why \"how long will I live here?\" is often the most important question in the whole decision. If the honest answer is under about five years, renting usually wins unless local rents are unusually high compared to prices.",
+        ],
+      },
+      {
+        heading: 'What the spreadsheet does not capture',
+        level: 'h2',
+        body: [
+          "The comparison only works if the renter actually invests the difference. A renter who spends the gap ends up with nothing to show for it, while an owner's principal payments build equity whether they think about it or not. That forced savings is a real behavioral advantage of buying. Owning also locks in your principal and interest for 30 years while rents tend to rise with inflation, which matters more the longer you stay.",
+          "On the other side, renting buys flexibility: you can move for a better job without selling, and a surprise $12,000 roof replacement is your landlord's problem. And don't count on the mortgage interest deduction to tip the scales. Most households take the standard deduction, so many owners get little or no tax benefit from their interest.",
+        ],
+      },
+      {
+        heading: 'Run the comparison with your own numbers',
+        level: 'h2',
+        body: [
+          "Your local rents, prices, tax rates, and timeline will change every number above, so plug in your own. Our Rent vs. Buy Calculator compares the total cost of each path over the years you expect to stay. The Mortgage Calculator shows how much of each payment goes to interest versus principal, and the Home Affordability Calculator checks whether the house you're considering fits your income before you get attached to it.",
+        ],
+      },
+    ],
+    relatedCalculators: [
+      { label: 'Rent vs. Buy Calculator', href: '/calculators/rent-vs-buy-calculator' },
+      { label: 'Mortgage Calculator', href: '/calculators/mortgage-calculator' },
+      { label: 'Home Affordability Calculator', href: '/calculators/home-affordability-calculator' },
+    ],
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
