@@ -802,6 +802,95 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'Home Affordability Calculator', href: '/calculators/home-affordability-calculator' },
     ],
   },
+  {
+    slug: 'real-return-savings-after-inflation-and-taxes',
+    title: 'Your 4.5% Savings Account May Be Earning Almost Nothing: How to Calculate Your Real Return',
+    metaDescription:
+      'A 4.5% APY can shrink to near 0% once taxes and inflation take their cut. Learn the real-return formula, the break-even rate, and where your cash belongs.',
+    publishDate: '2026-11-05',
+    category: 'Investing',
+    image: {
+      src: '/blog/real-return-savings-after-inflation-and-taxes.svg',
+      alt: 'SimplifyCalculator banner showing how a high-yield savings account rate shrinks after income tax and inflation, illustrating the real after-tax return on cash savings',
+    },
+    intro:
+      "A high-yield savings account paying 4.5% feels like a win, and compared to the 0.4% at a typical big bank, it is. But the rate on the screen isn't what you actually keep. Interest is taxed as ordinary income, and inflation quietly lowers what every dollar can buy. Run both through the math and a 4.5% account can end up growing your purchasing power by less than 0.3% a year. Knowing that number changes how you think about where your cash should sit.",
+    sections: [
+      {
+        heading: 'Nominal vs. real: the number on the screen is not the number you keep',
+        level: 'h2',
+        body: [
+          "The rate your bank advertises is the nominal return: how many more dollars you'll have a year from now. What you actually care about is the real return: how much more you'll be able to buy. If your balance grows 4% but prices rise 3%, you're only about 1% richer in practical terms.",
+          "The exact formula is real return = (1 + nominal rate) ÷ (1 + inflation rate) − 1. For everyday use, nominal minus inflation is close enough when both numbers are small. The bigger problem is that most people skip a step before inflation even enters the picture: taxes.",
+        ],
+      },
+      {
+        heading: 'Step one: take out the tax',
+        level: 'h2',
+        body: [
+          "Savings account and CD interest is taxed at your ordinary income rate, the same as your paycheck. Your bank sends a 1099-INT, and the interest is added to your taxable income whether you withdraw it or not. To find your after-tax rate, multiply the nominal rate by (1 − your combined marginal tax rate).",
+          "Say you keep $20,000 in an account paying 4.5% APY. That's $900 of interest in a year. If you're in the 22% federal bracket and pay 5% state income tax, 27% of that interest goes to taxes, or $243. You keep $657, an after-tax yield of about 3.29%.",
+        ],
+      },
+      {
+        heading: 'Step two: subtract inflation',
+        level: 'h3',
+        body: [
+          "Now assume inflation runs at 3%. Plugging 3.29% into the formula gives (1.0329 ÷ 1.03) − 1, or about 0.28%. Your $20,000 grew by $657 in dollars, but only by about $55 in purchasing power. That's still positive, which is the point of a high-yield account. It just isn't the 4.5% you thought you were earning.",
+          "Run the same numbers on a traditional account paying 0.4% and the picture flips. After tax you keep about 0.29%, and after 3% inflation your real return is roughly −2.6%. You lose about $525 of purchasing power on that $20,000 every year. Over ten years, the balance would buy what about $15,300 buys today, even though the statement shows more dollars than you started with.",
+        ],
+      },
+      {
+        heading: 'Your break-even rate: the minimum just to stand still',
+        level: 'h2',
+        body: [
+          "Turn the math around and you get a useful benchmark: the nominal rate you need just to keep pace with inflation after taxes. The formula is inflation ÷ (1 − tax rate). With 3% inflation and a 27% combined tax rate, that's 3% ÷ 0.73, or about 4.1%.",
+          "Anything below your break-even rate is losing ground, no matter how good it looks next to a 0.01% checking account. Anything above it is genuinely growing. A higher tax bracket raises the bar: at a 40% combined rate, you need 5% just to break even with 3% inflation. That's why high earners often find that cash is a weaker store of value than it looks.",
+        ],
+      },
+      {
+        heading: 'Ways to keep more of what your cash earns',
+        level: 'h2',
+        body: [
+          "You can't control inflation, but you can control where your cash sits and how it's taxed. A few options are worth comparing on an after-tax basis rather than by headline rate.",
+        ],
+      },
+      {
+        heading: 'Treasury bills and state taxes',
+        level: 'h3',
+        body: [
+          "Interest on U.S. Treasury bills is taxed federally but exempt from state and local income tax. That matters if you live in a high-tax state. A T-bill yielding 4.3% with only the 22% federal tax applied leaves about 3.35% after tax, slightly more than the 3.29% from the 4.5% savings account above. The lower headline rate wins once you account for taxes. In a state with no income tax, the savings account would come out ahead, so the answer depends on where you live.",
+        ],
+      },
+      {
+        heading: 'Tax-advantaged accounts and inflation-protected bonds',
+        level: 'h3',
+        body: [
+          "Interest earned inside an IRA or 401(k) isn't taxed each year, so the tax step disappears while the money stays in the account. That makes those accounts a natural home for bonds and CDs in a long-term portfolio. Series I bonds and TIPS go a step further by adjusting for inflation directly, though I bonds limit purchases to $10,000 per person per year, must be held at least a year, and cost three months of interest if redeemed within five years.",
+        ],
+      },
+      {
+        heading: 'Cash still has a job; just give it the right one',
+        level: 'h2',
+        body: [
+          "None of this means cash is a bad idea. An emergency fund isn't supposed to beat inflation. Its job is to be there, at full value, the week your car breaks down or your job disappears. A slightly negative or near-zero real return is a fair price for that kind of safety, and a high-yield account keeps the cost as low as possible.",
+          "The trouble starts when cash piles up beyond what you need for emergencies and near-term goals. Money you won't touch for ten or more years sitting at a negative real return is a slow leak. Historically, a diversified stock portfolio has returned roughly 6% to 7% a year above inflation over long periods, with plenty of bad years along the way. That volatility is why stocks are a poor fit for an emergency fund and a good fit for long-term goals.",
+        ],
+      },
+      {
+        heading: 'Check your own numbers',
+        level: 'h2',
+        body: [
+          "Start with your current APY, your federal and state marginal tax rates, and a reasonable inflation assumption, then work through the two steps above. Our Savings Interest Calculator shows how much interest your balance will earn in dollars, and the Inflation Calculator shows what that future balance will actually buy. The Emergency Fund Calculator helps you decide how much cash you really need on hand, so you can make a deliberate choice about the rest instead of letting it sit by default.",
+        ],
+      },
+    ],
+    relatedCalculators: [
+      { label: 'Savings Interest Calculator', href: '/calculators/savings-interest-calculator' },
+      { label: 'Inflation Calculator', href: '/calculators/inflation-calculator' },
+      { label: 'Emergency Fund Calculator', href: '/calculators/emergency-fund-calculator' },
+    ],
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
