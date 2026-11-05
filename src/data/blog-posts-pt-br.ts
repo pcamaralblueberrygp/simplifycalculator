@@ -910,6 +910,81 @@ export const BLOG_POSTS_BR: BlogPostBr[] = [
       { label: 'Calculadora de Orçamento Mensal', href: '/pt-br/calculadoras/calculadora-de-orcamento-mensal' },
     ],
   },
+  {
+    slug: 'amortizar-financiamento-imobiliario-ou-investir',
+    title: 'Amortizar o Financiamento Imobiliário ou Investir? A Conta que Decide',
+    metaDescription:
+      'Sobrou dinheiro: amortizar o financiamento ou investir no CDI? Compare taxa efetiva, IR, LCI e FGTS e veja por que reduzir o prazo economiza mais juros.',
+    publishDate: '2026-11-05',
+    category: 'Imóveis',
+    image: {
+      src: '/blog/amortizar-financiamento-imobiliario-ou-investir.svg',
+      alt: 'Banner comparando amortização extraordinária do financiamento imobiliário com investimento em CDI, LCI e Tesouro Direto, incluindo uso do FGTS',
+    },
+    intro:
+      'Recebeu o 13º, um bônus ou a restituição do Imposto de Renda e tem um financiamento imobiliário em andamento? A dúvida é clássica: usar o dinheiro para amortizar o saldo devedor ou deixá-lo rendendo em um CDB, LCI ou no Tesouro Direto? Não existe resposta universal, mas existe uma conta objetiva — e ela depende de três números que quase ninguém compara do jeito certo: a taxa efetiva do seu contrato, o rendimento líquido de IR do investimento e o tamanho da sua reserva de emergência.',
+    sections: [
+      {
+        heading: 'Amortizar é um "investimento" com rentabilidade garantida',
+        level: 'h2',
+        body: [
+          'Cada real usado para abater o saldo devedor deixa de pagar juros pelo resto do contrato. Na prática, amortizar equivale a aplicar dinheiro a uma taxa igual ao custo efetivo do financiamento — sem risco de mercado, sem marcação a mercado e sem Imposto de Renda sobre o "rendimento". Se o seu contrato cobra TR + 11% ao ano, mais seguros MIP (morte e invalidez) e DFI (danos físicos ao imóvel), cada real amortizado "rende" algo próximo de 12% ao ano líquido.',
+          'O direito de antecipar está garantido pelo Código de Defesa do Consumidor (art. 52, §2º), que assegura a redução proporcional dos juros, e a Resolução CMN nº 3.516/2007 proíbe a cobrança de tarifa de liquidação antecipada em contratos firmados a partir de dezembro de 2007. Ou seja: o banco não pode cobrar multa por você pagar antes.',
+        ],
+      },
+      {
+        heading: 'Quanto o investimento precisa render para valer a pena',
+        level: 'h2',
+        body: [
+          'O erro mais comum é comparar a taxa nominal do contrato com a taxa bruta do investimento. Um CDB a 100% do CDI com CDI em 13% ao ano parece vencer um financiamento de 11% ao ano — mas, depois do IR da tabela regressiva (22,5% até 180 dias, caindo até 15% acima de 720 dias), o rendimento líquido no prazo longo cai para cerca de 11,05% ao ano. Somando a TR e os seguros ao custo do contrato, a vantagem do investimento desaparece.',
+          'LCI e LCA são isentas de IR para pessoa física, então uma LCI a 92% do CDI rende cerca de 11,96% ao ano líquido no mesmo cenário — praticamente empatando com o custo do financiamento. Já títulos como o Tesouro IPCA+ devem ser comparados em termos reais: se o seu financiamento é corrigido pela TR (que costuma ficar bem abaixo da inflação), o custo real dele pode ser menor do que parece, e um título que paga IPCA + 6% pode competir de igual para igual. A regra prática: o investimento só vence com folga quando o rendimento líquido supera o custo efetivo do contrato por uma margem que compense o risco.',
+        ],
+      },
+      {
+        heading: 'Reduzir o prazo ou reduzir a parcela?',
+        level: 'h2',
+        body: [
+          'Na hora de amortizar, o banco pergunta se você quer diminuir o número de parcelas restantes ou o valor de cada uma. Financeiramente, reduzir o prazo quase sempre economiza mais juros, porque elimina justamente as parcelas mais distantes, sobre as quais incidiriam anos de juros acumulados.',
+        ],
+      },
+      {
+        heading: 'Exemplo numérico no sistema SAC',
+        level: 'h3',
+        body: [
+          'Considere um saldo devedor de R$ 300.000, 300 parcelas restantes no SAC e taxa de 11% ao ano (ignorando a TR e os seguros para simplificar). Sem amortizar, os juros futuros somam cerca de R$ 394 mil. Uma amortização extraordinária de R$ 30.000 com redução de prazo corta 30 parcelas e reduz os juros totais para cerca de R$ 320 mil — economia de aproximadamente R$ 74,8 mil, ou quase 2,5 vezes o valor amortizado.',
+          'Se a mesma amortização for usada para reduzir a parcela (mantendo as 300 restantes), a primeira prestação cai de cerca de R$ 3.620 para R$ 3.258, mas a economia total de juros fica em aproximadamente R$ 39,4 mil — praticamente metade. Simule o seu próprio contrato na Calculadora de Financiamento Imobiliário para ver a diferença com os seus números.',
+        ],
+      },
+      {
+        heading: 'Quando reduzir a parcela faz mais sentido',
+        level: 'h3',
+        body: [
+          'Reduzir a parcela é a escolha certa quando o orçamento está apertado, a prestação compromete mais de 30% da renda ou existe risco real de perda de renda (como em uma transição de CLT para PJ). Um fluxo mensal mais folgado diminui a chance de atraso — e atrasar um financiamento com alienação fiduciária é muito mais caro do que qualquer diferença de juros.',
+        ],
+      },
+      {
+        heading: 'O FGTS muda a conta a favor da amortização',
+        level: 'h2',
+        body: [
+          'O saldo do FGTS rende 3% ao ano mais TR, acrescido da distribuição de parte do lucro do fundo — historicamente bem abaixo do CDI e de qualquer financiamento. Por isso, usar o FGTS para amortizar quase sempre vale a pena. As regras básicas: o imóvel precisa estar financiado dentro do Sistema Financeiro da Habitação (SFH), ser destinado à sua moradia, você não pode ter outro imóvel residencial na mesma cidade e é preciso ter pelo menos três anos de trabalho sob o regime do FGTS. Entre uma utilização e outra para amortização, o intervalo mínimo é de dois anos.',
+          'Uma estratégia comum é usar o FGTS para amortizar a cada dois anos e direcionar o dinheiro "livre" (13º, bônus) primeiro para a reserva de emergência e só depois para amortizações ou investimentos.',
+        ],
+      },
+      {
+        heading: 'Antes de amortizar: a ordem de prioridades',
+        level: 'h2',
+        body: [
+          'Amortizar reduz custo, mas também reduz liquidez: o dinheiro que entra no imóvel não volta para a sua conta numa emergência. Antes de qualquer amortização, monte uma reserva de emergência de 6 a 12 meses de despesas em aplicações líquidas como Tesouro Selic ou CDB com liquidez diária. Em seguida, quite dívidas mais caras — rotativo do cartão, cheque especial e crédito pessoal cobram muito mais do que qualquer financiamento imobiliário.',
+          'Só depois dessas etapas a comparação "amortizar ou investir" entra em jogo. Se a taxa efetiva do contrato for maior do que o rendimento líquido que você consegue com segurança, amortize reduzindo o prazo. Se o investimento render claramente mais, ou se você precisa de flexibilidade, invista — e reavalie a decisão sempre que a SELIC mudar de patamar, já que o cenário de juros do Banco Central altera a conta de um ano para o outro.',
+        ],
+      },
+    ],
+    relatedCalculators: [
+      { label: 'Calculadora de Financiamento Imobiliário', href: '/pt-br/calculadoras/calculadora-de-financiamento-imobiliario' },
+      { label: 'Calculadora de Juros Compostos', href: '/pt-br/calculadoras/calculadora-de-juros-compostos' },
+      { label: 'Calculadora de Orçamento Mensal', href: '/pt-br/calculadoras/calculadora-de-orcamento-mensal' },
+    ],
+  },
 ];
 
 export function getBlogPostBrBySlug(slug: string): BlogPostBr | undefined {
