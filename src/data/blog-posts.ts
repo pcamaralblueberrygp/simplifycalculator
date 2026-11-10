@@ -891,6 +891,83 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'Emergency Fund Calculator', href: '/calculators/emergency-fund-calculator' },
     ],
   },
+  {
+    slug: 'how-to-size-your-emergency-fund',
+    title: '"Three to Six Months" Is the Wrong Question: How to Size an Emergency Fund to Your Actual Risk',
+    metaDescription:
+      'The 3-6 month rule ignores what actually drives risk. Size your emergency fund from essential costs, realistic job-search time, and one-time shocks instead.',
+    publishDate: '2026-11-10',
+    category: 'Budgeting',
+    image: {
+      src: '/blog/how-to-size-your-emergency-fund.svg',
+      alt: 'SimplifyCalculator banner comparing a $8,100 emergency fund target for a dual-income renter with a $39,100 target for a self-employed homeowner, illustrating how to size an emergency fund to personal risk',
+    },
+    intro:
+      "Almost every personal finance guide gives the same advice: keep three to six months of expenses in an emergency fund. The trouble is that the range is so wide it barely counts as an answer. For someone spending $4,000 a month, it means anywhere from $12,000 to $24,000, and the rule says nothing about which end you belong on, or whether you belong outside the range entirely. A better approach is to build the number from the specific risks you face. It takes about fifteen minutes and usually produces a target that is either noticeably smaller or noticeably larger than the default.",
+    sections: [
+      {
+        heading: 'Start with essential expenses, not income or total spending',
+        level: 'h2',
+        body: [
+          "An emergency fund exists to cover the months when your income stops or a large bill arrives. In those months you wouldn't spend the way you do now. You'd pause restaurant meals, travel, and retirement contributions. So the base number is your essential monthly cost: housing, utilities, groceries, insurance, transportation, minimum debt payments, and anything else you would keep paying even in a crisis.",
+          "For many households that figure lands somewhere between 60% and 75% of current take-home pay. A household bringing home $5,200 a month might find its essentials come to $3,400: $1,700 rent, $250 utilities, $600 groceries, $300 insurance, $400 for a car payment and gas, and $150 in minimum debt payments.",
+          "Then adjust for what changes if you lose your job. Commuting costs may fall, but health insurance usually rises. Keeping employer coverage through COBRA means paying the full premium plus a 2% fee, which commonly runs $600 to $800 a month for single coverage. If you'd need it, add it to the essential number now rather than discovering it later.",
+        ],
+      },
+      {
+        heading: 'Estimate how long a disruption would realistically last',
+        level: 'h2',
+        body: [
+          "The months part of the rule is really a guess about how long it would take you to replace your income. Government labor statistics regularly show a median unemployment spell of roughly two months, but an average closer to five, because a minority of long searches pull the average up. Plan for the average, not the median: the median is the experience of a typical job seeker in a normal market, and emergencies rarely arrive in normal markets.",
+          "Next, subtract any income that would keep flowing. State unemployment benefits typically last up to 26 weeks, but weekly maximums are capped, often at a few hundred dollars, so they replace a much smaller share of a high salary than a modest one. A partner's paycheck matters far more. What you are really calculating is the monthly gap: essential costs minus whatever income would still arrive.",
+        ],
+      },
+      {
+        heading: 'Factors that push you toward more months',
+        level: 'h3',
+        body: [
+          "You're the only earner in the household. Your income is commission-based, seasonal, or freelance. You're self-employed, which usually means no unemployment benefits at all. You hold a senior or specialized role with fewer openings, which tends to stretch searches out. Your industry is cyclical, so layoffs hit many of your peers at once. Each of these reasonably adds one to three months to your target, and someone with several of them can justify nine to twelve months.",
+        ],
+      },
+      {
+        heading: 'Factors that justify fewer months',
+        level: 'h3',
+        body: [
+          "Two incomes from employers in unrelated industries are the strongest risk reducer, because one job loss leaves the other paycheck in place. Skills that are in steady demand, a stable public-sector or healthcare employer, and low fixed costs relative to income all shorten the realistic gap. Someone with all of those may be well protected with three months of the gap, not three months of total spending.",
+        ],
+      },
+      {
+        heading: 'Add a separate buffer for one-time shocks',
+        level: 'h2',
+        body: [
+          "Job loss isn't the only emergency, and it's often not the most likely one. Many withdrawals come from big single bills: an insurance deductible, a car repair, an emergency flight home. These deserve their own line in the calculation instead of being absorbed into the months estimate.",
+          "A practical approach is to add your largest insurance deductible or health plan out-of-pocket maximum, plus the most expensive repair you could plausibly face. Homeowners should account for the common guideline of setting aside 1% to 2% of the home's value each year for maintenance, because a failed water heater or roof leak won't wait for a convenient month.",
+        ],
+      },
+      {
+        heading: 'Two households, two very different numbers',
+        level: 'h2',
+        body: [
+          "Put it together with a simple formula: target = (monthly gap × months of coverage) + one-time shock buffer.",
+          "Household A rents and has two earners, one at a hospital and one in software. Essentials are $3,400 a month, and the partner's take-home pay would cover $2,000 of that, leaving a $1,400 gap. Four months of the gap is $5,600. Add a $1,000 car deductible and a $1,500 health out-of-pocket cost and the target is about $8,100, well below the $10,200 to $20,400 the three-to-six-month rule would suggest.",
+          "Household B is a single freelancer who owns a $350,000 home. Essentials are $4,200 a month including self-paid health insurance, there's no partner income and no unemployment benefit, and client work can dry up for long stretches, so eight months is reasonable: $33,600. Add $3,500 for home repairs and a $2,000 deductible, and the target is $39,100, more than nine months of essentials. The generic rule would have left this person underprotected.",
+        ],
+      },
+      {
+        heading: 'Building it without stalling your other goals',
+        level: 'h2',
+        body: [
+          "A large target can feel paralyzing, so build it in stages. Start with a starter fund of $1,000 to $2,000 to absorb small surprises without reaching for a credit card. If you carry card balances at 20% or more, direct extra money to that debt next, since paying it down earns a guaranteed return far above any savings rate. Then work toward one month of the gap, and finally the full target.",
+          "Keep the money in a federally insured high-yield savings account, separate from your checking account so it isn't spent by accident. Revisit the number whenever something structural changes, such as a new job, a move, a baby, or a home purchase. Our Emergency Fund Calculator lets you test different month counts against your expenses, the Budget Calculator helps separate essential costs from discretionary ones, and the Savings Goal Calculator shows how long reaching your target will take at your current monthly contribution.",
+        ],
+      },
+    ],
+    relatedCalculators: [
+      { label: 'Emergency Fund Calculator', href: '/calculators/emergency-fund-calculator' },
+      { label: 'Budget Calculator', href: '/calculators/budget-calculator' },
+      { label: 'Savings Goal Calculator', href: '/calculators/savings-goal-calculator' },
+    ],
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
