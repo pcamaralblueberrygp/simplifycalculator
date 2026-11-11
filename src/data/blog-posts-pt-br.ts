@@ -985,6 +985,75 @@ export const BLOG_POSTS_BR: BlogPostBr[] = [
       { label: 'Calculadora de Orçamento Mensal', href: '/pt-br/calculadoras/calculadora-de-orcamento-mensal' },
     ],
   },
+  {
+    slug: 'poupanca-tesouro-selic-ou-cdb-qual-rende-mais',
+    title: 'Poupança, Tesouro Selic ou CDB: Qual Rende Mais Depois do Imposto de Renda',
+    metaDescription:
+      'Poupança é isenta de IR, mas rende mais? Veja a conta com Selic, CDI, tabela regressiva, IOF e custódia da B3, e o % do CDI que faz o CDB vencer a poupança.',
+    publishDate: '2026-11-11',
+    category: 'Investimentos',
+    image: {
+      src: '/blog/poupanca-tesouro-selic-ou-cdb-qual-rende-mais.svg',
+      alt: 'Banner azul-marinho comparando o rendimento líquido da poupança, do Tesouro Selic e do CDB atrelado ao CDI após Imposto de Renda, IOF e taxa de custódia',
+    },
+    intro:
+      'A poupança ainda guarda mais dinheiro dos brasileiros do que muitos investimentos de renda fixa somados, e o argumento de quem fica nela costuma ser um só: "pelo menos não paga Imposto de Renda". A isenção é real, mas ela não decide nada sozinha. O que importa é quanto sobra no bolso depois de todos os descontos, e essa conta muda conforme a SELIC, o prazo que o dinheiro fica aplicado e o percentual do CDI que o banco oferece. Abaixo está a comparação feita do jeito certo, com números, e as poucas situações em que a poupança realmente leva vantagem.',
+    sections: [
+      {
+        heading: 'Como cada aplicação rende, de verdade',
+        level: 'h2',
+        body: [
+          'A poupança segue uma regra fixada em lei (Lei nº 12.703/2012): quando a meta da SELIC está acima de 8,5% ao ano, ela paga 0,5% ao mês mais a Taxa Referencial (TR), o que dá cerca de 6,17% ao ano mais TR. Quando a SELIC está em 8,5% ou menos, o rendimento passa a ser 70% da SELIC mais TR. Com a SELIC em patamar de dois dígitos, a TR tem ficado na casa de 1,5% a 2% ao ano, o que leva a poupança para perto de 8% ao ano, isenta de IR para pessoa física.',
+          'O Tesouro Selic (LFT) acompanha a taxa básica de juros definida pelo Copom do Banco Central, com um pequeno ágio ou deságio na compra. O CDB pós-fixado rende um percentual do CDI, que fica sempre muito próximo da SELIC (em geral cerca de 0,10 ponto abaixo). Os dois pagam Imposto de Renda pela tabela regressiva: 22,5% até 180 dias, 20% de 181 a 360 dias, 17,5% de 361 a 720 dias e 15% acima de 720 dias. O imposto incide apenas sobre o rendimento, nunca sobre o valor aplicado.',
+        ],
+      },
+      {
+        heading: 'Os custos que quase ninguém coloca na conta',
+        level: 'h3',
+        body: [
+          'No Tesouro Direto, a B3 cobra taxa de custódia de 0,20% ao ano sobre o saldo, mas o Tesouro Selic é isento dessa taxa para valores de até R$ 10 mil por investidor; acima disso, a taxa incide só sobre o excedente. CDBs normalmente não têm custódia. Já o IOF vale para as duas aplicações em resgates feitos nos primeiros 30 dias: começa em 96% do rendimento no primeiro dia e cai até zero no 30º. Por isso, para dinheiro que vai ficar só uma ou duas semanas aplicado, o IOF pode corroer quase todo o ganho.',
+          'A poupança tem um custo escondido diferente: o aniversário. O rendimento é creditado uma vez por mês, na data de aniversário de cada depósito. Se você resgatar um dia antes, perde o rendimento do mês inteiro daquele valor. Depósitos feitos nos dias 29, 30 e 31 só fazem aniversário no dia 1º do mês seguinte.',
+        ],
+      },
+      {
+        heading: 'Simulação: R$ 20 mil aplicados por dois anos',
+        level: 'h2',
+        body: [
+          'Considere um cenário de SELIC em 14% ao ano, CDI em 13,9% e poupança rendendo 8% ao ano, mantido estável por 24 meses (o cenário real varia, mas a lógica da comparação é a mesma). Na poupança, R$ 20.000 viram cerca de R$ 23.330, sem imposto. No Tesouro Selic, o valor bruto chega a cerca de R$ 25.990; depois de 15% de IR sobre os R$ 5.990 de rendimento e de aproximadamente R$ 50 de custódia sobre a parte acima de R$ 10 mil, sobram perto de R$ 25.040 líquidos.',
+          'Um CDB a 100% do CDI termina em cerca de R$ 25.050 líquidos, praticamente empatado com o Tesouro. Um CDB a 110% do CDI, comum em bancos médios, chega a cerca de R$ 25.600. Já uma LCI ou LCA a 90% do CDI, que é isenta de IR, termina perto de R$ 25.320. Ou seja, mesmo pagando imposto, qualquer uma dessas opções entrega entre R$ 1.700 e R$ 2.300 a mais do que a poupança no período. Refaça a conta com o seu valor e prazo na Calculadora de Juros Compostos.',
+        ],
+      },
+      {
+        heading: 'O percentual do CDI que empata com a poupança',
+        level: 'h3',
+        body: [
+          'Dá para inverter a conta e descobrir o mínimo que um CDB precisa pagar para valer mais do que a poupança. Divida o rendimento da poupança pelo CDI líquido de IR na faixa de prazo correspondente. No cenário acima, o ponto de empate fica em torno de 74% do CDI para resgates em até 180 dias, 72% entre 181 e 360 dias e 68% para prazos acima de dois anos. Qualquer CDB abaixo disso perde para a poupança, e isso é mais comum do que parece: contas remuneradas e "caixinhas" de grandes bancos às vezes pagam 70% ou 80% do CDI.',
+          'Para comparar um título isento (LCI, LCA) com um tributado (CDB), use a equivalência: percentual do CDI isento = percentual do CDB × (1 − alíquota de IR). Um CDB a 100% do CDI por mais de dois anos equivale a uma LCI a 85% do CDI. Lembre que, desde 2024, LCI e LCA passaram a ter carência mínima definida pelo Conselho Monetário Nacional, então elas não servem para dinheiro que pode ser necessário a qualquer momento.',
+        ],
+      },
+      {
+        heading: 'Quando a poupança ainda faz sentido',
+        level: 'h2',
+        body: [
+          'Existem situações reais em que a poupança empata ou vence. A primeira é com a SELIC baixa: com a taxa básica em 7%, a poupança paga 70% disso (4,9%) mais TR, isenta, e para prazos curtos a diferença para um CDB a 100% do CDI cai para algumas dezenas de reais por ano em valores pequenos. A segunda é para valores que ficam aplicados por menos de 30 dias e atravessam um aniversário: como a poupança não tem IOF, ela pode render mais do que um CDB resgatado no 15º dia.',
+          'Fora desses casos, a poupança tem a seu favor apenas a simplicidade. E a simplicidade custa caro: em um cenário de juros altos, deixar R$ 20 mil parados nela por dois anos significa abrir mão de mais de um salário mínimo de rendimento.',
+        ],
+      },
+      {
+        heading: 'Segurança: FGC e Tesouro Nacional',
+        level: 'h2',
+        body: [
+          'Poupança, CDB, LCI e LCA são cobertos pelo Fundo Garantidor de Créditos (FGC) até R$ 250 mil por CPF e por instituição, com teto global de R$ 1 milhão a cada quatro anos. O Tesouro Selic é garantido diretamente pelo Tesouro Nacional, considerado o menor risco de crédito do país. Na prática, um CDB de um banco médio dentro do limite do FGC tem um nível de proteção comparável ao da poupança do maior banco do país.',
+          'A recomendação objetiva: use Tesouro Selic ou um CDB de liquidez diária a 100% do CDI ou mais para a reserva de emergência, e reserve LCI, LCA e CDBs de prazo maior para objetivos com data definida. Antes de aplicar, defina o prazo de cada objetivo com a Calculadora de Orçamento Mensal e compare o resultado líquido na Calculadora de Poupança.',
+        ],
+      },
+    ],
+    relatedCalculators: [
+      { label: 'Calculadora de Poupança', href: '/pt-br/calculadoras/calculadora-de-poupanca' },
+      { label: 'Calculadora de Juros Compostos', href: '/pt-br/calculadoras/calculadora-de-juros-compostos' },
+      { label: 'Calculadora de Orçamento Mensal', href: '/pt-br/calculadoras/calculadora-de-orcamento-mensal' },
+    ],
+  },
 ];
 
 export function getBlogPostBrBySlug(slug: string): BlogPostBr | undefined {
