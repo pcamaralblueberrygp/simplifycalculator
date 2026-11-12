@@ -968,6 +968,89 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'Savings Goal Calculator', href: '/calculators/savings-goal-calculator' },
     ],
   },
+  {
+    slug: 'how-lenders-calculate-debt-to-income-ratio',
+    title: 'Your Debt-to-Income Ratio Is Probably Higher Than You Think: How Lenders Actually Calculate It',
+    metaDescription:
+      'Lenders count debts you forget and ignore income you rely on. Learn how DTI is really calculated and which payoffs raise your borrowing power the most.',
+    publishDate: '2026-11-12',
+    category: 'Loans',
+    image: {
+      src: '/blog/how-lenders-calculate-debt-to-income-ratio.svg',
+      alt: 'SimplifyCalculator banner explaining how mortgage lenders calculate debt-to-income ratio, showing a borrower whose DTI jumps from 12% to 48% once a proposed house payment is added',
+    },
+    intro:
+      "Most people estimate their debt-to-income ratio by adding up the bills they think of as debt and dividing by what lands in their checking account. Lenders do neither. They divide by gross income, but only the income they can document and expect to continue, and they count payments you might not consider debt at all, like the minimum on a credit card you pay off every month. The gap between your mental math and the lender's math is where pre-approvals shrink and loan officers deliver bad news. Here's how the number is really built, and how to move it in your favor.",
+    sections: [
+      {
+        heading: 'The formula is simple. The inputs are not.',
+        level: 'h2',
+        body: [
+          "Debt-to-income ratio is total monthly debt payments divided by gross monthly income. Lenders usually look at two versions. The front-end ratio covers only the proposed housing payment: principal, interest, property taxes, homeowners insurance, mortgage insurance, and any HOA dues. The back-end ratio adds every other recurring debt on top. The back-end number is the one that usually decides approval.",
+          "The old rule of thumb is 28% front-end and 36% back-end. In practice, conventional loans run through automated underwriting are frequently approved up to 45% or even 50% back-end for borrowers with strong credit and reserves, and FHA loans can stretch further with compensating factors. Those ceilings are what a lender will tolerate, not what is comfortable, a distinction we'll come back to.",
+        ],
+      },
+      {
+        heading: 'What lenders count that you might not',
+        level: 'h2',
+        body: [
+          "The lender's debt list comes mostly from your credit report, not your budget. That creates a few common surprises.",
+        ],
+      },
+      {
+        heading: 'Credit cards you pay in full',
+        level: 'h3',
+        body: [
+          "If your statement shows a $3,000 balance with a $90 minimum payment, the $90 counts, even if you pay the full $3,000 every month and never pay interest. The credit bureaus see a balance and a required payment, and so does the underwriter. Paying cards down right before the statement closes, a month or two before you apply, can shrink or eliminate those phantom payments.",
+        ],
+      },
+      {
+        heading: 'Student loans, co-signed loans, and leases',
+        level: 'h3',
+        body: [
+          "Student loans on an income-driven plan, in deferment, or showing a $0 payment are not automatically ignored. Depending on the loan program, the lender may use the documented income-driven payment, or a calculated figure such as 0.5% to 1% of the outstanding balance. On $60,000 of deferred loans, a 0.5% rule adds $300 a month to your debts, a payment you aren't actually making.",
+          "A car loan you co-signed for a relative counts as yours unless you can show roughly a year of on-time payments made by the other borrower. Car leases always count, even with only a few months left. Installment loans are the exception: many conventional guidelines let lenders exclude a loan with ten or fewer payments remaining, which is a useful lever we'll come back to. Child support and alimony obligations count too.",
+          "What doesn't count: utilities, groceries, phone bills, car insurance, subscriptions, income taxes, and retirement contributions. That omission is exactly why a DTI that looks fine on paper can still feel tight in real life.",
+        ],
+      },
+      {
+        heading: 'Why your income may be smaller on paper',
+        level: 'h2',
+        body: [
+          "Salaried W-2 income is straightforward: annual salary divided by twelve. Everything else needs history. Overtime, bonuses, and commissions generally require a two-year track record and are averaged over that period. If they declined from one year to the next, the lender will often use the lower year or exclude them entirely. A bonus you received once, however large, typically counts for nothing.",
+          "Self-employed borrowers get the biggest shock. Lenders don't use what clients paid you; they use net profit from your tax returns, averaged over two years, with a few non-cash deductions like depreciation added back. A freelancer who invoiced $120,000 but reported $82,000 of Schedule C profit after deducting a home office, equipment, and travel qualifies on roughly $6,800 a month, not $10,000. The write-offs that saved you taxes now cost you borrowing power.",
+        ],
+      },
+      {
+        heading: 'A worked example',
+        level: 'h2',
+        body: [
+          "Take a borrower earning $90,000 a year, or $7,500 a month gross. Current debts: a $520 car payment, a $310 student loan payment, and a $95 credit card minimum on a card paid in full monthly. That's $925, a back-end DTI of about 12%. It feels like plenty of room.",
+          "Now add the proposed mortgage. A $330,000 loan at 6.5% costs about $2,086 in principal and interest; with $350 in property taxes, $120 in insurance, and $110 of private mortgage insurance, the housing payment is roughly $2,666. Front-end DTI: 35.5%. Back-end: $3,591 divided by $7,500, or 47.9%. That is above the 45% many lenders prefer and uncomfortably close to the 50% hard ceiling for most conventional loans. The 12% the borrower had in mind had nothing to do with the number the underwriter sees.",
+        ],
+      },
+      {
+        heading: 'Which debts to pay off first to raise your borrowing power',
+        level: 'h2',
+        body: [
+          "When the goal is a better DTI, the usual debt-payoff logic flips. Interest rate doesn't matter here; the monthly payment you eliminate per dollar spent does. At a 6.5% mortgage rate, every $100 of monthly debt you remove lets you carry roughly $15,800 more in mortgage principal at the same DTI.",
+          "Compare a few ways to spend $5,000 of savings. Paying a $5,000 chunk off a $14,000 car loan doesn't change the $520 monthly payment at all, because installment payments are fixed, so your DTI stays the same. Paying off a $4,700 car loan with nine payments left eliminates the $520 payment entirely, though under many guidelines that loan could have been excluded anyway because it has ten or fewer payments left. Paying a $3,000 card balance to zero frees $95. The best targets are debts with a high payment relative to their balance: small loans near the end of their term, and revolving balances whose minimums disappear once paid off. Always ask your loan officer to recalculate before you write the check.",
+        ],
+      },
+      {
+        heading: "Approval isn't the same as affordability",
+        level: 'h3',
+        body: [
+          "Because DTI uses gross income, a 45% ratio can consume 60% or more of take-home pay once taxes, retirement contributions, and health premiums are withheld, before groceries, utilities, or childcare. Run your numbers through our Debt-to-Income Ratio Calculator to see where you stand today, use the Home Affordability Calculator to test different price points against both ratios, and check the Paycheck Calculator to see what the resulting housing payment looks like as a share of the money you actually take home.",
+        ],
+      },
+    ],
+    relatedCalculators: [
+      { label: 'Debt-to-Income Ratio Calculator', href: '/calculators/debt-to-income-ratio-calculator' },
+      { label: 'Home Affordability Calculator', href: '/calculators/home-affordability-calculator' },
+      { label: 'Paycheck Calculator', href: '/calculators/paycheck-calculator' },
+    ],
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
