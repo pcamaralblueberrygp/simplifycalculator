@@ -1051,6 +1051,86 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'Paycheck Calculator', href: '/calculators/paycheck-calculator' },
     ],
   },
+  {
+    slug: 'rule-of-72-investment-fees-doubling-time',
+    title: 'A 1% Fee Sounds Small. The Rule of 72 Shows How Much of Your Retirement It Really Takes',
+    metaDescription:
+      'Use the Rule of 72 to see how a 1% investment fee stretches your doubling time, can cost a third of your final balance, and why the same math applies to debt.',
+    publishDate: '2026-11-17',
+    category: 'Investing',
+    image: {
+      src: '/blog/rule-of-72-investment-fees-doubling-time.svg',
+      alt: 'SimplifyCalculator banner on the Rule of 72 and investment fees, comparing a 10.3-year doubling time at a 7% return with a 12-year doubling time after a 1% annual fee',
+    },
+    intro:
+      "A 1% annual fee looks harmless on a statement. It's one penny per dollar, and the market moves more than that on a quiet afternoon. But fees don't come out of one year's return; they come out of every year's return, and compounding turns that small leak into a large one. The quickest way to see it doesn't require a spreadsheet. It takes one number, 72, and a little division. Here's how the Rule of 72 works, where it's accurate, and what it reveals about fees, debt, and the investment promises you should walk away from.",
+    sections: [
+      {
+        heading: 'How the Rule of 72 works, and where it bends',
+        level: 'h2',
+        body: [
+          "Divide 72 by an annual compound rate of return and you get the approximate number of years it takes money to double. At 8%, money doubles in about 9 years. At 6%, about 12. At 4%, about 18. The rule works because the exact doubling time, the natural log of 2 divided by the log of one plus the rate, happens to land very close to 72 divided by the rate across the range of returns most people care about.",
+          "It's most accurate around 8%, where the estimate of 9 years is off by less than a week. It drifts at the edges: at 2% the rule says 36 years when the true answer is 35, and at 24% it says 3 years when the truth is about 3.2. For low rates, dividing 70 into the rate is slightly better; for high rates, 76 or so. For everyday planning, 72 is close enough, and it has a bonus: it divides evenly by 2, 3, 4, 6, 8, 9, and 12, so you can do it in your head. The same trick extends further: 114 divided by the rate approximates tripling time, and 144 approximates quadrupling.",
+        ],
+      },
+      {
+        heading: 'Think in doublings, not percentages',
+        level: 'h2',
+        body: [
+          "Percentages are hard to feel. Doublings aren't. If you invest for 40 years at a 7% return, your money doubles roughly every 10.3 years, so you get just under four doublings: $10,000 becomes about $150,000. Every doubling you gain or lose changes the outcome by a factor of two, which is why small differences in rate, or in time, matter so much more than intuition suggests.",
+        ],
+      },
+      {
+        heading: 'The last doubling is worth as much as all the others combined',
+        level: 'h3',
+        body: [
+          "Here's the uncomfortable part of exponential growth. The final doubling period produces as much money as everything that came before it, your contributions included. If a portfolio grows from $375,000 to $750,000 in its last decade, that one decade added more dollars than the previous three combined. Anything that pushes your doubling time out, a late start, an early withdrawal, or a fee, doesn't shave a little off the end. It cuts off part of that most valuable final stretch.",
+        ],
+      },
+      {
+        heading: 'What a 1% fee does to your doubling time',
+        level: 'h2',
+        body: [
+          "Suppose a diversified portfolio earns 7% a year before costs. With a near-zero-cost index fund, it doubles about every 10.3 years. Pay a 1% advisory fee and your net return is 6%, so your money doubles every 12 years instead. That's 1.7 extra years per doubling, and the delay repeats every time.",
+          "Run $100,000 forward 30 years. At 7%, it grows to about $761,000. At 6%, it reaches about $574,000. The fee cost roughly $187,000, or a quarter of the ending balance, even though it never took more than one-seventh of any single year's return. Stretch the horizon to 40 years and the gap widens: the 6% portfolio ends about 31% smaller than the 7% one. The longer you invest, the larger the share of your wealth a fixed percentage fee consumes, because it keeps eating into the doublings that matter most.",
+        ],
+      },
+      {
+        heading: 'Stacked fees add up faster than you think',
+        level: 'h3',
+        body: [
+          "Fees rarely arrive alone. A 1% advisory fee on top of actively managed funds charging 0.5% brings the total to 1.5%, turning a 7% gross return into 5.5% and a 10.3-year doubling time into roughly 13. On $100,000 over 30 years, that's about $498,000 instead of $751,000 in a fund charging 0.05%, a difference of more than $250,000. None of this means advice is never worth paying for; a good advisor who keeps you from panic-selling in a crash can earn the fee. But you should know the price in doublings, not just in basis points, and decide whether the service is worth it.",
+        ],
+      },
+      {
+        heading: 'The same math, pointed at your debt',
+        level: 'h2',
+        body: [
+          "The Rule of 72 doesn't care which side of the ledger you're on. A credit card charging 22% APR, compounded monthly, doubles an unpaid balance in a little over three years. That's why carrying a balance while investing for 7% rarely makes sense: your debt is doubling roughly three times as fast as your investments. Paying the card off is the equivalent of earning a guaranteed 22% return, with no fees and no market risk.",
+          "It also works on inflation. At 3% annual inflation, prices double in about 24 years, so a retiree who stops working at 65 should expect a fixed income to buy roughly half as much by 89. That's the reason fixed pensions and annuities without cost-of-living adjustments deserve a closer look than their headline payout suggests.",
+        ],
+      },
+      {
+        heading: 'Running the rule backwards to spot bad promises',
+        level: 'h2',
+        body: [
+          "Flip the formula and 72 divided by a number of years gives the annual return needed to double in that time. Want to turn $50,000 into $100,000 in six years? You need about 12% a year, more than the long-run average of the stock market, so either the timeline or the plan needs adjusting. Someone promising to double your money in two years is claiming roughly 36% a year, consistently, which is a strong signal of either extreme risk or fraud.",
+        ],
+      },
+      {
+        heading: 'Put the numbers to work',
+        level: 'h3',
+        body: [
+          "Pull up your account statements, add every layer of cost, the expense ratio, any advisory fee, and any wrap or platform fee, and subtract the total from the return you expect. Then plug both rates into our Rule of 72 Calculator to compare doubling times side by side. Use the Compound Interest Calculator to see the dollar gap over your actual timeline, and run the Retirement Savings Calculator with your net-of-fee return to see whether your plan still reaches its target once costs are counted.",
+        ],
+      },
+    ],
+    relatedCalculators: [
+      { label: 'Rule of 72 Calculator', href: '/calculators/rule-of-72-calculator' },
+      { label: 'Compound Interest Calculator', href: '/calculators/compound-interest-calculator' },
+      { label: 'Retirement Savings Calculator', href: '/calculators/retirement-savings-calculator' },
+    ],
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
