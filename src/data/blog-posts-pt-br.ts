@@ -1054,6 +1054,90 @@ export const BLOG_POSTS_BR: BlogPostBr[] = [
       { label: 'Calculadora de Orçamento Mensal', href: '/pt-br/calculadoras/calculadora-de-orcamento-mensal' },
     ],
   },
+  {
+    slug: '13-salario-liquido-como-calcular-primeira-e-segunda-parcela',
+    title: '13º Salário 2026: Por que a Segunda Parcela Vem Menor e Como Calcular o Valor Líquido',
+    metaDescription:
+      'Calcule o 13º salário líquido de 2026: 1ª parcela sem descontos, INSS e IRRF na 2ª, nova isenção até R$ 5 mil, meses proporcionais e exemplos com números.',
+    publishDate: '2026-11-18',
+    category: 'Renda',
+    image: {
+      src: '/blog/13-salario-liquido-como-calcular-primeira-e-segunda-parcela.svg',
+      alt: 'Banner azul-marinho explicando o cálculo do 13º salário líquido em 2026, com a primeira parcela sem descontos e a segunda parcela com INSS e Imposto de Renda retido na fonte',
+    },
+    intro:
+      'Todo fim de ano a cena se repete: a primeira parcela do 13º cai na conta em novembro, exatamente metade do salário, e o trabalhador faz planos contando com outra metade igual em dezembro. Aí chega a segunda parcela, bem menor, e parece que alguém errou a conta. Não errou. A lei manda pagar a primeira parcela sem nenhum desconto e concentrar todo o INSS e todo o Imposto de Renda do 13º na segunda. Em 2026 há ainda uma novidade: este é o primeiro 13º pago depois da reforma do IR que isentou quem ganha até R$ 5 mil por mês. Abaixo está a conta completa, com exemplos, para você saber o valor exato antes de ele cair na conta.',
+    sections: [
+      {
+        heading: 'As regras do jogo: prazos e quem tem direito',
+        level: 'h2',
+        body: [
+          'O 13º salário (gratificação natalina) é garantido pela Lei nº 4.090/1962 a todo trabalhador com carteira assinada, incluindo empregados domésticos, além de aposentados e pensionistas do INSS, que recebem por regras próprias. A Lei nº 4.749/1965 divide o pagamento em duas parcelas: a primeira entre 1º de fevereiro e 30 de novembro, e a segunda até 20 de dezembro. Em 2026, o dia 30 de novembro cai numa segunda-feira e o dia 20 de dezembro cai num domingo, então a segunda parcela precisa ser paga até sexta-feira, 18 de dezembro. Quem quiser receber a primeira parcela junto com as férias precisa pedir isso por escrito ao empregador no mês de janeiro.',
+          'O valor cheio corresponde a um salário de dezembro para quem trabalhou o ano inteiro. Para quem entrou ou saiu da empresa no meio do ano, o direito é proporcional: 1/12 do salário para cada mês em que trabalhou pelo menos 15 dias. Quem é demitido sem justa causa ou pede demissão recebe o 13º proporcional na rescisão; quem é demitido por justa causa perde esse proporcional.',
+        ],
+      },
+      {
+        heading: 'Por que a primeira parcela vem "cheia"',
+        level: 'h2',
+        body: [
+          'A primeira parcela é tratada pela lei como um adiantamento: metade do salário do mês anterior ao pagamento, sem desconto de INSS e sem Imposto de Renda. O único encargo que incide sobre ela é o FGTS de 8%, que é depositado pelo empregador na sua conta vinculada e não sai do seu bolso. Por isso o valor que cai em novembro é exatamente 50% do salário bruto.',
+          'Na segunda parcela, a empresa calcula o 13º integral com base no salário de dezembro, aplica o INSS e o IRRF sobre o valor total e só então subtrai o adiantamento já pago. Ou seja: os descontos que "deveriam" estar divididos entre as duas parcelas aparecem todos de uma vez em dezembro. Se você recebeu um aumento entre o adiantamento e dezembro, a diferença também entra na segunda parcela, o que às vezes compensa parte dos descontos.',
+        ],
+      },
+      {
+        heading: 'Como o INSS e o IRRF incidem sobre o 13º',
+        level: 'h2',
+        body: [
+          'O INSS do 13º é calculado separadamente do salário de dezembro, com a mesma tabela progressiva de 2026: 7,5% até R$ 1.621,00; 9% sobre a fatia de R$ 1.621,01 a R$ 2.902,84; 12% sobre a fatia de R$ 2.902,85 a R$ 4.354,27; e 14% sobre a fatia de R$ 4.354,28 até o teto de R$ 8.475,55. Como a tabela é progressiva, cada alíquota vale só para a fatia correspondente, e o desconto máximo fica em torno de R$ 988.',
+          'O Imposto de Renda do 13º tem tributação exclusiva na fonte: ele é calculado sozinho, sem somar com o salário do mês, e não entra no ajuste anual da declaração (aparece na ficha de rendimentos sujeitos à tributação exclusiva). A base é o 13º bruto menos o INSS do 13º, menos R$ 189,59 por dependente e eventual pensão alimentícia. Sobre essa base aplica-se a tabela mensal, com isenção até R$ 2.428,80 e alíquota máxima de 27,5% com dedução de R$ 908,73.',
+        ],
+      },
+      {
+        heading: 'A novidade de 2026: o redutor da Lei 15.270',
+        level: 'h3',
+        body: [
+          'A Lei nº 15.270/2025 manteve a tabela progressiva e criou um desconto aplicado depois do cálculo do imposto. Para rendimentos tributáveis de até R$ 5.000, a redução é de até R$ 312,89, o suficiente para zerar o IRRF. Entre R$ 5.000,01 e R$ 7.350, a redução é parcial e segue a fórmula R$ 978,62 − (0,133145 × rendimento tributável), diminuindo até desaparecer. Acima de R$ 7.350 vale só a tabela tradicional. Na prática, quem tem 13º de até R$ 5 mil não terá IR retido, e quem está um pouco acima disso pagará bem menos do que pagaria em 2025. Como a aplicação depende do sistema de folha da empresa, confira o holerite.',
+        ],
+      },
+      {
+        heading: 'Exemplo 1: salário de R$ 6.000, ano completo',
+        level: 'h2',
+        body: [
+          'Primeira parcela, até 30 de novembro: R$ 3.000,00, sem descontos. Para a segunda, calcule o INSS sobre os R$ 6.000 do 13º integral: R$ 121,58 (7,5% da primeira faixa) + R$ 115,37 (9% de R$ 1.281,84) + R$ 174,17 (12% de R$ 1.451,43) + R$ 230,40 (14% de R$ 1.645,73) = R$ 641,52.',
+          'Depois o IRRF. Base de cálculo: R$ 6.000,00 − R$ 641,52 = R$ 5.358,48. Na faixa de 27,5%: R$ 5.358,48 × 27,5% − R$ 908,73 = R$ 564,85. Agora o redutor, calculado sobre o rendimento tributável de R$ 6.000: R$ 978,62 − (0,133145 × 6.000) = R$ 179,75. O IRRF final fica em R$ 385,10.',
+          'Segunda parcela: R$ 6.000,00 − R$ 3.000,00 (adiantamento) − R$ 641,52 − R$ 385,10 = R$ 1.973,38. O 13º líquido total soma R$ 4.973,38, e a segunda parcela vem 34% menor que a primeira. Nada de errado: é exatamente o resultado esperado.',
+        ],
+      },
+      {
+        heading: 'Exemplo 2: salário de R$ 4.500 e o efeito da isenção',
+        level: 'h3',
+        body: [
+          'O INSS sobre R$ 4.500 soma R$ 431,52 (as três primeiras faixas mais 14% sobre R$ 145,73). A base do IR fica em R$ 4.068,48, o que pela tabela daria R$ 239,92 de imposto. Como o rendimento tributável está abaixo de R$ 5 mil, o redutor zera esse valor. Resultado: primeira parcela de R$ 2.250,00 e segunda de R$ 1.818,48, um 13º líquido total de R$ 4.068,48. Em 2025, esse mesmo trabalhador teria perdido algo próximo de R$ 240 para o Imposto de Renda.',
+        ],
+      },
+      {
+        heading: 'Meses proporcionais, horas extras e comissões',
+        level: 'h2',
+        body: [
+          'Quem foi admitido em 20 de março trabalhou apenas 12 dias naquele mês, que não conta. O direito fica em 9/12 (abril a dezembro). Com salário de R$ 3.600, o 13º bruto seria R$ 2.700. Se a admissão tivesse sido em 17 de março, março teria 15 dias trabalhados e contaria, elevando o direito para 10/12, ou R$ 3.000. Por isso a data de admissão ou desligamento pode valer centenas de reais. Faltas injustificadas também entram na conta: um mês com mais de 15 faltas injustificadas deixa de contar como mês trabalhado.',
+          'Horas extras, adicional noturno, comissões e outras parcelas variáveis habituais integram o 13º pela média do ano. Como a segunda parcela é paga antes de a folha de dezembro fechar, a empresa costuma usar a média até novembro e fazer o acerto da diferença até 10 de janeiro. Se você recebe comissão, vale guardar os holerites e conferir esse ajuste.',
+        ],
+      },
+      {
+        heading: 'O que fazer com o 13º: uma ordem de prioridade',
+        level: 'h2',
+        body: [
+          'A melhor aplicação do 13º costuma ser a dívida mais cara. Com o rotativo do cartão e o cheque especial cobrando juros que costumam passar de 100% ao ano, segundo as estatísticas de taxas divulgadas pelo Banco Central, quitar R$ 2 mil de rotativo rende mais do que qualquer investimento disponível para pessoa física. Use a Calculadora de Quitação de Dívidas para ver quanto de juros cada real antecipado elimina.',
+          'Sem dívidas caras, o segundo destino é separar o que vence em janeiro e fevereiro: IPVA, IPTU, matrícula e material escolar. Pagar IPVA e IPTU à vista costuma dar desconto, o que é um retorno garantido. O que sobrar pode reforçar a reserva de emergência em um investimento de liquidez diária que renda pelo menos 100% do CDI. Antes de gastar, simule o mês de janeiro na Calculadora de Orçamento Mensal, e use a Calculadora de Salário Líquido CLT para conferir os descontos do seu salário regular.',
+        ],
+      },
+    ],
+    relatedCalculators: [
+      { label: 'Calculadora de Salário Líquido CLT', href: '/pt-br/calculadoras/calculadora-de-salario-liquido' },
+      { label: 'Calculadora de Quitação de Dívidas', href: '/pt-br/calculadoras/calculadora-de-quitacao-de-dividas' },
+      { label: 'Calculadora de Orçamento Mensal', href: '/pt-br/calculadoras/calculadora-de-orcamento-mensal' },
+    ],
+  },
 ];
 
 export function getBlogPostBrBySlug(slug: string): BlogPostBr | undefined {
