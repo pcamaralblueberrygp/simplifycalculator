@@ -1138,6 +1138,88 @@ export const BLOG_POSTS_BR: BlogPostBr[] = [
       { label: 'Calculadora de Orçamento Mensal', href: '/pt-br/calculadoras/calculadora-de-orcamento-mensal' },
     ],
   },
+  {
+    slug: 'como-calcular-valor-aposentadoria-inss-regra-60-mais-2',
+    title: 'Aposentadoria pelo INSS em 2026: A Regra dos 60% + 2% e Quanto Você Vai Receber de Verdade',
+    metaDescription:
+      'Entenda como o INSS calcula sua aposentadoria em 2026: média de todos os salários, coeficiente de 60% + 2% ao ano, regras de transição, descarte e exemplos.',
+    publishDate: '2026-11-20',
+    category: 'Aposentadoria',
+    image: {
+      src: '/blog/como-calcular-valor-aposentadoria-inss-regra-60-mais-2.svg',
+      alt: 'Banner azul-marinho sobre o cálculo da aposentadoria do INSS em 2026, destacando o coeficiente de 60% da média salarial mais 2% por ano extra de contribuição e o teto previdenciário',
+    },
+    intro:
+      'Pergunte a qualquer trabalhador quanto ele vai receber do INSS e a resposta costuma ser um chute: "o último salário", "a média dos maiores salários" ou "o teto, porque sempre contribuí bastante". Desde a Reforma da Previdência (Emenda Constitucional nº 103/2019), nenhuma dessas respostas está certa. O valor da aposentadoria agora sai de uma fórmula de duas etapas: a média de todos os seus salários desde 1994, multiplicada por um coeficiente que começa em 60% e sobe 2 pontos por ano extra de contribuição. Entender essa fórmula muda decisões concretas, como trabalhar mais um ano, pedir o descarte de contribuições baixas ou começar uma previdência complementar agora em vez de daqui a dez anos.',
+    sections: [
+      {
+        heading: 'Passo 1: a média de 100% dos salários desde julho de 1994',
+        level: 'h2',
+        body: [
+          'Antes da reforma, o INSS descartava automaticamente os 20% menores salários de contribuição e fazia a média só dos 80% maiores. Isso protegia quem começou a carreira ganhando pouco. Para quem se aposenta pelas regras atuais, a média considera 100% dos salários de contribuição desde julho de 1994 (início do Plano Real), cada um corrigido monetariamente pelo INPC até a data do pedido. O resultado se chama salário de benefício.',
+          'Dois detalhes pesam muito nessa média. Primeiro, cada salário entra limitado ao teto vigente na época: quem ganhava R$ 15 mil contribuiu sobre o teto, e é o teto que entra na conta. Segundo, os anos de estágio, salário mínimo e primeiros empregos agora puxam a média para baixo. Por isso, quem passou de R$ 2 mil para R$ 8 mil ao longo da carreira terá uma média bem menor do que o salário dos últimos anos sugere.',
+        ],
+      },
+      {
+        heading: 'Passo 2: o coeficiente de 60% + 2% por ano',
+        level: 'h2',
+        body: [
+          'Sobre o salário de benefício aplica-se o coeficiente. A regra geral é 60% da média, mais 2 pontos percentuais para cada ano de contribuição que exceder 20 anos, no caso dos homens, ou 15 anos, no caso das mulheres. Assim, um homem precisa de 40 anos de contribuição e uma mulher de 35 anos para receber 100% da média. O coeficiente pode passar de 100% para quem contribuiu ainda mais, mas o benefício nunca ultrapassa o teto do INSS, que em 2026 é de R$ 8.475,55, nem fica abaixo do salário mínimo de R$ 1.621,00.',
+          'Na prática, o teto é muito mais difícil de alcançar do que parece. É preciso ter média próxima do teto e, ao mesmo tempo, um coeficiente de 100%. Um homem com 35 anos de contribuição e média de R$ 7.500 recebe 90% dessa média: R$ 6.750 por mês, e não o teto.',
+        ],
+      },
+      {
+        heading: 'Quem pode se aposentar em 2026: regra permanente e transições',
+        level: 'h2',
+        body: [
+          'Quem começou a contribuir depois de 13 de novembro de 2019 segue a regra permanente: 65 anos de idade e 20 anos de contribuição para homens, e 62 anos e 15 anos para mulheres. Quem já contribuía antes da reforma pode escolher a regra de transição mais vantajosa. Na regra por idade, o homem se aposenta aos 65 com apenas 15 anos de contribuição, e a mulher aos 62 com 15 anos. Na regra dos pontos, a soma de idade e tempo de contribuição precisa chegar a 103 para homens e 93 para mulheres em 2026, com mínimo de 35 e 30 anos de contribuição. Na idade mínima progressiva, são 64 anos e 6 meses para homens e 59 anos e 6 meses para mulheres em 2026, com os mesmos 35 e 30 anos. Essas três transições usam o coeficiente de 60% + 2%.',
+        ],
+      },
+      {
+        heading: 'A exceção que paga 100%: o pedágio de 100%',
+        level: 'h3',
+        body: [
+          'A regra do pedágio de 100% exige idade mínima de 60 anos para homens e 57 para mulheres, os 35 ou 30 anos de contribuição e mais um período adicional igual ao tempo que faltava em 13/11/2019. Quem tinha 33 anos de contribuição na data da reforma precisa completar mais 4 anos (os 2 que faltavam mais 2 de pedágio). Em troca, o benefício é de 100% da média, sem coeficiente. Para um homem com 37 anos de contribuição, isso significa 100% em vez dos 94% das outras regras: com média de R$ 6.000, a diferença é de R$ 360 por mês, para o resto da vida.',
+        ],
+      },
+      {
+        heading: 'Exemplos com números: homem e mulher com a mesma carreira',
+        level: 'h2',
+        body: [
+          'Uma mulher de 62 anos com 27 anos de contribuição e média corrigida de R$ 4.200 tem coeficiente de 60% + 2% × 12 = 84%, ou seja, aposentadoria de R$ 3.528,00. Um homem de 65 anos com a mesma carreira e a mesma média tem coeficiente de 60% + 2% × 7 = 74%, e recebe R$ 3.108,00. A diferença de R$ 420 por mês vem só do ponto de partida do coeficiente, 15 anos para elas e 20 para eles.',
+          'Se esse homem trabalhar mais três anos mantendo a mesma média, o coeficiente sobe para 80% e o benefício para R$ 3.360,00, ou R$ 252 a mais por mês. Como o INSS paga 13 parcelas por ano, são R$ 3.276 adicionais por ano, corrigidos pelo INPC. Para decidir se vale a pena, compare esse ganho com o que você deixaria de receber nesses três anos e com sua expectativa de vida. Para muitos homens perto dos 30 anos de contribuição, cada ano extra aumenta o benefício em cerca de 2,5% a 3%.',
+        ],
+      },
+      {
+        heading: 'O descarte de contribuições: quando ajuda e quando atrapalha',
+        level: 'h2',
+        body: [
+          'A própria reforma (art. 26, § 6º da EC 103) permite excluir da média as contribuições que reduzem o valor do benefício, desde que se mantenha o tempo mínimo exigido. O porém é que o tempo excluído deixa de contar para tudo, inclusive para o coeficiente. Cada ano descartado acima do mínimo custa 2 pontos percentuais. Para um homem com 30 anos de contribuição, só compensa descartar um ano se aquele salário for menor que cerca de um quarto da média. Com 35 anos, o limite cai para pouco mais de um quinto.',
+          'Existe, porém, uma situação em que o descarte sai de graça: homens que já contribuíam antes da reforma e se aposentam pela regra de transição por idade. Eles precisam de só 15 anos de contribuição, mas o coeficiente só sobe depois dos 20. Os anos entre o 15º e o 20º não acrescentam nada ao coeficiente. Imagine um homem de 65 anos com 19 anos de contribuição: 14 anos com média de R$ 5.000 e 5 anos no salário mínimo. A média completa dá R$ 4.110,79, e 60% disso são R$ 2.466,47. Descartando os 4 anos mais baixos e mantendo exatamente 15, a média vai para R$ 4.774,73, e o benefício para R$ 2.864,84: quase R$ 400 a mais por mês. Confira na carta de concessão se o descarte foi considerado e, se não foi, peça revisão.',
+        ],
+      },
+      {
+        heading: 'Antes de pedir: confira seu CNIS',
+        level: 'h3',
+        body: [
+          'Todo o cálculo depende do Cadastro Nacional de Informações Sociais (CNIS), o extrato com seus vínculos e salários, disponível no aplicativo e no site Meu INSS. Vínculos sem data de saída, salários faltando e períodos como autônomo sem recolhimento confirmado são comuns, e cada erro reduz a média ou o tempo. Corrija as pendências com carteira de trabalho, holerites e guias antes de dar entrada. O Meu INSS também tem um simulador que mostra qual regra de transição você já cumpre.',
+        ],
+      },
+      {
+        heading: 'Quanto falta para manter seu padrão de vida',
+        level: 'h2',
+        body: [
+          'Quem ganha acima do teto, ou teve carreira irregular, vai receber do INSS bem menos do que o salário atual. Com salário de R$ 10.000 e uma aposentadoria estimada de R$ 6.750, faltam R$ 3.250 por mês. Para gerar essa renda retirando 4% ao ano acima da inflação, uma premissa conservadora, seria preciso acumular cerca de R$ 975 mil em valores de hoje. Com 25 anos pela frente e rendimento real de 4% ao ano, isso exige aportes de aproximadamente R$ 1.900 por mês, também em valores de hoje. Começar dez anos mais tarde, com só 15 anos de prazo, mais que dobra esse valor: cerca de R$ 4.000 por mês.',
+          'Use a Calculadora de Aposentadoria para estimar quanto você precisa acumular e a Calculadora de Juros Compostos para testar diferentes aportes e prazos. Se for investir em previdência privada, a escolha entre PGBL e VGBL e o regime de tributação fazem diferença no valor que chega ao seu bolso, e a Calculadora de Salário Líquido CLT ajuda a saber quanto do salário de hoje realmente sobra para poupar.',
+        ],
+      },
+    ],
+    relatedCalculators: [
+      { label: 'Calculadora de Aposentadoria', href: '/pt-br/calculadoras/calculadora-de-aposentadoria' },
+      { label: 'Calculadora de Juros Compostos', href: '/pt-br/calculadoras/calculadora-de-juros-compostos' },
+      { label: 'Calculadora de Salário Líquido CLT', href: '/pt-br/calculadoras/calculadora-de-salario-liquido' },
+    ],
+  },
 ];
 
 export function getBlogPostBrBySlug(slug: string): BlogPostBr | undefined {
