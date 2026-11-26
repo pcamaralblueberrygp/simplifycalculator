@@ -624,7 +624,7 @@ export const CALCULATORS: Calculator[] = [
       url: 'https://www.fdic.gov/resources/consumers/consumer-news/2023-06.html',
     },
     example:
-      'Example: $5,000 initial deposit at 4.5% APY plus $200/month for 3 years (36 months) grows to roughly $14,086 — of which $1,886 is interest earned.',
+      'Example: $5,000 initial deposit at 4.5% APY plus $200/month for 3 years (36 months) grows to roughly $13,414 — of which about $1,214 is interest earned.',
     faqs: [
       {
         q: 'What is the difference between APR and APY?',
@@ -657,7 +657,7 @@ export const CALCULATORS: Calculator[] = [
       url: 'https://www.consumerfinance.gov/consumer-tools/auto-loans/',
     },
     example:
-      'Example: a $28,000 vehicle with a $4,000 down payment leaves a $24,000 loan. At 6.9% APR over 60 months (5 years), the monthly payment is about $473.89 and total interest paid is roughly $4,433.',
+      'Example: a $28,000 vehicle with a $4,000 down payment leaves a $24,000 loan. At 6.9% APR over 60 months (5 years), the monthly payment is about $474.10 and total interest paid is roughly $4,446.',
     faqs: [
       {
         q: 'Does this include taxes, title, and dealer fees?',
@@ -884,7 +884,7 @@ export const CALCULATORS: Calculator[] = [
     intro: 'College costs have historically risen about 4-6% per year — faster than general inflation. A 529 college savings plan lets your money grow tax-free when used for qualified education expenses. This calculator shows your target savings goal and the monthly contribution needed to reach it, given your time horizon and expected investment return.',
     formulaExplanation: 'Projected Total Cost = Annual Cost × (1 + Inflation Rate)^Years for each year of college, summed across the enrollment period. Future Value of Current Balance = Current Balance × (1 + Monthly Return)^Months. Monthly Contribution Needed = (Total Cost - FV of Current Balance) × Monthly Return / ((1 + Monthly Return)^Months - 1). The result is the level monthly contribution required assuming a constant return.',
     formulaSource: { label: 'SEC: Introduction to 529 Plans', url: 'https://www.sec.gov/reportspubs/investor-publications/investorpubsintro529htm.html' },
-    example: 'Example: $30,000/year current tuition, 10 years until college, 4-year program, 5% annual tuition inflation, 6% expected return, $5,000 current balance. Projected total cost: ~$195,000. Required monthly contribution: ~$700.',
+    example: 'Example: $30,000/year current tuition, 10 years until college, 4-year program, 5% annual tuition inflation, 6% expected return, $5,000 current balance. Projected total cost: ~$210,600. Required monthly contribution: ~$1,230.',
     faqs: [
       { q: 'What if I overshoot and save too much?', a: 'A 529 account can be transferred to another beneficiary (a sibling, cousin, or even yourself) with no tax penalty. Starting in 2024, unused 529 funds can also be rolled over to a Roth IRA for the beneficiary, subject to annual contribution limits and a 15-year account seasoning requirement.' },
       { q: 'Do 529 assets affect financial aid eligibility?', a: 'Yes, but modestly. A parent-owned 529 is assessed at a maximum rate of 5.64% in the FAFSA formula, compared to 20% for assets held directly in the student\'s name. Grandparent-owned 529 plans have no impact on FAFSA under rules that took effect for the 2024-2025 aid year.' },
@@ -904,7 +904,7 @@ export const CALCULATORS: Calculator[] = [
     intro: 'Knowing your maximum affordable home price before you start shopping prevents disappointment and wasted time. This calculator uses the same front-end (28%) and back-end (36%) debt-to-income guidelines that conventional mortgage lenders apply to determine how much home your income and existing debts can support.',
     formulaExplanation: 'Lenders use two limits: (1) Front-end: monthly housing costs (P&I + taxes + insurance) cannot exceed 28% of gross monthly income. (2) Back-end: all monthly debt payments (housing + existing debts) cannot exceed 36% of gross monthly income. The binding constraint (whichever is lower) sets the maximum monthly housing payment. From that payment, we back-solve for the maximum home price given the mortgage rate, term, and property tax rate.',
     formulaSource: { label: 'CFPB: How much house can I afford?', url: 'https://www.consumerfinance.gov/ask-cfpb/how-much-of-my-income-should-i-spend-on-housing-en-1855/' },
-    example: 'Example: $90,000 gross income, $500/month existing debts, $60,000 down payment, 6.5% APR / 30 years, 1.2% property tax rate. Estimated maximum home price: ~$380,000, with a total monthly payment of about $2,520.',
+    example: 'Example: $90,000 gross income, $500/month existing debts, $60,000 down payment, 6.5% APR / 30 years, 1.2% property tax rate. Estimated maximum home price: ~$322,700, with a total monthly housing payment of about $2,100 (the 28% front-end limit).',
     faqs: [
       { q: 'Should I buy as much house as I can afford?', a: 'Most financial planners advise against it. Buying at the top of your qualification limit leaves no buffer for job changes, repairs, or unexpected expenses. A rule of thumb is to target a home price no more than 2.5-3x your annual gross income.' },
       { q: 'Does this include PMI?', a: 'No. If your down payment is less than 20% of the home price, lenders require private mortgage insurance (PMI), typically 0.5-1.5% of the loan amount per year. This adds $100-$300/month on a $300,000 loan and reduces how much home you can afford.' },
@@ -924,7 +924,7 @@ export const CALCULATORS: Calculator[] = [
     intro: 'Setting the right freelance rate is one of the hardest parts of self-employment. Charge too little and you cannot cover taxes and business costs; charge too much and you lose clients. This calculator works backward from your target take-home income to find the hourly rate that actually gets you there after taxes and expenses.',
     formulaExplanation: 'Gross Revenue Needed = (Desired Take-Home + Business Expenses) / (1 - Tax Rate). The tax rate for freelancers in the U.S. includes self-employment tax (15.3% on the first ~$160,000 of net self-employment income) plus federal and state income tax. Minimum Hourly Rate = Gross Revenue Needed / Total Billable Hours. Recommended Rate adds a buffer (typically 10-20%) for slow months, non-billable work, and scope creep.',
     formulaSource: { label: 'IRS: Self-employment tax', url: 'https://www.irs.gov/businesses/small-businesses-self-employed/self-employment-tax-social-security-and-medicare-taxes' },
-    example: 'Example: $80,000 desired take-home, 30 billable hours/week × 48 weeks = 1,440 hours/year, $5,000 expenses, 30% combined tax rate, 15% buffer. Minimum rate: ~$59/hr. Recommended rate: ~$68/hr.',
+    example: 'Example: $80,000 desired take-home, 30 billable hours/week × 48 weeks = 1,440 hours/year, $5,000 expenses, 30% combined tax rate, 15% buffer. Minimum rate: ~$84/hr. Recommended rate: ~$97/hr.',
     faqs: [
       { q: 'Why is my freelance rate so much higher than an equivalent employee salary?', a: 'As a freelancer you pay both the employee and employer halves of Social Security and Medicare (15.3% total vs. 7.65% for an employee), you have no paid vacation or sick days, you cover your own health insurance, and you spend non-billable hours on business administration. These add up to 30-50% above equivalent employee compensation.' },
       { q: 'Should I charge by the hour or by the project?', a: 'Project-based pricing is usually more profitable once you are experienced, because faster delivery increases your effective hourly rate. Fixed-fee projects also give clients a predictable cost, which reduces friction in closing deals. Track your actual hours per project to refine future estimates.' },
