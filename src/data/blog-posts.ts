@@ -1131,6 +1131,83 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: 'Retirement Savings Calculator', href: '/calculators/retirement-savings-calculator' },
     ],
   },
+  {
+    slug: 'mortgage-points-break-even-math',
+    title: 'Should You Buy Mortgage Points? The Break-Even Math Your Lender Gets Wrong',
+    metaDescription:
+      'Buying mortgage points can pay off, but the usual "cost divided by savings" break-even misleads. See the full math, the refinance risk, and when to skip points.',
+    publishDate: '2026-11-26',
+    category: 'Mortgages',
+    image: {
+      src: '/blog/mortgage-points-break-even-math.svg',
+      alt: 'SimplifyCalculator banner about mortgage discount points, comparing the simple 60-month break-even lenders quote with the true 48-month break-even once faster principal paydown is counted',
+    },
+    intro:
+      "At closing, your lender will probably offer you a deal: pay a few thousand dollars now and get a lower interest rate for the life of the loan. Those are discount points, and the standard advice is to divide their cost by the monthly savings to find a break-even date. That shortcut is simple, and it's wrong in two directions at once. It ignores a benefit that makes points look better than it shows, and it ignores a risk that can make them a complete loss. Here's how to run the real numbers before you sign.",
+    sections: [
+      {
+        heading: 'What a mortgage point actually buys',
+        level: 'h2',
+        body: [
+          "One discount point costs 1% of the loan amount, so on a $400,000 mortgage a point is $4,000. In exchange, the lender lowers your interest rate. How much it drops is set by the lender's pricing that day, not by a fixed rule; a quarter of a percentage point per point is a common figure, but it can be less or more. Your Loan Estimate lists points in Section A, under origination charges, so you can compare offers line by line.",
+          "It helps to think of points as prepaid interest. You hand the lender money up front, and in return you pay less interest every month afterward. Whether that's a good trade depends entirely on how long you keep that exact loan, which is the part most people never stop to estimate.",
+        ],
+      },
+      {
+        heading: 'The break-even your lender shows you',
+        level: 'h2',
+        body: [
+          "Take a $400,000, 30-year fixed loan at 6.75%. The monthly principal and interest payment is about $2,594. Pay one point, $4,000, to drop the rate to 6.50%, and the payment falls to about $2,528, a saving of roughly $66 a month. Divide $4,000 by $66 and you get about 60 months. Keep the loan five years and the points have paid for themselves; that's the number you'll usually hear.",
+          "Two points for 6.25% gives almost the same answer: $8,000 buys about $132 a month in savings, also about 60 months to break even. Doubling the bet doesn't change the timeline, only the size of the win or loss.",
+        ],
+      },
+      {
+        heading: 'Why the real break-even comes sooner',
+        level: 'h3',
+        body: [
+          "The simple formula only counts the lower payment. But at a lower rate, a larger share of every payment goes to principal, so your balance falls faster. If you sell or refinance, that extra equity comes back to you. In the example above, the 6.50% loan has about $1,000 less owed than the 6.75% loan after five years, on top of the payment savings.",
+          "Count both and the one-point purchase breaks even after about 48 months, not 60. At five years you're about $1,000 ahead; at ten years, about $6,000; if you keep the loan for its full 30 years, the $4,000 returns close to $24,000 in interest saved. For anyone confident they'll stay put, points are more attractive than the quick math suggests.",
+        ],
+      },
+      {
+        heading: "Why it can also come later, or never",
+        level: 'h3',
+        body: [
+          "The $4,000 has a cost of its own: it could sit in a high-yield savings account or be invested. If that money would otherwise earn 4.5% a year, the true break-even moves out to roughly 54 months. That's still reasonable, but it's another reminder that the money spent on points isn't free.",
+          "The bigger risk is refinancing. Points only pay off if you keep this specific loan. If rates fall a full percentage point in year three and you refinance, the remaining value of your points disappears. At 36 months in our example, you'd have saved about $2,400 in payments against a $4,000 cost, about a $1,000 loss. Points are a bet that rates won't drop enough to make refinancing worthwhile, and that bet looks worst exactly when current rates are high.",
+        ],
+      },
+      {
+        heading: 'Points versus a bigger down payment',
+        level: 'h2',
+        body: [
+          "If you have $4,000 to spare at closing, points aren't your only option. Putting it toward the down payment shrinks the loan to $396,000, saving about $26 a month at 6.75%. That sounds worse than the $66 a point buys, but the down payment adds to your equity from day one instead of needing years to earn back. In our example, the extra down payment comes out ahead for the first five years or so, and points only pull in front after about 65 months.",
+          "The down payment also matters more if it moves you past a threshold. Getting to 20% down on a conventional loan generally removes private mortgage insurance, and a lower loan-to-value ratio can earn a better rate on its own. Price both options with your lender before assuming points are the better use of the cash.",
+        ],
+      },
+      {
+        heading: 'The reverse trade: lender credits',
+        level: 'h3',
+        body: [
+          "Points work in the other direction too. Many lenders will give you a credit toward closing costs in exchange for a higher rate. Taking a $4,000 credit at 7.00% instead of 6.75% raises the payment by about $67 a month. If you expect to sell or refinance within roughly four years, that trade puts money in your pocket. In our example you'd be about $1,000 ahead at three years and about $1,000 behind at five. If cash is tight at closing or you expect rates to fall, a credit can be the smarter choice.",
+        ],
+      },
+      {
+        heading: 'A quick checklist before you decide',
+        level: 'h2',
+        body: [
+          "Be honest about how long you'll keep the loan. A job that might relocate you, a growing family that could outgrow the house, or a strong chance of refinancing all shorten the timeline. Points tend to make sense when you expect to hold the loan well past the break-even, have cash left over after your emergency fund and down payment, and don't expect rates to fall much. They're a poor fit when you're stretching to close, expect to move within five years, or are buying when rates are well above their recent range.",
+          "Taxes can tip the math slightly. Points paid on the purchase of a main home may be deductible in the year you pay them if you itemize and meet IRS conditions, while points on a refinance are generally deducted over the life of the loan. Check IRS Publication 936 or ask a tax professional, and don't count on the deduction if you take the standard deduction.",
+          "To run your own numbers, price your loan with and without points in the Mortgage Calculator and divide the cost of the points by the difference in payment. Then check the Amortization Schedule Calculator to see how much faster the lower rate pays down your balance in the years you actually expect to keep the loan, and use the Home Affordability Calculator to make sure paying for points doesn't leave you short on the down payment or cash reserves.",
+        ],
+      },
+    ],
+    relatedCalculators: [
+      { label: 'Mortgage Calculator', href: '/calculators/mortgage-calculator' },
+      { label: 'Amortization Schedule Calculator', href: '/calculators/amortization-schedule-calculator' },
+      { label: 'Home Affordability Calculator', href: '/calculators/home-affordability-calculator' },
+    ],
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
