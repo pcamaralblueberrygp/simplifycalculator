@@ -641,6 +641,14 @@ img, svg { display: block; }
   line-height: 1.7;
 }
 
+/* ── Blog tables ── */
+.blog-table-wrap { overflow-x: auto; margin: 16px 0 24px; }
+.blog-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.blog-table caption { caption-side: bottom; text-align: left; font-size: 12.5px; color: var(--text-muted); padding-top: 8px; }
+.blog-table th, .blog-table td { border-bottom: 1px solid var(--border); padding: 10px 12px; text-align: left; vertical-align: top; }
+.blog-table thead th { background: var(--bg-soft); font-weight: 700; color: var(--ink); white-space: nowrap; }
+.blog-table tbody th { font-weight: 600; color: var(--ink); white-space: nowrap; }
+
 /* ── Affiliate offer box ── */
 .affiliate-box {
   background: var(--bg-soft);

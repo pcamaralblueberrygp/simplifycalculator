@@ -7,6 +7,7 @@ export interface BlogSectionBr {
   heading: string;
   level: 'h2' | 'h3';
   body: string[];
+  table?: { headers: string[]; rows: string[][]; caption?: string };
 }
 
 export interface AffiliateOfferBr {
@@ -181,7 +182,7 @@ export const BLOG_POSTS_BR: BlogPostBr[] = [
         level: 'h2',
         body: [
           'Quando você fatura em dólar como Pessoa Jurídica, o valor recebido em conta no Brasil já chega convertido para reais, geralmente por uma instituição financeira autorizada a operar câmbio. A taxa de câmbio aplicada nessa conversão — e não a "taxa comercial" que você vê no Google — é o que realmente define quanto reais caem na sua conta.',
-          'Além da conversão em si, entra em jogo o IOF sobre operações de câmbio (atualmente 0,38% para a maioria das transferências recebidas do exterior relacionadas a exportação de serviços) e a emissão de nota fiscal de serviço para o cliente estrangeiro, que costuma ser exigida mesmo em prestação de serviço para o exterior.',
+          'Além da conversão em si, entra em jogo o IOF sobre a operação de câmbio. Receitas de exportação de serviços podem ter IOF zero quando a operação é classificada corretamente, mas algumas plataformas ainda cobram até 0,38%. Também é preciso emitir nota fiscal de exportação de serviço para o cliente estrangeiro.',
         ],
       },
       {
@@ -209,13 +210,13 @@ export const BLOG_POSTS_BR: BlogPostBr[] = [
         heading: 'Fintechs especializadas em câmbio e recebimento internacional',
         level: 'h3',
         body: [
-          'Plataformas focadas em freelancers e PJs que faturam para o exterior — como a TechFX — tendem a operar com spreads bem menores que os bancos tradicionais, além de oferecer conversão e liquidação em conta em prazo mais curto. Vale sempre comparar a cotação do dia oferecida por cada plataforma antes de fechar a conversão, já que o spread pode variar entre operações.',
+          'Plataformas focadas em quem fatura para o exterior costumam cobrar bem menos que os bancos tradicionais. A TechFX, por exemplo, cobra 0,5% sobre o câmbio comercial, com IOF zero para PJ exportadora de serviços e crédito em até 1 dia útil, mas atende apenas PJ. Para pessoa física, opções como Husky e Remessa Online aceitam CPF. Veja o comparativo completo de taxas no nosso artigo TechFX, Wise, Payoneer e Outras.',
         ],
       },
     ],
     affiliateOffer: {
       title: 'Recebendo pagamentos do exterior? Compare sua taxa de câmbio atual',
-      body: 'A TechFX é uma plataforma voltada para brasileiros que recebem em dólar — freelancers, PJs e empresas exportadoras de serviço. Antes de fechar sua próxima conversão pelo banco tradicional, vale comparar a cotação oferecida.',
+      body: 'A TechFX é voltada para PJ brasileira que exporta serviços: 0,5% sobre o câmbio comercial, sem tarifa de conta e com IOF zero para exportação de serviços. Antes de fechar sua próxima conversão pelo banco tradicional, compare a cotação.',
       ctaText: 'Conhecer a TechFX',
       url: 'https://app.techfx.com.br/referral/rer1ogkj9myq',
       disclosure: 'Este é um link de afiliado. Podemos receber uma comissão se você se cadastrar através dele, sem custo adicional para você.',
@@ -227,74 +228,146 @@ export const BLOG_POSTS_BR: BlogPostBr[] = [
   },
   {
     slug: 'techfx-vs-wise-vs-payoneer-comparativo',
-    title: 'TechFX vs. Wise vs. Payoneer: Comparativo de Taxas para Receber em Dólar',
+    title: 'TechFX, Wise, Payoneer e Outras: Comparativo de Taxas para Receber em Dólar (2026)',
     metaDescription:
-      'Comparamos TechFX, Wise e Payoneer para brasileiros que recebem pagamentos em dólar: taxas, prazo de liquidação e qual escolher para cada perfil.',
+      'Comparamos TechFX, Wise, Payoneer, Husky, Remessa Online e PayPal com taxas reais: quanto cai em reais ao receber US$ 2.000, IOF, prazo e quem pode usar cada uma.',
     publishDate: '2026-07-31',
     category: 'Renda Internacional',
-    image: { src: '/blog/techfx-vs-wise-vs-payoneer-comparativo.svg', alt: 'TechFX vs Wise vs Payoneer — comparativo de taxas para receber em dólar no Brasil' },
+    image: { src: '/blog/techfx-vs-wise-vs-payoneer-comparativo.svg', alt: 'Comparativo TechFX, Wise, Payoneer, Husky, Remessa Online e PayPal para receber em dólar no Brasil' },
     intro:
-      'Se você recebe pagamentos recorrentes em dólar, a escolha da plataforma de câmbio pode valer milhares de reais por ano — a diferença não está só na taxa cobrada explicitamente, mas principalmente no spread embutido na cotação de conversão, que costuma ser bem menos transparente.',
+      'Atualizado em novembro de 2026. Se você presta serviço para clientes no exterior, a plataforma que converte seus dólares em reais pode custar de R$ 50 a mais de R$ 1.000 por mês, sobre o mesmo valor recebido. A diferença raramente está na taxa anunciada em destaque: está na soma de spread, tarifa de recebimento, tarifa de saque e IOF. Neste comparativo colocamos seis opções lado a lado, com as taxas publicadas por cada uma, e fazemos a conta completa para um pagamento de US$ 2.000.',
     sections: [
       {
-        heading: 'Como cada plataforma cobra pela conversão',
+        heading: 'Resposta rápida: qual escolher',
+        level: 'h2',
+        body: [
+          'Se você tem PJ e exporta serviços, a TechFX é uma das opções mais equilibradas: custo único de 0,5% sobre o câmbio comercial, IOF zero para PJ exportadora de serviços, sem tarifa de conta e crédito em até 1 dia útil. Ela não atende quem recebe como pessoa física.',
+          'Se você recebe como pessoa física, as alternativas são Husky, Remessa Online ou Wise. Se a maior parte da sua renda vem de marketplaces como Upwork ou Fiverr, a Payoneer costuma ser o caminho natural pela integração nativa, mesmo sendo mais cara na conversão. O PayPal é a opção mais cara da lista e só compensa quando o cliente exige pagar por ele.',
+        ],
+      },
+      {
+        heading: 'Tabela comparativa de taxas',
+        level: 'h2',
+        body: [
+          'As taxas abaixo foram verificadas em novembro de 2026, nos sites oficiais das plataformas e em comparativos públicos. Plataformas de câmbio mudam preços com frequência: confirme sempre a cotação exibida no momento da operação, antes de converter.',
+        ],
+        table: {
+          headers: ['Plataforma', 'Custo de conversão', 'Tarifa para receber', 'IOF (PJ exportadora)', 'Prazo para cair em reais', 'Quem pode usar'],
+          rows: [
+            ['TechFX', '0,5% sobre o câmbio comercial', 'Zero', 'Zero', 'Até 1 dia útil', 'Somente PJ'],
+            ['Wise', 'A partir de 0,4% (varia por moeda)', 'ACH grátis; wire US$ 6,11', 'Confirme na operação', 'Varia', 'PF e PJ (Wise Empresas: R$ 250 de entrada)'],
+            ['Husky', 'Até 1% (acima de US$ 1.000) ou US$ 10 fixos (até US$ 1.000)', 'Zero', 'Zero (segundo a Husky)', 'Geralmente 1 dia útil', 'PF e PJ'],
+            ['Remessa Online', '0,90% a 0,99% (PJ, até R$ 25 mil)', 'R$ 16,90 em recebimentos até R$ 3 mil', 'Até 0,38%', 'Até 2 dias úteis', 'PF e PJ'],
+            ['Payoneer', '1% a 4% no saque para o banco', '1% via ACH; até 3,99% por cartão', 'Depende do banco de saque', 'Varia', 'PF e PJ'],
+            ['PayPal', 'Cerca de 3,5% acima do câmbio base', '4,79% + 1,61% internacional + tarifa fixa', 'Depende do banco de saque', 'Varia', 'PF e PJ'],
+          ],
+          caption: 'Fontes: sites oficiais de TechFX, Wise, Husky, Remessa Online, Payoneer e PayPal, e comparativos públicos, consultados em novembro de 2026.',
+        },
+      },
+      {
+        heading: 'Exemplo prático: quanto cai na conta ao receber US$ 2.000',
+        level: 'h2',
+        body: [
+          'Para comparar de forma justa, simulamos o mesmo pagamento de US$ 2.000 de um cliente nos EUA, com o dólar comercial a R$ 5,40 (US$ 2.000 = R$ 10.800,00 na cotação de referência). Os valores abaixo aplicam as taxas publicadas de cada plataforma. Não incluem impostos sobre a sua receita (como o Simples Nacional), que são iguais em qualquer opção.',
+        ],
+        table: {
+          headers: ['Plataforma e cenário', 'Valor em reais', 'Custo total'],
+          rows: [
+            ['Wise, cliente paga via ACH (taxa mínima de 0,4%)', 'R$ 10.756,80', 'R$ 43,20'],
+            ['TechFX (0,5%, IOF zero)', 'R$ 10.746,00', 'R$ 54,00'],
+            ['Wise, cliente paga via wire (US$ 6,11 + 0,4%)', 'R$ 10.723,94', 'R$ 76,06'],
+            ['Remessa Online (0,99%, sem IOF)', 'R$ 10.693,08', 'R$ 106,92'],
+            ['Husky (1%)', 'R$ 10.692,00', 'R$ 108,00'],
+            ['Remessa Online (0,99% + IOF de 0,38%)', 'R$ 10.652,45', 'R$ 147,55'],
+            ['Payoneer (1% para receber + 1% no saque)', 'R$ 10.585,08', 'R$ 214,92'],
+            ['Payoneer (1% para receber + 4% no saque)', 'R$ 10.264,32', 'R$ 535,68'],
+            ['PayPal (6,4% de tarifas + 3,5% de câmbio)', 'R$ 9.754,99', 'R$ 1.045,01'],
+          ],
+          caption: 'Dólar comercial de referência: R$ 5,40. Valores ilustrativos, com base nas taxas publicadas em novembro de 2026.',
+        },
+      },
+      {
+        heading: 'Como ler esse resultado',
+        level: 'h3',
+        body: [
+          'No melhor cenário possível da Wise (cliente pagando por ACH e a taxa mínima de 0,4%), ela fica cerca de R$ 11 à frente da TechFX nesse exemplo. Mas três detalhes mudam a conta: o 0,4% é o piso da Wise, e a taxa real varia conforme a moeda e a operação; a Wise Empresas cobra R$ 250 para liberar a conta de PJ; e boa parte dos clientes no exterior paga por wire, cenário em que a TechFX passa à frente.',
+          'Em um ano recebendo US$ 2.000 por mês, a diferença entre a opção mais barata e a Payoneer no pior cenário passa de R$ 5.800. Comparada ao PayPal, passa de R$ 11.900. É por isso que vale gastar dez minutos escolhendo a plataforma certa.',
+        ],
+      },
+      {
+        heading: 'Plataforma por plataforma',
         level: 'h2',
         body: [],
+      },
+      {
+        heading: 'TechFX',
+        level: 'h3',
+        body: [
+          'Focada em PJ brasileira que exporta serviços. Cobra um custo único de 0,5% aplicado no câmbio, usa a cotação comercial e não tem tarifa de conta nem tarifa fixa por operação. Segundo a própria TechFX, PJ que exporta serviços tem IOF zero nos recebimentos. O crédito em reais acontece em até 1 dia útil, e o valor vai apenas para a conta bancária da própria PJ.',
+          'A TechFX atua como correspondente no Brasil do Banco Travelex S.A., que é quem executa as operações de câmbio (Resolução CMN nº 4.935). Ponto de atenção: não serve para quem recebe como pessoa física.',
+        ],
       },
       {
         heading: 'Wise',
         level: 'h3',
         body: [
-          'A Wise é conhecida por divulgar abertamente sua taxa, que costuma ficar entre 0,4% e 2% dependendo do valor e da rota de conversão, usando a cotação "mid-market" (a mesma que aparece no Google) como referência antes de aplicar a taxa. É uma das opções mais transparentes do mercado.',
+          'Uma das plataformas mais transparentes do mercado: mostra a taxa antes de cada conversão, a partir de 0,4% dependendo da moeda. Recebimentos via ACH são gratuitos, e via wire custam US$ 6,11 por pagamento. Aceita pessoa física, e para PJ a Wise Empresas cobra uma taxa única de R$ 250. Faz sentido para quem recebe em várias moedas ou quer manter saldo em moeda estrangeira.',
+        ],
+      },
+      {
+        heading: 'Husky',
+        level: 'h3',
+        body: [
+          'Cobra até 1% em conversões acima de US$ 1.000, ou US$ 10 fixos em valores menores. Informa IOF zero para recebimentos de exportação de serviços e atende PF e PJ. A maioria das transferências cai em 1 dia útil. É correspondente do Ouribank. É uma boa alternativa para freelancers sem CNPJ.',
+        ],
+      },
+      {
+        heading: 'Remessa Online',
+        level: 'h3',
+        body: [
+          'Para PJ, o spread vai de 0,99% a 0,90% em valores de até R$ 25 mil, e cai para 0,60% acima de R$ 200 mil. Cobra IOF de até 0,38% e uma tarifa extra de R$ 16,90 em recebimentos de até R$ 3 mil. Atende PF e PJ, e o valor fica disponível em até 2 dias úteis. Atenção: o dinheiro precisa ser resgatado em até 180 dias, ou volta para quem pagou.',
         ],
       },
       {
         heading: 'Payoneer',
         level: 'h3',
         body: [
-          'A Payoneer costuma aplicar uma taxa de conversão de câmbio em torno de 2% sobre a cotação de mercado, além de uma taxa fixa de saque em alguns métodos de retirada. É bastante usada por quem já recebe pagamentos de marketplaces internacionais (Amazon, Upwork, Fiverr) que já têm integração nativa com a plataforma.',
+          'Cobra 1% para receber via ACH de um cliente nos EUA, até 3,99% por cartão de crédito, e de 1% a 4% no saque para um banco em outra moeda. Tem uma taxa anual de US$ 29,95 se você receber menos de US$ 6.000 em 12 meses. A grande vantagem é a integração com marketplaces como Upwork e Fiverr, cujos repasses não têm tarifa da Payoneer.',
         ],
       },
       {
-        heading: 'TechFX',
+        heading: 'PayPal',
         level: 'h3',
         body: [
-          'A TechFX foca especificamente no público brasileiro que recebe em dólar, com cotação exibida antes da conversão para você comparar com a taxa comercial do dia. Como as taxas de qualquer plataforma de câmbio podem mudar, o mais confiável é sempre olhar a cotação exata mostrada no momento da transação antes de confirmar.',
+          'Cobra 4,79% mais uma tarifa fixa por venda, mais 1,61% em pagamentos internacionais, e aplica um spread de cerca de 3,5% na conversão. A transferência para um banco brasileiro é gratuita, mas o custo total já é o mais alto da lista. Só compensa quando o cliente insiste em pagar por ele.',
         ],
       },
       {
-        heading: 'Exemplo prático: recebendo US$ 2.000 por mês',
+        heading: 'IOF: o detalhe que mais muda a conta',
         level: 'h2',
         body: [
-          'Com o dólar comercial a R$ 5,40, US$ 2.000 equivalem a R$ 10.800 na cotação de referência. Um spread de 0,5% resulta em R$ 10.746 líquidos; um spread de 2% resulta em R$ 10.584; e um spread de 5% (mais próximo do praticado por bancos tradicionais) resulta em R$ 10.260 — uma diferença de quase R$ 500 por mês entre o cenário mais barato e o mais caro, só de spread cambial.',
-          'Ao longo de um ano recebendo o mesmo valor mensal, essa diferença pode ultrapassar R$ 5.000 — o equivalente a mais de dois meses extras de faturamento, apenas pela escolha da plataforma de conversão.',
+          'Receitas de exportação de serviços podem ter IOF zero na conversão para reais, mas isso depende de a operação ser classificada corretamente como exportação de serviços. Algumas plataformas aplicam IOF zero nesses casos (TechFX e Husky informam isso). Outras informam cobrança de até 0,38%. Em um recebimento de US$ 2.000, 0,38% são cerca de R$ 40 por mês, ou quase R$ 500 por ano.',
+          'Antes de escolher, confirme como a plataforma classifica a sua operação, e emita sempre a nota fiscal de exportação de serviço. Se tiver dúvida, fale com o seu contador.',
         ],
       },
       {
-        heading: 'Prazo de liquidação: quando o dinheiro cai na conta',
+        heading: 'Checklist antes de escolher',
         level: 'h2',
         body: [
-          'Bancos tradicionais costumam levar de 1 a 3 dias úteis para liquidar um contrato de câmbio. Fintechs especializadas tendem a ser mais rápidas, com liquidação no mesmo dia ou em até 24 horas na maioria dos casos — o que faz diferença real para quem depende desse fluxo de caixa mensalmente.',
-        ],
-      },
-      {
-        heading: 'Qual escolher dependendo do seu perfil',
-        level: 'h2',
-        body: [
-          'Quem já recebe por marketplaces como Upwork ou Amazon pode se beneficiar da integração nativa da Payoneer. Quem valoriza transparência total na taxa cobrada tende a preferir a Wise. Já quem quer uma opção pensada especificamente para o fluxo de PJ e freelancer brasileiro recebendo diretamente de clientes internacionais pode encontrar na TechFX uma alternativa vale a pena comparar antes de decidir.',
+          '1) Você recebe como PF ou PJ? Isso já elimina opções, como a TechFX para PF. 2) Seu cliente paga por ACH, wire ou marketplace? Isso muda qual plataforma sai mais barata. 3) Some todas as taxas: spread, tarifa de recebimento, tarifa de saque e IOF, não só a taxa em destaque. 4) Compare a cotação final em reais no dia da conversão. 5) Confira se a empresa opera com uma instituição autorizada pelo Banco Central.',
         ],
       },
     ],
     affiliateOffer: {
-      title: 'Compare a cotação da TechFX antes da sua próxima conversão',
-      body: 'Antes de aceitar a taxa oferecida pelo seu banco, veja a cotação que a TechFX apresenta para o mesmo valor — a comparação leva menos de 5 minutos.',
-      ctaText: 'Ver cotação na TechFX',
+      title: 'Tem PJ e recebe de clientes no exterior?',
+      body: 'A TechFX cobra 0,5% sobre o câmbio comercial, sem tarifa de conta, com IOF zero para PJ exportadora de serviços e crédito em até 1 dia útil. Simule com o valor do seu próximo recebimento e compare com o que você paga hoje.',
+      ctaText: 'Simular na TechFX',
       url: 'https://app.techfx.com.br/referral/rer1ogkj9myq',
-      disclosure: 'Este é um link de afiliado. Podemos receber uma comissão se você se cadastrar através dele, sem custo adicional para você.',
+      disclosure: 'Este é um link de afiliado. Podemos receber uma comissão se você se cadastrar através dele, sem custo adicional para você. As taxas de todas as plataformas deste comparativo foram tiradas das fontes públicas de cada uma, independentemente de parceria.',
     },
     relatedCalculators: [
-      { label: 'Calculadora de Orçamento Mensal', href: '/pt-br/calculadoras/calculadora-de-orcamento-mensal' },
       { label: 'Calculadora CLT x PJ', href: '/pt-br/calculadoras/calculadora-clt-vs-pj' },
+      { label: 'Calculadora de Orçamento Mensal', href: '/pt-br/calculadoras/calculadora-de-orcamento-mensal' },
     ],
   },
   {

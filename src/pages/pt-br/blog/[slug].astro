@@ -53,12 +53,25 @@ const articleJsonLd = {
         loading="eager"
       />
 
-      {post.sections.map((section: { heading: string; level: string; body: string[] }) => (
+      {post.sections.map((section: any) => (
         <>
           {section.level === 'h2'
             ? <h2>{section.heading}</h2>
             : <h3>{section.heading}</h3>}
           {section.body.map((p: string) => <p>{p}</p>)}
+          {section.table && (
+            <div class="blog-table-wrap">
+              <table class="blog-table">
+                {section.table.caption && <caption>{section.table.caption}</caption>}
+                <thead><tr>{section.table.headers.map((h: string) => <th scope="col">{h}</th>)}</tr></thead>
+                <tbody>
+                  {section.table.rows.map((row: string[]) => (
+                    <tr>{row.map((cell: string, i: number) => i === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>)}</tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </>
       ))}
 
