@@ -60,6 +60,7 @@ export interface Calculator {
   example: string;
   faqs: Faq[];
   tips?: string[];
+  workedExamples?: Faq[];
   calcType: CalcType;
 }
 
@@ -209,6 +210,11 @@ export const CALCULATORS: Calculator[] = [
       'Double-check your loan or bond documentation for the word \'simple\' or \'add-on\' interest before assuming — most consumer credit (credit cards, most mortgages) actually compounds, which changes your real cost significantly.',
       'For short-term loans (under a year), the difference between simple and compound interest is small; for anything multi-year, always confirm which method applies.',
     ],
+    workedExamples: [
+      { q: 'Devon invested $2,500 in a bond. After 5 years, he earned $625 in simple interest. What was the annual interest rate?', a: 'Rearrange I = P × r × t to r = I ÷ (P × t). r = $625 ÷ ($2,500 × 5) = $625 ÷ $12,500 = 0.05, so the annual rate is 5%.' },
+      { q: 'Christopher deposits $1,500 in a simple interest account that pays 4.3% per year. How much interest does he earn in 3 years?', a: 'I = P × r × t = $1,500 × 0.043 × 3 = $193.50. His balance after 3 years is $1,500 + $193.50 = $1,693.50.' },
+      { q: 'How long does it take $4,000 to earn $480 in simple interest at 3% per year?', a: 'Rearrange to t = I ÷ (P × r) = $480 ÷ ($4,000 × 0.03) = $480 ÷ $120 = 4 years.' },
+    ],
     calcType: 'simpleInterest',
   },
   {
@@ -309,6 +315,10 @@ export const CALCULATORS: Calculator[] = [
       'If you have multiple debts, pay minimums on all but the smallest balance or highest rate first — see our Debt-to-Income and Credit Card calculators for related planning.',
       'Any extra amount you can add to the fixed payment — even $25-50/month — compounds into a meaningfully shorter payoff timeline. Try a few amounts in this calculator to see the effect.',
       'Before committing to a payment plan, check whether a balance transfer or debt consolidation loan could lower your interest rate — the payoff math changes substantially at a lower rate.',
+    ],
+    workedExamples: [
+      { q: 'Tonya has a total debt of $40. She pays back $5 each week for the next 2 weeks. What represents the change in the amount of her debt?', a: 'She pays $5 × 2 = $10, so the change in her debt is −$10. Her debt goes from $40 to $30.' },
+      { q: 'You owe $6,000 at 19.99% APR and pay $250 a month. Roughly how much of the first payment goes to interest?', a: 'Monthly rate: 19.99% ÷ 12 ≈ 1.666%. First month\'s interest: $6,000 × 0.01666 ≈ $99.95. So about $100 of the $250 payment is interest and about $150 reduces the balance.' },
     ],
     calcType: 'debtPayoff',
   },
@@ -453,6 +463,12 @@ export const CALCULATORS: Calculator[] = [
       'Review recurring subscriptions every 3 months; forgotten subscriptions are one of the most common silent budget leaks.',
       'If your surplus is consistently negative, cut discretionary categories (entertainment, dining) before fixed ones (rent, insurance) — fixed costs are harder to change quickly.',
     ],
+    workedExamples: [
+      { q: 'Hyun-ju earns $3,000 every month. They budget 3/5 of their income for rent and 1/4 for groceries. How much money does Hyun-ju have left for other expenses?', a: 'Rent: 3/5 × $3,000 = $1,800. Groceries: 1/4 × $3,000 = $750. Total budgeted: $1,800 + $750 = $2,550. Money left: $3,000 − $2,550 = $450 per month for other expenses. (Shortcut: 3/5 + 1/4 = 12/20 + 5/20 = 17/20 of income is spent, so 3/20 × $3,000 = $450 is left.)' },
+      { q: 'The budget of a medical foundation is $89,099 per month. How much money will the foundation use in 8 months?', a: 'Multiply the monthly budget by the number of months: $89,099 × 8 = $712,792. The foundation will use $712,792 over 8 months.' },
+      { q: 'Marcus wants to buy a used guitar for $240. He has 8 months to save the money. How much should he budget to save each month?', a: 'Divide the goal by the number of months: $240 ÷ 8 = $30. Marcus should save $30 per month.' },
+      { q: 'In one month you earn $16 mowing a lawn, $15 babysitting, and $20 allowance, then spend $12 at the movies. How much more do you need to buy a $45 video game?', a: 'Income: $16 + $15 + $20 = $51. After spending: $51 − $12 = $39. Still needed: $45 − $39 = $6 more.' },
+    ],
     calcType: 'budget',
   },
   {
@@ -485,6 +501,11 @@ export const CALCULATORS: Calculator[] = [
     tips: [
       'Track net worth on the same day each quarter (e.g., the 1st of January, April, July, October) so your comparisons over time are consistent.',
       'Use conservative, current market values for real estate and vehicles — inflating asset values makes your net worth look better than it really is and can lead to poor decisions.',
+    ],
+    workedExamples: [
+      { q: 'What is a family\'s net worth with total assets of $240,000 and total liabilities of $180,000?', a: 'Net worth = assets − liabilities = $240,000 − $180,000 = $60,000.' },
+      { q: 'Guadalupe owns a car worth $14,700, has a savings account of $4,750, and a credit card balance of $825. What is her net worth?', a: 'Assets: $14,700 + $4,750 = $19,450. Liabilities: $825. Net worth: $19,450 − $825 = $18,625.' },
+      { q: 'Sophia has a home worth $250,000, $30,000 in investments, and owes $100,000 on her mortgage. Calculate her net worth.', a: 'Assets: $250,000 + $30,000 = $280,000. Liabilities: $100,000. Net worth: $280,000 − $100,000 = $180,000.' },
     ],
     calcType: 'netWorth',
   },

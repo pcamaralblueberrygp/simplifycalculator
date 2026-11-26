@@ -73,7 +73,7 @@ const CalcWidget = componentMap[calc.calcType];
 const faqJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: calc.faqs.map((faq: { q: string; a: string }) => ({
+  mainEntity: [...calc.faqs, ...(calc.workedExamples ?? [])].map((faq: { q: string; a: string }) => ({
     '@type': 'Question',
     name: faq.q,
     acceptedAnswer: { '@type': 'Answer', text: faq.a },
@@ -142,6 +142,19 @@ const faqJsonLd = {
           </>
         ))}
       </dl>
+
+      {calc.workedExamples && calc.workedExamples.length > 0 && (
+        <>
+          <div class="lp-section-label" style="margin-top: 32px">Worked examples</div>
+          <h2>Worked examples, step by step</h2>
+          {calc.workedExamples.map((ex: { q: string; a: string }) => (
+            <>
+              <h3>{ex.q}</h3>
+              <p>{ex.a}</p>
+            </>
+          ))}
+        </>
+      )}
 
       {calc.tips && calc.tips.length > 0 && (
         <>
