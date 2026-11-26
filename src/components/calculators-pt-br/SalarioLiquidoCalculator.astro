@@ -12,6 +12,7 @@
   <div id="sl-result" class="result-box" hidden></div>
 </div>
 <script>
+  import { calcularInss, calcularIrrf, ANO_TABELAS } from '../../lib/impostos-br';
   document.getElementById('sl-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const bruto = parseFloat((document.getElementById('bruto') as HTMLInputElement).value) || 0;
@@ -21,24 +22,9 @@
     const beneficiosNaoTributaveis = parseFloat((document.getElementById('beneficiosNaoTributaveis') as HTMLInputElement).value) || 0;
     const fmt = (n: number) => 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-    // INSS 2024 - faixas progressivas
-    const faixasInss: [number, number][] = [[1412.00, 0.075], [2666.68, 0.09], [4000.03, 0.12], [7786.02, 0.14]];
-    let inss = 0, tetoAnterior = 0;
-    for (const [teto, aliquota] of faixasInss) {
-      if (bruto <= tetoAnterior) break;
-      inss += (Math.min(bruto, teto) - tetoAnterior) * aliquota;
-      tetoAnterior = teto;
-    }
-    inss = Math.min(inss, 908.85);
-
-    const baseIrrf = Math.max(0, bruto - inss - dependentes * 189.59);
-    let irrf = 0;
-    if (baseIrrf <= 2259.20) irrf = 0;
-    else if (baseIrrf <= 2826.65) irrf = baseIrrf * 0.075 - 169.44;
-    else if (baseIrrf <= 3751.05) irrf = baseIrrf * 0.15 - 381.44;
-    else if (baseIrrf <= 4664.68) irrf = baseIrrf * 0.225 - 662.77;
-    else irrf = baseIrrf * 0.275 - 896.00;
-    irrf = Math.max(0, irrf);
+    const inss = calcularInss(bruto);
+    const ir = calcularIrrf(bruto, inss, dependentes);
+    const irrf = ir.irrf;
 
     const liquidoEmConta = bruto - inss - irrf - valeTransporte - outrosDescontos;
     const valorTotalRecebido = liquidoEmConta + beneficiosNaoTributaveis;
@@ -48,12 +34,13 @@
     box.innerHTML = `
       <p><strong>Salário Bruto:</strong> ${fmt(bruto)}</p>
       <p>(-) Desconto INSS: -${fmt(inss)}</p>
-      <p>(-) Desconto IRRF: -${fmt(irrf)}</p>
+      <p>(-) Desconto IRRF: -${fmt(irrf)}${ir.reducao > 0 ? ` <small>(imposto pela tabela ${fmt(ir.impostoTabela)} − redução da Lei 15.270 ${fmt(ir.reducao)})</small>` : ''}</p>
       ${valeTransporte > 0 ? `<p>(-) Vale-Transporte: -${fmt(valeTransporte)}</p>` : ''}
       ${outrosDescontos > 0 ? `<p>(-) Outros Descontos: -${fmt(outrosDescontos)}</p>` : ''}
       <hr/>
       <p><strong>Salário Líquido em Conta: ${fmt(liquidoEmConta)}</strong></p>
       ${beneficiosNaoTributaveis > 0 ? `<p>(+) Benefícios Não-Tributáveis (VR/VA): +${fmt(beneficiosNaoTributaveis)}</p><p><strong>Valor Total Recebido: ${fmt(valorTotalRecebido)}</strong></p>` : ''}
+      <p><small>Tabelas de INSS e IRRF de ${ANO_TABELAS}, com a redução da Lei 15.270/2025 (IR zero para salários de até R$ 5.000).${ir.usouDescontoSimplificado ? ' Usado o desconto simplificado de R$ 607,20, mais vantajoso que as deduções legais.' : ''}</small></p>
     `;
   });
 </script>

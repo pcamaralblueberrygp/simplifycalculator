@@ -512,9 +512,9 @@ export const BLOG_POSTS_BR: BlogPostBr[] = [
   },
   {
     slug: 'como-calcular-salario-liquido-clt-inss-irrf',
-    title: 'Como Calcular seu Salário Líquido CLT: A Tabela do INSS e do IRRF Explicada',
+    title: 'Como Calcular seu Salário Líquido CLT em 2026: Tabelas do INSS e do IRRF e a Isenção até R$ 5 Mil',
     metaDescription:
-      'Entenda como o INSS e o IRRF são descontados do salário CLT por faixas progressivas, com exemplo numérico completo do salário bruto ao líquido.',
+      'Entenda como INSS e IRRF são descontados do salário CLT em 2026, incluindo a isenção de IR até R$ 5 mil, com exemplos completos do bruto ao líquido.',
     publishDate: '2026-08-10',
     category: 'Renda',
     image: {
@@ -536,31 +536,40 @@ export const BLOG_POSTS_BR: BlogPostBr[] = [
         heading: 'A tabela do INSS por faixa salarial',
         level: 'h3',
         body: [
-          'A tabela de contribuição usada como referência neste artigo (valores de 2025, reajustados anualmente pelo governo — sempre confira a tabela vigente no ano em que você está calculando) funciona assim: até R$ 1.518,00, a alíquota é de 7,5%; de R$ 1.518,01 até R$ 2.793,88, a alíquota sobre essa fatia é de 9%; de R$ 2.793,89 até R$ 4.190,83, a fatia paga 12%; e de R$ 4.190,84 até o teto do INSS (R$ 8.157,41), a fatia paga 14%. Salários acima do teto contribuem com um valor fixo máximo, já que o INSS não incide sobre o excedente.',
+          'A tabela vigente desde janeiro de 2026 (Portaria Interministerial MPS/MF nº 13, de 09/01/2026) funciona assim: até R$ 1.621,00, a alíquota é de 7,5%; de R$ 1.621,01 até R$ 2.902,84, a fatia paga 9%; de R$ 2.902,85 até R$ 4.354,27, a fatia paga 12%; e de R$ 4.354,28 até o teto de R$ 8.475,55, a fatia paga 14%. Quem ganha acima do teto contribui com o valor máximo, de cerca de R$ 988,09, já que o INSS não incide sobre o excedente. A tabela é reajustada todo início de ano junto com o salário mínimo.',
         ],
       },
       {
         heading: 'Como funciona o desconto do IRRF',
         level: 'h2',
         body: [
-          'O Imposto de Renda Retido na Fonte segue a mesma lógica progressiva, mas incide sobre a base de cálculo depois de descontado o INSS (e, se aplicável, dependentes ou pensão alimentícia) — não sobre o salário bruto. Essa é outra confusão comum: comparar a alíquota do IRRF diretamente com o salário bruto exagera o valor do imposto.',
+          'O Imposto de Renda Retido na Fonte segue a mesma lógica progressiva, mas incide sobre uma base de cálculo, não sobre o salário bruto. Desde 2026 há ainda uma terceira etapa: depois de calcular o imposto pela tabela, aplica-se a redução criada pela Lei 15.270/2025, que zera o IR de quem ganha até R$ 5.000 por mês e reduz parte do imposto de quem ganha até R$ 7.350.',
         ],
       },
       {
-        heading: 'Tabela do IRRF e a dedução simplificada',
+        heading: 'Tabela do IRRF de 2026, desconto simplificado e redução da Lei 15.270',
         level: 'h3',
         body: [
-          'Na tabela vigente em 2025, a base de cálculo até R$ 2.259,20 é isenta de IRRF. De R$ 2.259,21 até R$ 2.826,65, a alíquota é 7,5% com dedução de R$ 169,44. De R$ 2.826,66 até R$ 3.751,05, a alíquota é 15% com dedução de R$ 381,44. De R$ 3.751,06 até R$ 4.664,68, a alíquota é 22,5% com dedução de R$ 662,77. Acima de R$ 4.664,68, a alíquota é 27,5% com dedução de R$ 896,00. A "dedução" de cada faixa existe justamente para simplificar o cálculo progressivo em uma única multiplicação seguida de subtração, sem precisar somar faixa por faixa manualmente.',
-          'Além do desconto do INSS, a folha pode aplicar uma dedução simplificada fixa (que substitui a dedução por dependentes) quando ela for mais vantajosa para o trabalhador — o sistema da folha de pagamento normalmente calcula ambos os cenários e aplica o que resultar em menos imposto.',
+          'Na tabela mensal de 2026, a base de cálculo até R$ 2.428,80 é isenta. De R$ 2.428,81 até R$ 2.826,65, a alíquota é 7,5% com parcela a deduzir de R$ 182,16. De R$ 2.826,66 até R$ 3.751,05, 15% com dedução de R$ 394,16. De R$ 3.751,06 até R$ 4.664,68, 22,5% com dedução de R$ 675,49. Acima de R$ 4.664,68, 27,5% com dedução de R$ 908,73. A "dedução" de cada faixa existe justamente para simplificar o cálculo progressivo em uma única multiplicação seguida de subtração, sem precisar somar faixa por faixa manualmente.',
+          'A base de cálculo é o salário bruto menos o maior destes dois valores: as deduções legais (INSS, R$ 189,59 por dependente e eventual pensão alimentícia) ou o desconto simplificado mensal de R$ 607,20. A folha calcula os dois e usa o que der menos imposto.',
+          'Por último vem a redução da Lei 15.270/2025, calculada sobre o salário bruto, e não sobre a base: até R$ 5.000, ela é de até R$ 312,89, o suficiente para zerar o imposto; entre R$ 5.000,01 e R$ 7.350, a redução é de R$ 978,62 − (0,133145 × salário bruto), diminuindo até sumir; acima de R$ 7.350 não há redução.',
         ],
       },
       {
-        heading: 'Exemplo prático completo: salário bruto de R$ 5.000',
+        heading: 'Exemplo 1: salário bruto de R$ 5.000 (IR zero em 2026)',
         level: 'h2',
         body: [
-          'Primeiro, o INSS. Aplicando as quatro faixas: 7,5% sobre R$ 1.518,00 = R$ 113,85; 9% sobre a fatia de R$ 1.518,01 a R$ 2.793,88 (R$ 1.275,88) = R$ 114,83; 12% sobre a fatia de R$ 2.793,89 a R$ 4.190,83 (R$ 1.396,95) = R$ 167,63; e 14% sobre a fatia de R$ 4.190,84 a R$ 5.000,00 (R$ 809,17) = R$ 113,28. Somando as quatro parcelas, o desconto de INSS totaliza R$ 509,59.',
-          'Em seguida, o IRRF. A base de cálculo é o salário bruto menos o INSS: R$ 5.000,00 − R$ 509,59 = R$ 4.490,41. Esse valor cai na faixa de 22,5% com dedução de R$ 662,77: R$ 4.490,41 × 22,5% = R$ 1.010,34; subtraindo a dedução, o IRRF fica em R$ 347,57.',
-          'O salário líquido final é R$ 5.000,00 − R$ 509,59 (INSS) − R$ 347,57 (IRRF) = R$ 4.142,84. Note que a alíquota "nominal" da faixa do IRRF é 22,5%, mas o imposto efetivamente pago representa apenas 6,95% do salário bruto (R$ 347,57 ÷ R$ 5.000,00) — é o efeito da progressividade e da dedução, que costuma surpreender quem espera um desconto bem maior ao ver "22,5%" na própria faixa salarial.',
+          'Primeiro, o INSS, faixa a faixa: 7,5% sobre R$ 1.621,00 = R$ 121,58; 9% sobre a fatia de R$ 1.281,84 = R$ 115,37; 12% sobre a fatia de R$ 1.451,43 = R$ 174,17; e 14% sobre a fatia de R$ 645,73 (de R$ 4.354,28 a R$ 5.000,00) = R$ 90,40. Somando as fatias sem arredondar cada uma, o total é R$ 501,51.',
+          'Em seguida, a base do IR. As deduções legais somam R$ 501,51, menos que o desconto simplificado de R$ 607,20, então vale o simplificado: R$ 5.000,00 − R$ 607,20 = R$ 4.392,80. Na faixa de 22,5%: R$ 4.392,80 × 22,5% − R$ 675,49 = R$ 312,89 de imposto pela tabela.',
+          'Por fim, a redução: como o salário bruto é de até R$ 5.000, ela é de até R$ 312,89 — exatamente o imposto calculado. O IRRF fica em zero, e o salário líquido é R$ 5.000,00 − R$ 501,51 = R$ 4.498,49. Pelas tabelas de 2025, esse mesmo salário teria cerca de R$ 326 de IR retido todo mês.',
+        ],
+      },
+      {
+        heading: 'Exemplo 2: salário bruto de R$ 6.000 (redução parcial)',
+        level: 'h2',
+        body: [
+          'O INSS soma R$ 641,51 (as três primeiras faixas, R$ 411,12, mais 14% sobre R$ 1.645,73, ou R$ 230,40). Agora as deduções legais (R$ 641,51) são maiores que o desconto simplificado, então a base é R$ 6.000,00 − R$ 641,51 = R$ 5.358,49.',
+          'Pela tabela: R$ 5.358,49 × 27,5% − R$ 908,73 = R$ 564,85. A redução, calculada sobre o bruto, é R$ 978,62 − (0,133145 × R$ 6.000) = R$ 179,75. O IRRF final fica em R$ 385,10, e o salário líquido em R$ 6.000,00 − R$ 641,51 − R$ 385,10 = R$ 4.973,39.',
         ],
       },
       {
@@ -575,6 +584,7 @@ export const BLOG_POSTS_BR: BlogPostBr[] = [
         level: 'h2',
         body: [
           'Como tanto o INSS quanto o IRRF são progressivos, receber um aumento que empurra parte do salário para uma faixa mais alta nunca reduz o valor líquido total recebido — a alíquota maior incide apenas sobre a fatia que ultrapassa o novo limite, nunca sobre o salário inteiro retroativamente. Esse medo ("vou ganhar mais mas vou receber menos por causa do imposto") é comum, mas matematicamente não acontece em nenhum dos dois tributos.',
+          'Um detalhe de 2026: entre R$ 5.000 e R$ 7.350, cada real a mais de salário também reduz o desconto da Lei 15.270. Por isso, nessa faixa, o aumento líquido é menor do que parece: de cada R$ 100 de aumento, sobram cerca de R$ 45 a R$ 50. Ainda assim, ganhar mais sempre resulta em mais dinheiro no bolso.',
         ],
       },
       {
@@ -653,9 +663,9 @@ export const BLOG_POSTS_BR: BlogPostBr[] = [
         heading: 'Exemplo numérico: PGBL x VGBL em 12 anos de aportes mensais',
         level: 'h2',
         body: [
-          'Considere um aporte de R$ 500 por mês (R$ 6.000 por ano) durante 12 anos, com retorno de 8% ao ano, dentro do limite dedutível de 12% da renda em ambos os cenários. Ao final do período, o saldo acumulado seria de aproximadamente R$ 113.850 — dos quais R$ 72.000 vieram das contribuições e cerca de R$ 41.850 são rendimento. Como o prazo passou de 10 anos, a alíquota da tabela regressiva aplicável é de 10%.',
-          'No VGBL, o IR incide só sobre o rendimento: 10% de R$ 41.850 = R$ 4.185, deixando um resgate líquido de aproximadamente R$ 109.665. No PGBL, o IR incide sobre o saldo total resgatado: 10% de R$ 113.850 = R$ 11.385, resultando em R$ 102.465 líquidos — à primeira vista, R$ 7.200 a menos que o VGBL.',
-          'Mas o PGBL também gerou economia de imposto ano a ano: supondo uma alíquota marginal de 27,5% (declaração completa, faixa mais alta), deduzir R$ 6.000 por ano reduziu o IR devido em R$ 1.650 por ano, totalizando R$ 19.800 ao longo dos 12 anos — dinheiro que ficou disponível para o contribuinte gastar, investir ou reaportar a cada ano. Somando essa economia (de forma conservadora, sem reinvestir) ao resgate líquido do PGBL, o total chega a R$ 122.265, cerca de R$ 12.600 acima do VGBL nesse cenário específico.',
+          'Considere um aporte de R$ 500 por mês (R$ 6.000 por ano) durante 12 anos, com retorno de 8% ao ano, dentro do limite dedutível de 12% da renda em ambos os cenários. Ao final do período, o saldo acumulado seria de aproximadamente R$ 117.980 — dos quais R$ 72.000 vieram das contribuições e cerca de R$ 45.980 são rendimento. Para simplificar, vamos aplicar a alíquota de 10% da tabela regressiva a todo o saldo. Na prática, as parcelas aportadas há menos de 10 anos pagariam um pouco mais, mas isso afeta PGBL e VGBL da mesma forma e não muda a conclusão.',
+          'No VGBL, o IR incide só sobre o rendimento: 10% de R$ 45.980 = R$ 4.598, deixando um resgate líquido de aproximadamente R$ 113.382. No PGBL, o IR incide sobre o saldo total resgatado: 10% de R$ 117.980 = R$ 11.798, resultando em R$ 106.182 líquidos — à primeira vista, R$ 7.200 a menos que o VGBL.',
+          'Mas o PGBL também gerou economia de imposto ano a ano: supondo uma alíquota marginal de 27,5% (declaração completa, faixa mais alta), deduzir R$ 6.000 por ano reduziu o IR devido em R$ 1.650 por ano, totalizando R$ 19.800 ao longo dos 12 anos — dinheiro que ficou disponível para o contribuinte gastar, investir ou reaportar a cada ano. Somando essa economia (de forma conservadora, sem reinvestir) ao resgate líquido do PGBL, o total chega a R$ 125.982, cerca de R$ 12.600 acima do VGBL nesse cenário específico.',
           'A conclusão prática: o PGBL só supera o VGBL quando o contribuinte realmente aproveita a dedução (declaração completa, base de INSS suficiente, dentro do limite de 12%) e está em uma alíquota marginal alta o bastante para a economia anual compensar a tributação maior no resgate. Fora dessas condições — declaração simplificada, contribuições acima do teto dedutível, ou alíquota marginal baixa — o VGBL tende a deixar mais dinheiro no bolso no final.',
         ],
       },
@@ -733,21 +743,21 @@ export const BLOG_POSTS_BR: BlogPostBr[] = [
         heading: 'O que acontece na bola de neve',
         level: 'h3',
         body: [
-          'Seguindo a ordem do menor saldo, a bola de neve ataca primeiro o financiamento do carro (quitado no mês 3), depois o empréstimo pessoal (quitado no mês 9) e só então o cartão rotativo, que fica recebendo apenas o pagamento mínimo durante os primeiros 8 meses — tempo suficiente para acumular juros consideráveis a 14% ao mês sobre um saldo de R$ 9.000. A dívida inteira é quitada no mês 14, com um total de R$ 14.515,65 pagos em juros ao longo de todo o processo.',
+          'Seguindo a ordem do menor saldo, a bola de neve ataca primeiro o financiamento do carro (quitado no mês 3), depois o empréstimo pessoal (quitado no mês 8) e só então o cartão rotativo, que recebe apenas o pagamento mínimo durante os primeiros 8 meses — tempo suficiente para acumular juros consideráveis a 14% ao mês sobre um saldo de R$ 9.000. A última dívida é quitada no mês 12, com um total de R$ 12.793,31 pagos em juros ao longo de todo o processo.',
         ],
       },
       {
         heading: 'O que acontece na avalanche',
         level: 'h3',
         body: [
-          'Seguindo a ordem da maior taxa, a avalanche ataca o cartão rotativo desde o primeiro mês, quitando-o no mês 8 — quase a metade do tempo que ele levaria na bola de neve — e deixando o empréstimo pessoal e o financiamento do carro (as dívidas mais baratas) para depois. O resultado final também leva 14 meses no total, mas o total pago em juros cai para R$ 8.179,28 — uma economia de R$ 6.336,37 só pela ordem em que as dívidas foram atacadas, sem nenhuma mudança no valor mensal disponível.',
+          'Seguindo a ordem da maior taxa, a avalanche ataca o cartão rotativo desde o primeiro mês, quitando-o no mês 8, quatro meses antes do que na bola de neve, e deixando o empréstimo pessoal e o financiamento do carro (as dívidas mais baratas) para depois. Tudo fica quitado no mês 10, dois meses antes, e o total pago em juros cai para R$ 7.877,99: uma economia de R$ 4.915,32 só pela ordem em que as dívidas foram atacadas, sem nenhuma mudança no valor mensal disponível.',
         ],
       },
       {
         heading: 'Por que a diferença é tão grande neste exemplo',
         level: 'h2',
         body: [
-          'A diferença de mais de R$ 6.300 vem inteiramente do tempo que o rotativo do cartão — de longe a dívida mais cara do exemplo — passa acumulando juros de 14% ao mês sobre um saldo alto. Quanto maior a taxa de uma dívida e quanto mais tempo ela permanece intocada recebendo só o pagamento mínimo, maior o custo de deixá-la por último. Esse efeito se intensifica ainda mais quando a dívida mais cara também tem o maior saldo, como costuma acontecer no rotativo do cartão e no cheque especial no Brasil.',
+          'A diferença de quase R$ 4.900 vem inteiramente do tempo que o rotativo do cartão — de longe a dívida mais cara do exemplo — passa acumulando juros de 14% ao mês sobre um saldo alto. Quanto maior a taxa de uma dívida e quanto mais tempo ela permanece intocada recebendo só o pagamento mínimo, maior o custo de deixá-la por último. Esse efeito se intensifica ainda mais quando a dívida mais cara também tem o maior saldo, como costuma acontecer no rotativo do cartão e no cheque especial no Brasil.',
         ],
       },
       {
@@ -1185,7 +1195,7 @@ export const BLOG_POSTS_BR: BlogPostBr[] = [
         heading: 'Exemplo 2: salário de R$ 4.500 e o efeito da isenção',
         level: 'h3',
         body: [
-          'O INSS sobre R$ 4.500 soma R$ 431,52 (as três primeiras faixas mais 14% sobre R$ 145,73). A base do IR fica em R$ 4.068,48, o que pela tabela daria R$ 239,92 de imposto. Como o rendimento tributável está abaixo de R$ 5 mil, o redutor zera esse valor. Resultado: primeira parcela de R$ 2.250,00 e segunda de R$ 1.818,48, um 13º líquido total de R$ 4.068,48. Em 2025, esse mesmo trabalhador teria perdido algo próximo de R$ 240 para o Imposto de Renda.',
+          'O INSS sobre R$ 4.500 soma R$ 431,51 (as três primeiras faixas mais 14% sobre R$ 145,73). A base do IR fica em R$ 4.068,49, o que pela tabela daria R$ 239,92 de imposto. Como o rendimento tributável está abaixo de R$ 5 mil, o redutor zera esse valor. Resultado: primeira parcela de R$ 2.250,00 e segunda de R$ 1.818,49, um 13º líquido total de R$ 4.068,49. Em 2025, esse mesmo trabalhador teria perdido cerca de R$ 250 para o Imposto de Renda.',
         ],
       },
       {

@@ -113,7 +113,7 @@ export const BLOG_POSTS: BlogPost[] = [
         heading: 'A real example',
         level: 'h2',
         body: [
-          "Take a $5,000 balance at a fairly typical 22% APR, paying only the minimum (assume 2% of balance or $35, whichever is greater). It takes roughly 20+ years to pay off, and the total interest paid over that time can exceed the original balance — meaning you effectively pay for the same purchase twice. Our Credit Card Payoff Calculator lets you plug in your own balance, rate, and a fixed payment amount to see this play out with your real numbers instead of a generic example.",
+          "Take a $5,000 balance at a fairly typical 22% APR, paying only the minimum (assume 2% of balance or $35, whichever is greater). Because the minimum shrinks as the balance shrinks, it takes about 767 months (more than 60 years) to pay off, and the total interest comes to roughly $38,800, almost eight times the original balance. That is the worst case: issuers that set the minimum at 1% of the balance plus that month's interest would get you out in about 16 years (197 months), still with roughly $7,700 in interest. Our Credit Card Payoff Calculator lets you plug in your own balance, rate, and a fixed payment amount to see this play out with your real numbers instead of a generic example.",
         ],
       },
       {

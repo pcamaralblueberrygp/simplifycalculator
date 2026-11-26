@@ -18,6 +18,7 @@
   <div id="cp-result" class="result-box" hidden></div>
 </div>
 <script>
+  import { calcularInss, calcularIrrf } from '../../lib/impostos-br';
   document.getElementById('cp-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const get = (id: string) => parseFloat((document.getElementById(id) as HTMLInputElement).value) || 0;
@@ -25,23 +26,9 @@
     const bruto = get('bruto');
     const beneficiosExtras = get('beneficiosExtras');
 
-    // CLT: INSS progressivo + IRRF
-    const faixasInss: [number, number][] = [[1412.00, 0.075], [2666.68, 0.09], [4000.03, 0.12], [7786.02, 0.14]];
-    let inss = 0, tetoAnterior = 0;
-    for (const [teto, aliquota] of faixasInss) {
-      if (bruto <= tetoAnterior) break;
-      inss += (Math.min(bruto, teto) - tetoAnterior) * aliquota;
-      tetoAnterior = teto;
-    }
-    inss = Math.min(inss, 908.85);
-    const baseIrrf = Math.max(0, bruto - inss);
-    let irrf = 0;
-    if (baseIrrf <= 2259.20) irrf = 0;
-    else if (baseIrrf <= 2826.65) irrf = baseIrrf * 0.075 - 169.44;
-    else if (baseIrrf <= 3751.05) irrf = baseIrrf * 0.15 - 381.44;
-    else if (baseIrrf <= 4664.68) irrf = baseIrrf * 0.225 - 662.77;
-    else irrf = baseIrrf * 0.275 - 896.00;
-    irrf = Math.max(0, irrf);
+    // CLT: INSS e IRRF pelas regras vigentes (src/lib/impostos-br.ts)
+    const inss = calcularInss(bruto);
+    const irrf = calcularIrrf(bruto, inss).irrf;
     const liquidoClt = bruto - inss - irrf;
     const beneficiosPadrao = (bruto / 12) + ((bruto / 12) / 3) + (bruto * 0.08);
     const valorTotalClt = liquidoClt + beneficiosPadrao + beneficiosExtras;
