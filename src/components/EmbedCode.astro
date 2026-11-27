@@ -1,0 +1,96 @@
+---
+// "Add this calculator to your site" box shown on every calculator page.
+// The snippet puts the credit link in the host page itself (a link inside the
+// iframe would not count as a link from that site).
+interface Props {
+  title: string;
+  embedUrl: string; // absolute URL of the /embed/ page
+  calcUrl: string; // absolute URL of the full calculator page
+  lang: 'en' | 'pt-BR';
+}
+
+const { title, embedUrl, calcUrl, lang } = Astro.props as Props;
+const pt = lang === 'pt-BR';
+
+const resizer =
+  "<script>window.addEventListener('message',function(e){if(e.origin!=='https://simplifycalculator.com'||!e.data||!e.data.scHeight)return;" +
+  "document.querySelectorAll('iframe[data-simplifycalculator]').forEach(function(f){if(f.contentWindow===e.source)f.style.height=e.data.scHeight+'px';});});</script>";
+
+const snippet =
+  `<iframe data-simplifycalculator src="${embedUrl}" title="${title}" width="100%" height="640" loading="lazy" style="border:0;max-width:760px;width:100%"></iframe>\n` +
+  `<p style="font-size:13px;margin:4px 0 0">${pt ? `${title} por` : `${title} by`} <a href="${calcUrl}">SimplifyCalculator</a></p>\n` +
+  resizer;
+
+const t = pt
+  ? {
+      label: 'Para o seu site',
+      heading: 'Coloque esta calculadora no seu site',
+      body: 'Use esta calculadora de graça no seu blog ou site. Copie o código abaixo e cole no HTML da página. Ela se ajusta à largura disponível e a altura acompanha os resultados.',
+      copy: 'Copiar código',
+      copied: 'Copiado!',
+      note: 'Grátis, sem cadastro e sem anúncios dentro da calculadora. Só pedimos que mantenha o link de crédito.',
+    }
+  : {
+      label: 'For your website',
+      heading: 'Add this calculator to your site',
+      body: 'Use this calculator for free on your blog or website. Copy the code below and paste it into your page’s HTML. It fits the available width, and the height follows the results.',
+      copy: 'Copy code',
+      copied: 'Copied!',
+      note: 'Free, no signup, and no ads inside the calculator. We only ask that you keep the credit link.',
+    };
+---
+
+<div class="embed-box">
+  <div class="lp-section-label" style="margin-top: 32px">{t.label}</div>
+  <h2>{t.heading}</h2>
+  <p>{t.body}</p>
+  <textarea class="embed-code" readonly rows="5" aria-label={t.heading}>{snippet}</textarea>
+  <button type="button" class="embed-copy" data-copied={t.copied}>{t.copy}</button>
+  <p class="embed-note">{t.note}</p>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.embed-copy').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const box = btn.previousElementSibling as HTMLTextAreaElement;
+      const original = btn.textContent;
+      try {
+        await navigator.clipboard.writeText(box.value);
+      } catch {
+        box.select();
+        document.execCommand('copy');
+      }
+      btn.textContent = btn.dataset.copied ?? original;
+      setTimeout(() => (btn.textContent = original), 2000);
+    });
+  });
+</script>
+
+<style>
+  .embed-box textarea.embed-code {
+    width: 100%;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--ink);
+    background: var(--bg-soft);
+    border: 1px solid var(--border-input);
+    border-radius: 8px;
+    padding: 10px 12px;
+    resize: vertical;
+    margin: 8px 0 10px;
+  }
+  .embed-box .embed-copy {
+    background: var(--blue);
+    color: #fff;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    cursor: pointer;
+  }
+  .embed-box .embed-copy:hover { background: #1a52c0; }
+  .embed-box .embed-note { font-size: 13px; color: var(--text-muted); margin-top: 10px; }
+</style>

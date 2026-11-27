@@ -1,34 +1,9 @@
 ---
+import EmbedCode from '../../components/EmbedCode.astro';
+import { EN_CALC_COMPONENTS } from '../../data/calc-components';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { CALCULATORS, type CalcType } from '../../data/calculators';
 
-import LoanCalculator from '../../components/calculators/LoanCalculator.astro';
-import MortgageCalculator from '../../components/calculators/MortgageCalculator.astro';
-import CompoundInterestCalculator from '../../components/calculators/CompoundInterestCalculator.astro';
-import SimpleInterestCalculator from '../../components/calculators/SimpleInterestCalculator.astro';
-import RoiCalculator from '../../components/calculators/RoiCalculator.astro';
-import SavingsGoalCalculator from '../../components/calculators/SavingsGoalCalculator.astro';
-import DebtPayoffCalculator from '../../components/calculators/DebtPayoffCalculator.astro';
-import RetirementCalculator from '../../components/calculators/RetirementCalculator.astro';
-import AmortizationCalculator from '../../components/calculators/AmortizationCalculator.astro';
-import CreditCardPayoffCalculator from '../../components/calculators/CreditCardPayoffCalculator.astro';
-import BudgetCalculator from '../../components/calculators/BudgetCalculator.astro';
-import NetWorthCalculator from '../../components/calculators/NetWorthCalculator.astro';
-import EmergencyFundCalculator from '../../components/calculators/EmergencyFundCalculator.astro';
-import InflationCalculator from '../../components/calculators/InflationCalculator.astro';
-import TipCalculator from '../../components/calculators/TipCalculator.astro';
-import SavingsInterestCalculator from '../../components/calculators/SavingsInterestCalculator.astro';
-import BreakEvenCalculator from '../../components/calculators/BreakEvenCalculator.astro';
-import RuleOf72Calculator from '../../components/calculators/RuleOf72Calculator.astro';
-import HourlyToSalaryCalculator from '../../components/calculators/HourlyToSalaryCalculator.astro';
-import DividendYieldCalculator from '../../components/calculators/DividendYieldCalculator.astro';
-import StockReturnCalculator from '../../components/calculators/StockReturnCalculator.astro';
-import RentVsBuyCalculator from '../../components/calculators/RentVsBuyCalculator.astro';
-import PaycheckCalculator from '../../components/calculators/PaycheckCalculator.astro';
-import DebtToIncomeCalculator from '../../components/calculators/DebtToIncomeCalculator.astro';
-import CollegeSavingsCalculator from '../../components/calculators/CollegeSavingsCalculator.astro';
-import HomeAffordabilityCalculator from '../../components/calculators/HomeAffordabilityCalculator.astro';
-import FreelanceRateCalculator from '../../components/calculators/FreelanceRateCalculator.astro';
 
 export function getStaticPaths() {
   return CALCULATORS.map((calc) => ({
@@ -37,35 +12,7 @@ export function getStaticPaths() {
   }));
 }
 
-const componentMap: Record<CalcType, any> = {
-  loan: LoanCalculator,
-  mortgage: MortgageCalculator,
-  compoundInterest: CompoundInterestCalculator,
-  simpleInterest: SimpleInterestCalculator,
-  roi: RoiCalculator,
-  savingsGoal: SavingsGoalCalculator,
-  debtPayoff: DebtPayoffCalculator,
-  retirement: RetirementCalculator,
-  amortization: AmortizationCalculator,
-  creditCardPayoff: CreditCardPayoffCalculator,
-  budget: BudgetCalculator,
-  netWorth: NetWorthCalculator,
-  emergencyFund: EmergencyFundCalculator,
-  inflation: InflationCalculator,
-  tip: TipCalculator,
-  savingsInterest: SavingsInterestCalculator,
-  breakEven: BreakEvenCalculator,
-  ruleOf72: RuleOf72Calculator,
-  hourlyToSalary: HourlyToSalaryCalculator,
-  dividendYield: DividendYieldCalculator,
-  stockReturn: StockReturnCalculator,
-  rentVsBuy: RentVsBuyCalculator,
-  paycheck: PaycheckCalculator,
-  debtToIncome: DebtToIncomeCalculator,
-  collegeSavings: CollegeSavingsCalculator,
-  homeAffordability: HomeAffordabilityCalculator,
-  freelanceRate: FreelanceRateCalculator,
-};
+const componentMap = EN_CALC_COMPONENTS;
 
 const { calc } = Astro.props;
 const CalcWidget = componentMap[calc.calcType];
@@ -165,6 +112,13 @@ const faqJsonLd = {
           </ul>
         </>
       )}
+
+      <EmbedCode
+        title={calc.title}
+        embedUrl={`https://simplifycalculator.com/embed/${calc.slug}/`}
+        calcUrl={`https://simplifycalculator.com/calculators/${calc.slug}/`}
+        lang="en"
+      />
 
       <p class="disclaimer">
         Results are estimates for general informational purposes only and do not constitute

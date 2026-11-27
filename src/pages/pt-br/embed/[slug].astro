@@ -1,0 +1,22 @@
+---
+import EmbedLayout from '../../../layouts/EmbedLayout.astro';
+import { CALCULATORS_BR } from '../../../data/calculators-pt-br';
+import { BR_CALC_COMPONENTS } from '../../../data/calc-components';
+
+export function getStaticPaths() {
+  return CALCULATORS_BR.map((calc) => ({ params: { slug: calc.slug }, props: { calc } }));
+}
+
+const { calc } = Astro.props;
+const CalcWidget = BR_CALC_COMPONENTS[calc.calcType];
+const calcUrl = `https://simplifycalculator.com/pt-br/calculadoras/${calc.slug}/`;
+---
+
+<EmbedLayout title={calc.title} calcUrl={calcUrl} lang="pt-BR">
+  <div class="calc-card">
+    <div class="calc-card-header">{calc.shortTitle}</div>
+    <div class="calc-card-body">
+      <CalcWidget />
+    </div>
+  </div>
+</EmbedLayout>

@@ -1,0 +1,62 @@
+---
+// Minimal layout for calculators embedded on other sites via <iframe>.
+// No analytics, ads or cookie banner (they must not run inside third-party
+// pages), noindex so the copy never competes with the real calculator page,
+// and a canonical pointing back to that page.
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  calcUrl: string; // absolute URL of the full calculator page
+  lang: 'en' | 'pt-BR';
+}
+
+const { title, calcUrl, lang } = Astro.props as Props;
+const credit = lang === 'pt-BR' ? 'Calculadora gratuita do' : 'Free calculator by';
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, follow" />
+    <title>{title} | SimplifyCalculator</title>
+    <link rel="canonical" href={calcUrl} />
+    <style>
+      html, body { background: transparent; margin: 0; }
+      .embed-wrap { padding: 4px; }
+      .embed-wrap .calc-card { margin-bottom: 8px; box-shadow: none; }
+      .embed-credit {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 12.5px;
+        color: var(--text-muted);
+        text-align: right;
+        padding: 0 6px 4px;
+      }
+      .embed-credit a { color: var(--blue); font-weight: 600; text-decoration: none; }
+    </style>
+  </head>
+  <body>
+    <div class="embed-wrap">
+      <slot />
+      <p class="embed-credit">{credit} <a href={calcUrl} target="_blank" rel="noopener">SimplifyCalculator</a></p>
+    </div>
+    <script is:inline>
+      // Tell the host page our height so its <iframe> can grow with the results.
+      (function () {
+        var last = 0;
+        function send() {
+          var h = document.documentElement.scrollHeight;
+          if (h !== last && window.parent !== window) {
+            last = h;
+            window.parent.postMessage({ scHeight: h }, '*');
+          }
+        }
+        if ('ResizeObserver' in window) new ResizeObserver(send).observe(document.body);
+        window.addEventListener('load', send);
+        send();
+      })();
+    </script>
+  </body>
+</html>
