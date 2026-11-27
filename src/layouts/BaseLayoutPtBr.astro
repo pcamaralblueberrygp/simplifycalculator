@@ -8,7 +8,10 @@ interface Props {
 }
 
 const { title, description, path = '/pt-br/' } = Astro.props as Props;
-const canonical = new URL(path, 'https://simplifycalculator.com').toString();
+// Cloudflare Pages serves pages at /path/ and 308-redirects /path to it, so the
+// canonical must carry the trailing slash (matching the sitemap).
+const canonicalPath = path.endsWith('/') || /\.[a-z0-9]+$/i.test(path) ? path : `${path}/`;
+const canonical = new URL(canonicalPath, 'https://simplifycalculator.com').toString();
 const siteName = 'SimplifyCalculator Brasil';
 ---
 
