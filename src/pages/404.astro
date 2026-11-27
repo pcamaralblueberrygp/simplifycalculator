@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page Not Found"
+  description="The page you were looking for doesn't exist. Browse our free financial calculators or read the blog."
+  path="/404"
+>
+  <div class="static-page">
+    <h1>Page not found</h1>
+    <p>
+      The page you were looking for doesn't exist or has moved. These are good places to start:
+    </p>
+    <ul>
+      <li><a href="/">All calculators</a></li>
+      <li><a href="/blog/">Blog</a></li>
+    </ul>
+    <p lang="pt-BR">
+      Procurando a versão em português? Veja as <a href="/pt-br/">calculadoras</a>
+      e o <a href="/pt-br/blog/">blog</a> em português.
+    </p>
+  </div>
+</BaseLayout>
