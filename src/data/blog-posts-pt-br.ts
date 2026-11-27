@@ -1303,6 +1303,91 @@ export const BLOG_POSTS_BR: BlogPostBr[] = [
       { label: 'Calculadora de Salário Líquido CLT', href: '/pt-br/calculadoras/calculadora-de-salario-liquido' },
     ],
   },
+  {
+    slug: 'a-vista-com-desconto-ou-parcelado-sem-juros-qual-compensa',
+    title: 'À Vista com Desconto ou Parcelado "Sem Juros"? O Desconto Mínimo que Faz Valer a Pena Pagar de Uma Vez',
+    metaDescription:
+      'Parcelado sem juros nem sempre é vantagem. Veja como calcular o juro escondido no desconto à vista e qual desconto mínimo vence um CDB a 100% do CDI.',
+    publishDate: '2026-11-27',
+    category: 'Planejamento',
+    image: {
+      src: '/blog/a-vista-com-desconto-ou-parcelado-sem-juros-qual-compensa.svg',
+      alt: 'Banner azul-marinho comparando pagamento à vista com desconto no Pix e compra parcelada sem juros no cartão de crédito, com a pergunta de qual desconto mínimo compensa frente ao rendimento do CDI',
+    },
+    intro:
+      'Na Black Friday e nas compras de fim de ano, quase toda loja oferece a mesma escolha: pagar à vista no Pix com um desconto ou dividir em até 10 ou 12 vezes "sem juros" no cartão. A intuição popular diz que parcelar sem juros é sempre melhor, porque o dinheiro fica rendendo. A intuição oposta diz que desconto é dinheiro garantido no bolso. As duas estão certas em alguns casos e erradas em outros. O que decide é uma comparação simples entre o tamanho do desconto, o número de parcelas e quanto o seu dinheiro rende de verdade, depois do Imposto de Renda. Abaixo está essa conta, com números, e uma tabela para você decidir em segundos na hora do checkout.',
+    sections: [
+      {
+        heading: 'Todo "sem juros" com desconto à vista tem juro embutido',
+        level: 'h2',
+        body: [
+          'Desde a Lei nº 13.455/2017, o comércio pode cobrar preços diferentes conforme o meio e o prazo de pagamento. Isso legalizou uma prática antiga: o preço "cheio" já embute o custo que a loja tem para receber parcelado. Quando você divide no cartão, o lojista paga a taxa da maquininha e, muitas vezes, antecipa os recebíveis com a adquirente, pagando juros por isso. O Pix custa quase nada para ele. Por isso a loja consegue oferecer 5%, 10% ou até 15% de desconto à vista e ainda sair ganhando.',
+          'Do seu lado, isso significa que a pergunta certa não é "tem juros ou não tem", e sim "qual é o preço real do dinheiro que a loja está me emprestando". Se a TV custa R$ 2.850 à vista ou 10 × R$ 300 no cartão, você está pegando R$ 2.850 emprestados e devolvendo R$ 3.000 em dez meses. Esse empréstimo tem uma taxa, e ela pode ser maior ou menor do que o rendimento do seu dinheiro aplicado.',
+        ],
+      },
+      {
+        heading: 'Como calcular a taxa escondida no parcelamento',
+        level: 'h2',
+        body: [
+          'A taxa implícita é a taxa de juros que iguala o valor à vista ao fluxo das parcelas, exatamente como em um financiamento pela Tabela Price. No exemplo de R$ 2.850 à vista contra 10 parcelas de R$ 300 (com a primeira 30 dias depois da compra), a taxa é de cerca de 0,94% ao mês, ou 11,9% ao ano. Com desconto de 3%, ela cai para 0,56% ao mês (6,9% ao ano). Com 10% de desconto, sobe para 1,96% ao mês (26,3% ao ano). Com 15%, chega a 3,07% ao mês, o equivalente a 43,7% ao ano, uma taxa digna de crédito pessoal.',
+          'Você pode chegar a esses números na Calculadora Tabela Price: informe o valor à vista como valor financiado, o número de parcelas, e ajuste a taxa até a parcela bater com a oferta da loja. A taxa que fizer a parcela coincidir é o custo real de parcelar.',
+        ],
+      },
+      {
+        heading: 'Com o que comparar: o rendimento líquido, não a SELIC',
+        level: 'h3',
+        body: [
+          'Parcelar só compensa se o dinheiro que você deixa de pagar agora render mais do que essa taxa implícita. E o rendimento que importa é o líquido. Com CDI em torno de 13,9% ao ano, um CDB de liquidez diária a 100% do CDI rende cerca de 1,09% ao mês bruto. Como cada parcela é resgatada em menos de 180 dias ou entre 181 e 360 dias, o Imposto de Renda da tabela regressiva leva 22,5% ou 20% do rendimento, e o ganho efetivo fica entre 0,85% e 0,87% ao mês. Na poupança, que hoje rende perto de 8% ao ano isenta de IR, o ganho é de cerca de 0,64% ao mês.',
+          'Repare que a comparação não é com a SELIC "cheia" que aparece no noticiário. Quem compara o desconto com 14% ao ano superestima a vantagem de parcelar e acaba escolhendo errado nas ofertas de desconto intermediário.',
+        ],
+      },
+      {
+        heading: 'O desconto mínimo que faz o à vista vencer',
+        level: 'h2',
+        body: [
+          'Simulamos o caso de quem tem o dinheiro disponível e escolhe entre pagar à vista ou deixar o valor em um CDB a 100% do CDI, resgatando a cada mês só o necessário para a fatura. O desconto de equilíbrio é aquele em que as duas escolhas terminam empatadas. Acima dele, pague à vista. Abaixo, parcele e deixe o dinheiro rendendo.',
+        ],
+        table: {
+          headers: ['Parcelas sem juros', 'Desconto de equilíbrio (CDB 100% do CDI)', 'Desconto de equilíbrio (poupança)'],
+          rows: [
+            ['3x', '1,7%', '1,3%'],
+            ['6x', '2,9%', '2,2%'],
+            ['10x', '4,6%', '3,5%'],
+            ['12x', '5,4%', '4,1%'],
+          ],
+          caption: 'Premissas: CDI de 13,9% ao ano, IR pela tabela regressiva, poupança a 8% ao ano isenta, primeira parcela 30 dias após a compra.',
+        },
+      },
+      {
+        heading: 'Na prática: a TV de R$ 3.000',
+        level: 'h3',
+        body: [
+          'Com 5% de desconto em 10 parcelas, a decisão é quase um empate. Pagando à vista, você economiza R$ 150 hoje, que aplicados viram cerca de R$ 164 em dez meses. Parcelando, sobram aproximadamente R$ 151 no CDB ao fim das dez faturas. A diferença de R$ 13 é tão pequena que outros fatores, como cashback do cartão ou a segurança de manter a reserva intacta, podem decidir. Já com 10% de desconto, o à vista vence com folga: a economia de R$ 300 é mais que o dobro do que o dinheiro renderia. E com 3%, parcelar é a escolha melhor, porque o empréstimo da loja sai mais barato do que o rendimento do CDB.',
+        ],
+      },
+      {
+        heading: 'Quatro situações em que a tabela não basta',
+        level: 'h2',
+        body: [
+          'Primeiro, a conta só vale se o dinheiro realmente ficar aplicado. Se o valor que "sobrou" por parcelar for gasto em outra coisa, você trocou um desconto certo por uma dívida de dez meses. Segundo, o parcelamento ocupa o limite do cartão pelo valor total da compra, liberando aos poucos conforme as faturas são pagas. Somar várias compras parceladas no fim do ano é o caminho mais comum para uma fatura de janeiro e fevereiro que não cabe no orçamento, junto com IPVA, IPTU e material escolar.',
+          'Terceiro, se houver qualquer chance de você não pagar a fatura inteira, esqueça o "sem juros". O rotativo do cartão costuma cobrar juros acima de 400% ao ano, e mesmo com o limite criado pela Lei nº 14.690/2023, que impede que juros e encargos ultrapassem 100% do valor original da dívida, uma parcela atrasada destrói qualquer vantagem de meses de rendimento. Quarto, verifique o cashback ou os pontos: um cartão que devolve 1% sobre a compra desloca o desconto de equilíbrio em cerca de um ponto percentual a favor de parcelar, mas só se a loja não excluir compras parceladas do programa.',
+        ],
+      },
+      {
+        heading: 'Um roteiro rápido para o checkout',
+        level: 'h2',
+        body: [
+          'Antes de clicar em comprar, faça três perguntas. A compra cabe no orçamento do mês, à vista, sem mexer na reserva de emergência? Se não cabe, o problema não é a forma de pagamento, e sim a compra. Qual é o desconto no Pix comparado ao preço parcelado? Use a tabela acima como régua: até 6 vezes, descontos acima de 3% já favorecem o à vista; em 10 ou 12 vezes, o corte fica entre 4,5% e 5,5%. Por fim, o dinheiro que ficaria aplicado está mesmo em um investimento que rende perto de 100% do CDI? Se ele está parado na conta corrente, sem rendimento, qualquer desconto acima de zero vence o parcelamento.',
+          'Para ver o impacto dessas parcelas no seu mês, lance-as na Calculadora de Orçamento Mensal. Para comparar o rendimento de manter o dinheiro aplicado, use a Calculadora de Juros Compostos com a taxa líquida, e não a bruta.',
+        ],
+      },
+    ],
+    relatedCalculators: [
+      { label: 'Calculadora Tabela Price', href: '/pt-br/calculadoras/tabela-price-calculadora' },
+      { label: 'Calculadora de Juros Compostos', href: '/pt-br/calculadoras/calculadora-de-juros-compostos' },
+      { label: 'Calculadora de Orçamento Mensal', href: '/pt-br/calculadoras/calculadora-de-orcamento-mensal' },
+    ],
+  },
 ];
 
 export function getBlogPostBrBySlug(slug: string): BlogPostBr | undefined {
