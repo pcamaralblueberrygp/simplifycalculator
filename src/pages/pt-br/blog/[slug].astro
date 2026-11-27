@@ -29,6 +29,7 @@ const articleJsonLd = {
 >
   <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
 
+  <article>
   <div class="lp-header">
     <div class="container">
       <nav class="breadcrumbs">
@@ -45,7 +46,7 @@ const articleJsonLd = {
   <div class="lp-body">
     <div class="container" style="max-width: 780px">
       <img
-        src={post.image.src}
+        src={`https://simplifycalculator.com${post.image.src}`}
         alt={post.image.alt}
         width="1200"
         height="630"
@@ -92,7 +93,7 @@ const articleJsonLd = {
           <div class="lp-section-label" style="margin-top: 32px">Calculadoras relacionadas</div>
           <ul class="lp-tips">
             {post.relatedCalculators.map((calc: { label: string; href: string }) => (
-              <li><a href={calc.href}>{calc.label}</a></li>
+              <li><a href={calc.href.startsWith('/') ? `https://simplifycalculator.com${calc.href}` : calc.href}>{calc.label}</a></li>
             ))}
           </ul>
         </>
@@ -105,4 +106,5 @@ const articleJsonLd = {
       </p>
     </div>
   </div>
+  </article>
 </BaseLayoutPtBr>
